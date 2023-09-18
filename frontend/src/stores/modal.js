@@ -1,0 +1,43 @@
+import { ref } from "vue";
+import { defineStore } from "pinia";
+
+export const useModalStore = defineStore("modal", () => {
+	const closeModalSelection = () => {
+		isCitySelection.value = false;
+		isSearchHistorySelection.value = false;
+		isFavSelection.value = false;
+		isQuickSearchSelection.value = false
+	};
+
+	const isCitySelection = ref(false);
+	const isGoNext = ref(false)
+	const showCitySelection = (goNext) => {
+		isGoNext.value = false
+		isCitySelection.value = true;
+		if (goNext) {
+			isGoNext.value = true
+		}
+	}
+
+	const isQuickSearchSelection = ref(false)
+	const showQuickSearchSelection = () => {
+		isQuickSearchSelection.value = true;
+	};
+
+	const isSearchHistorySelection = ref(false)
+	const showSearchHistorySelection = () => {
+		isSearchHistorySelection.value = true;
+	};
+
+	const isFavSelection = ref(false)
+	const showFavSelection = () => {
+		isFavSelection.value = true;
+	};
+	return {
+		closeModalSelection,
+		isCitySelection, isGoNext, showCitySelection,
+		isSearchHistorySelection, showSearchHistorySelection,
+		isFavSelection, showFavSelection,
+		isQuickSearchSelection, showQuickSearchSelection,
+	};
+});

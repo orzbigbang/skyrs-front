@@ -1,0 +1,82 @@
+@mainColor: rgb(31,78,121);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;
+    font-family: "ヒラギノ角ゴ ProN","Hiragino Kaku Gothic ProN",sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #eee;
+    font-size: 16px;
+}
+
+input {
+    outline: none;
+    vertical-align: middle;
+}
+
+input[type='checkbox'] {
+    border-radius: 0;
+    cursor: pointer;
+
+}
+
+textarea {
+    outline: none;
+}
+
+select {
+    outline: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+label {
+    cursor: pointer;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.icon {
+    font-size: 24px;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.bacc {
+    background-color: @mainColor;
+}
+
+.fc {
+    color: @mainColor;
+}
+
+.bc {
+    border: 1px solid @mainColor;
+}
+
+.bbc {
+    border-bottom: 2px solid @mainColor;
+}
