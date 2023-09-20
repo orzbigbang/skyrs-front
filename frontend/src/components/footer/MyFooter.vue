@@ -1,17 +1,22 @@
 <template>
     <div class="wrapper">
-        <div class="url" v-for="url in urls" @click="url.func(url.param)">
+        <div class="url" v-for="url in urls" @click="url.func(url.type_)">
             {{ url.title }}
         </div>
     </div>
 </template>
 
 <script setup>
+    import {useRouter} from 'vue-router'
+    const router = useRouter()
+    
+    const footerFunc = (type) => {
+        router.push(`/info/${type}`)
+    }
+
     const urls = [
-        {title:'個人情報保護・プライバシーポリシー', func:'', param:''},
-        {title:'ポリシー２', func:'', param:''},
-        {title:'ポリシー３', func:'', param:''},
-        {title:'ポリシー４', func:'', param:''},
+        {title:'個人情報保護方針（プライバシーポリシー）', func:footerFunc, type_:'1'},
+        {title:'特定個人情報保護方針', func:footerFunc, type_:'2'},
     ]
 </script>
 

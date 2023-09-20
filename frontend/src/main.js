@@ -23,7 +23,7 @@ const apiURL = "http://13.112.28.13:8000/api/"
 app.provide('apiURL', apiURL);
 
 app.component('fa', FontAwesomeIcon)
-app.use(createPinia())
 app.use(router)
+app.use(createPinia())
 
 app.mount('#app')

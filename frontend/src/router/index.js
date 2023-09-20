@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 
 // import components
 import MyContent from "@/components/content/MyContent.vue";
@@ -7,7 +7,7 @@ import MyContent from "@/components/content/MyContent.vue";
 import { useGlobalStore } from "@/stores/global";
 
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
+	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: "/",
@@ -23,6 +23,11 @@ const router = createRouter({
 			path: "/query/:mode",
 			name: "query",
 			component: () => import("@/other pages/query page/QueryPage.vue"),
+		},
+		{
+			path: "/info/:infoType",
+			name: "info",
+			component: () => import("@/other pages/info page/InfoPage.vue"),
 		},
 		{
 			path: "/upload",
@@ -47,6 +52,9 @@ const router = createRouter({
 			path: "/detailpage/:houseID",
 			name: "detailpage",
 			component: () => import("@/other pages/detail page/DetailPage.vue"),
+			meta: {
+				keepAlive: true
+			}
 		},
 	],
 });

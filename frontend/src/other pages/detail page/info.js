@@ -461,13 +461,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_elevator", title:"エレベーター", offset:"-860"},
+                {name: "has_elevator", title:"エレベーター", offset:"0"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "is_reformed", title:"リフォーム", offset:"80"},
+                {name: "is_reformed", title:"リフォーム", offset:"-163"},
             ],
         },
         {   
@@ -475,9 +475,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -485,13 +485,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],
@@ -499,13 +499,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_elevator", title:"エレベーター", offset:"-860"},
+                {name: "has_elevator", title:"エレベーター", offset:"0"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "has_on_site_trash_space", title:"敷地内ゴミ置場", offset:"80"},
+                {name: "has_on_site_trash_space", title:"敷地内ゴミ置場", offset:"-687"},
             ],
         },
         {   
@@ -513,9 +513,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -523,13 +523,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],
@@ -537,13 +537,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_private_garden", title:"専用庭", offset:"-860"},
+                {name: "has_private_garden", title:"専用庭", offset:"-728"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "is_reformed", title:"リフォーム", offset:"80"},
+                {name: "is_reformed", title:"リフォーム", offset:"-163"},
             ],
         },
         {   
@@ -551,9 +551,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -561,13 +561,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],
@@ -575,13 +575,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_private_garden", title:"専用庭", offset:"-860"},
+                {name: "has_private_garden", title:"専用庭", offset:"-728"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "has_on_site_trash_space", title:"敷地内ゴミ置場", offset:"80"},
+                {name: "has_on_site_trash_space", title:"敷地内ゴミ置場", offset:"-687"},
             ],
         },
         {   
@@ -589,9 +589,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -599,13 +599,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],
@@ -613,13 +613,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_elevator", title:"エレベーター", offset:"-860"},
+                {name: "has_elevator", title:"エレベーター", offset:"0"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "is_reformed", title:"リフォーム", offset:"80"},
+                {name: "is_reformed", title:"リフォーム", offset:"-163"},
             ],
         },
         {   
@@ -627,9 +627,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -637,13 +637,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],
@@ -651,13 +651,13 @@ info.icons = {
         {
             title: "建物設備",
             items:[
-                {name: "has_private_garden", title:"専用庭", offset:"-860"},
+                {name: "has_private_garden", title:"専用庭", offset:"-728"},
                 {name: "has_city_gas", title:"都市ガス", offset:"-1970"},
-                {name: "has_underfloor_heating", title:"床暖房", offset:"-2130"},
-                {name: "has_delivery_box", title:"宅配ボックス", offset:"160"},
-                {name: "has_security_camera", title:"防犯カメラ", offset:"-920"},
+                {name: "has_underfloor_heating", title:"床暖房", offset:"-40"},
+                {name: "has_delivery_box", title:"宅配ボックス", offset:"-80"},
+                {name: "has_security_camera", title:"防犯カメラ", offset:"-120"},
                 {name: "has_autolock", title:"オートロック", offset:"80"},
-                {name: "is_reformed", title:"リフォーム", offset:"80"},
+                {name: "is_reformed", title:"リフォーム", offset:"-163"},
             ],
         },
         {   
@@ -665,9 +665,9 @@ info.icons = {
             items:[
                 {name: "is_furniture_included", title:"家具家電付き", offset:"-220"},
                 {name: "has_indoor_laundry_space", title:"室内洗濯機置き場", offset:"-1250"},
-                {name: "has_aircon", title:"エアコン", offset:"-570"},
+                {name: "has_aircon", title:"エアコン", offset:"-390"},
                 {name: "has_walk_in_closet", title:"ウォークインクローゼット", offset:"-1870"},
-                {name: "has_shoes_box", title:"シューズボックス", offset:"-300"},
+                {name: "has_shoes_box", title:"シューズボックス", offset:"-294"},
                 {name: "has_balcony", title:"バルコニー", offset:"-2010"},
                 {name: "is_internet_applicable", title:"インターネット対応", offset:"-340"},
             ]
@@ -675,13 +675,13 @@ info.icons = {
         {   
             title: "バス・トイレ・キッチン",
             items:[
-                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-220"},
-                {name: "has_reheating_bath", title:"追焚機能", offset:"-1250"},
-                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-570"},
-                {name: "has_bidet", title:"温水洗浄便座", offset:"-1870"},
-                {name: "is_independent_washroom", title:"洗面所独立", offset:"-300"},
-                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:""},
-                {name: "has_system_kitchen", title:"システムキッチン", offset:""},
+                {name: "is_separate_bath_and_toilet", title:"バストイレ別", offset:"-860"},
+                {name: "has_reheating_bath", title:"追焚機能", offset:"-430"},
+                {name: "has_bathroom_dryer", title:"浴室乾燥機", offset:"-470"},
+                {name: "has_bidet", title:"温水洗浄便座", offset:"-510"},
+                {name: "is_independent_washroom", title:"洗面所独立", offset:"-556"},
+                {name: "has_dishwasher", title:"食器洗い乾燥機", offset:"-600"},
+                {name: "has_system_kitchen", title:"システムキッチン", offset:"-640"},
             ]
         },
     ],

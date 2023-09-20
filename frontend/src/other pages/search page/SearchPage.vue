@@ -1,5 +1,4 @@
 <template>
-	<button @click="b">123</button>
 	<div class="search-page">
 		<MySidebar></MySidebar>
 		<div class="search-condition">
@@ -112,10 +111,6 @@
 		return conditionStore.houseIndex
     })
 
-	const a = () => {
-        console.log(conditionStore.houseIndex)
-    }
-
 	// 各种条件数据
 	import condition from './condition'
 	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
@@ -174,10 +169,6 @@
 			input: {},
 		},
 	])
-
-	const b = () => {
-		console.log(fixedConditions)
-	}
 	
 	// 显示更多条件
 	const showMore = ref(false)

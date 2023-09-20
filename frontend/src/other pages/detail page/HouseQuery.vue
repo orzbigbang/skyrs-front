@@ -1,56 +1,60 @@
 <template>
-    <div class="container">
-        <div class="form-wrapper">
-            <form>
-                <div class="type block">
-                    <div class="title">
-                        相談タイプ
-                    </div>
+    <div class="form-wrapper">
+        <form>
+            <div class="type block">
+                <div class="title">
+                    相談タイプ
+                </div>
+                <div class="content-wrapper">
                     <div class="radio-wrapper">
                         <label>
-                            <input type="radio" name="type" value="sell" v-model="userInput.query_type">
-                            売買のお問い合わせ
+                            <input type="radio" name="type" value="house_status" v-model="userInput.query_type">
+                            最新の空室状況を知りたい
                         </label>
                         <label>
-                            <input type="radio" name="type" value="rent" v-model="userInput.query_type">
-                            賃貸のお問い合わせ
+                            <input type="radio" name="type" value="go2see" v-model="userInput.query_type">
+                            実際に見学したい
                         </label>
                         <label>
-                            <input type="radio" name="type" value="any" v-model="userInput.query_type">
+                            <input type="radio" name="type" value="other" v-model="userInput.query_type">
                             ただのお問い合わせ
                         </label>
                     </div>
                 </div>
-                
-                <div class="name block">
-                    <div class="title">
-                        名前 <span>※必須項目</span>
-                    </div>
+            </div>
+            
+            <div class="name block">
+                <div class="title">
+                    名前 <span>※必須項目</span>
+                </div>
+                <div class="content-wrapper">
                     <div class="eng name-wrapper wrapper">
                         <div class="first-name n">
-                            <input type="text" placeholder="例）タナカ" required v-model="userInput.last_name_kana">
+                            <input type="text" placeholder="例）タナカ" v-model="userInput.last_name_kana" required>
                         </div>
                         <div class="last-name n">
-                            <input type="text" placeholder="例）タロウ" required v-model="userInput.first_name_kana">
+                            <input type="text" placeholder="例）タロウ" v-model="userInput.first_name_kana" required>
                         </div>
                     </div>
                     <div class="jpn name-wrapper wrapper">
                         <div class="first-name n">
-                            <input type="text" placeholder="例）田中" required v-model="userInput.last_name_kanji">
+                            <input type="text" placeholder="例）田中" v-model="userInput.last_name_kanji" required>
                         </div>
                         <div class="last-name n">
-                            <input type="text" placeholder="例）太郎" required v-model="userInput.first_name_kanji">
+                            <input type="text" placeholder="例）太郎" v-model="userInput.first_name_kanji" required>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="contact block">
-                    <div class="title">
-                        連絡方法 <span>※必須項目</span>
-                    </div>
+            <div class="contact block">
+                <div class="title">
+                    連絡方法 <span>※必須項目</span>
+                </div>
+                <div class="content-wrapper">
                     <div class="contact-wrapper wrapper">
                         <div class="first-name n">
-                            <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
+                            <input type="text" placeholder="メールアドレス" v-model="userInput.email" required>
                         </div>
                         <div class="last-name n">
                             <input type="text" placeholder="電話番号" v-model="userInput.phone">
@@ -59,11 +63,11 @@
 
                     <div class="radio-wrapper">
                         <label>
-                            <input type="radio" name="expect" value="email"  v-model="userInput.contact_type">
+                            <input type="radio" name="expect" value="email" v-model="userInput.contact_type">
                             メール連絡希望
                         </label>
                         <label>
-                            <input type="radio" name="expect" value="phone"  v-model="userInput.contact_type">
+                            <input type="radio" name="expect" value="phone" v-model="userInput.contact_type">
                             電話連絡希望
                         </label>
                         <label>
@@ -72,33 +76,25 @@
                         </label>
                     </div>
                 </div>
+            </div>
 
-                <div class="query block">
-                    <div class="title">
-                        ご相談内容 <span>※必須項目</span>
-                    </div>
-                    <div class="query-wrapper wrapper">
-                        <textarea class="query-input" cols="60" rows="8" required v-model="userInput.query_content"></textarea>
-                    </div>
+            <div class="query block">
+                <div class="title">
+                    ご相談内容 <span>※必須項目</span>
                 </div>
+                <div class="query-wrapper wrapper content-wrapper">
+                    <textarea class="query-input" name="" cols="60" rows="8" v-model="userInput.query_content"></textarea>
+                </div>
+            </div>
 
-                <button id="submit" @click.prevent="console.log(userInput)">送信</button>
-            </form>
-        </div>
+            <button id="submit" @click.prevent="console.log(userInput)">送信</button>
+        </form>
     </div>
 </template>
     
 <script setup>
-    import { ref, watch } from 'vue';
-    import { useRoute } from 'vue-router'
-    const route = useRoute()
-
-    watch(() => route.params, (newVal) => {
-        userInput.value.query_type = newVal.mode
-    })
-
-    const userInput = ref({
-        query_type: "any",
+    const userInput = {
+        query_type: "other",
         last_name_kana: "",
         first_name_kana: "",
         last_name_kanji: "",
@@ -107,24 +103,15 @@
         phone: "",
         contact_type: "any",
         query_content: "",
-    })
+    }
 </script>
     
 <style scoped  lang='less'>
     .form-wrapper {
-        width: 700px;
+        width: 70%;
         height: 800px;
-        margin: 50px auto;
-        padding: 10px 30px 30px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 10px #ccc;
+        margin: 20px auto;
         transition: .1s;
-
-        &:hover {
-            box-shadow: 0 0 15px #aaa;
-        }
 
         .block {
             margin: 30px 0;
@@ -182,7 +169,7 @@
         }
 
         textarea {
-            width: 650px;
+            width: 100%;
             line-height: 20px;
             font-size: 16px;
             border: 1px solid #ccc;

@@ -3,7 +3,9 @@
 	<MyNav v-if="globalStore.isNavFooter"></MyNav>
 
 	<City></City>
-	<router-view></router-view>
+   
+    <router-view>
+    </router-view>
 
 	<MyFooter v-if="globalStore.isNavFooter"></MyFooter>
 </template>

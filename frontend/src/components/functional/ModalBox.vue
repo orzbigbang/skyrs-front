@@ -46,7 +46,7 @@
 
         .wrapper {
             width: 60rem;
-            height: 70vh;
+            height: 40rem;
             padding-bottom: 20px;
             background-color: #fff;
             border-radius: 20px;

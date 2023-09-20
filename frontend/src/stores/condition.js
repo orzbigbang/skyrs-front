@@ -11,6 +11,7 @@ export const useConditionStore = defineStore("condition", () => {
 	const new_ = ref("")
 	const houseIndex = ref(1)
 	const activeFCIndex = ref(0)
+	const queryType = ref("any")
 
 	return {
 		city,
@@ -22,5 +23,6 @@ export const useConditionStore = defineStore("condition", () => {
 		new_,
 		houseIndex,
 		activeFCIndex,
+		queryType,
 	};
 });

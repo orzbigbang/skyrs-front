@@ -1,11 +1,9 @@
 <template>
     <Transition name="fade">
-
         <div class="sub-item" @click="goSearch($event, props.subItem.houseIndex)">
             {{ props.subItem.title }}
         </div>
     </Transition>
-
 </template>
     
 <script setup>
@@ -20,7 +18,7 @@
     })
 
     const goSearch = ($event, houseIndex) => {
-        conditionStore.houseIndex = houseIndex
+        if (houseIndex) conditionStore.houseIndex = houseIndex
         if (props.subItem.type === "search") {
             conditionStore.mode = props.subItem.params.mode
             conditionStore.type = props.subItem.params.type

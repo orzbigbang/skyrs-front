@@ -7,8 +7,9 @@ export const useHouseStore = defineStore("house", () => {
 	    {
 			main_pic_path: "/imgs/img_thumbnail (1).jfif",
 			house_id: "1",
+			faved: true,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -20,8 +21,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (2).jfif",
 			house_id: "2",
+			faved: false,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -33,9 +35,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (3).jfif",
 			house_id: "3",
-
+			faved: true,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -47,8 +49,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (4).jfif",
 			house_id: "4",
+			faved: false,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -60,8 +63,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (5).jfif",
 			house_id: "5",
+			faved: false,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -73,8 +77,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (6).jfif",
 			house_id: "6",
+			faved: true,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -86,8 +91,9 @@ export const useHouseStore = defineStore("house", () => {
         {
 			main_pic_path: "/imgs/img_thumbnail (7).jfif",
 			house_id: "7",
+			faved: true,
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -97,6 +103,7 @@ export const useHouseStore = defineStore("house", () => {
 			number_of_floors: "8階",
 		},
     ]);
+
     const getHouseList = (url, params, headers) => {
         // params: {}
         // headers: {}
@@ -122,7 +129,19 @@ export const useHouseStore = defineStore("house", () => {
             headers
         }).then(
             value => {
-                DP.value = value.data
+                return value.data
+            }
+        ).catch(
+            reason => {
+                console.log(reason)
+            }
+        )
+    }
+
+	const add2Fav = (url, data, headers) => {
+        axios.post(url, data, {headers}).then(
+            data => {
+                console.log(data.value)
             }
         ).catch(
             reason => {
@@ -134,6 +153,7 @@ export const useHouseStore = defineStore("house", () => {
     return {
         houseList,
         getHouseList,
-        getDP
+        getDP,
+		add2Fav,
     }
 })

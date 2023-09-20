@@ -1,7 +1,7 @@
 <template>
     <header class="bbc">
         <div class="logo-wrapper">
-            <div class="logo" @click="jump2Home"></div>
+            <div class="logo" @click="router.push('/')"></div>
             <Baloon/>
             <div class="city-selection" @click="showCitySelection">
                 {{ conditionStore.city }}
@@ -25,6 +25,10 @@
     <ModalBox :title="'お気に入り'" v-show="modalStore.isFavSelection">
         <DPList v-for="favorate in favorates" :item="favorate"></DPList>
     </ModalBox>
+
+	<ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
+		<Query></Query>
+    </ModalBox>
 </template>
 
 <script setup>
@@ -33,16 +37,16 @@
     import ModalBox from '@/components/functional/ModalBox.vue';
     import DPList from './DPList.vue'
     import SearchList from './SearchList.vue'
+	import Query from './Query.vue';
 
     import { ref } from 'vue'
+	
     import {useRouter} from 'vue-router'
-
     const router = useRouter()
 
     import { useModalStore } from '@/stores/modal.js'
     import { useConditionStore } from '@/stores/condition.js';
-
-    // modal store
+	const conditionStore = useConditionStore()
     const modalStore = useModalStore()
 
     const showCitySelection = () => {
@@ -79,7 +83,7 @@
 			main_pic_path: "/imgs/img_thumbnail (1).jfif",
 			house_id: "1",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -93,7 +97,7 @@
 			main_pic_path: "/imgs/img_thumbnail (2).jfif",
 			house_id: "2",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -107,7 +111,7 @@
 			main_pic_path: "/imgs/img_thumbnail (3).jfif",
 			house_id: "3",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -121,7 +125,7 @@
 			main_pic_path: "/imgs/img_thumbnail (4).jfif",
 			house_id: "4",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -135,7 +139,7 @@
 			main_pic_path: "/imgs/img_thumbnail (5).jfif",
 			house_id: "5",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -149,7 +153,7 @@
 			main_pic_path: "/imgs/img_thumbnail (6).jfif",
 			house_id: "6",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -163,7 +167,7 @@
 			main_pic_path: "/imgs/img_thumbnail (7).jfif",
 			house_id: "7",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -185,7 +189,7 @@
 			main_pic_path: "/imgs/img_thumbnail (1).jfif",
 			house_id: "1",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -199,7 +203,7 @@
 			main_pic_path: "/imgs/img_thumbnail (2).jfif",
 			house_id: "2",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -213,7 +217,7 @@
 			main_pic_path: "/imgs/img_thumbnail (3).jfif",
 			house_id: "3",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -227,7 +231,7 @@
 			main_pic_path: "/imgs/img_thumbnail (4).jfif",
 			house_id: "4",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -241,7 +245,7 @@
 			main_pic_path: "/imgs/img_thumbnail (5).jfif",
 			house_id: "5",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -255,7 +259,7 @@
 			main_pic_path: "/imgs/img_thumbnail (6).jfif",
 			house_id: "6",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -269,7 +273,7 @@
 			main_pic_path: "/imgs/img_thumbnail (7).jfif",
 			house_id: "7",
 			name: "ＴＫＲ神田多町",
-			price: "87,000円~109,000円",
+			price: "87,000円",
 			address: "東京都千代田区 神田多町２丁目",
 			area: "88",
 			layout: "3LDK",
@@ -281,41 +285,29 @@
 		},
     ])
 
-    // condition store
-    const conditionStore = useConditionStore()
-
-    
     // headers button definition
     const functions = [
         // {
         //     title: '検索履歴',
         //     icon: 'magnifying-glass',
         //     func: modalStore.showQuickSearchSelection,
-        //     route: 'ただいま製作中',
         // },
         {
             title: '閲覧履歴',
             icon: 'clock-rotate-left',
             func: modalStore.showSearchHistorySelection,
-            route: '',
         },
         {
             title: 'お気に入り',
             icon: 'star',
             func: modalStore.showFavSelection,
-            route: '',
         },
         {
             title: 'お問い合わせ',
             icon: 'envelope',
-            func: router.push,
-            route: '/query/any',
+            func: modalStore.showQuerySelection,
         },
     ]
-
-    const jump2Home = () => {
-        router.push('/')
-    }
 </script>
 
 <style scoped lang="less">

@@ -50,7 +50,7 @@
 <style scoped lang='less'>
     .wrapper {
         width: 70%;
-        height: 106px;
+        height: 102px;
         margin-bottom: 10px;
         border: 1px #ddd solid;
         border-radius: 5px;

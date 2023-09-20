@@ -1,8 +1,11 @@
 <template>
     <div class="house-wrapper">
-        <img class="img" :src="props.house.main_pic_path" @click="goDP($event, props.house.house_id)">
+        <img class="img" :src="props.house.main_pic_path" @click="goDP()">
         <div class="house-info">
-            <span class="title" @click="goDP($event, props.house.house_id)">{{ props.house.name }}</span>
+            <span class="title">
+                {{ props.house.name }}
+                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav()"/>
+            </span>
             <span class="location">{{ props.house.address }}</span>
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
@@ -15,8 +18,12 @@
 </template>
     
 <script setup>
+    import { ref, inject } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
+
+    import { useUserStore } from "@/stores/user"
+    const userStore = useUserStore()
 
     const props = defineProps(
         {
@@ -24,10 +31,24 @@
         }
     )
 
+    // house_id
+    const houseID = props.house.house_id
+
     // go to detail page
-    const goDP = ($event, houseID) => {
-	router.push(`/detailpage/${houseID}`)
-}
+    const goDP = () => {
+        router.push(`/detailpage/${houseID}`)
+    }
+
+    // add to favorate
+    const apiURL = inject("apiURL")
+    const faved = ref(props.house.faved)
+    const headers = {Authorization: userStore.user_id}
+    const add2Fav = () => {
+        faved.value = !faved.value
+        const url = `${apiURL}favorate`
+        const data = {house_id: houseID}
+        houseStore.add2Fav(url, data, headers)
+    }
 </script>
     
 <style scoped  lang='less'>
@@ -68,6 +89,25 @@
                 font-size: 20px;
                 font-weight: bold;
                 color: #000;
+
+                .icon {
+                    font-size: 18px;
+                    color: #999;
+                    cursor: pointer;
+                    transition: .1s;
+
+                    &:hover {
+                        color: #666;
+                    }
+                }
+
+                .icon.active {
+                    color: rgb(88, 153, 214);
+
+                    &:hover {
+                        color: rgb(31, 78, 122);
+                    }
+                }
             }
         }
     }

@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <button @click="a">123</button>
         <MyTag>基本情報</MyTag>
         <div class="title-wrapper block">
             <div class="title">
-                レジディア神田東  602
+                {{ title }}
+                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav()"/>
             </div>
             <div class="brief kv-wrapper">
                 <KeyValue v-for="highlight in highlights" :highlight="highlight"></KeyValue>
@@ -29,7 +29,7 @@
             <div class="base-info">
                 <KeyValue1 v-for="base in bases" :base="base"></KeyValue1>
 
-                <div class="contact-method">
+                <div class="contact-method" @click="modalStore.showQuerySelection">
                     <fa icon="envelope"/>
                     お問い合わせ
                 </div>
@@ -108,11 +108,11 @@
 
                 </label>
                 <label>
-                    <input type="radio" name="query-type">
+                    <input type="radio" name="query-type" checked>
                     その他の問い合わせ
                 </label>
             </div>
-            <div class="contact-method">
+            <div class="contact-method"  @click="modalStore.showQuerySelection">
                 <fa icon="envelope"/>
                 お問い合わせ
             </div>
@@ -125,6 +125,10 @@
             <HouseCard v-for="house in recommendHouseList" :keys="house.title" :house="house"/>
         </div>
     </div>
+
+    <ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
+		<HouseQuery></HouseQuery>
+    </ModalBox>
 </template>
     
 <script setup>
@@ -132,47 +136,51 @@
     import KeyValue from './KeyValue.vue'
     import KeyValue1 from './KeyValue1.vue'
     import HouseCard from "../search page/HouseCard.vue";
+    import ModalBox from '@/components/functional/ModalBox.vue';
+	import HouseQuery from './HouseQuery.vue';
 
-    import { ref, computed } from 'vue';
+    import { ref, computed, inject } from 'vue';
     import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
 
     import { useUserStore } from "@/stores/user"
     const userStore = useUserStore()
 
-    import axios from 'axios'
+    import { useModalStore } from '@/stores/modal';
+    const modalStore = useModalStore()
+
+    import { useHouseStore } from '@/stores/house';
+    const houseStore = useHouseStore()
+
     import { useRoute } from 'vue-router'
     const route = useRoute()
+
+    // get house_id
+    const houseID = route.params.houseID
 
     // get house type
     const houseIndex = computed(() => {
         return conditionStore.houseIndex
     })
 
-    const a = () => {
-        console.log(conditionStore.houseIndex)
-    }
-
     // get static data according to house type
     import info from './info'
+    const title = ref("レジディア神田東  602")
+    const faved = ref(false)
     const highlights = ref(info.highlights[houseIndex.value])
+    const images = ref([
+        "/imgs/img_thumbnail (1).jfif",
+        "/imgs/img_thumbnail (2).jfif",
+        "/imgs/img_thumbnail (3).jfif",
+        "/imgs/img_thumbnail (4).jfif",
+        "/imgs/img_thumbnail (5).jfif",
+        "/imgs/img_thumbnail (6).jfif",
+    ])
     const bases = ref(info.bases[houseIndex.value])
     const icons = ref(info.icons[houseIndex.value])
     const otherInfoTable = ref(info.otherInfoTable[houseIndex.value])
-
-    // get google map
-    const address = ref("")
-    const getAddress = () => {
-        address.value = "東京都江東区 北砂７丁目９－５"
-    }   
-    getAddress()
-    let googleMapUrl = `https://www.google.com/maps?q=${address.value}&output=embed`
-
-    // get dynamic data from api
     const bpTitle = ref("徒歩圏内にスーパーや公園、保育園、小学校などが揃う、子育て世帯にうれしい環境。ショッピングモール「BiVi南千住」も生活圏内です")
-
     const bpDesc = ref("東京メトロ日比谷線「三ノ輪」駅まで徒歩7分（～560ｍ）、JR山手線「鶯谷」駅まで徒歩15分（～1200ｍ）、都電荒川線「三ノ輪橋」駅まで徒歩11分（～880ｍ）で、3沿線3駅が徒歩圏内。通勤や通学、お買い物などにも便利な立地です。また徒歩圏内にはスーパーや公園が揃うほか、キッズガーデン保育園まで徒歩7分（～495ｍ）、台東区立金曽木小学校まで徒歩3分（～196ｍ）で、子育て世帯にも嬉しいロケーションとなっています。")
-
     const bulletPoints = ref([
         "2019年10月築　鉄筋コンクリート造9階建て",
         "線路に近いのですが、最高レベルのＴー４級という遮音性能なので室内は静かです。",
@@ -186,64 +194,45 @@
         "オートロック・防犯カメラ・宅配ＢＯＸ・メールＢＯＸ・駐輪場・敷地内ゴミ捨て場・エレベーター・ＢＳ・ＣＳ",
         "また、〇〇階以上の募集が出たらとか、角部屋の募集が出たらとか、〇〇円以下の募集が出たらなどなど・・",       
     ])
-
     const otherInfoList = ref([
-        "角部屋",
-        "最上階",
-        "フローリング",
-        "コンロ2口以上",
-        "宅配ボックス",
-        "敷地内ゴミ置場",
-        "専用庭",
-        "都市ガス",
-        "即入居可",
-        "ペット相談可",
         "ルームシェア可",
+        "ロフト",
+        "コンロ2口以上",
+        "プロパンガス",
+        "最上階",
+        "即入居可",
+        "角部屋",
+        "フローリング",
         "保証人不要",
+        "モニタ付きインターホン",
+        "ペット相談可",
+        "カウンターキッチン",
+        "女性限定"
     ])
     
-    // get recommend house list
-    import recommendHouseLists from "./recommendHouseList"
-    const recommendHouseList = ref(recommendHouseLists);
-    
-    // TODO
+    // get house data
+    const apiURL = inject("apiURL")
+    const headers = {Authorization: userStore.user_id}
     const getHouseData = () => {
-        const url = ""
-        const params = {id: route.params.houseID}
-		const headers = {Authorization: userStore.user_id}
-        axios.get(url, {
-            params,
-            headers
-        }).then(
-            value => {
-                console.log(value.data)
-            }
-        ).catch(
-            reason => {
-                console.log(reason)
-            }
-        )
+        const url = `${apiURL}${houseID}`
+        const params = {id: houseID}
+        const response = houseStore.getDP(url, params, headers)
+
+        // 处理返回的response
+        ;(() => {
+            
+        })()
     }
-    const getHighlights = () => {}
-    const getBases = () => {}
-    const getIcons = () => {}
-    const getOtherInfoTable = () => {}
-    const getBpTitle = () => {}
-    const getBpDesc = () => {}
-    const getBulletPoints = () => {}
-    const getOtherInfoList = () => {}
-    const getCards = () => {}
+
+    // add to favorate
+    const add2Fav = () => {
+        faved.value = !faved.value
+        const url = `${apiURL}favorate`
+        const data = {house_id: houseID}
+        houseStore.add2Fav(url, data, headers)
+    }
 
     // carousel function
-    const images = [
-        "/imgs/img_thumbnail (1).jfif",
-        "/imgs/img_thumbnail (2).jfif",
-        "/imgs/img_thumbnail (3).jfif",
-        "/imgs/img_thumbnail (4).jfif",
-        "/imgs/img_thumbnail (5).jfif",
-        "/imgs/img_thumbnail (6).jfif",
-    ]
-
     const activeImageIndex = ref(0)
     const offSetX = ref(0)
 
@@ -251,9 +240,20 @@
         activeImageIndex.value = activeImageIndex.value? activeImageIndex.value - 1: activeImageIndex.value
     }
     const goRight = () => {
-        activeImageIndex.value = activeImageIndex.value === images.length - 1? activeImageIndex.value: activeImageIndex.value + 1
+        activeImageIndex.value = activeImageIndex.value === images.value.length - 1? activeImageIndex.value: activeImageIndex.value + 1
     }
 
+    // get google map
+    const address = ref("")
+    const getAddress = () => {
+        address.value = "東京都江東区 北砂７丁目９－５"
+    }   
+    getAddress()
+    let googleMapUrl = `https://www.google.com/maps?q=${address.value}&output=embed`
+    
+    // get recommend house list
+    import recommendHouseLists from "./recommendHouseList"
+    const recommendHouseList = ref(recommendHouseLists);
 </script>
     
 <style scoped lang="less">
@@ -279,6 +279,25 @@
         .title {
             font-size: 20px;
             font-weight: bold;
+
+            .icon {
+                font-size: 18px;
+                color: #999;
+                cursor: pointer;
+                transition: .1s;
+
+                &:hover {
+                    color: #666;
+                }
+            }
+
+            .icon.active {
+                color: rgb(88, 153, 214);
+
+                &:hover {
+                    color: rgb(31, 78, 122);
+                }
+            }
         }
     }
 
@@ -445,6 +464,7 @@
                             width: 40px;
                             height: 40px;
                             background: url('./jingling.webp');
+                            background: url('./jingling.png');
                             background-position: 40px 0;
                         }
 

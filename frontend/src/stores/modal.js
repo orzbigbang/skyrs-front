@@ -7,6 +7,7 @@ export const useModalStore = defineStore("modal", () => {
 		isSearchHistorySelection.value = false;
 		isFavSelection.value = false;
 		isQuickSearchSelection.value = false
+		isQuerySelection.value = false
 	};
 
 	const isCitySelection = ref(false);
@@ -33,11 +34,17 @@ export const useModalStore = defineStore("modal", () => {
 	const showFavSelection = () => {
 		isFavSelection.value = true;
 	};
+
+	const isQuerySelection = ref(false)
+	const showQuerySelection = () => {
+		isQuerySelection.value = true;
+	};
 	return {
 		closeModalSelection,
 		isCitySelection, isGoNext, showCitySelection,
 		isSearchHistorySelection, showSearchHistorySelection,
 		isFavSelection, showFavSelection,
 		isQuickSearchSelection, showQuickSearchSelection,
+		isQuerySelection, showQuerySelection,
 	};
 });

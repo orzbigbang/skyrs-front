@@ -54,10 +54,6 @@
             align-items: center;
             letter-spacing: 1px;
 
-            .normal {
-
-            }
-
             .highlight1 {
                 font-size: 20px;
                 font-weight: bold;

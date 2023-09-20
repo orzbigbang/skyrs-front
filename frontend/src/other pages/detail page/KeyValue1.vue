@@ -31,7 +31,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         letter-spacing: 1px;
         flex-wrap: nowrap !important;
 
