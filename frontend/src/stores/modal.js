@@ -10,6 +10,7 @@ export const useModalStore = defineStore("modal", () => {
 		isQuerySelection.value = false
 	};
 
+	// isGoNext决定在模态框选中城市之后要不要继续跳到搜索页面
 	const isCitySelection = ref(false);
 	const isGoNext = ref(false)
 	const showCitySelection = (goNext) => {

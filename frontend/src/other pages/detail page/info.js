@@ -97,6 +97,20 @@ info.highlights = {
             }
         },
     ],
+    7: [
+        {
+            _key: "価格",
+            _value: {
+                selling_price: "160,000円"
+            }
+        },
+        {
+            _key: "土地面积",
+            _value: {
+                land_area: "40.83㎡"
+            }
+        },
+    ],
 }
 
 info.bases = {
@@ -454,6 +468,62 @@ info.bases = {
             },
         },
     ],
+    7: [
+        {
+            _key: "諸費用",
+            _value: {
+                other_fee: "-",
+            }
+        },
+        {
+            _key: "私道負担・道路",
+            _value: {
+                private_road: "道路幅：4ｍ・4.6ｍ、私道負担有り（私道：68.00m2持ち分1/6づつ、未利用地：約4.48m2持ち分1/6づつ）",
+            }
+        },
+        {
+            _key: "建ペい率",
+            _value: {
+                building_coverage_ratio: "-",
+            }
+        },
+        {
+            _key: "容積率",
+            _value: {
+                floor_area_ratio: "-",
+            }
+        },
+        {
+            _key: "用途地域",
+            _value: {
+                land_usage_type: "-"
+            },
+        },
+        {
+            _key: "地目",
+            _value: {
+                land_category: "-"
+            },
+        },
+        {
+            _key: "土地所有权",
+            _value: {
+                land_ownership: "-"
+            },
+        },
+        {
+            _key: "所在地",
+            _value: {
+                address: "東京都江東区 北砂７丁目９－５",
+            }
+        },
+        {
+            _key: "交通",
+            _value: {
+                station: "湘南新宿ライン高海/新町駅 歩22分",
+            },
+        },
+    ],
 }
 
 info.icons = {
@@ -690,7 +760,7 @@ info.icons = {
 info.otherInfoTable = {
     1: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},
@@ -734,7 +804,7 @@ info.otherInfoTable = {
     ],
     2: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},
@@ -778,7 +848,7 @@ info.otherInfoTable = {
     ],
     3: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},
@@ -816,7 +886,7 @@ info.otherInfoTable = {
     ],
     4: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},
@@ -854,7 +924,7 @@ info.otherInfoTable = {
     ],
     5: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},
@@ -898,7 +968,7 @@ info.otherInfoTable = {
     ],
     6: [
         {
-            _key1: "用地类型",
+            _key1: "用途地域",
             _value1: {land_usage_type: "-"},
             _key2: "地目",
             _value2: {land_category: "-"},

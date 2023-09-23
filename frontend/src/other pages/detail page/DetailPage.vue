@@ -140,6 +140,9 @@
 	import HouseQuery from './HouseQuery.vue';
 
     import { ref, computed, inject } from 'vue';
+    import { useRoute } from 'vue-router'
+    const route = useRoute()
+    
     import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
 
@@ -151,9 +154,6 @@
 
     import { useHouseStore } from '@/stores/house';
     const houseStore = useHouseStore()
-
-    import { useRoute } from 'vue-router'
-    const route = useRoute()
 
     // get house_id
     const houseID = route.params.houseID

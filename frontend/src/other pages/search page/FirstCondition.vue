@@ -1,7 +1,7 @@
 <template>
     <div class="fc">
         <div class="title" @click="showCondition($event, props.index)">
-            {{ props.fc.title }}
+            {{ props.title }}
         </div>
 
         <input class="search" type="text" placeholder="サーチ" v-if="conditionStore.activeFCIndex===props.index" v-model="searchBarInput" @input="searchFC">
@@ -25,7 +25,8 @@
 
     const props = defineProps(
         {
-            fc: Object,
+            title: String,
+            fc: Array,
             index: Number,
         }
     )
@@ -43,14 +44,14 @@
     const searchBarInput = ref("")
     const filterd_values = computed(() => {
         if (!searchBarInput.value) {
-            return props.fc.values
+            return props.fc
         } else {
             return values.value
         }
     })
     const values = reactive([])
     const searchFC = () => {
-        values.value = props.fc.values.filter((e) => {
+        values.value = props.fc.filter((e) => {
             return e.indexOf(searchBarInput.value) !== -1
         })
     }

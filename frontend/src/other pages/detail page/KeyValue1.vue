@@ -27,7 +27,6 @@
 <style scoped lang='less'>
     .kv-wrapper {
         margin: 0 0 10px;
-        min-height: 30px;
         display: flex;
         flex-direction: row;
         justify-content: flex-start;

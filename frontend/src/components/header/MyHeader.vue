@@ -41,8 +41,9 @@
 
     import { ref } from 'vue'
 	
-    import {useRouter} from 'vue-router'
+    import {useRouter, useRoute} from 'vue-router'
     const router = useRouter()
+	const route = useRoute()
 
     import { useModalStore } from '@/stores/modal.js'
     import { useConditionStore } from '@/stores/condition.js';
@@ -50,7 +51,12 @@
     const modalStore = useModalStore()
 
     const showCitySelection = () => {
-        modalStore.showCitySelection()
+		// 如果在搜索页，则跳转路由。 如果不是，则只改变city的值
+		if (route.path.startsWith("/search")) {
+			modalStore.showCitySelection(true)
+		} else {
+			modalStore.showCitySelection()
+		}
     }
 
 	// get search History

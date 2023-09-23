@@ -74,7 +74,7 @@
 	import SearchCondition from "./SearchCondition.vue";
 	import MySidebar from './MySidebar.vue'
 
-	import { ref, reactive, watch, computed, inject, onMounted } from 'vue';
+	import { ref, watch, computed, inject, onMounted } from 'vue';
     import { useRoute } from 'vue-router';
     const route = useRoute()
 	import { useHouseStore } from "@/stores/house"
@@ -89,14 +89,13 @@
 	// 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
 
-	// 根据路由获得不同数据
-    const city = ref(route.params.city)
+	// 实时监听路由，获得不同的数据
+    const cityIndex = ref(route.params.cityIndex)
     const mode = ref(route.params.mode)
     const house_type = ref(route.params.house_type)
     const new_ = ref(route.params.new_)
-
     watch(() => route.params, (newVal) => {
-		city.value = newVal.city
+		cityIndex.value = newVal.cityIndex
 		mode.value = newVal.mode
 		house_type.value = newVal.house_type
 		new_.value = newVal.new_
@@ -113,71 +112,12 @@
 
 	// 各种条件数据
 	import condition from './condition'
+	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
 	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
     const moreConditionsCheckBox = ref(condition.moreConditionsCheckBox[houseIndex.value])
-	const fixedConditions = reactive([
-		{
-			title: "価格",
-			name: ["price_bottom", "price_top"],
-			type: "selectRange",
-			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
-			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
-			desc: ["万円　～　", "万円"]
-		},
-		{
-			title: "専有面積",
-			name: ["area_bottom", "area_top"],
-			type: "selectRange",
-			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
-			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
-			desc: ["m²　～　", "m²"]
-		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
-			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
-			desc: ["分　～　", "分"]
-		},
-		{
-			title: "間取り",
-			name: "layout",
-			type: "checkbox",
-			values: [
-				{label: "1ルーム", value: '1r'}, 
-				{label: "1K", value: '1k'},
-				{label: "1DK", value: '1dk'},
-				{label: "1LDK", value: '1ldk'},
-				{label: "2K", value: '2k'},
-				{label: "2DK", value: '2dk'},
-				{label: "2LDK", value: '2ldk'},
-				{label: "3K", value: '3k'},
-				{label: "3DK", value: '3dk'},
-				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
-			],
-			input: {},
-		},
-	])
 	
 	// 显示更多条件
 	const showMore = ref(false)
-
-	// 表单提交功能
-	const submitForm = () => {
-		submitted.value = true
-		// getNoConditionHouseList()
-	}
 	
 	// 获取无特定条件的房屋列表
 	const urlGetHouseList = `${apiURL}estate`
@@ -186,48 +126,42 @@
 	})
 
 	const getNoConditionHouseList = () => {
-		const params = {city: convertCityName(city.value), mode: mode.value, house_type: house_type.value, new: new_.value}
+		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
 		const headers = {Authorization: userStore.user_id}
 		houseStore.getHouseList(urlGetHouseList, params, headers)
 	}
 
-	// 城市名转换成int
-	const convertCityName = (city) => {
-		let index
-		switch (city) {
-			case "東京":
-				index = 1
-				break
-			case "横浜":
-				index = 2
-				break
-			case "埼玉":
-				index = 3
-				break
-			case "川崎":
-				index = 4
-				break
-			default:
-				index = 1
-		}
-
-		return index
+	// 表单提交功能
+	const submitForm = () => {
+		submitted.value = true
+		// getNoConditionHouseList()
 	}
 
 	// 表单重置功能
     const reset = () => {
-		[...fixedConditions, ...moreConditionsSelect.value, ...moreConditionsCheckBox.value].forEach((item) => {
+		let aggregatedList = []
+		// 如果列表里有值的话，就添加到总列表里
+		if (fixedConditions.value) {
+			aggregatedList = [...aggregatedList, ...fixedConditions.value]
+		}
+		if (moreConditionsSelect.value) {
+			aggregatedList = [...aggregatedList, ...moreConditionsSelect.value]
+		}
+		if (moreConditionsCheckBox.value) {
+			aggregatedList = [...aggregatedList, ...moreConditionsCheckBox.value]
+		}
+		// 遍历列表，把kv的value改成 "--指定なし--"。 从而重置搜索条件
+		aggregatedList.forEach((item) => {
 			Object.keys(item["input"]).forEach((key) => {
 				item["input"][key] = "--指定なし--"
 			})
 		})
     }
 
-	// 进入组件时，往下scroll一点
+	// 进入组件时，往下scroll一点来隐藏Header
 	onMounted(() => {
-		window.scrollTo(0,100)
+		window.scrollTo(0,112)
 	})
-
 </script>
 
 <style scoped lang="less">

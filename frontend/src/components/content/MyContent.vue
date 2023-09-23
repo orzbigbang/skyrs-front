@@ -3,8 +3,7 @@
     <ItemRecommend class="item"/>
     <ItemNewHouse class="item"/>
     <ItemService class="item"/>
-    <!-- <ItemTopics class="item"></ItemTopics> -->
-    <!-- <ItemSearch class="item"></ItemSearch> -->
+    <ItemStaff class="item"/>
 </template>
 
 <script setup>
@@ -12,8 +11,7 @@ import MyBanner from './MyBanner.vue'
 import ItemRecommend from './Item-Recommend.vue'
 import ItemNewHouse from './Item-NewHouse.vue'
 import ItemService from './Item-Service.vue'
-// import ItemTopics from './Item-Topics.vue
-// import ItemSearch from './Item-Search.vue';
+import ItemStaff from './Item-Staff.vue'
 
 </script>
 

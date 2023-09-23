@@ -5,6 +5,7 @@ export const useConditionStore = defineStore("condition", () => {
 	const isCitySet = ref(false);
 	const isFCSet = ref(false);
 	const city = ref("都道府県の選択・変更");
+	const cityIndex = ref(1);
 	const fc = ref("");
 	const mode = ref("")
 	const type = ref("")
@@ -15,6 +16,7 @@ export const useConditionStore = defineStore("condition", () => {
 
 	return {
 		city,
+		cityIndex,
 		fc,
 		isCitySet,
 		isFCSet,

@@ -2,6 +2,368 @@
 
 const condition = {}
 
+condition.fixedConditionsSelect = {
+	1: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	2: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	3: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	4: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	5: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	6: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "専有面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+		{
+			title: "間取り",
+			name: "layout",
+			type: "checkbox",
+			values: [
+				{label: "1ルーム", value: '1r'}, 
+				{label: "1K", value: '1k'},
+				{label: "1DK", value: '1dk'},
+				{label: "1LDK", value: '1ldk'},
+				{label: "2K", value: '2k'},
+				{label: "2DK", value: '2dk'},
+				{label: "2LDK", value: '2ldk'},
+				{label: "3K", value: '3k'},
+				{label: "3DK", value: '3dk'},
+				{label: "3LDK", value: '3ldk'},
+				{label: "4K~", value: '4'},
+			],
+			input: {},
+		},
+	],
+	7: [
+		{
+			title: "価格",
+			name: ["price_bottom", "price_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "1", "2"], 
+				["--指定なし--", "3", "4"]
+			],
+			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			desc: ["万円　～　", "万円"]
+		},
+		{
+			title: "土地面積",
+			name: ["area_bottom", "area_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "", ""], 
+				["--指定なし--", "", ""]
+			],
+			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			desc: ["m²　～　", "m²"]
+		},
+		{
+			title: "駅徒歩",
+			name: ["station_time_bottom", "station_time_top"],
+			type: "selectRange",
+			values: [
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
+				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+			],
+			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			desc: ["分　～　", "分"]
+		},
+	],
+}
+
 condition.moreConditionsSelect = {
     1: [
 		{

@@ -24,7 +24,7 @@
             conditionStore.type = props.subItem.params.type
             conditionStore.new_ = props.subItem.params.new_
             if (conditionStore.isCitySet) {
-                router.push(`/search/${conditionStore.city}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
+                router.push(`/search/${conditionStore.cityIndex}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
             } else {
                 props.subItem.func()
             }

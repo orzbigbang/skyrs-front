@@ -15,7 +15,7 @@ const router = createRouter({
 			component: MyContent,
 		},
 		{
-			path: "/search/:city/:mode/:house_type/:new_",
+			path: "/search/:cityIndex/:mode/:house_type/:new_",
 			name: "search",
 			component: () => import("@/other pages/search page/SearchPage.vue"),
 		},
