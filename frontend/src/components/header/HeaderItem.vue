@@ -1,5 +1,5 @@
 <template>
-    <div class="outer" @click="props.item.func(props.item.route)">
+    <div class="outer" @click="headerItemFunc">
         <fa class="icon fc" :icon="props.item.icon"/>
         <span class="fc">{{ props.item.title }}</span>
     </div>
@@ -9,6 +9,11 @@
     const props = defineProps({
         item: Object,
     })
+
+    const headerItemFunc = () => {
+        props.item.func(props.item.route)
+        props.item.func1()
+    }
 </script>
 
 <style scoped lang="less">

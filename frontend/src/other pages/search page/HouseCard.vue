@@ -1,10 +1,10 @@
 <template>
     <div class="house-wrapper">
-        <img class="img" :src="props.house.main_pic_path" @click="goDP()">
+        <img class="img" :src="props.house.main_pic_path" @click="goDP">
         <div class="house-info">
             <span class="title">
                 {{ props.house.name }}
-                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav()"/>
+                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav"/>
             </span>
             <span class="location">{{ props.house.address }}</span>
             <span class="madori">{{ props.house.layout }}</span>
@@ -24,6 +24,9 @@
 
     import { useUserStore } from "@/stores/user"
     const userStore = useUserStore()
+
+    import { useHouseStore } from '@/stores/house.js'
+    const houseStore = useHouseStore()
 
     const props = defineProps(
         {

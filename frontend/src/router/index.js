@@ -65,7 +65,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.beforeResolve((to, from, next) => {
-    if (from.path === '/upload') {
+    if (from.path.startsWith('#/upload')) {
 		const globalStore = useGlobalStore()
 		globalStore.isNavFooter = true
     } else {

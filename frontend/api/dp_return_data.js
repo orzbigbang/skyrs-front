@@ -4,6 +4,7 @@
 
 // 根据house_index 返回下面对应的数据
 // 同时把house_id记录到user的浏览历史表里
+// meta: {name: "房屋名字", faved: "收藏与否"}
 const dp1 = {
     highlights: {
         selling_price: "160,000円",  // 千分位逗号分隔，后面加“円”
@@ -456,4 +457,27 @@ const dp6 = {
         "ルームシェア可",
         "保証人不要",
     ],  // 遍历other-info-list。 把true的项目转换成日文列表返回（得定义一个other-info-list 和 eng:jpn 的字典）
+}
+
+const dp7 = {
+    highlights: {
+        selling_price: "160,000円", // 千分位逗号分隔，后面加“円”
+        land_area: "40.83㎡"  // 后面加“㎡”
+    },
+    bases: {
+        other_fee: "160,000円",  // 千分位逗号分隔，后面加“円”。
+        private_road: "160,000円",  // 千分位逗号分隔，后面加“円”。
+        building_coverage_ratio: "160,000円",  // 千分位逗号分隔，后面加“円”。
+        floor_area_ratio: "160,000円",  // 千分位逗号分隔，后面加“円”。
+        land_usage_type: "160,000円",  // 千分位逗号分隔，后面加“円”。
+        land_category: "洋6.5 洋5.1 LDK13.5",
+        land_ownership: "2000年11月",  // YYYY年mm月
+        address: "南",
+        station: "3階",  // 后面加“階”
+    },
+    bulletpoints: {
+        brief_title: "text",
+        brief_desc: "text",
+        bullet_point: ["", "", ""]  // 上面的dp1~dp6 也改成这个样子
+    },
 }

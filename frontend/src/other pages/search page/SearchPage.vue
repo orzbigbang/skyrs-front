@@ -63,6 +63,7 @@
 				<div class="exhibit">
 					<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 				</div>
+				<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
 			</div>
 		</div>
 	</div>
@@ -73,6 +74,7 @@
 	import HouseCard from "./HouseCard.vue";
 	import SearchCondition from "./SearchCondition.vue";
 	import MySidebar from './MySidebar.vue'
+	import Pager from '@/components/functional/Pager.vue'
 
 	import { ref, watch, computed, inject, onMounted } from 'vue';
     import { useRoute } from 'vue-router';
@@ -85,6 +87,12 @@
 
 	import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
+
+	
+	// 进入组件时，往下scroll一点来隐藏Header
+	onMounted(() => {
+		window.scrollTo(0,112)
+	})
 
 	// 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
@@ -128,7 +136,7 @@
 	const getNoConditionHouseList = () => {
 		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
 		const headers = {Authorization: userStore.user_id}
-		houseStore.getHouseList(urlGetHouseList, params, headers)
+		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
 	}
 
 	// 表单提交功能
@@ -158,10 +166,10 @@
 		})
     }
 
-	// 进入组件时，往下scroll一点来隐藏Header
-	onMounted(() => {
-		window.scrollTo(0,112)
-	})
+	// 获取房屋列表的activePageNum
+	const getActivePageNum = (activePageNum) => {
+		console.log(activePageNum)
+	}
 </script>
 
 <style scoped lang="less">

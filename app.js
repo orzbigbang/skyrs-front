@@ -6,7 +6,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(require('cors')())
 
 const port = 80
-const host = "127.0.0.1"
-app.listen(port, host, () => {
-    console.log(`server runing at 127.0.0.1:${port}`)
+app.listen(port, () => {
+    console.log(`server runing at http://124.70.219.73:${port}`)
 })

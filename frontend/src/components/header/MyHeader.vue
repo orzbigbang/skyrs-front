@@ -14,9 +14,9 @@
         </div>
     </header>
 
-    <ModalBox :title="'検索履歴'" v-show="modalStore.isQuickSearchSelection">
+    <!-- <ModalBox :title="'検索履歴'" v-show="modalStore.isQuickSearchSelection">
         <SearchList v-for="history in searchHistories" :item="history"></SearchList>
-    </ModalBox>
+    </ModalBox> -->
 
     <ModalBox :title="'閲覧履歴'" v-show="modalStore.isSearchHistorySelection">
         <DPList v-for="history in dpHistories" :item="history"></DPList>
@@ -39,16 +39,26 @@
     import SearchList from './SearchList.vue'
 	import Query from './Query.vue';
 
-    import { ref } from 'vue'
+    import { computed, inject } from 'vue'
 	
     import {useRouter, useRoute} from 'vue-router'
     const router = useRouter()
 	const route = useRoute()
 
     import { useModalStore } from '@/stores/modal.js'
+    const modalStore = useModalStore()
+
     import { useConditionStore } from '@/stores/condition.js';
 	const conditionStore = useConditionStore()
-    const modalStore = useModalStore()
+
+	import { useHouseStore } from '@/stores/house.js'
+    const houseStore = useHouseStore()
+
+	import { useUserStore } from '@/stores/user.js'
+    const userStore = useUserStore()
+
+	const apiURL = inject("apiURL")
+    const headers = {Authorization: userStore.user_id}
 
     const showCitySelection = () => {
 		// 如果在搜索页，则跳转路由。 如果不是，则只改变city的值
@@ -60,236 +70,34 @@
     }
 
 	// get search History
-	const getSearchHistory = () => {
-        searchHistories.value = []
-    }
-
-    const searchHistories = ref([
-	    {
-			city: "東京",
-			mode: "sell",
-			type: "mansion",
-			new_: "y",
-			fc: "千代田区",
-			price: "",
-			area: "",
-			station_time: "",
-			layout: "",
-			other: "",
-		},
-    ])
+	// const getSearchHistory = () => {
+    //     searchHistories.value = []
+    // }
+	// const getSearchHistories = () => {
+    //     houseStore.getSearchHistories()
+    // }
 
     // get DP history
-    const getDPHistory = () => {
-        dpHistories.value = []
+    const dpHistories = computed(() => {
+		return houseStore.dpHistories
+	})
+
+	const getDPHistory = () => {
+		const url = `${apiURL}dphistory`
+		const params = {}
+        houseStore.getHouseList(url, params, headers, 2)
     }
 
-    const dpHistories = ref([
-	    {
-			main_pic_path: "/imgs/img_thumbnail (1).jfif",
-			house_id: "1",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (2).jfif",
-			house_id: "2",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: false,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (3).jfif",
-			house_id: "3",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (4).jfif",
-			house_id: "4",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: false,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (5).jfif",
-			house_id: "5",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: false,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (6).jfif",
-			house_id: "6",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: false,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (7).jfif",
-			house_id: "7",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: false,
-		},
-    ])
+	// get usar favorates houses
+	const favorates = computed(() => {
+		return houseStore.favorates
+	})
 
-    // get favorate
     const getFavorate = () => {
-        favorates.value = []
+		const url = `${apiURL}favorate`
+		const params = {}
+        houseStore.getHouseList(url, params, headers, 3)
     }
-
-    const favorates = ref([
-	    {
-			main_pic_path: "/imgs/img_thumbnail (1).jfif",
-			house_id: "1",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (2).jfif",
-			house_id: "2",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (3).jfif",
-			house_id: "3",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (4).jfif",
-			house_id: "4",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (5).jfif",
-			house_id: "5",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (6).jfif",
-			house_id: "6",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-        {
-			main_pic_path: "/imgs/img_thumbnail (7).jfif",
-			house_id: "7",
-			name: "ＴＫＲ神田多町",
-			price: "87,000円",
-			address: "東京都千代田区 神田多町２丁目",
-			area: "88",
-			layout: "3LDK",
-			station1: "ＪＲ川越線/西大宮駅 歩11分",
-			completion_date: "2002年11月築",
-			house_struction: "鉄骨",
-			number_of_floors: "8階",
-            favorated: true,
-		},
-    ])
 
     // headers button definition
     const functions = [
@@ -302,16 +110,19 @@
             title: '閲覧履歴',
             icon: 'clock-rotate-left',
             func: modalStore.showSearchHistorySelection,
+			func1: getDPHistory
         },
         {
             title: 'お気に入り',
             icon: 'star',
             func: modalStore.showFavSelection,
+			func1: getFavorate
         },
         {
             title: 'お問い合わせ',
             icon: 'envelope',
             func: modalStore.showQuerySelection,
+			func1: () => {}
         },
     ]
 </script>
