@@ -112,8 +112,8 @@
     
 <style scoped  lang='less'>
     .form-wrapper {
-        width: 700px;
-        height: 800px;
+        max-width: 700px;
+        min-height: 800px;
         margin: 50px auto;
         padding: 10px 30px 30px;
         background-color: #fff;
@@ -141,7 +141,7 @@
         }
 
         input[type='text'] {
-            width: 300px;
+            width: 100%;
             height: 30px;
             padding: 5px 10px;
             font-size: 14px;
@@ -184,7 +184,7 @@
         textarea {
             width: 650px;
             line-height: 20px;
-            font-size: 16px;
+            font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
 
@@ -223,14 +223,39 @@
             display: flex;
 
             .n {
+                width: 100%;
                 margin-right: 30px;
             }
-
         }
 
         .radio-wrapper {
             display: flex;
             flex-direction: row;
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .form-wrapper {
+
+            input[type='text'] {
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+
+            .wrapper {
+                .n {
+                    margin-right: 5px;
+                }
+            }
+
+            .radio-wrapper {
+                flex-direction: column;
+                
+                label {
+                    margin-bottom: 5px;
+                }
+            }
         }
     }
 </style>

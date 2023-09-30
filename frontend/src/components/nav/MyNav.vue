@@ -93,6 +93,19 @@
             flex-direction: row;
             justify-content: center;
         }
+    }   
+
+    @media screen and (max-width:540px) {
+        .nav {
+            height: 70px;
+
+            .container {
+                width: 90%;
+            }
+            .nav-wrapper {
+                flex-wrap: wrap;
+                // flex-shrink: 1;
+            }
+        }   
     }
-    
 </style>

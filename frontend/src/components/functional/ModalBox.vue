@@ -45,7 +45,8 @@
         z-index: 10000;
 
         .wrapper {
-            width: 60rem;
+            width: 80%;
+            max-width: 60rem;
             height: 40rem;
             padding-bottom: 20px;
             background-color: #fff;

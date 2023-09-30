@@ -26,24 +26,32 @@
     
 <style scoped lang='less'>
     .kv-wrapper {
-        margin: 0 0 10px;
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: flex-start !important;
         align-items: flex-start;
         letter-spacing: 1px;
         flex-wrap: nowrap !important;
+        font-size: 1rem;
 
         .key {
             width: 200px;
             margin-right: 20px;
-            font-size: 15px;
             color: #666;
             flex-shrink: 0;
         }
 
         .value {
-            font-size: 16px;
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .kv-wrapper {
+
+            .key {
+                width: 100px;
+                margin-right: 10px;
+            }
         }
     }
 </style>

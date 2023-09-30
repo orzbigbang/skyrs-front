@@ -18,7 +18,7 @@
         width: 50px;
         height: 50px;
         background-color: rgb(253, 188, 67);
-        right: 70%;
+        left: 0;
         top: 0;
         animation: roaming ease-in-out 3s infinite alternate;
     }
@@ -26,7 +26,7 @@
         width: 20px;
         height: 20px;
         background-color: cyan;
-        right: 3%;
+        right: 0;
         top: 10px;
         animation: roaming ease-in-out 4s infinite alternate;
     }
@@ -48,6 +48,21 @@
         }
         100% {
             transform: translateY(-14px);
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        span.b1 {
+            width: 38px;
+            height: 38px;
+        }
+        span.b2 {
+            width: 14px;
+            height: 14px;
+        }
+        span.b3 {
+            width: 20px;
+            height: 20px;
         }
     }
 </style>

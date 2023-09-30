@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate">
+        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="deactivate">
             {{ props.item.title }}
             <div class="bar" v-show="active"></div>
         </div>
@@ -68,7 +68,27 @@
             top: 100%;
             font-size: 16px;
             border-radius: 10px;
+            z-index: 100;
         }
     }
      
+    @media screen and (max-width:991.98px) {
+        .wrapper {
+            .nav-item {
+                width: 9rem;
+                font-size: 20px;
+            }   
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .wrapper {
+            .nav-item {
+                width: 7rem;
+                font-size: 17px;
+            }   
+        }
+    }
+
+
 </style>

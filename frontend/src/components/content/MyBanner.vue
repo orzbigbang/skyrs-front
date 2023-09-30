@@ -1,6 +1,6 @@
 <template>
     <div class="banner-wrapper">
-        <div class="container">
+        <div class="container1">
             <div class="info-wrapper">
                 <span class="title">お知らせ</span>                
                 <span class="desc">ご所有不動産の売却査定価格を無料でご提案させていただきます。売却に関するご相談などもお気軽にお問合せ下さい。</span>
@@ -16,23 +16,19 @@
 
 <style scoped lang="less">
     .banner-wrapper {
-        width: 88rem;
+        max-width: 88rem;
+        width: 95%;
         aspect-ratio: 2;
         margin: 20px auto;
-        background: url('@/assets/imgs/heroimage2.jpg');
+        background: url('@/assets/imgs/heroimage.jpg');
         background-size: cover;
         box-shadow: 0 4px 5px #666;
         border-radius: 10px;
-        position: relative;
 
         .info-wrapper {
             width: 24rem;   
             height: 50%;
             padding: 30px;
-            position: absolute;
-            right: 10%;
-            top: 50%;
-            transform: translatey(-50%);
             background-color: #5454c613;
             border-radius: 20px;
             color: #fff;

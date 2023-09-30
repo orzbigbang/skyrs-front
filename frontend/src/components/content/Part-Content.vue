@@ -34,4 +34,30 @@
             letter-spacing: 2px;
         }
     }
+
+    @media screen and (max-width:700px) {
+        .wrapper {
+            .title {
+                font-size: 34px;
+            }
+
+            .detail {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    @media screen and (max-width:414px) {
+        .wrapper {
+            .title {
+                font-size: 27px;
+            }
+
+            .detail {
+                font-size: 16px;
+                font-weight: normal;
+            }
+        }
+    }
 </style>

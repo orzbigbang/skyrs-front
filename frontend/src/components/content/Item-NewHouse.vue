@@ -103,7 +103,7 @@ const goDP = ($event, houseID) => {
 	.card-wrapper {
 		display: flex;
         flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: center;
 	}
 
 	.see-more {

@@ -9,8 +9,15 @@ html {
 }
 body {
   min-height: 100vh;
+  overflow-x: hidden;
   background-color: #eee;
   font-size: 16px;
+}
+@media screen and (max-width: 991.98px) {
+  html,
+  body {
+    font-size: 14px;
+  }
 }
 input {
   outline: none;

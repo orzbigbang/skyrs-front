@@ -32,8 +32,8 @@
 
         .url {
             margin: 0 2rem;
-            // font-weight: bold;
             border-bottom: 1px solid #fff0;
+            text-align: center;
             cursor: pointer;
             transition: all .15s linear;
 

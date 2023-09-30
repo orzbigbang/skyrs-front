@@ -1,7 +1,7 @@
 <template>
     <header class="bbc">
         <div class="logo-wrapper">
-            <div class="logo" @click="router.push('/')"></div>
+            <img class="logo" src="@/assets/icon/logo.png" @click="router.push('/')">
             <Baloon/>
             <div class="city-selection" @click="showCitySelection">
                 {{ conditionStore.city }}
@@ -139,15 +139,13 @@
         background-color: #fff;
 
         .logo-wrapper {
-            padding-right: 20px;
+            width: 20rem;
+            margin-left: 100px;
             position: relative;
             cursor: pointer;
 
             .logo {
                 width: 20rem;
-                height: 5rem;
-                margin-left: 100px;
-                background: url('@/assets/icon/logo.png') left top / 325px 72px;
                 display: flex;
                 justify-content: center;
                 align-items: center;  
@@ -174,6 +172,59 @@
         .function-wrapper {
             margin-right: 100px;
             display: flex;
+        }
+    }
+
+    @media screen and (max-width:1135px) {
+        header {
+            .logo-wrapper {
+                margin-left: 50px;
+            }
+            .function-wrapper {
+                margin-right: 0px;
+
+            }
+        }
+        
+    }
+
+    @media screen and (max-width:991.98px) {
+        header {
+            height: 10rem;
+            margin-top: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+
+            .logo-wrapper {
+                margin-left: -150px;
+            }
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        header {
+            .logo-wrapper {
+                width: 16rem;
+
+                .logo {
+                    width: 16rem;
+                }
+
+                .city-selection {
+                    width: 160px;
+                    left: 0;
+                    transform: translate(0%, 340%);
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:390px) {
+        header {
+            .logo-wrapper {
+                margin-left: -120px;
+            }
         }
     }
 </style>

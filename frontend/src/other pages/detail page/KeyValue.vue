@@ -1,5 +1,5 @@
 <template>
-    <div class="kv-wrapper">
+    <div class="kv">
         <div class="key">{{ props.highlight._key }}</div>
         <div class="value">
             <!-- <div class="normal">{{ props.normal }}</div> -->
@@ -25,39 +25,61 @@
     
 </script>
     
-<style scoped  lang='less'>
-    .kv-wrapper {
+<style scoped lang='less'>
+    .kv {
+        margin-top: .8rem;
         display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
         align-items: center;
-        margin-right: 100px;
+        flex-wrap: nowrap;
+        font-size: 1rem;
+    }
+    .key {
+        width: 9rem;
+        height: 3rem;
+        line-height: 3rem;
+        margin-right: 1.3rem;
+        text-align: center;
+        background-color: rgb(242, 208, 215);
+    }
 
+    .value {
+        width: 13rem;
+        height: 3rem;
+        line-height: 3rem;
+        display: flex;
+        letter-spacing: 1px;
 
-        .key {
-            width: 150px;
-            height: 50px;
-            line-height: 50px;
-            text-align: center;
-            font-size: 16px;
-            margin: 10px 0;
-            background-color: rgb(242, 208, 215);
-        }
-
-        .value {
-            width: 300px;
-            height: 50px;
-            font-size: 16px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            letter-spacing: 1px;
-
-            .highlight1 {
-                font-size: 20px;
-                font-weight: bold;
-            }
+        .highlight1 {
+            font-size: 1.2rem;
+            font-weight: bold;
         }
     }
+
+    // @media screen and (max-width: 700px) {
+    //     .key {
+    //         width: 150px;
+    //         height: 50px;
+    //         line-height: 50px;
+    //         text-align: center;
+    //         font-size: 16px;
+    //         margin: 10px 0;
+    //         background-color: rgb(242, 208, 215);
+    //     }
+
+    //     .value {
+    //         width: 250px;
+    //         height: 50px;
+    //         font-size: 16px;
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: center;
+    //         align-items: center;
+    //         letter-spacing: 1px;
+
+    //         .highlight1 {
+    //             font-size: 20px;
+    //             font-weight: bold;
+    //         }
+    //     }
+    // }
 </style>

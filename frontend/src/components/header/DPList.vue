@@ -12,13 +12,13 @@
                 <span>{{ props.item.number_of_floors }}</span>
             </div>
             <span>{{ props.item.station1 }}</span>
-            <fa icon="star" class="fav" :class="{active: props.item.favorated}" @click.stop="favctl"/>
+            <fa icon="star" class="fav" :class="{active: faved}" @click.stop="add2fav"/>
         </div>
     </div>
 </template>
     
 <script setup>
-    import { inject } from 'vue'
+    import { ref, inject } from 'vue'
     import { useRouter } from 'vue-router'
     const router = useRouter()
 
@@ -42,15 +42,17 @@
     //     router.push(`/detailpage/${props.item.house_id}`)
     // }
 
-    const favctl = () => {
-        console.log(apiURL)
-    }
+    // 收藏功能
+    import { useAdd2fav } from "@/composition/favorate.js"
+    const faved = ref(props.item.faved)
+    const url = `${apiURL}favorate`
+    const add2fav = () => {useAdd2fav(faved, url, props.item.house_id)}
 </script>
     
 <style scoped lang='less'>
     .wrapper {
-        width: 70%;
-        height: 102px;
+        width: 80%;
+        height: 7rem;
         margin-bottom: 10px;
         border: 1px #ddd solid;
         border-radius: 5px;
@@ -61,6 +63,7 @@
         align-items: center;
         cursor: pointer;
         transition: .1s;
+        position: relative;
 
         &:hover {
             // background-color: #eee;
@@ -83,7 +86,6 @@
             justify-content: space-evenly;
             align-items: flex-start;
             color: #555;
-            position: relative;
 
             .name {
                 font-size: 15px;
@@ -115,6 +117,40 @@
                 &:hover {
                     color: rgb(31, 78, 122);
                 }
+            }
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .wrapper {
+            height: 9rem;
+
+            .image {
+                width: 35%;
+            }
+
+            .info-wrapper {
+                width: 65%;
+
+                .fav {
+                    font-size: 1.3rem;
+                    right: 2%;
+                    top: 10%;
+                    transform: translate(0, 0);
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:575px) {
+        .wrapper {
+
+            .image {
+                display: none;
+            }
+
+            .info-wrapper {
+                width: 100%;
             }
         }
     }

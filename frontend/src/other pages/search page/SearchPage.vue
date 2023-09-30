@@ -1,70 +1,64 @@
 <template>
-	<div class="search-page">
-		<MySidebar></MySidebar>
-		<div class="search-condition">
-			<div class="container">
-				<MyTag>検索条件</MyTag>
-				<div class="search-wrapper">
-					<SearchCondition v-for="condition in fixedConditions" :key="condition.title" :condition="condition">
-						<select v-if="condition.type === 'select'" v-model="condition.input[condition.name]">
-							<option v-for="value in condition.values" :value="value">{{ value }}</option>
-						</select>
+	<!-- <MySidebar></MySidebar> -->
+	<div class="search-condition">
+		<div class="container">
+			<MyTag>検索条件</MyTag>
+			<div class="search-wrapper">
+				<SearchCondition v-for="condition in fixedConditions" :key="condition.title" :condition="condition">
+					<label v-if="condition.type === 'checkbox'" v-for="value in condition.values">
+						<input class="checkbox" :type="condition.type" :value="value.value" v-model="condition.input[value.value]">
+						<span class="label">{{ value.label }}</span>
+					</label>
 
-						<label v-else-if="condition.type === 'checkbox'" v-for="value in condition.values">
-							<input class="checkbox" :type="condition.type" :value="value.value" v-model="condition.input[value.value]">
+					<div class="range" v-else-if="condition.type === 'selectRange'">
+						<select v-model="condition.input[condition.name[0]]">
+							<option v-for="value in condition.values[0]" :value="value">{{ value }}</option>
+						</select>
+						<span class="desc">{{ condition.desc[0] }}</span>
+						<select v-model="condition.input[condition.name[1]]">
+							<option v-for="value in condition.values[1]" :value="value">{{ value }}</option>
+						</select>
+						<span class="desc">{{ condition.desc[1] }}</span>
+					</div>
+				</SearchCondition>
+
+				
+				<div v-show="showMore" class="more-condition">
+					<div class="other-selection">
+						<div class="selection-wrapper" v-for="condition in moreConditionsSelect">
+							<div class="title">{{ condition.title }}</div>
+							<select v-model="condition.input[condition.name]">
+								<option v-for="value in condition.values" :value="value">{{ value }}</option>
+							</select>
+						</div>
+					</div>
+
+					<SearchCondition v-for="condition in moreConditionsCheckBox" :condition="condition">
+						<label v-for="value in condition.values">
+							<input class="checkbox" type="checkbox" :value="value.value" v-model="condition.input[value.value]">
 							<span class="label">{{ value.label }}</span>
 						</label>
-
-						<div class="range" v-else-if="condition.type === 'selectRange'">
-							<select v-model="condition.input[condition.name[0]]">
-								<option v-for="value in condition.values[0]" :value="value">{{ value }}</option>
-							</select>
-							<span class="desc">{{ condition.desc[0] }}</span>
-							<select v-model="condition.input[condition.name[1]]">
-								<option v-for="value in condition.values[1]" :value="value">{{ value }}</option>
-							</select>
-							<span class="desc">{{ condition.desc[1] }}</span>
-						</div>
 					</SearchCondition>
+				</div>
 
-					
-					<div v-show="showMore" class="more-condition">
-						<div class="other-selection">
-							<div class="selection-wrapper" v-for="condition in moreConditionsSelect">
-								<div class="title">{{ condition.title }}</div>
-								<select v-model="condition.input[condition.name]">
-									<option v-for="value in condition.values" :value="value">{{ value }}</option>
-								</select>
-							</div>
-						</div>
-
-						<SearchCondition v-for="condition in moreConditionsCheckBox" :condition="condition">
-							<label v-for="value in condition.values">
-								<input class="checkbox" type="checkbox" :value="value.value" v-model="condition.input[value.value]">
-								<span class="label">{{ value.label }}</span>
-							</label>
-						</SearchCondition>
-					</div>
-
-					<div class="submit-wrapper">
-						<div class="show-more fc" @click="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></div>
-						<button class="submit bacc" @click="submitForm">この条件で探す</button>
-						<div class="reset fc" @click="reset">リセット<fa class="icon fc" icon="rotate-left"/></div>
-					</div>
+				<div class="submit-wrapper">
+					<div class="show-more fc" @click="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></div>
+					<button class="submit bacc" @click="submitForm">この条件で探す</button>
+					<div class="reset fc" @click="reset">リセット<fa class="icon fc" icon="rotate-left"/></div>
 				</div>
 			</div>
 		</div>
-		
-		<div class="result">
-			<div class="container">
-				<MyTag>検索結果</MyTag>
-				<span class="result-indicator">以下の<b>{{ houseList.length }}</b>件を探しました</span>
+	</div>
+	
+	<div class="result">
+		<div class="container">
+			<MyTag>検索結果</MyTag>
+			<span class="result-indicator">以下の<b>{{ houseList.length }}</b>件を探しました</span>
 
-				<div class="exhibit">
-					<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
-				</div>
-				<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
+			<div class="exhibit">
+				<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 			</div>
+			<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
 		</div>
 	</div>
 </template>
@@ -88,7 +82,6 @@
 	import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
 
-	
 	// 进入组件时，往下scroll一点来隐藏Header
 	onMounted(() => {
 		window.scrollTo(0,112)
@@ -97,11 +90,34 @@
 	// 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
 
+	// get house type
+	const houseIndex = computed(() => {
+		return conditionStore.houseIndex
+    })
+
+	// 根据housetype获取各种条件数据
+	import condition from './condition'
+	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
+	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
+    const moreConditionsCheckBox = ref(condition.moreConditionsCheckBox[houseIndex.value])
+
+	// 获取无特定条件的房屋列表
+	const houseList = computed(() => {
+		return houseStore.houseList
+	})
+	const urlGetHouseList = `${apiURL}estate`
+	const headers = {Authorization: userStore.user_id}
+	
 	// 实时监听路由，获得不同的数据
     const cityIndex = ref(route.params.cityIndex)
     const mode = ref(route.params.mode)
     const house_type = ref(route.params.house_type)
     const new_ = ref(route.params.new_)
+	let params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
+	const getNoConditionHouseList = () => {
+		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
+		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
+	}
     watch(() => route.params, (newVal) => {
 		cityIndex.value = newVal.cityIndex
 		mode.value = newVal.mode
@@ -111,39 +127,41 @@
 		// 根据房屋类型渲染
 		moreConditionsSelect.value = condition.moreConditionsSelect[houseIndex.value]
 		moreConditionsCheckBox.value = condition.moreConditionsCheckBox[houseIndex.value]
+		getNoConditionHouseList()
     })
-
-	// get house type
-	const houseIndex = computed(() => {
-		return conditionStore.houseIndex
-    })
-
-	// 各种条件数据
-	import condition from './condition'
-	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
-	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
-    const moreConditionsCheckBox = ref(condition.moreConditionsCheckBox[houseIndex.value])
 	
 	// 显示更多条件
 	const showMore = ref(false)
 	
-	// 获取无特定条件的房屋列表
-	const urlGetHouseList = `${apiURL}estate`
-	const houseList = computed(() => {
-		return houseStore.houseList
-	})
-
-	const getNoConditionHouseList = () => {
-		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
-		const headers = {Authorization: userStore.user_id}
+	// 表单提交功能
+	const userInput = ref({})
+	import { useCollectSelect, useCollectCheckbox } from "@/composition/collect.js"
+	const submitForm = () => {
+		// 1.收集表单数据
+		// 1.1 收集fixed条件数据
+		fixedConditions.value.forEach((item, index) => {
+			// index3的项目需要收集列表，所以分开处理
+			if (index !== 3) {
+				useCollectSelect(userInput, item)
+			} else {
+				useCollectCheckbox(userInput, item, "layout")
+			}
+		})
+		// 1.2 收集select条件数据
+		if (houseIndex.value !== 7) {
+			moreConditionsSelect.value.forEach((item) => {
+			useCollectSelect(userInput, item)
+			})
+			// 1.3 收集checkbox条件数据
+			moreConditionsCheckBox.value.forEach((item) => {
+				useCollectSelect(userInput, item)
+			})
+		}
+		// 2.发送请求
+		params = {...params, ...userInput.value}
 		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
 	}
-
-	// 表单提交功能
-	const submitForm = () => {
-		submitted.value = true
-		// getNoConditionHouseList()
-	}
+	submitForm()
 
 	// 表单重置功能
     const reset = () => {
@@ -173,13 +191,11 @@
 </script>
 
 <style scoped lang="less">
-.search-page {
-	position: relative;
 	.container {
 		width: 65%;
 	}
 	.search-wrapper {
-		width: 100%;
+		padding-top: 5px;
 		padding-bottom: 30px;
 		display: flex;
 		flex-direction: column;
@@ -207,22 +223,36 @@
 			margin-left: 3px;
 		}
 
+		.range {
+			padding-left: 5px;
+		}
+
 		.other-selection {
-			width: 100%;		
 			margin: 15px 15px 15px 0;
 			padding-left: 105px;
 			display: flex;
 			flex-direction: row;
 			justify-content: flex-start;
 			align-items: center;
+			flex-wrap: wrap;
 			color: #666;
 
 			.selection-wrapper {
-				width: 150px;
+				margin-right: 20px;
+				margin-bottom: 8px;
+				padding-left: 3px;
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-start;
 				align-items: flex-start;
+
+				&:nth-last-child(1) {
+					margin-right: 0px;
+				}
+
+				.title {
+					margin-bottom: 3px;
+				}
 			}
 		}
 
@@ -312,7 +342,6 @@
 		}
 
 		.exhibit {
-			width: 100%;
 			border-top: 1px solid #ccc;
 			display: flex;
 			flex-direction: column;
@@ -320,5 +349,22 @@
 			align-items: flex-start;
 		}
 	}
-}
+
+	@media screen and (max-width:991.98px) {
+		.container {
+			width: 90%;
+		}
+
+		.search-wrapper {
+			.other-selection {
+				padding-left: 75px;
+			}
+
+			.submit-wrapper {
+				.submit {
+					width: 140px;
+				}
+			}
+    	}
+	}
 </style>

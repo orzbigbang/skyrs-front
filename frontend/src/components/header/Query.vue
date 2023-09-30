@@ -128,7 +128,7 @@
         }
 
         input[type='text'] {
-            width: 300px;
+            width: 100%;
             height: 30px;
             padding: 5px 10px;
             font-size: 14px;
@@ -154,7 +154,6 @@
         input[type='radio'] {
             width: 18px;
             height: 18px;
-            
             transform: translateY(-10%);
             cursor: pointer;
         }
@@ -210,6 +209,7 @@
             display: flex;
 
             .n {
+                width: 100%;
                 margin-right: 30px;
             }
 
@@ -218,6 +218,30 @@
         .radio-wrapper {
             display: flex;
             flex-direction: row;
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .form-wrapper {
+            input[type='text'] {
+                &::placeholder {
+                    font-size: 12px;
+                }
+            }
+
+            .wrapper {
+                .n {
+                    margin-right: 5px;
+                }
+            }
+
+            .radio-wrapper {
+                flex-direction: column;
+                
+                label {
+                    margin-bottom: 5px;
+                }
+            }
         }
     }
 </style>

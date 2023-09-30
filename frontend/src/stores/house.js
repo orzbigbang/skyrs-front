@@ -119,7 +119,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (2).jfif",
@@ -133,7 +133,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: false,
+            faved: false,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (3).jfif",
@@ -147,7 +147,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (4).jfif",
@@ -161,7 +161,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: false,
+            faved: false,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (5).jfif",
@@ -175,7 +175,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: false,
+            faved: false,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (6).jfif",
@@ -189,7 +189,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: false,
+            faved: false,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (7).jfif",
@@ -203,7 +203,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: false,
+            faved: false,
 		},
     ])
 
@@ -221,7 +221,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (2).jfif",
@@ -235,7 +235,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (3).jfif",
@@ -249,7 +249,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (4).jfif",
@@ -263,7 +263,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (5).jfif",
@@ -277,7 +277,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (6).jfif",
@@ -291,7 +291,7 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
         {
 			main_pic_path: "/imgs/img_thumbnail (7).jfif",
@@ -305,12 +305,13 @@ export const useHouseStore = defineStore("house", () => {
 			completion_date: "2002年11月築",
 			house_struction: "鉄骨",
 			number_of_floors: "8階",
-            favorated: true,
+            faved: true,
 		},
     ])
 
 	// 获取各种房屋列表
     const getHouseList = (url, params, headers, type) => {
+		return
         // params: {}
         // headers: {}
 		// type: 0:无条件放屋列表， 1:浏览历史, 2:收藏的房屋
@@ -338,24 +339,10 @@ export const useHouseStore = defineStore("house", () => {
         )
     }
 
-	// 添加收藏
-	const add2Fav = (url, data, headers) => {
-        axios.post(url, data, {headers}).then(
-            data => {
-                console.log(data.value)
-            }
-        ).catch(
-            reason => {
-                console.log(reason)
-            }
-        )
-    }
-
     return {
         houseList,
 		dpHistories,
 		favorates,
         getHouseList,
-		add2Fav,
     }
 })

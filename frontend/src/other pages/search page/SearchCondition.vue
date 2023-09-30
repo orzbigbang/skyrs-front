@@ -1,7 +1,9 @@
 <template>
     <div class="condition-wrapper">
-        <span class="attr">{{ props.condition.title }}:</span>
-        <slot></slot>
+        <span class="title">{{ props.condition.title }}:</span>
+        <div class="values">
+            <slot></slot>
+        </div>
     </div>
 
 </template>
@@ -22,10 +24,27 @@
         justify-content: flex-start;
         align-items: center;
 
-        .attr {
+        .title {
             width: 100px;
             color: #666;
-            margin-right: 5px;
+            margin-right: 15px;
+        }
+
+        .values {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
         }
     }
+
+    @media screen and (max-width:991.98px) {
+        .condition-wrapper {
+            .title {
+                min-width: 60px;
+                max-width: 60px;
+            }
+        }
+	}
 </style>

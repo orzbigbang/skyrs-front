@@ -72,10 +72,12 @@ export const useDPStore = defineStore("dp", () => {
                         })
                     }
                     const getIcon = (kvList) => {
-                        [...kvList[0].items, ...kvList[1].items, ...kvList[2].items].forEach((item) => {
-                            if (!(item.name in response.icons)) {
-                                item.offset = ""
-                            }
+                        kvList.forEach((kv) => {
+                            kv.items.forEach((item) => {
+                                if (!response.icons.includes(item.name)) {
+                                    item.offset = ""
+                                }
+                            })
                         })
                     }
                     const getOtherInfoTable = (kvList) => {

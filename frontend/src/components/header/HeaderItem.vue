@@ -42,4 +42,32 @@
             font-size: 1rem;
         }
     }
+
+    @media screen and (max-width:991.98px) {
+        .outer {
+            width: 9rem;
+            margin-top: 5px;
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width:441px) {
+        .outer {
+            width: 8rem;
+            font-size: 15px;
+
+            &:nth-last-child(1) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    // @media screen and (max-width:390px) {
+    //     .outer {
+    //         width: 8rem;
+    //         padding: 0;
+    //         margin-top: 5px;
+    //         font-size: 15px;
+    //     }
+    // }
 </style>

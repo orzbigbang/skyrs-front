@@ -4,7 +4,7 @@
         <div class="title-wrapper block">
             <div class="title">
                 {{ title }}
-                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav()"/>
+                <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav()"/>
             </div>
             <div class="brief kv-wrapper">
                 <KeyValue v-for="highlight in highlights" :highlight="highlight"></KeyValue>
@@ -27,7 +27,10 @@
                 </div>
             </div>
             <div class="base-info">
-                <KeyValue1 v-for="base in bases" :base="base"></KeyValue1>
+                <div class="kv" v-for="base in bases">
+                    <KeyValue1 :base="base"></KeyValue1>
+                    <div class="divider"></div>
+                </div>
 
                 <div class="contact-method" @click="modalStore.showQuerySelection">
                     <fa icon="envelope"/>
@@ -85,7 +88,7 @@
         <div class="map-wrapper block">
             <iframe
                 :src="googleMapUrl"
-                width="100%" height="99%" style="border:0;" loading="lazy"
+                width="99%" height="99%" style="border:0;" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade" data-aos="fade-right">
             </iframe>
         </div>  
@@ -94,29 +97,32 @@
             <div class="title">
                 この物件にお問い合わせ
             </div>
-            <span class="desc">
-                お問い合わせの内容を選択してください
-            </span>
-            <div class="wrapper">
-                <label>
-                    <input type="radio" name="query-type">
-                    最新の空室状況を知りたい
-                </label>
-                <label>
-                    <input type="radio" name="query-type">
-                    実際に見学したい
+            <div class="query-wrapper">
+                <span class="desc">
+                    お問い合わせの内容を選択してください
+                </span>
+                <div class="wrapper">
+                    <label>
+                        <input type="radio" name="query-type">
+                        最新の空室状況を知りたい
+                    </label>
+                    <label>
+                        <input type="radio" name="query-type">
+                        実際に見学したい
 
-                </label>
-                <label>
-                    <input type="radio" name="query-type" checked>
-                    その他の問い合わせ
-                </label>
+                    </label>
+                    <label>
+                        <input type="radio" name="query-type" checked>
+                        その他の問い合わせ
+                    </label>
+                </div>
+                <div class="contact-method"  @click="modalStore.showQuerySelection">
+                    <fa icon="envelope"/>
+                    お問い合わせ
+                </div>
+                <div class="divider"></div>
             </div>
-            <div class="contact-method"  @click="modalStore.showQuerySelection">
-                <fa icon="envelope"/>
-                お問い合わせ
-            </div>
-            <div class="divider"></div>
+            
         </div>
 
 
@@ -142,9 +148,6 @@
     import { ref, computed, inject } from 'vue';
     import { useRoute } from 'vue-router'
     const route = useRoute()
-    
-    import { useConditionStore } from '@/stores/condition'
-    const conditionStore = useConditionStore()
 
     import { useUserStore } from "@/stores/user"
     const userStore = useUserStore()
@@ -159,19 +162,11 @@
     const dpStore = useDPStore()
 
     // get house_id
-    const houseID = route.params.houseID
-
-    // get house type
-    const houseIndex = computed(() => {
-        return conditionStore.houseIndex
-    })
+    const houseID = route.params.houseID    
 
     // get static data according to house type
     const title = computed(() => {
         return dpStore.title
-    })
-    const faved = computed(() => {
-        return dpStore.faved
     })
     const highlights = computed(() => {
         return dpStore.highlights
@@ -200,9 +195,6 @@
     const otherInfoList = computed(() => {
         return dpStore.otherInfoList
     })
-    const address = computed(() => {
-        return dpStore.address
-    })
     
     // get house data
     const apiURL = inject("apiURL")
@@ -215,12 +207,10 @@
     getHouseData()
 
     // add to favorate
-    const add2Fav = () => {
-        faved.value = !faved.value
-        const url = `${apiURL}favorate`
-        const data = {house_id: houseID}
-        houseStore.add2Fav(url, data, headers)
-    }
+    import { useAdd2fav } from "@/composition/favorate.js"
+    const faved = ref(dpStore.faved)
+    const url = `${apiURL}favorate`
+    const add2fav = () => {useAdd2fav(faved, url, houseID)}
 
     // carousel function
     const activeImageIndex = ref(0)
@@ -235,7 +225,7 @@
 
     // get google map
     const googleMapUrl = computed(() => {
-        return `https://www.google.com/maps?q=${address.value}&output=embed`
+        return `https://www.google.com/maps?q=${dpStore.address}&output=embed`
     })
     
     // get recommend house list
@@ -255,6 +245,8 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
         }
     }
 
@@ -294,13 +286,13 @@
         flex-direction: row;
 
         .carousel {
-            width: 546px;
-            height: 500px;
+            width: 34rem;
+            height: 31rem;
             margin-right: 20px;
 
             .big-pic {
                 width: 100%;
-                height: 386px;
+                height: 80%;
                 margin-bottom: 24px;
                 background-size: cover;
                 box-shadow: 0 0 10px #bbb;
@@ -309,12 +301,11 @@
             .small-pic-outer {
                 height: 90px;
                 padding: 0 30px;
-
                 position: relative;
 
                 .arrow {
                     position: absolute;
-                    font-size: 40px;
+                    font-size: 3rem;
                     top: 50%;
                     transform: translateY(-50%);
                     cursor: pointer;
@@ -339,7 +330,7 @@
                     .small-pic {
                         width: 99px;
                         height: 90px;
-                        margin-right: 30px;
+                        margin-right: 25px;
                         flex-shrink: 0;
                         background-size: cover;
                         border: 1px #ccc solid;
@@ -359,15 +350,26 @@
         }
 
         .base-info {
-            width: 600px;
+            max-width: 600px;
+            min-width: 450px;
             height: 500px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
 
+            .kv {
+                width: 100%;
+            }
+
+            .divider {
+                width: 100%;
+                margin-bottom: 10px;
+                border-bottom: 1px dotted #ddd;
+            }
+
             .contact-method {
-                width: 500px;
+                width: 100%;
                 height: 70px;
                 line-height: 70px;
                 margin-top: 20px;
@@ -434,6 +436,7 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-start;
+                    flex-wrap: wrap;
 
                     .icon-wrapper {
                         width: 120px;
@@ -450,7 +453,6 @@
                         .icon {
                             width: 40px;
                             height: 40px;
-                            background: url('./jingling.webp');
                             background: url('./jingling.png');
                             background-position: 40px 0;
                         }
@@ -466,10 +468,7 @@
         .other-info-table-wrapper {
 
             .other-info {
-                // width: 80%;
                 border: 1px solid #aaa;
-                border-collapse: collapse;
-                border-spacing: 0;
 
                 th, td {
                     height: 50px;
@@ -522,6 +521,14 @@
         justify-content: flex-start;
         align-items: center;
         box-shadow: 0 0 10px #aaa;
+
+        .query-wrapper {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
 
         .title {
             width: 100%;
@@ -585,5 +592,129 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+    }
+
+    @media screen and (max-width:1200px) {
+        .container {
+            width: 90%;
+        }
+    }
+
+    @media screen and (max-width:1102px) {
+        .container {
+            width: 70%;
+        }
+        .carousel-wrapper {
+            flex-direction: column;
+            .carousel {
+                margin-bottom: 50px;
+            }
+        }
+        .query-form-wrapper {
+            width: 100%;
+            .contact-method {
+                width: 60%;
+                height: 4rem;
+                line-height: 4rem;
+                margin-top: 20px;
+                font-size: 1.2rem;
+            }
+        }
+    }
+    
+    @media screen and (max-width: 991.98px) {
+        .spec-wrapper {
+            .icon-info-wrapper {
+                padding: 0 10px;
+
+                .icon-row {
+                    flex-direction: column;
+
+                    .icon-category {
+                        width: 100%;
+                        margin-bottom: 10px;
+                        text-align: center;
+                        font-weight: bold;
+                    }
+                    .icons {
+                        flex-wrap: wrap;
+
+                        .icon-wrapper {
+                            width: 55px;
+                        }
+                    }
+                }
+            }
+
+            .other-info-table-wrapper {
+                .other-info {
+                    th, td {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .carousel-wrapper {
+            .carousel {
+                width: 100%;
+                height: 50vw;
+                margin-bottom: 11vw;
+
+                .small-pic-outer {
+                    height: 90px;
+
+                    .arrow {
+                        top: 33%;
+                    }
+                    .small-pic-wrapper {
+                        .small-pic {
+                            width: 25%;
+                            height: 12vw;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+            .base-info {
+                min-width: 0px;
+            }
+        }
+
+        .query-form-wrapper {
+            .wrapper {
+                margin-bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                
+                label {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:415px) {
+        .container {
+            width: 90%;
+        }
+        .carousel-wrapper {
+            .carousel {
+                .small-pic-outer {
+                    .arrow {
+                        top: 23%;
+                        font-size: 2.5rem;
+                    }
+                    .small-pic-wrapper {
+                        .small-pic {
+                            width: 23%;
+                            margin-right: 5.5px;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>

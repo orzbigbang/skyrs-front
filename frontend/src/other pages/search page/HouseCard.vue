@@ -2,14 +2,14 @@
     <div class="house-wrapper">
         <img class="img" :src="props.house.main_pic_path" @click="goDP">
         <div class="house-info">
-            <span class="title">
+            <span class="title" @click.self="goDP">
                 {{ props.house.name }}
-                <fa class="icon" :class="{active: faved}" icon="star" @click="add2Fav"/>
+                <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/>
             </span>
             <span class="location">{{ props.house.address }}</span>
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
-            <span class="station">{{ props.house.station1}}</span>
+            <span class="station">{{ props.house.station}}</span>
             <span class="attribute">{{ props.house.house_struction + " / " + props.house.house_struction + " / " + props.house.number_of_floors}}</span>
         </div>
 
@@ -22,17 +22,13 @@
     import { useRouter } from "vue-router";
     const router = useRouter()
 
-    import { useUserStore } from "@/stores/user"
-    const userStore = useUserStore()
-
-    import { useHouseStore } from '@/stores/house.js'
-    const houseStore = useHouseStore()
-
     const props = defineProps(
         {
             house: Object
         }
     )
+
+    const apiURL = inject("apiURL")
 
     // house_id
     const houseID = props.house.house_id
@@ -43,15 +39,10 @@
     }
 
     // add to favorate
-    const apiURL = inject("apiURL")
+    import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.house.faved)
-    const headers = {Authorization: userStore.user_id}
-    const add2Fav = () => {
-        faved.value = !faved.value
-        const url = `${apiURL}favorate`
-        const data = {house_id: houseID}
-        houseStore.add2Fav(url, data, headers)
-    }
+    const url = `${apiURL}favorate`
+    const add2fav = () => {useAdd2fav(faved, url, houseID)}
 </script>
     
 <style scoped  lang='less'>
@@ -68,6 +59,7 @@
 
         .img {
             width: 18rem;
+            border: 1px solid #ddd;
             cursor: pointer;
         }
 
@@ -109,6 +101,46 @@
 
                     &:hover {
                         color: rgb(31, 78, 122);
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .house-wrapper {
+            .img {
+                width: 13rem;
+                margin-bottom: -30px;
+            }
+
+            .price {
+                left: 8%;
+                top: 10%;
+            }
+            
+            .house-info {
+                justify-content: space-around;
+            }
+        }
+    }
+
+    @media screen and (max-width:391px) {
+        .house-wrapper {
+            .img {
+                width: 11rem;
+            }
+
+            .price {
+                font-size: 24px;
+            }
+
+            .house-info {
+                .title {
+                    font-size: 18px;
+
+                    .icon {
+                        font-size: 16px;
                     }
                 }
             }

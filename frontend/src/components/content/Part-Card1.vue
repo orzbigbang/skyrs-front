@@ -21,6 +21,7 @@ const props = defineProps({
     .wrapper {
         width: 16rem;
         margin-bottom: 15px;
+        margin-right: 24px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -68,4 +69,13 @@ const props = defineProps({
             letter-spacing: 1px;
         }
     }
+
+    @media screen and (max-width:700px) {
+        .wrapper {
+            width: 18rem;
+            .img {
+                width: 20rem;
+            }
+        }
+    }   
 </style>

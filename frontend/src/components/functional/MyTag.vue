@@ -18,16 +18,11 @@
         min-width: 130px;
         max-width: 200px;
         height: 50px;
-        margin-top: 20px;
         line-height: 50px;
+        margin-top: 20px;
         text-align: center;
         font-size: 18px;
         color: #fff;
-
-        &:hover {
-            background-color: #1f4e79;
-            color: #fff;
-        }
     }
 
     .divide-line {
@@ -36,4 +31,12 @@
         margin-bottom: 20px;
     }
 
+	@media screen and (max-width:991.98px) {
+        .wrapper {
+            max-width: 120px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 1rem;
+        }
+	}
 </style>

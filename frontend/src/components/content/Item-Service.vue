@@ -2,7 +2,7 @@
     <div class="news">
         <div class="container">
             <PartTitle :eng="'service'" :jpn="'サービス'"/>
-            <!-- :navigation="true" -->
+            
             <swiper 
                 :autoplay="{ delay: 3000, disableOnInteraction: false }" 
                 :navigation="true" 
@@ -57,4 +57,6 @@
 </script>
     
 <style scoped lang="less">
-</style>
+    
+
+</style> 
