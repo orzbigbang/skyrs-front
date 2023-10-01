@@ -1,11 +1,11 @@
 <template>
     <li class="wrapper">
-        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="deactivate">
+        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="active=!active">
             {{ title }}
             <div class="bar" v-show="active"></div>
         </div>
         <ul class="sub-item-wrapper" v-show="active" @mouseenter="activate" @mouseleave="deactivate">
-            <NavSubItem v-for="item in subItem" :subItem="item"/>
+            <NavSubItem v-for="item in subItem" :subItem="item"  @on-touch="deactivate"/>
         </ul>
     </li>
 </template>

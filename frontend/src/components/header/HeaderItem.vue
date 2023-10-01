@@ -65,12 +65,11 @@
         }
     }
 
-    // @media screen and (max-width:390px) {
-    //     .outer {
-    //         width: 8rem;
-    //         padding: 0;
-    //         margin-top: 5px;
-    //         font-size: 15px;
-    //     }
-    // }
+    @media screen and (max-width:390px) {
+        .outer {
+            width: 8rem;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    }
 </style>

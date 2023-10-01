@@ -56,12 +56,14 @@
                     <div class="icon-category">
                         {{ row.title }}
                     </div>
-                    <ul class="icons">
-                        <li class="icon-wrapper" v-for="icon in row.items">
-                            <i class="icon" :style="{backgroundPosition: `${icon.offset}px 0`}"></i>
-                            <div class="icon-title">{{ icon.title }}</div>
-                        </li>
-                    </ul>
+                    <div class="icons-outer">
+                        <ul class="icons">
+                            <li class="icon-wrapper" v-for="icon in row.items">
+                                <i class="icon" :style="{backgroundPosition: `${icon.offset}px 0`}"></i>
+                                <div class="icon-title">{{ icon.title }}</div>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
 
@@ -123,7 +125,7 @@
             </div>
         </div>
 
-        <MyTag>その他のおすすめ部屋</MyTag>
+        <MyTag>おすすめ部屋</MyTag>
         <ul class="recommend-wrapper block">
             <li v-for="house in recommendHouseList">
                 <HouseCard :keys="house.title" :house="house"/>
@@ -321,6 +323,7 @@
                 }
 
                 .small-pic-wrapper {
+                    width: 100%;
                     display: flex;
                     flex-wrap: nowrap;
                     overflow-x: hidden;
@@ -413,7 +416,11 @@
 
         .icon-info-wrapper {
             padding: 0 20px;
-            
+
+            .icons-outer {
+            }
+
+
             .icon-row {
                 margin: 30px 0;
                 display: flex;
@@ -430,6 +437,7 @@
                     flex-shrink: 0;
                 }
                 .icons {
+                    margin: 0 auto;
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-start;
@@ -634,7 +642,7 @@
                         flex-wrap: wrap;
 
                         .icon-wrapper {
-                            width: 55px;
+                            width: 81px;
                         }
                     }
                 }
@@ -666,7 +674,7 @@
                     .small-pic-wrapper {
                         .small-pic {
                             width: 25%;
-                            height: 12vw;
+                            height: 14vw;
                             margin-right: 5px;
                         }
                     }

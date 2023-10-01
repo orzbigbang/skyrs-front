@@ -3,8 +3,8 @@
         <div class="key">{{ props.highlight._key }}</div>
         <div class="value">
             <!-- <div class="normal">{{ props.normal }}</div> -->
-            <div class="highlight1 fc">{{ highlight1 }}</div>
-            <div class="highlight2">{{ highlight2? '/' + highlight2: '' }}</div>
+            <span class="highlight1 fc">{{ highlight1 }}</span>
+            <span class="highlight2">{{ highlight2? '/' + highlight2: '' }}</span>
         </div>
     </div>
 </template>
@@ -43,7 +43,7 @@
     }
 
     .value {
-        width: 13rem;
+        width: 16rem;
         height: 3rem;
         line-height: 3rem;
         display: flex;
@@ -54,32 +54,4 @@
             font-weight: bold;
         }
     }
-
-    // @media screen and (max-width: 700px) {
-    //     .key {
-    //         width: 150px;
-    //         height: 50px;
-    //         line-height: 50px;
-    //         text-align: center;
-    //         font-size: 16px;
-    //         margin: 10px 0;
-    //         background-color: rgb(242, 208, 215);
-    //     }
-
-    //     .value {
-    //         width: 250px;
-    //         height: 50px;
-    //         font-size: 16px;
-    //         display: flex;
-    //         flex-direction: row;
-    //         justify-content: center;
-    //         align-items: center;
-    //         letter-spacing: 1px;
-
-    //         .highlight1 {
-    //             font-size: 20px;
-    //             font-weight: bold;
-    //         }
-    //     }
-    // }
 </style>

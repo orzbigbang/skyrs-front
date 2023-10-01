@@ -15,7 +15,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -26,7 +26,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -37,7 +37,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -69,7 +69,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -80,7 +80,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -91,7 +91,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -123,7 +123,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -134,7 +134,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -145,7 +145,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -177,7 +177,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -188,7 +188,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -199,7 +199,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -231,7 +231,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -242,7 +242,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -253,7 +253,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -285,7 +285,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "専有面積",
@@ -296,7 +296,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -307,7 +307,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 		{
 			title: "間取り",
@@ -339,7 +339,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "3", "4"]
 			],
 			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
-			desc: ["万円　～　", "万円"]
+			desc: ["万円～", "万円"]
 		},
 		{
 			title: "土地面積",
@@ -350,7 +350,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "", ""]
 			],
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
-			desc: ["m²　～　", "m²"]
+			desc: ["m²～", "m²"]
 		},
 		{
 			title: "駅徒歩",
@@ -361,7 +361,7 @@ condition.fixedConditionsSelect = {
 				["指定なし", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分　～　", "分"]
+			desc: ["分～", "分"]
 		},
 	],
 }

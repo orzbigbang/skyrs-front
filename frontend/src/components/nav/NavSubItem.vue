@@ -1,5 +1,5 @@
 <template>
-    <li class="sub-item" @click="goSearch($event, houseIndex)">
+    <li class="sub-item" @click="goSearch($event, houseIndex)"  @touchstart.stop="deactivate">
         {{ title }}
     </li>
 </template>
@@ -15,6 +15,8 @@
         subItem: Object
     })
     const {subItem: { houseIndex, title, route, func, params: {mode, type, new_}}} = props
+
+    const emits = defineEmits(['on-touch'])
 
     const goSearch = ($event, houseIndex) => {
         if (houseIndex) {
@@ -33,6 +35,11 @@
             func(`${route}/${mode}`)
         }
         
+    }
+
+    const deactivate = ($event, houseIndex) => {
+        // emits("on-touch")
+        goSearch($event, houseIndex)
     }
 </script>
     

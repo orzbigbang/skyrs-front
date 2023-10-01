@@ -22,7 +22,6 @@
 					</div>
 				</SearchCondition>
 
-				
 				<div v-show="showMore" class="more-condition">
 					<div class="other-selection">
 						<div class="selection-wrapper" v-for="condition in moreConditionsSelect">
@@ -234,6 +233,11 @@
 		}
 
 		.range {
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: nowrap;
 			padding-left: 5px;
 		}
 
