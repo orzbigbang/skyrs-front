@@ -3,70 +3,76 @@
         <div class="logo-wrapper">
             <img class="logo" src="@/assets/icon/logo.png" @click="router.push('/')">
             <Baloon/>
-            <div class="city-selection" @click="showCitySelection">
+            <div class="city-selection" @click="showCity">
                 {{ conditionStore.city }}
                 <fa icon="angle-down"/>
             </div>
         </div>
 
         <div class="function-wrapper">
-            <HeaderItem v-for="item in functions" :key="item.title" :item="item"/>
+            <HeaderItem v-for="item in functions" :key="item.title" :item="item"  @on-click="getModalBoxTitle"/>
         </div>
     </header>
 
-    <!-- <ModalBox :title="'検索履歴'" v-show="modalStore.isQuickSearchSelection">
-        <SearchList v-for="history in searchHistories" :item="history"></SearchList>
-    </ModalBox> -->
-
-    <ModalBox :title="'閲覧履歴'" v-show="modalStore.isSearchHistorySelection">
-        <DPList v-for="history in dpHistories" :item="history"></DPList>
-    </ModalBox>
-
-    <ModalBox :title="'お気に入り'" v-show="modalStore.isFavSelection">
-        <DPList v-for="favorate in favorates" :item="favorate"></DPList>
-    </ModalBox>
-
-	<ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
-		<Query></Query>
+    <ModalBox :title="modalBoxTitle? modalBoxTitle: '都道府県の選択'" v-show="isModalShow" @on-close="onClose">
+        <city v-if="isCitySelection"></city>
+        <SearchList v-else-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"></SearchList>
+        <DPList v-else-if="isSearchHistorySelection" v-for="history in dpHistories" :item="history"></DPList>
+        <DPList v-else-if="isFavSelection" v-for="favorate in favorates" :item="favorate"></DPList>
+        <Query v-else-if="isQuerySelection"></Query>
     </ModalBox>
 </template>
 
 <script setup>
     import HeaderItem from './HeaderItem.vue'
     import Baloon from './Baloon.vue';
+    import City from "./City.vue";
     import ModalBox from '@/components/functional/ModalBox.vue';
     import DPList from './DPList.vue'
     import SearchList from './SearchList.vue'
 	import Query from './Query.vue';
 
-    import { computed, inject } from 'vue'
+    import { ref, inject, toRefs } from 'vue'
 	
     import {useRouter, useRoute} from 'vue-router'
     const router = useRouter()
 	const route = useRoute()
-
-    import { useModalStore } from '@/stores/modal.js'
-    const modalStore = useModalStore()
-
+    
     import { useConditionStore } from '@/stores/condition.js';
 	const conditionStore = useConditionStore()
 
+    import { useModalStore } from '@/stores/modal.js'
+    const modalStore = useModalStore()
+    const { isModalShow, isCitySelection, isQuickSearchSelection, isSearchHistorySelection, isFavSelection, isQuerySelection, } = toRefs(modalStore)
+
 	import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
+    const { dpHistories, favorates } = toRefs(houseStore)
 
-	import { useUserStore } from '@/stores/user.js'
-    const userStore = useUserStore()
-
+    import { useHeader } from '@/composition/userInfo.js'
 	const apiURL = inject("apiURL")
-    const headers = {Authorization: userStore.user_id}
+    const headers = useHeader()
 
-    const showCitySelection = () => {
+    const showCity = () => {
 		// 如果在搜索页，则跳转路由。 如果不是，则只改变city的值
+        modalBoxTitle.value = "都道府県の選択"
+        isModalShow.value = true
+        isCitySelection.value = true
 		if (route.path.startsWith("/search")) {
 			modalStore.showCitySelection(true)
 		} else {
 			modalStore.showCitySelection()
 		}
+    }
+
+    const modalBoxTitle = ref("")
+    const getModalBoxTitle = (title) => {
+        modalBoxTitle.value = title
+        isModalShow.value = true
+    }
+
+    const onClose = (title) => {
+        modalBoxTitle.value = title
     }
 
 	// get search History
@@ -77,17 +83,8 @@
     //     houseStore.getSearchHistories()
     // }
 
-    // get DP history
-    const dpHistories = computed(() => {
-		return houseStore.dpHistories
-	})
-    // get usar favorates houses
-	const favorates = computed(() => {
-		return houseStore.favorates
-	})
-
 	const getUserHistory = () => {
-		const url = `${apiURL}user`
+		const url = apiURL.getUser
 		const params = {}
         houseStore.getHouseList(url, params, headers, 1)
     }
@@ -102,17 +99,17 @@
         {
             title: '閲覧履歴',
             icon: 'clock-rotate-left',
-            func: modalStore.showSearchHistorySelection,
+            func: () => {isSearchHistorySelection.value = true},
         },
         {
             title: 'お気に入り',
             icon: 'star',
-            func: modalStore.showFavSelection,
+            func: () => {isFavSelection.value = true},
         },
         {
             title: 'お問い合わせ',
             icon: 'envelope',
-            func: modalStore.showQuerySelection,
+            func: () => {isQuerySelection.value = true},
         },
     ]
 </script>
@@ -202,9 +199,8 @@
                 }
 
                 .city-selection {
-                    width: 160px;
-                    left: 0;
-                    transform: translate(0%, 340%);
+                    font-size: 13px;
+                    transform: translate(110%, -30%);
                 }
             }
         }

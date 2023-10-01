@@ -1,5 +1,5 @@
 <template>
-    <div class="outer" @click="func">
+    <div class="outer" @click="showModal">
         <fa class="icon fc" :icon="icon"/>
         <span class="fc">{{ title }}</span>
     </div>
@@ -10,6 +10,13 @@
         item: Object,
     })
     const {item: {func, icon, title}} = props
+
+    const emits = defineEmits(['on-click'])
+
+    const showModal = () => {
+        emits('on-click', title)
+        func()
+    }
 </script>
 
 <style scoped lang="less">
@@ -42,7 +49,7 @@
     @media screen and (max-width:991.98px) {
         .outer {
             width: 9rem;
-            margin-top: 5px;
+            margin-top: 12px;
             padding: 0;
         }
     }

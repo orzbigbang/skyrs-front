@@ -11,10 +11,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -22,10 +22,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -33,10 +33,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -65,10 +65,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -76,10 +76,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -87,10 +87,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -119,10 +119,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -130,10 +130,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -141,10 +141,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -173,10 +173,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -184,10 +184,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -195,10 +195,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -227,10 +227,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -238,10 +238,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -249,10 +249,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -281,10 +281,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -292,10 +292,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -303,10 +303,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 		{
@@ -335,10 +335,10 @@ condition.fixedConditionsSelect = {
 			name: ["price_bottom", "price_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "1", "2"], 
-				["--指定なし--", "3", "4"]
+				["指定なし", "1", "2"], 
+				["指定なし", "3", "4"]
 			],
-			input: {"price_bottom": "--指定なし--", "price_top": "--指定なし--"},
+			input: {"price_bottom": "指定なし", "price_top": "指定なし"},
 			desc: ["万円　～　", "万円"]
 		},
 		{
@@ -346,10 +346,10 @@ condition.fixedConditionsSelect = {
 			name: ["area_bottom", "area_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "", ""], 
-				["--指定なし--", "", ""]
+				["指定なし", "", ""], 
+				["指定なし", "", ""]
 			],
-			input: {"area_bottom": "--指定なし--", "area_top": "--指定なし--"},
+			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²　～　", "m²"]
 		},
 		{
@@ -357,10 +357,10 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5", "10", "15", "20", "25"], 
-				["--指定なし--", "5", "10", "15", "20", "25"]
+				["指定なし", "5", "10", "15", "20", "25"], 
+				["指定なし", "5", "10", "15", "20", "25"]
 			],
-			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
+			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
 			desc: ["分　～　", "分"]
 		},
 	],
@@ -371,126 +371,126 @@ condition.moreConditionsSelect = {
 		{
 			title: "築年数",
 			name: "house_age",
-			values: ["--指定なし--", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
-			input: {"house_age": "--指定なし--"},
+			values: ["指定なし", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
+			input: {"house_age": "指定なし"},
 		},
 		{
 			title: "フロア",
 			name: "number_of_floors",
-			values: ["--指定なし--", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
-			input: {"number_of_floors": "--指定なし--"},
+			values: ["指定なし", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
+			input: {"number_of_floors": "指定なし"},
 		},
 		{
 			title: "建物規模",
 			name: "building_scale",
-			values: ["--指定なし--", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
-			input: {"building_scale": "--指定なし--"},
+			values: ["指定なし", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
+			input: {"building_scale": "指定なし"},
 		},
 		{
 			title: "向き",
 			name: "house_facing",
-			values: ["--指定なし--", "東", "西", "南", "北"],
-			input: {"house_facing": "--指定なし--"},
+			values: ["指定なし", "東", "西", "南", "北"],
+			input: {"house_facing": "指定なし"},
 		},
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
     2: [
 		{
 			title: "フロア",
 			name: "number_of_floors",
-			values: ["--指定なし--", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
-			input: {"number_of_floors": "--指定なし--"},
+			values: ["指定なし", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
+			input: {"number_of_floors": "指定なし"},
 		},
 		{
 			title: "建物規模",
 			name: "building_scale",
-			values: ["--指定なし--", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
-			input: {"building_scale": "--指定なし--"},
+			values: ["指定なし", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
+			input: {"building_scale": "指定なし"},
 		},
 		{
 			title: "向き",
 			name: "house_facing",
-			values: ["--指定なし--", "東", "西", "南", "北"],
-			input: {"house_facing": "--指定なし--"},
+			values: ["指定なし", "東", "西", "南", "北"],
+			input: {"house_facing": "指定なし"},
 		},
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
     3: [
 		{
 			title: "築年数",
 			name: "house_age",
-			values: ["--指定なし--", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
-			input: {"house_age": "--指定なし--"},
+			values: ["指定なし", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
+			input: {"house_age": "指定なし"},
 		},
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
     4: [
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
     5: [
 		{
 			title: "築年数",
 			name: "house_age",
-			values: ["--指定なし--", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
-			input: {"house_age": "--指定なし--"},
+			values: ["指定なし", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
+			input: {"house_age": "指定なし"},
 		},
 		{
 			title: "フロア",
 			name: "number_of_floors",
-			values: ["--指定なし--", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
-			input: {"number_of_floors": "--指定なし--"},
+			values: ["指定なし", "1階", "2階以上", "5階以上", "10階以上", "15階以上", "20階以上", "地下"],
+			input: {"number_of_floors": "指定なし"},
 		},
 		{
 			title: "建物規模",
 			name: "building_scale",
-			values: ["--指定なし--", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
-			input: {"building_scale": "--指定なし--"},
+			values: ["指定なし", "総戸数30戸未満", "総戸数30戸以上", "総戸数100戸以上", "3階建て以下", "10階建て以上", "20階建て以上"],
+			input: {"building_scale": "指定なし"},
 		},
 		{
 			title: "向き",
 			name: "house_facing",
-			values: ["--指定なし--", "東", "西", "南", "北"],
-			input: {"house_facing": "--指定なし--"},
+			values: ["指定なし", "東", "西", "南", "北"],
+			input: {"house_facing": "指定なし"},
 		},
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
     6: [
 		{
 			title: "築年数",
 			name: "house_age",
-			values: ["--指定なし--", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
-			input: {"house_age": "--指定なし--"},
+			values: ["指定なし", "1年未満", "3年以内", "5年以内", "7年以内", "10年以内", "15年以内", "20年以内", "25年以内", "30年以内", "30年以上"],
+			input: {"house_age": "指定なし"},
 		},
 		{
 			title: "构造",
 			name: "house_struction",
-			values: ["--指定なし--", "", "", "", "", "", ""],
-			input: {"house_struction": "--指定なし--"},
+			values: ["指定なし", "", "", "", "", "", ""],
+			input: {"house_struction": "指定なし"},
 		},
 	],
 }

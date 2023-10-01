@@ -1,10 +1,10 @@
 <template>
     <div class="mask" @click="closeModalSelectionX($event)">
         <div class="wrapper">
-            <div class="title">
+            <p class="title">
                 {{ props.title }}
                 <fa class="close" icon="xmark" @click="closeModalSelection"/>
-            </div>
+            </p>
 
             <div class="slot">
                 <slot></slot>
@@ -23,13 +23,16 @@
         }
     )
 
+    const emits = defineEmits(['on-close'])
+
     const closeModalSelection = () => {
         modalStore.closeModalSelection()
+        emits("on-close", "都道府県の選択")
     }
 
     const closeModalSelectionX = ($event) => {
         if ($event.target.className === "mask") {
-            modalStore.closeModalSelection()
+            closeModalSelection()
         }
     }
 </script>

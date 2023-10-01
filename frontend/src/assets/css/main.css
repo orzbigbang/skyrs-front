@@ -35,6 +35,11 @@ select {
   cursor: pointer;
   width: 100px;
 }
+@media screen and (max-width: 700px) {
+  select {
+    width: 80px;
+  }
+}
 label {
   cursor: pointer;
 }

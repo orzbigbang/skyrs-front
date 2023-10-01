@@ -3,7 +3,7 @@
 		<div class="container">
 			<PartTitle :eng="'new house'" :jpn="'新着物件'"/>
 			<div class="card-wrapper">
-				<PartCard1 v-for="card in cards" :key="card.title" :house="card" @click="goDP($event, houseID)"></PartCard1>
+				<PartCard1 v-for="card in cards" :key="card.title" :house="card" @click="goDP($event, card.house_id)"></PartCard1>
 			</div>
 			<div class="see-more bacc">もっと見る<fa icon="angle-right" class="fa-icon" @click=""/></div>
 		</div>
@@ -19,6 +19,7 @@ const router = useRouter()
 
 const cards = [
 	{
+		house_id: 1,
 		img: '/imgs/img_thumbnail (3).jfif',
 		tag: '賃貸マンション',
 		title: 'パークアクシス御茶ノ水ヒルトップ',
@@ -28,6 +29,7 @@ const cards = [
 		attribute: '2018年8月築 / 鉄筋コンクリート(RC) / 14階',
 	},
 	{
+		house_id: 2,
 		img: 'imgs/img_thumbnail (4).jfif',
 		tag: '賃貸マンション',
 		title: 'ＴＫＲ神田多町',
@@ -37,6 +39,7 @@ const cards = [
 		attribute: '2002年11月築 / 鉄骨 / 8階',
 	},
 	{
+		house_id: 3,
 		img: 'imgs/img_thumbnail (9).jfif',
 		tag: '賃貸マンション',
 		title: 'プラース千代田富士見',
@@ -46,6 +49,7 @@ const cards = [
 		attribute: '2009年3月築 / 鉄筋コンクリート(RC) / 9階',
 	},
 	{
+		house_id: 4,
 		img: 'imgs/img_thumbnail (6).jfif',
 		tag: '賃貸マンション',
 		title: 'エルスタンザ神田須田町',
@@ -55,6 +59,7 @@ const cards = [
 		attribute: '2019年6月築 / 鉄筋コンクリート(RC) / 12階',
 	},
 	{
+		house_id: 5,
 		img: 'imgs/img_thumbnail (7).jfif',
 		tag: '賃貸マンション',
 		title: 'パークハウス平河町',
@@ -64,6 +69,7 @@ const cards = [
 		attribute: '2007年11月築 / 鉄筋コンクリート(RC) / 14階',
 	},
 	{
+		house_id: 6,
 		img: 'imgs/img_thumbnail (8).jfif',
 		tag: '賃貸マンション',
 		title: 'アジュール神田錦町',
@@ -73,6 +79,7 @@ const cards = [
 		attribute: '2014年9月築 / 鉄筋コンクリート(RC) / 11階',
 	},
 	{
+		house_id: 7,
 		img: 'imgs/img_thumbnail (4).jfif',
 		tag: '賃貸マンション',
 		title: 'ＴＫＲ神田多町',
@@ -82,6 +89,7 @@ const cards = [
 		attribute: '2002年11月築 / 鉄骨 / 8階',
 	},
 	{
+		house_id: 8,
 		img: 'imgs/img_thumbnail (3).jfif',
 		tag: '賃貸マンション',
 		title: 'パークアクシス御茶ノ水ヒルトップ',

@@ -7,12 +7,11 @@
 </template>
 
 <script setup>
-import MyBanner from './MyBanner.vue'
-import ItemRecommend from './Item-Recommend.vue'
-import ItemNewHouse from './Item-NewHouse.vue'
-import ItemService from './Item-Service.vue'
-import ItemStaff from './Item-Staff.vue'
-
+    import MyBanner from './MyBanner.vue'
+    import ItemRecommend from './Item-Recommend.vue'
+    import ItemNewHouse from './Item-NewHouse.vue'
+    import ItemService from './Item-Service.vue'
+    import ItemStaff from './Item-Staff.vue'
 </script>
 
 <style scoped lang="less">

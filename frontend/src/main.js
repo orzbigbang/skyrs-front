@@ -18,8 +18,12 @@ library.add(faUserSecret, faTrain, faLocationDot, faHouse, faCaretDown, faSchool
 
 const app = createApp(App)
 
-// 将全局变量挂载到根实例上
-const apiURL = "http://13.112.28.13:8000/api/"
+import { baseURL } from '@/config/config.js'
+const apiURL = {
+    estate: `${baseURL}estate`,
+    addFavorate: `${baseURL}favorite/`,
+    getUser: `${baseURL}user`,
+}
 app.provide('apiURL', apiURL);
 
 app.component('fa', FontAwesomeIcon)

@@ -2,69 +2,68 @@
     <div class="container">
         <MyTag>基本情報</MyTag>
         <div class="title-wrapper block">
-            <div class="title">
+            <h5 class="title">
                 {{ title }}
                 <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav()"/>
-            </div>
+            </h5>
             <div class="brief kv-wrapper">
                 <KeyValue v-for="highlight in highlights" :highlight="highlight"></KeyValue>
             </div>
         </div>
         <div class="carousel-wrapper block">
             <div class="carousel">
-                <div class="big-pic" :style="{backgroundImage: `url('${images[activeImageIndex]}')`}"></div>
+                <img class="big-pic" :src="images[activeImageIndex]">
                 <div class="small-pic-outer">
                     <fa class="arrow-left arrow fc" icon="angle-left" @click="goLeft"/>
                     <fa class="arrow-right arrow fc" icon="angle-right" @click="goRight"/>
                     <div  class="small-pic-wrapper" :style="{transform: `translateX(${offSetX}px)`}">
-                        <div class="small-pic" 
+                        <img class="small-pic" 
                             :class="{active: activeImageIndex === index}" 
-                            :style="{backgroundImage: `url('${image}')`}" 
+                            :src="image"
                             @click="activeImageIndex = index"
                             v-for="(image, index) in images"> 
-                        </div>
                     </div>
                 </div>
             </div>
-            <div class="base-info">
-                <div class="kv" v-for="base in bases">
+            <ul class="base-info">
+                <li class="kv" v-for="base in bases">
                     <KeyValue1 :base="base"></KeyValue1>
                     <div class="divider"></div>
-                </div>
+                </li>
 
                 <div class="contact-method" @click="modalStore.showQuerySelection">
                     <fa icon="envelope"/>
                     お問い合わせ
                 </div>
-            </div>
+            </ul>
         </div>
 
         <MyTag>おすすめポイント</MyTag>
         <div class="bullet-point-wrapper block">
-            <p class="bullet-point-title">
+            <h4 class="bullet-point-title">
                 {{ bpTitle }}
-            </p>
+            </h4>
             <p class="bullet-point-desc">
                 {{ bpDesc }}
             </p>
-            <span class="bullet-point" v-for="bp in bulletPoints">◎{{ bp }}</span>
+            <p class="bullet-point" v-for="bp in bulletPoints">◎{{ bp }}</p>
         </div>
 
         <MyTag>設備・その他の情報</MyTag>
         <div class="spec-wrapper block">
-            <div class="icon-info-wrapper">
-                <div class="icon-row" v-for="row in icons">
+            <ul class="icon-info-wrapper">
+                <li class="icon-row" v-for="row in icons">
                     <div class="icon-category">
                         {{ row.title }}
                     </div>
-                    <div class="icons">
-                        <div class="icon-wrapper" v-for="icon in row.items">
+                    <ul class="icons">
+                        <li class="icon-wrapper" v-for="icon in row.items">
                             <i class="icon" :style="{backgroundPosition: `${icon.offset}px 0`}"></i>
                             <div class="icon-title">{{ icon.title }}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
 
             <div class="other-info-table-wrapper">
                 <table class="other-info">
@@ -122,14 +121,14 @@
                 </div>
                 <div class="divider"></div>
             </div>
-            
         </div>
-
 
         <MyTag>その他のおすすめ部屋</MyTag>
-        <div class="recommend-wrapper block">
-            <HouseCard v-for="house in recommendHouseList" :keys="house.title" :house="house"/>
-        </div>
+        <ul class="recommend-wrapper block">
+            <li v-for="house in recommendHouseList">
+                <HouseCard :keys="house.title" :house="house"/>
+            </li>
+        </ul>
     </div>
 
     <ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
@@ -148,9 +147,6 @@
     import { ref, computed, inject } from 'vue';
     import { useRoute } from 'vue-router'
     const route = useRoute()
-
-    import { useUserStore } from "@/stores/user"
-    const userStore = useUserStore()
 
     import { useModalStore } from '@/stores/modal';
     const modalStore = useModalStore()
@@ -198,9 +194,10 @@
     
     // get house data
     const apiURL = inject("apiURL")
-    const headers = {Authorization: userStore.user_id}
+    import { useHeader } from '@/composition/userInfo.js'
+    const headers = useHeader()
     const getHouseData = () => {
-        const url = `${apiURL}estate/${houseID}`
+        const url = `${apiURL.estate}/${houseID}`
         const params = {}
         dpStore.getDP(url, params, headers)
     }
@@ -209,7 +206,7 @@
     // add to favorate
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(dpStore.faved)
-    const url = `${apiURL}favorite/`
+    const url = apiURL.addFavorate
     const add2fav = () => {useAdd2fav(faved, url, houseID)}
 
     // carousel function
@@ -601,9 +598,6 @@
     }
 
     @media screen and (max-width:1102px) {
-        .container {
-            width: 70%;
-        }
         .carousel-wrapper {
             flex-direction: column;
             .carousel {
@@ -660,7 +654,7 @@
         .carousel-wrapper {
             .carousel {
                 width: 100%;
-                height: 50vw;
+                height: 70vw;
                 margin-bottom: 11vw;
 
                 .small-pic-outer {
@@ -697,9 +691,6 @@
     }
 
     @media screen and (max-width:415px) {
-        .container {
-            width: 90%;
-        }
         .carousel-wrapper {
             .carousel {
                 .small-pic-outer {

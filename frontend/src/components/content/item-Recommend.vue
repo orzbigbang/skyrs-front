@@ -1,19 +1,20 @@
 <template>
-    <div class="news">
+    <div>
         <div class="container">
             <PartTitle :eng="'Recommended'" :jpn="'おすすめ'"/>
-            <PartContent :title="'「(株)セブンクラウドハウス」のおすすめ物件'" :detail="'全国8.5万棟以上のマンション情報（物件概要、外観写真、売出情報、購入希望者情報、周辺相場推移など）をご覧いただけます。ご所有のマンションの売買・賃料相場を知りたい方、ご興味ある地域にどんなマンションがあるかを知りたい方は是非ご利用ください。'">
-                <div class="card-wrapper">
+            <div class="wrapper">
+                <h3 class="title">「(株)セブンクラウドハウス」のおすすめ物件</h3>
+                <p class="detail">全国8.5万棟以上のマンション情報（物件概要、外観写真、売出情報、購入希望者情報、周辺相場推移など）をご覧いただけます。ご所有のマンションの売買・賃料相場を知りたい方、ご興味ある地域にどんなマンションがあるかを知りたい方は是非ご利用ください。</p>
+                <ul class="card-wrapper">
                     <PartCard3 class="card" v-for="card in cards" :key="card.title" :card="card"></PartCard3>
-                </div>
-            </PartContent>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
     
 <script setup>
     import PartTitle from './Part-Title.vue';
-    import PartContent from './Part-Content.vue'
     import PartCard3 from './Part-Card3.vue';
 
     const cards = [
@@ -39,7 +40,23 @@
 </script>
     
 <style scoped lang="less">
-    .news {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        .title {
+            font-size: 34px;
+            font-weight: bold;
+        }
+
+        .detail {
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
         .card-wrapper {
             width: 100%;
             margin-top: 20px;
@@ -49,5 +66,25 @@
             flex-wrap: wrap;
         }
     }
-    
+
+    @media screen and (max-width:700px) {
+        .wrapper {
+            .detail {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    @media screen and (max-width:415px) {
+        .wrapper {
+            .title {
+                font-size: 27px;
+            }
+
+            .detail {
+                font-weight: normal;
+            }
+        }
+    }
 </style>

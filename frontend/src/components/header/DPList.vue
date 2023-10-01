@@ -25,7 +25,6 @@
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
 
-    // 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
 
     const props = defineProps({
@@ -45,7 +44,7 @@
     // 收藏功能
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.item.faved)
-    const url = `${apiURL}favorite/`
+    const url = apiURL.addFavorate
     const add2fav = () => {useAdd2fav(faved, url, props.item.house_id)}
 </script>
     

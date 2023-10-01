@@ -1,13 +1,13 @@
 <template>
-    <div class="wrapper">
-        <div class="img" :style="{ 'background-image': `url('${props.card.img}')` }" ></div>
+    <li class="wrapper">
+        <img class="img" :src="props.card.img">
         <div class="info-wrapper">
-            <div class="title">{{ props.card.title }}</div>
-            <div class="category">{{ props.card.category }}</div>
+            <span class="title">{{ props.card.title }}</span>
+            <span class="category">{{ props.card.category }}</span>
             <div class="bar"></div>
-            <div class="detail">{{ props.card.detail }}</div>
+            <p class="detail">{{ props.card.detail }}</p>
         </div>
-    </div>
+    </li>
 </template>
     
 <script setup>
@@ -18,8 +18,9 @@
     
 <style scoped  lang='less'>
     .wrapper {
-        width: 20rem;
-        height: 24rem;
+        width: 30%;
+        max-width: 20rem;
+        min-height: 24rem;
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
@@ -33,12 +34,11 @@
 
         .img {
             width: 100%;
-            height: 50%;
+            height: 12rem;
             background-size: cover;
         }
 
         .info-wrapper {
-            height: 50%;
             padding: 15px;
             margin: 0 auto;
             display: flex;
@@ -62,10 +62,12 @@
                 border: 1px solid #000;
                 margin: 5px 0;
             }
+        }
+    }
 
-            // .detail {
-
-            // }
+    @media screen and (max-width: 700px) {
+        .wrapper {
+            width: 20rem;
         }
     }
 </style>

@@ -223,6 +223,8 @@
 
     @media screen and (max-width:700px) {
         .form-wrapper {
+            width: 80%;
+
             input[type='text'] {
                 &::placeholder {
                     font-size: 12px;

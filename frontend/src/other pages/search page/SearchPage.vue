@@ -42,9 +42,9 @@
 				</div>
 
 				<div class="submit-wrapper">
-					<div class="show-more fc" @click="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></div>
+					<span class="show-more fc" @click="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></span>
 					<button class="submit bacc" @click="submitForm">この条件で探す</button>
-					<div class="reset fc" @click="reset">リセット<fa class="icon fc" icon="rotate-left"/></div>
+					<span class="reset fc" @click="reset">リセット<fa class="icon fc" icon="rotate-left"/></span>
 				</div>
 			</div>
 		</div>
@@ -76,9 +76,6 @@
 	import { useHouseStore } from "@/stores/house"
 	const houseStore = useHouseStore()
 
-	import { useUserStore } from "@/stores/user"
-    const userStore = useUserStore()
-
 	import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
 
@@ -105,8 +102,9 @@
 	const houseList = computed(() => {
 		return houseStore.houseList
 	})
-	const urlGetHouseList = `${apiURL}estate`
-	const headers = {Authorization: userStore.user_id}
+	const urlGetHouseList = apiURL.estate
+	import { useHeader } from '@/composition/userInfo.js'
+    const headers = useHeader()
 	
 	// 实时监听路由，获得不同的数据
     const cityIndex = ref(route.params.cityIndex)
@@ -160,7 +158,7 @@
 		// 2.处理数据
 		params = {...params, ...userInput.value}
 		Object.keys(params).forEach((key) => {
-			if (params[key] === "--指定なし--") {
+			if (params[key] === "指定なし") {
 				delete params[key]
 			}
 		})
@@ -185,10 +183,10 @@
 		if (moreConditionsCheckBox.value) {
 			aggregatedList = [...aggregatedList, ...moreConditionsCheckBox.value]
 		}
-		// 遍历列表，把kv的value改成 "--指定なし--"。 从而重置搜索条件
+		// 遍历列表，把kv的value改成 "指定なし"。 从而重置搜索条件
 		aggregatedList.forEach((item) => {
 			Object.keys(item["input"]).forEach((key) => {
-				item["input"][key] = "--指定なし--"
+				item["input"][key] = "指定なし"
 			})
 			if (item.name === "layout") {
 				item.input = {}
@@ -368,8 +366,12 @@
 		}
 
 		.search-wrapper {
+
+			.range {
+				padding-left: 0px;
+			}
 			.other-selection {
-				padding-left: 75px;
+				padding-left: 72px;
 			}
 
 			.submit-wrapper {

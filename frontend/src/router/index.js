@@ -57,10 +57,19 @@ const router = createRouter({
 			}
 		},
 	],
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+		  // 如果有保存的位置信息，则滚动到保存的位置
+		  return savedPosition;
+		} else {
+		  // 否则滚动到顶部
+		  return { x: 0, y: 0 };
+		}
+	},
 });
 
 router.beforeEach((to, from, next) => {
-	window.scroll(0, 0);
+	window.scrollTo(0, 0);
 	next();
 });
 

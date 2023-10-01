@@ -1,13 +1,13 @@
 <template>
-    <div class="wrapper">
+    <li class="wrapper">
         <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="deactivate">
-            {{ props.item.title }}
+            {{ title }}
             <div class="bar" v-show="active"></div>
         </div>
-        <div class="sub-item-wrapper" v-show="active" @mouseenter="activate" @mouseleave="deactivate">
-            <NavSubItem v-for="item in props.item.subItem" :subItem="item"/>
-        </div>
-    </div>
+        <ul class="sub-item-wrapper" v-show="active" @mouseenter="activate" @mouseleave="deactivate">
+            <NavSubItem v-for="item in subItem" :subItem="item"/>
+        </ul>
+    </li>
 </template>
     
 <script setup>
@@ -20,13 +20,13 @@
             item: Object
         }
     )
+    const { item: {title, subItem} } = props
     
+    // 导航栏显示事件
     const active = ref(false)
-
     const activate = () => {
         active.value = true
     }
-
     const deactivate = () => {
         active.value = false
     }
@@ -89,6 +89,4 @@
             }   
         }
     }
-
-
 </style>

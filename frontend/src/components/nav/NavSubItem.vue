@@ -1,9 +1,7 @@
 <template>
-    <Transition name="fade">
-        <div class="sub-item" @click="goSearch($event, props.subItem.houseIndex)">
-            {{ props.subItem.title }}
-        </div>
-    </Transition>
+    <li class="sub-item" @click="goSearch($event, houseIndex)">
+        {{ title }}
+    </li>
 </template>
     
 <script setup>
@@ -16,20 +14,23 @@
     const props = defineProps({
         subItem: Object
     })
+    const {subItem: { houseIndex, title, route, func, params: {mode, type, new_}}} = props
 
     const goSearch = ($event, houseIndex) => {
-        if (houseIndex) conditionStore.houseIndex = houseIndex
+        if (houseIndex) {
+            conditionStore.houseIndex = houseIndex
+        }
         if (props.subItem.type === "search") {
-            conditionStore.mode = props.subItem.params.mode
-            conditionStore.type = props.subItem.params.type
-            conditionStore.new_ = props.subItem.params.new_
+            conditionStore.mode = mode
+            conditionStore.type = type
+            conditionStore.new_ = new_
             if (conditionStore.isCitySet) {
-                router.push(`/search/${conditionStore.cityIndex}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
+                router.push(`/search/${conditionStore.cityIndex}/${mode}/${type}/${new_}`)
             } else {
-                props.subItem.func()
+                func()
             }
         } else {
-            props.subItem.func(`${props.subItem.route}/${props.subItem.params.mode}`)
+            func(`${route}/${mode}`)
         }
         
     }

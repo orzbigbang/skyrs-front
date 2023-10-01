@@ -235,6 +235,9 @@
     }
 
     @media screen and (max-width:700px) {
+        .container {
+            width: 90%;
+        }
         .form-wrapper {
 
             input[type='text'] {

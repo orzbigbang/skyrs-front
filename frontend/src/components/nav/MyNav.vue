@@ -1,9 +1,9 @@
 <template>
-    <div class="nav fc">
-        <div class="nav-wrapper container">
+    <nav class="nav fc">
+        <ul class="nav-wrapper">
             <NavItem v-for="item in items" :key="item.title" :item="item"/>
-        </div>
-    </div>
+        </ul>
+    </nav>
 </template>
 
 <script setup>
@@ -11,13 +11,14 @@
 
     import { useRouter } from "vue-router"
     const router = useRouter()
+
     import { useModalStore } from '@/stores/modal';
     const modalStore = useModalStore()
 
     import { useConditionStore } from '@/stores/condition';
     const conditionStore = useConditionStore()
     
-    // navitem click function
+    // 导航栏点击事件
     const buyFunc = () => {
         conditionStore.mode = "sell"
         modalStore.showCitySelection(true)
@@ -88,7 +89,9 @@
         top: 0;
         z-index: 100;
         .nav-wrapper {
+            width: 90%;
             height: 100%;
+            margin: 0 auto;
             display: flex;
             flex-direction: row;
             justify-content: center;
@@ -98,13 +101,8 @@
     @media screen and (max-width:540px) {
         .nav {
             height: 70px;
-
-            .container {
-                width: 90%;
-            }
             .nav-wrapper {
                 flex-wrap: wrap;
-                // flex-shrink: 1;
             }
         }   
     }

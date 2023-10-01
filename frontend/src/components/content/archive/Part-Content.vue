@@ -23,7 +23,7 @@
         align-items: center;
 
         .title {
-            font-size: 40px;
+            font-size: 34px;
             font-weight: bold;
         }
 
@@ -37,10 +37,6 @@
 
     @media screen and (max-width:700px) {
         .wrapper {
-            .title {
-                font-size: 34px;
-            }
-
             .detail {
                 font-size: 16px;
                 font-weight: bold;
@@ -48,7 +44,7 @@
         }
     }
 
-    @media screen and (max-width:414px) {
+    @media screen and (max-width:415px) {
         .wrapper {
             .title {
                 font-size: 27px;

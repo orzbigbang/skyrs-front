@@ -1,12 +1,12 @@
 <template>
     <div class="wrapper">
         <img class="img" :src="props.house.img">
-        <div class="tag fc bc">{{ props.house.tag }}</div>
-        <div class="title">{{ props.house.title }}</div>
-        <div class="price fc">{{ props.house.price }}</div>
-        <div class="location attr"><fa class="fa-icon" icon="location-dot"/>{{ props.house.location }}</div>
-        <div class="station attr"><fa class="fa-icon" icon="train"/>{{ props.house.station }}</div>
-        <div class="attribute attr"><fa class="fa-icon" icon="building"/>{{ props.house.attribute }}</div>
+        <span class="tag fc bc">{{ props.house.tag }}</span>
+        <h5 class="title">{{ props.house.title }}</h5>
+        <span class="price fc">{{ props.house.price }}</span>
+        <span class="location attr"><fa class="fa-icon" icon="location-dot"/>{{ props.house.location }}</span>
+        <span class="station attr"><fa class="fa-icon" icon="train"/>{{ props.house.station }}</span>
+        <span class="attribute attr"><fa class="fa-icon" icon="building"/>{{ props.house.attribute }}</span>
     </div>
 </template>
     
@@ -40,6 +40,7 @@ const props = defineProps({
         }
 
         .title {
+            font-size: 15px;
             font-weight: bold;
         }
 

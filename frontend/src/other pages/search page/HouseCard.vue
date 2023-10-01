@@ -2,10 +2,10 @@
     <div class="house-wrapper">
         <img class="img" :src="props.house.main_pic_path" @click="goDP">
         <div class="house-info">
-            <span class="title" @click.self="goDP">
+            <h5 class="title" @click.self="goDP">
                 {{ props.house.name }}
                 <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/>
-            </span>
+            </h5>
             <span class="location">{{ props.house.address }}</span>
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
@@ -41,7 +41,7 @@
     // add to favorate
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.house.faved)
-    const url = `${apiURL}favorite/`
+    const url = apiURL.addFavorate
     const add2fav = () => {useAdd2fav(faved, url, houseID)}
 </script>
     
@@ -110,34 +110,39 @@
     @media screen and (max-width:700px) {
         .house-wrapper {
             .img {
-                width: 13rem;
+                width: 12rem;
                 margin-bottom: -30px;
             }
 
             .price {
-                left: 8%;
-                top: 10%;
+                left: 5%;
+                top: 16%;
             }
             
             .house-info {
                 justify-content: space-around;
+
+                span {
+                    margin-bottom: 3px;
+                }
             }
         }
     }
 
-    @media screen and (max-width:391px) {
+    @media screen and (max-width:450px) {
         .house-wrapper {
             .img {
                 width: 11rem;
+                min-width: 10rem;
             }
 
             .price {
-                font-size: 24px;
+                font-size: 20px;
             }
 
             .house-info {
                 .title {
-                    font-size: 18px;
+                    font-size: 17px;
 
                     .icon {
                         font-size: 16px;
