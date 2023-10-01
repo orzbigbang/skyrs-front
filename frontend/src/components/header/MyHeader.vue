@@ -81,22 +81,15 @@
     const dpHistories = computed(() => {
 		return houseStore.dpHistories
 	})
-
-	const getDPHistory = () => {
-		const url = `${apiURL}dphistory`
-		const params = {}
-        houseStore.getHouseList(url, params, headers, 2)
-    }
-
-	// get usar favorates houses
+    // get usar favorates houses
 	const favorates = computed(() => {
 		return houseStore.favorates
 	})
 
-    const getFavorate = () => {
-		const url = `${apiURL}favorate`
+	const getUserHistory = () => {
+		const url = `${apiURL}user`
 		const params = {}
-        houseStore.getHouseList(url, params, headers, 3)
+        houseStore.getHouseList(url, params, headers, 1)
     }
 
     // headers button definition
@@ -110,19 +103,16 @@
             title: '閲覧履歴',
             icon: 'clock-rotate-left',
             func: modalStore.showSearchHistorySelection,
-			func1: getDPHistory
         },
         {
             title: 'お気に入り',
             icon: 'star',
             func: modalStore.showFavSelection,
-			func1: getFavorate
         },
         {
             title: 'お問い合わせ',
             icon: 'envelope',
             func: modalStore.showQuerySelection,
-			func1: () => {}
         },
     ]
 </script>

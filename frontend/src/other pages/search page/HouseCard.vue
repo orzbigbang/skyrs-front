@@ -41,7 +41,7 @@
     // add to favorate
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.house.faved)
-    const url = `${apiURL}favorate`
+    const url = `${apiURL}favorite/`
     const add2fav = () => {useAdd2fav(faved, url, houseID)}
 </script>
     

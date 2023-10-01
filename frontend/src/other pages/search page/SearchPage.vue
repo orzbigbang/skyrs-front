@@ -157,8 +157,17 @@
 				useCollectSelect(userInput, item)
 			})
 		}
-		// 2.发送请求
+		// 2.处理数据
 		params = {...params, ...userInput.value}
+		Object.keys(params).forEach((key) => {
+			if (params[key] === "--指定なし--") {
+				delete params[key]
+			}
+		})
+		params.forEach
+		
+		// 3.发送请求
+		console.log(params)
 		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
 	}
 	submitForm()
@@ -181,6 +190,9 @@
 			Object.keys(item["input"]).forEach((key) => {
 				item["input"][key] = "--指定なし--"
 			})
+			if (item.name === "layout") {
+				item.input = {}
+			}
 		})
     }
 

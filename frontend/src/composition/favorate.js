@@ -5,12 +5,12 @@ export const useAdd2fav = (faved, url, house_id) => {
     const userStore = useUserStore()
     const headers = {Authorization: userStore.user_id}
     faved.value = !faved.value
-    const data = {house_id}
+    const data = {favorite_estates: [+house_id]}
 
 	;(() => {
-        axios.post(url, data, {headers}).then(
-            data => {
-                console.log(data.value)
+        axios.patch(url, data, {headers}).then(
+            value => {
+                console.log(house_id, value.data)
             }
         ).catch(
             reason => {

@@ -1,5 +1,7 @@
 // 1: 中古マンション　2: 新築マンション　3: 中古一戸建て　4: 新築一戸建て　5: 賃貸マンション　6: 賃貸一戸建て
 
+// 築年数 数字　小于等于
+
 const condition = {}
 
 condition.fixedConditionsSelect = {
@@ -31,8 +33,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -42,7 +44,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -52,7 +54,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -85,8 +87,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -96,7 +98,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -106,7 +108,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -139,8 +141,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -150,7 +152,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -160,7 +162,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -193,8 +195,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -204,7 +206,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -214,7 +216,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -247,8 +249,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -258,7 +260,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -268,7 +270,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -301,8 +303,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]
@@ -312,7 +314,7 @@ condition.fixedConditionsSelect = {
 			name: "layout",
 			type: "checkbox",
 			values: [
-				{label: "1ルーム", value: '1r'}, 
+				{label: "1ルーム", value: '1ルーム'}, 
 				{label: "1K", value: '1k'},
 				{label: "1DK", value: '1dk'},
 				{label: "1LDK", value: '1ldk'},
@@ -322,7 +324,7 @@ condition.fixedConditionsSelect = {
 				{label: "3K", value: '3k'},
 				{label: "3DK", value: '3dk'},
 				{label: "3LDK", value: '3ldk'},
-				{label: "4K~", value: '4'},
+				{label: "4K~", value: '4k'},
 			],
 			input: {},
 		},
@@ -355,8 +357,8 @@ condition.fixedConditionsSelect = {
 			name: ["station_time_bottom", "station_time_top"],
 			type: "selectRange",
 			values: [
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"], 
-				["--指定なし--", "5分", "10分", "15分", "20分", "25分"]
+				["--指定なし--", "5", "10", "15", "20", "25"], 
+				["--指定なし--", "5", "10", "15", "20", "25"]
 			],
 			input: {"station_time_bottom": "--指定なし--", "station_time_top": "--指定なし--"},
 			desc: ["分　～　", "分"]

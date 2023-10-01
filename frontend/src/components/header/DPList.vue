@@ -45,7 +45,7 @@
     // 收藏功能
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.item.faved)
-    const url = `${apiURL}favorate`
+    const url = `${apiURL}favorite/`
     const add2fav = () => {useAdd2fav(faved, url, props.item.house_id)}
 </script>
     
