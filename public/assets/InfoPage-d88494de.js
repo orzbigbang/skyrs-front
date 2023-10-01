@@ -1,4 +1,4 @@
-import{_ as s,u as o,b as n,w as a,o as i,c as p,a as e,H as f}from"./index-4f00fa55.js";const _={1:`<h1 style="text-align:center;font-size:28px">プライバシーポリシー（または個人情報保護方針）</h1><br><br>
+import{_ as s,u as o,b as n,w as a,o as i,c as p,a as e,H as f}from"./index-61c1a5c4.js";const _={1:`<h1 style="text-align:center;font-size:28px">プライバシーポリシー（または個人情報保護方針）</h1><br><br>
     株式会社セブンクラウドハウス（以下「弊社」という）、弊社の個人情報保護方針につきましては、以下をご覧ください。<br>
     当社が取得した個人情報の取扱いに関し、個人情報の保護に関する法律、個人情報保護に関するガイドライン等<br>
     の指針、その他個人情報保護に関する関係法令を遵守します。<br><br>

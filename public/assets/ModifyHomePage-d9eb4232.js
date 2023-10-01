@@ -1,1 +1,0 @@
-import{_ as s,o,c as t,a as e,s as c}from"./index-4f00fa55.js";const a={},n={class:"outer container"},r=e("div",{class:"title"},[c(" 上传房屋 "),e("div",{class:"description"},"把excel和图片打包成zip文件，再上传"),e("button",{class:"upload"},"Upload Exel")],-1),d=[r];function i(_,l){return o(),t("div",n,d)}const f=s(a,[["render",i]]);export{f as default};
