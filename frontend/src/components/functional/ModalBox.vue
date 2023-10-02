@@ -45,7 +45,7 @@
         left: 0;
         top: 0;
         background-color: #3338;
-        z-index: 10000;
+        z-index: 1000000;
 
         .wrapper {
             width: 80%;

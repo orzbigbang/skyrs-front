@@ -1,6 +1,6 @@
 <template>
     <li class="wrapper">
-        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="active=!active">
+        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart.prevent="active=!active">
             {{ title }}
             <div class="bar" v-show="active"></div>
         </div>

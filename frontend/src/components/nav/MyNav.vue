@@ -1,5 +1,5 @@
 <template>
-    <nav class="nav fc">
+    <nav class="nav fc" id="nav">
         <ul class="nav-wrapper">
             <NavItem v-for="item in items" :key="item.title" :item="item"/>
         </ul>
@@ -87,7 +87,7 @@
         background-color: #fff;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 100000;
         .nav-wrapper {
             width: 90%;
             height: 100%;

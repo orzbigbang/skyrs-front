@@ -1,5 +1,5 @@
 <template>
-	<!-- <MySidebar></MySidebar> -->
+	<MySidebar></MySidebar>
 	<div class="search-condition">
 		<div class="container">
 			<MyTag>検索条件</MyTag>
@@ -41,9 +41,9 @@
 				</div>
 
 				<div class="submit-wrapper">
-					<span class="show-more fc" @click="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></span>
-					<button class="submit bacc" @click="submitForm">この条件で探す</button>
-					<span class="reset fc" @click="reset">リセット<fa class="icon fc" icon="rotate-left"/></span>
+					<span class="show-more fc" @click="showMore=!showMore" @touchstart.prevent="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></span>
+					<button class="submit bacc" @click="submitForm"  @touchstart.prevent="submitForm">この条件で探す</button>
+					<span class="reset fc" @click="reset" @touchstart.prevent="reset">リセット<fa class="icon fc" icon="rotate-left"/></span>
 				</div>
 			</div>
 		</div>
@@ -279,6 +279,7 @@
 			align-items: center;
 
 			.show-more {
+				// margin-left: 50px;
 				cursor: pointer;
 				border-bottom: 1px solid rgba(7, 50, 91, 0);
 				transition: all .1s linear;
@@ -313,6 +314,7 @@
 			}
 			
 			.reset {
+				margin-right: 50px;
 				cursor: pointer;
 				border-bottom: 1px solid rgba(7, 50, 91, 0);
 				transition: all .1s linear;
@@ -384,5 +386,9 @@
 				}
 			}
     	}
+	}
+
+	@media screen and (max-width: 700px) {
+
 	}
 </style>

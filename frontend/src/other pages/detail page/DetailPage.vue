@@ -703,10 +703,11 @@
             .carousel {
                 .small-pic-outer {
                     .arrow {
-                        top: 23%;
+                        top: 30%;
                         font-size: 2.5rem;
                     }
                     .small-pic-wrapper {
+                        width: 300px;
                         .small-pic {
                             width: 23%;
                             margin-right: 5.5px;

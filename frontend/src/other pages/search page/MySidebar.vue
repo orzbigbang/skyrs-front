@@ -1,27 +1,32 @@
 <template>
-    <div class="sidebar">
-        <div class="mode block">
-            {{ conditionStore.mode==="sell"? "売買": "賃貸"}}
-        </div>
+    <Teleport to="#nav">
+        <div class="sidebar" :class="{show: isShow}">
+            <div class="trigger"  @click="isShow = !isShow">
+                <fa class="icon fc" :icon="isShow? 'angle-left': 'angle-right'"/>
+            </div>
+            <div class="mode block">
+                {{ conditionStore.mode==="sell"? "売買": "賃貸"}}
+            </div>
 
-        <div class="fc-wrapper">
-            <FirstCondition v-for="(fc, index) in fcs" :title="fc.title" :fc="fc.values[cityIndex]" :index="index"></FirstCondition>
-        </div>
-        
-        <div class="block">
-            前回の検索条件
-        </div>
+            <div class="fc-wrapper">
+                <FirstCondition v-for="(fc, index) in fcs" :title="fc.title" :fc="fc.values[cityIndex]" :index="index"></FirstCondition>
+            </div>
+            
+            <div class="block">
+                前回の検索条件
+            </div>
 
-        <div class="last-search">
-            東京都、千代田区、賃貸、1LDK、10万
+            <div class="last-search">
+                東京都、千代田区、賃貸、1LDK、10万
+            </div>
         </div>
-    </div>
+    </Teleport>
 </template>
     
 <script setup>
     import FirstCondition from './FirstCondition.vue';
 
-    import { computed } from 'vue';
+    import { ref, computed } from 'vue';
 
     import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
@@ -59,26 +64,55 @@
             }
         },
     ]
+
+    // 侧边栏隐藏事件
+    const isShow = ref(true)
     
 </script>
     
 <style scoped  lang='less'>
     .sidebar {
-        width: 15rem;
+        width: 260px;
         height: 100vh;
         padding: 30px 30px;
         background-color: rgba(178, 198, 218, 0.596);
         background-color: #fff6;
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(18px);
         display: flex;
         flex-direction: column;
-        position: sticky;
-        top: 50px;
-        float: left;
-        transform: translateY(-20px);
+        transform: translateX(-100%);
+        transition: .2s ease;
         box-shadow: inset 1px 1px 5px rgba(255, 255, 255, 0.525),
                         1px 0 15px rgba(202, 200, 200, 0.333);
+
+        &.show {
+            transform: translateX(0);
+        }
                     
+
+        .trigger {
+            width: 25px;
+            height: 50px;
+            background-color: #eee;
+            border-radius: 5px;
+            position: absolute;
+            right: 0;
+            top: 36%;
+            transform: translateX(100%);
+            box-shadow: 0 0 5px #aaa;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 0 5px #666;
+            }
+
+            .icon {
+                position: absolute;
+                right: 20%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
 
         .block {
             margin-bottom: 15px;
@@ -90,9 +124,21 @@
         .last-search {
             height: 50px;
             padding: 4px 5px;
-            background-color: rgba(85, 168, 245, 0.418);
+            border: 1px dotted #ccc;
             border-radius: 5px;
+            transition: .1s ease;
+            background-color: #fff;
             cursor: pointer;
+
+            &:hover {
+                box-shadow: 0 0 5px #666;
+            }
+        }
+    }
+
+    @media screen and (max-width: 415px) {
+        .sidebar {
+            width: 80vw;
         }
     }
 </style>

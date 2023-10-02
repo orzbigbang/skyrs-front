@@ -1,5 +1,5 @@
 <template>
-    <li class="sub-item" @click="goSearch($event, houseIndex)"  @touchstart.stop="deactivate">
+    <li class="sub-item" @click="goSearch($event, houseIndex)"  @touchstart.prevent="deactivate">
         {{ title }}
     </li>
 </template>
@@ -38,7 +38,7 @@
     }
 
     const deactivate = ($event, houseIndex) => {
-        // emits("on-touch")
+        emits("on-touch")
         goSearch($event, houseIndex)
     }
 </script>

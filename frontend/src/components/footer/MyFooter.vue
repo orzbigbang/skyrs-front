@@ -23,12 +23,13 @@
 <style scoped lang="less">
     .wrapper {
         height: 100px;
-        background-image: linear-gradient(to bottom, rgba(31, 78, 121, 0.3), rgb(31,78,121));
+        background-color: rgb(31,78,121);
         color: #fff;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        z-index: 100000;
 
         .url {
             margin: 0 2rem;
