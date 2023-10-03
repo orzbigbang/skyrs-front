@@ -146,15 +146,12 @@
     import ModalBox from '@/components/functional/ModalBox.vue';
 	import HouseQuery from './HouseQuery.vue';
 
-    import { ref, computed, inject } from 'vue';
+    import { ref, computed, inject, toRefs, watch } from 'vue';
     import { useRoute } from 'vue-router'
     const route = useRoute()
 
     import { useModalStore } from '@/stores/modal';
     const modalStore = useModalStore()
-
-    import { useHouseStore } from '@/stores/house';
-    const houseStore = useHouseStore()
 
     import { useDPStore } from '@/stores/dp';
     const dpStore = useDPStore()
@@ -163,36 +160,7 @@
     const houseID = route.params.houseID    
 
     // get static data according to house type
-    const title = computed(() => {
-        return dpStore.title
-    })
-    const highlights = computed(() => {
-        return dpStore.highlights
-    })
-    const images = computed(() => {
-        return dpStore.images
-    })
-    const bases = computed(() => {
-        return dpStore.bases
-    })
-    const icons = computed(() => {
-        return dpStore.icons
-    })
-    const otherInfoTable = computed(() => {
-        return dpStore.otherInfoTable
-    })
-    const bpTitle = computed(() => {
-        return dpStore.bpTitle
-    })
-    const bpDesc = computed(() => {
-        return dpStore.bpDesc
-    })
-    const bulletPoints = computed(() => {
-        return dpStore.bulletPoints
-    })
-    const otherInfoList = computed(() => {
-        return dpStore.otherInfoList
-    })
+    const {title, highlights, images, bases, icons, otherInfoTable, bpTitle, bpDesc, bulletPoints, otherInfoList} = toRefs(dpStore)
     
     // get house data
     const apiURL = inject("apiURL")

@@ -1,6 +1,6 @@
 <template>
     <li class="wrapper">
-        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart.prevent="active=!active">
+        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="active=!active">
             {{ title }}
             <div class="bar" v-show="active"></div>
         </div>
@@ -21,7 +21,7 @@
         }
     )
     const { item: {title, subItem} } = props
-    
+
     // 导航栏显示事件
     const active = ref(false)
     const activate = () => {
