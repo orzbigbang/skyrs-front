@@ -32,7 +32,7 @@
     import SearchList from './SearchList.vue'
 	import Query from './Query.vue';
 
-    import { ref, inject, toRefs } from 'vue'
+    import { ref, toRefs } from 'vue'
 	
     import {useRouter, useRoute} from 'vue-router'
     const router = useRouter()
@@ -48,10 +48,6 @@
 	import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
     const { dpHistories, favorates } = toRefs(houseStore)
-
-    import { useHeader } from '@/composition/userInfo.js'
-	const apiURL = inject("apiURL")
-    const headers = useHeader()
 
     const showCity = () => {
 		// 如果在搜索页，则跳转路由。 如果不是，则只改变city的值
@@ -82,12 +78,6 @@
 	// const getSearchHistories = () => {
     //     houseStore.getSearchHistories()
     // }
-
-	const getUserHistory = () => {
-		const url = apiURL.getUser
-		const params = {}
-        houseStore.getHouseList(url, params, headers, 1)
-    }
 
     // headers button definition
     const functions = [

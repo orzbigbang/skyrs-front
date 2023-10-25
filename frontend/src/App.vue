@@ -19,7 +19,7 @@
 
     // 获取用户ID
     import cookieHandle from "@/assets/js/cookieHandler.js"
-    import { useUserStore } from "@/stores/user"
+    import { useUserStore } from "@/stores/user.js"
     const userStore = useUserStore()
     userStore.user_id = cookieHandle.getCookie("user_id")
 </script>

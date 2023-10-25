@@ -11,7 +11,7 @@
     const router = useRouter()
     
     const footerFunc = (type) => {
-        router.push(`/info/${type}`)
+        router.push(`/policy/${type}`)
     }
 
     const urls = [

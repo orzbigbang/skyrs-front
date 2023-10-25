@@ -1,14 +1,15 @@
 // 1: 中古マンション　2: 新築マンション　3: 中古一戸建て　4: 新築一戸建て　5: 賃貸マンション　6: 賃貸一戸建て
 
+///管理費 management_fee: "15,000円"
+
 const info = {}
 
 info.highlights = {
     1: [
         {
-            _key: "価格/管理費",
+            _key: "価格",
             _value: {
                 selling_price: "160,000円",
-                management_fee: "15,000円"
             }
         },
         {
@@ -21,10 +22,9 @@ info.highlights = {
     ],
     2: [
         {
-            _key: "価格/管理費",
+            _key: "価格",
             _value: {
                 selling_price: "160,000円",
-                management_fee: "15,000円"
             }
         },
         {
@@ -43,10 +43,10 @@ info.highlights = {
             }
         },
         {
-            _key: "間取り/建物面積",
+            _key: "間取り/敷地面積",
             _value: {
                 layout: "1LDK",
-                total_building_area: "40.83㎡"
+                land_area: "40.83㎡"
             }
         },
     ],
@@ -58,19 +58,18 @@ info.highlights = {
             }
         },
         {
-            _key: "間取り/建物面積",
+            _key: "間取り/敷地面積",
             _value: {
                 layout: "1LDK",
-                total_building_area: "40.83㎡"
+                land_area: "40.83㎡"
             }
         },
     ],
     5: [
         {
-            _key: "賃料/管理費",
+            _key: "賃料",
             _value: {
                 renting_price: "160,000円",
-                management_fee: "15,000円"
             }
         },
         {
@@ -83,21 +82,48 @@ info.highlights = {
     ],
     6: [
         {
-            _key: "賃料/管理費",
+            _key: "賃料",
             _value: {
                 renting_price: "160,000円",
-                management_fee: "15,000円"
             }
         },
         {
-            _key: "間取り/建物面積",
+            _key: "間取り/敷地面積",
             _value: {
                 layout: "1LDK",
-                total_building_area: "40.83㎡"
+                land_area: "40.83㎡"
             }
         },
     ],
     7: [
+        {
+            _key: "価格",
+            _value: {
+                selling_price: "160,000円"
+            }
+        },
+        {
+            _key: "土地面积",
+            _value: {
+                land_area: "40.83㎡"
+            }
+        },
+    ],
+    8: [
+        {
+            _key: "価格",
+            _value: {
+                selling_price: "160,000円"
+            }
+        },
+        {
+            _key: "土地面积",
+            _value: {
+                land_area: "40.83㎡"
+            }
+        },
+    ],
+    9: [
         {
             _key: "価格",
             _value: {
@@ -116,31 +142,23 @@ info.highlights = {
 info.bases = {
     1: [
         {
-            _key: "諸費用",
+            _key: "所在地",
             _value: {
-                other_fee: "-",
+                address: "東京都江東区 北砂７丁目９－５",
             }
         },
         {
-            _key: "修繕積立金/修繕積立基金",
+            _key: "交通",
             _value: {
-                repair_reserve_gold: "-",
-                repair_reserve_fund: "-",
-            }
+                station: "湘南新宿ライン高海/新町駅 歩22分, 東武伊勢崎線/東武動物公園駅 車38分(15.2km), ＪＲ宇都宮線/栗橋駅 車30分(12.1km)",
+            },
         },
         {
             _key: "間取り詳細",
             _value: {
                 layout_detail: "1LDK",
             }
-        },
-        {
-            _key: "完成時期/引渡可能時期",
-            _value: {
-                completion_date: "2000年10月",
-                move_in_date: "2000年10月",
-            }
-        },
+        },        
         {
             _key: "向き",
             _value: {
@@ -161,43 +179,43 @@ info.bases = {
             }
         },
         {
-            _key: "所在地",
+            _key: "完成時期/引渡可能時期",
             _value: {
-                address: "東京都江東区 北砂７丁目９－５",
+                completion_date: "2000年10月",
+                move_in_date: "2000年10月",
             }
         },
         {
-            _key: "交通",
+            _key: "修繕積立金/管理費",  //　、で区切る
             _value: {
-                station: "湘南新宿ライン高海/新町駅 歩22分, 東武伊勢崎線/東武動物公園駅 車38分(15.2km), ＪＲ宇都宮線/栗橋駅 車30分(12.1km)",
-            },
+                repair_reserve_gold: "-",
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "諸費用",
+            _value: {
+                other_fee: "-",
+            }
         },
     ],
     2: [
         {
-            _key: "諸費用",
+            _key: "所在地",
             _value: {
-                other_fee: "-",
+                address: "東京都江東区 北砂７丁目９－５",
             }
         },
         {
-            _key: "修繕積立金/修繕積立基金",
+            _key: "交通",
             _value: {
-                repair_reserve_gold: "-",
-                repair_reserve_fund: "-",
-            }
+                station: "湘南新宿ライン高海/新町駅 歩22分, 東武伊勢崎線/東武動物公園駅 車38分(15.2km), ＪＲ宇都宮線/栗橋駅 車30分(12.1km)",
+            },
         },
         {
             _key: "間取り詳細",
             _value: {
                 layout_detail: "1LDK",
-            }
-        },
-        {
-            _key: "完成時期/引渡可能時期",
-            _value: {
-                completion_date: "2000年10月",
-                move_in_date: "2000年10月",
             }
         },
         {
@@ -220,6 +238,28 @@ info.bases = {
             }
         },
         {
+            _key: "完成時期/引渡可能時期",
+            _value: {
+                completion_date: "2000年10月",
+                move_in_date: "2000年10月",
+            }
+        },
+        {
+            _key: "修繕積立金/管理費",  //　、で区切る
+            _value: {
+                repair_reserve_gold: "-",
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "諸費用",
+            _value: {
+                other_fee: "-",
+            }
+        },
+    ],
+    3: [
+        {
             _key: "所在地",
             _value: {
                 address: "東京都江東区 北砂７丁目９－５",
@@ -228,11 +268,257 @@ info.bases = {
         {
             _key: "交通",
             _value: {
-                station: "湘南新宿ライン高海/新町駅 歩22分, 東武伊勢崎線/東武動物公園駅 車38分(15.2km), ＪＲ宇都宮線/栗橋駅 車30分(12.1km)",
+                station: "湘南新宿ライン高海/新町駅 歩22分",
             },
         },
+        {
+            _key: "間取り詳細",
+            _value: {
+                layout_detail: "1LDK",
+            }
+        },
+        {
+            _key: "向き",
+            _value: {
+                house_facing: "南",
+            }
+        },
+        {
+            _key: "階建",
+            _value: {
+                total_number_of_floors: "３階",
+                number_of_floors: "３階",
+            }
+        },
+        {
+            _key: "建物構造",
+            _value: {
+                house_struction: "木造",
+            }
+        },
+        {
+            _key: "私道負担・道路",
+            _value: {
+                private_road: "道路幅：4ｍ・4.6ｍ、私道負担有り（私道：68.00m2持ち分1/6づつ、未利用地：約4.48m2持ち分1/6づつ）",
+            }
+        },
+        {
+            _key: "完成時期/引渡可能時期",
+            _value: {
+                completion_date: "2000年10月",
+                move_in_date: "2000年10月",
+            }
+        },
+        {
+            _key: "管理費",
+            _value: {
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "諸費用",
+            _value: {
+                other_fee: "-",
+            }
+        },
     ],
-    3: [
+    4: [
+        {
+            _key: "所在地",
+            _value: {
+                address: "東京都江東区 北砂７丁目９－５",
+            }
+        },
+        {
+            _key: "交通",
+            _value: {
+                station: "湘南新宿ライン高海/新町駅 歩22分",
+            },
+        },
+        {
+            _key: "間取り詳細",
+            _value: {
+                layout_detail: "1LDK",
+            }
+        },
+        {
+            _key: "向き",
+            _value: {
+                house_facing: "南",
+            }
+        },
+        {
+            _key: "階建",
+            _value: {
+                total_number_of_floors: "３階",
+                number_of_floors: "３階",
+            }
+        },
+        {
+            _key: "建物構造",
+            _value: {
+                house_struction: "木造",
+            }
+        },
+        {
+            _key: "私道負担・道路",
+            _value: {
+                private_road: "-",
+            }
+        },
+        {
+            _key: "完成時期/引渡可能時期",
+            _value: {
+                completion_date: "2000年10月",
+                move_in_date: "2000年10月",
+            }
+        },
+        {
+            _key: "管理費",
+            _value: {
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "諸費用",
+            _value: {
+                other_fee: "-",
+            }
+        },
+    ],
+    5: [
+        {
+            _key: "所在地",
+            _value: {
+                address: "東京都江東区 北砂７丁目９－５",
+            }
+        },
+        {
+            _key: "交通",
+            _value: {
+                station: "湘南新宿ライン高海/新町駅 歩22分",
+            },
+        },
+        {
+            _key: "間取り詳細",
+            _value: {
+                layout_detail: "1LDK",
+            }
+        },
+        {
+            _key: "向き",
+            _value: {
+                house_facing: "南",
+            }
+        },
+        {
+            _key: "階建",
+            _value: {
+                total_number_of_floors: "３階",
+                number_of_floors: "３階",
+            }
+        },
+        {
+            _key: "建物構造",
+            _value: {
+                house_struction: "木造",
+            }
+        },
+        {
+            _key: "完成時期",
+            _value: {
+                completion_date: "2000年10月",
+            }
+        },
+        {
+            _key: "管理費",
+            _value: {
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "敷金/礼金",
+            _value: {
+                deposit: "-",
+                key_money: "-",
+            }
+        },
+        {
+            _key: "保証金/敷引/償却",
+            _value: {
+                security_deposit: "-",
+                quotation_fee: "-",
+                amortization_fee: "-",
+            }
+        },
+    ],
+    6: [
+        {
+            _key: "交通",
+            _value: {
+                station: "湘南新宿ライン高海/新町駅 歩22分",
+            },
+        },
+        {
+            _key: "所在地",
+            _value: {
+                address: "東京都江東区 北砂７丁目９－５",
+            }
+        },
+        {
+            _key: "間取り詳細",
+            _value: {
+                layout_detail: "1LDK",
+            }
+        },
+        {
+            _key: "向き",
+            _value: {
+                house_facing: "南",
+            }
+        },
+        {
+            _key: "階建",
+            _value: {
+                total_number_of_floors: "３階",
+                number_of_floors: "３階",
+            }
+        },
+        {
+            _key: "建物構造",
+            _value: {
+                house_struction: "木造",
+            }
+        },
+        {
+            _key: "完成時期",
+            _value: {
+                completion_date: "2000年10月",
+            }
+        },
+        {
+            _key: "管理費",
+            _value: {
+                management_fee: "-",
+            }
+        },
+        {
+            _key: "敷金/礼金",
+            _value: {
+                deposit: "-",
+                key_money: "-",
+            }
+        },
+        {
+            _key: "保証金/敷引/償却",
+            _value: {
+                security_deposit: "-",
+                quotation_fee: "-",
+                amortization_fee: "-",
+            }
+        },
+    ],
+    7: [
         {
             _key: "諸費用",
             _value: {
@@ -246,36 +532,34 @@ info.bases = {
             }
         },
         {
-            _key: "間取り詳細",
+            _key: "建ペい率",
             _value: {
-                layout_detail: "1LDK",
+                building_coverage_ratio: "-",
             }
         },
         {
-            _key: "完成時期/引渡可能時期",
+            _key: "容積率",
             _value: {
-                completion_date: "2000年10月",
-                move_in_date: "2000年10月",
+                floor_area_ratio: "-",
             }
         },
         {
-            _key: "採光方向",
+            _key: "用途地域",
             _value: {
-                house_facing: "南",
-            }
+                land_usage_type: "-"
+            },
         },
         {
-            _key: "階建",
+            _key: "地目",
             _value: {
-                total_number_of_floors: "３階",
-                number_of_floors: "３階",
-            }
+                land_category: "-"
+            },
         },
         {
-            _key: "建物構造",
+            _key: "土地所有权",
             _value: {
-                house_struction: "木造",
-            }
+                land_ownership: "-"
+            },
         },
         {
             _key: "所在地",
@@ -290,7 +574,7 @@ info.bases = {
             },
         },
     ],
-    4: [
+    8: [
         {
             _key: "諸費用",
             _value: {
@@ -300,40 +584,38 @@ info.bases = {
         {
             _key: "私道負担・道路",
             _value: {
-                private_road: "-",
+                private_road: "道路幅：4ｍ・4.6ｍ、私道負担有り（私道：68.00m2持ち分1/6づつ、未利用地：約4.48m2持ち分1/6づつ）",
             }
         },
         {
-            _key: "間取り詳細",
+            _key: "建ペい率",
             _value: {
-                layout_detail: "1LDK",
+                building_coverage_ratio: "-",
             }
         },
         {
-            _key: "完成時期/引渡可能時期",
+            _key: "容積率",
             _value: {
-                completion_date: "2000年10月",
-                move_in_date: "2000年10月",
+                floor_area_ratio: "-",
             }
         },
         {
-            _key: "採光方向",
+            _key: "用途地域",
             _value: {
-                house_facing: "南",
-            }
+                land_usage_type: "-"
+            },
         },
         {
-            _key: "階建",
+            _key: "地目",
             _value: {
-                total_number_of_floors: "３階",
-                number_of_floors: "３階",
-            }
+                land_category: "-"
+            },
         },
         {
-            _key: "建物構造",
+            _key: "土地所有权",
             _value: {
-                house_struction: "木造",
-            }
+                land_ownership: "-"
+            },
         },
         {
             _key: "所在地",
@@ -348,127 +630,7 @@ info.bases = {
             },
         },
     ],
-    5: [
-        {
-            _key: "敷金/礼金",
-            _value: {
-                deposit: "-",
-                key_money: "-",
-            }
-        },
-        {
-            _key: "保証金/敷引/償却",
-            _value: {
-                security_deposit: "-",
-                quotation_fee: "-",
-                amortization_fee: "-",
-            }
-        },
-        {
-            _key: "間取り詳細",
-            _value: {
-                layout_detail: "1LDK",
-            }
-        },
-        {
-            _key: "完成時期",
-            _value: {
-                completion_date: "2000年10月",
-            }
-        },
-        {
-            _key: "向き",
-            _value: {
-                house_facing: "南",
-            }
-        },
-        {
-            _key: "階建",
-            _value: {
-                total_number_of_floors: "３階",
-                number_of_floors: "３階",
-            }
-        },
-        {
-            _key: "建物構造",
-            _value: {
-                house_struction: "木造",
-            }
-        },
-        {
-            _key: "所在地",
-            _value: {
-                address: "東京都江東区 北砂７丁目９－５",
-            }
-        },
-        {
-            _key: "交通",
-            _value: {
-                station: "湘南新宿ライン高海/新町駅 歩22分",
-            },
-        },
-    ],
-    6: [
-        {
-            _key: "敷金/礼金",
-            _value: {
-                deposit: "-",
-                key_money: "-",
-            }
-        },
-        {
-            _key: "保証金/敷引/償却",
-            _value: {
-                security_deposit: "-",
-                quotation_fee: "-",
-                amortization_fee: "-",
-            }
-        },
-        {
-            _key: "間取り詳細",
-            _value: {
-                layout_detail: "1LDK",
-            }
-        },
-        {
-            _key: "完成時期",
-            _value: {
-                completion_date: "2000年10月",
-            }
-        },
-        {
-            _key: "採光方向",
-            _value: {
-                house_facing: "南",
-            }
-        },
-        {
-            _key: "階建",
-            _value: {
-                total_number_of_floors: "３階",
-                number_of_floors: "３階",
-            }
-        },
-        {
-            _key: "建物構造",
-            _value: {
-                house_struction: "木造",
-            }
-        },
-        {
-            _key: "所在地",
-            _value: {
-                address: "東京都江東区 北砂７丁目９－５",
-            }
-        },
-        {
-            _key: "交通",
-            _value: {
-                station: "湘南新宿ライン高海/新町駅 歩22分",
-            },
-        },
-    ],
-    7: [
+    9: [
         {
             _key: "諸費用",
             _value: {

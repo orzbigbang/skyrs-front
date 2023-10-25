@@ -3,23 +3,7 @@
         <form>
             <div class="type block">
                 <div class="title">
-                    相談タイプ
-                </div>
-                <div class="content-wrapper">
-                    <div class="radio-wrapper">
-                        <label>
-                            <input type="radio" name="type" value="sell" v-model="userInput.query_type">
-                            売買のお問い合わせ
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="rent" v-model="userInput.query_type">
-                            賃貸のお問い合わせ
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="any" v-model="userInput.query_type">
-                            ただのお問い合わせ
-                        </label>
-                    </div>
+                    {{ queryType }}
                 </div>
             </div>
             
@@ -80,19 +64,28 @@
 
             <div class="query block">
                 <div class="title">
-                    ご相談内容 <span>※必須項目</span>
+                    お問い合わせ内容 <span>※必須項目</span>
                 </div>
                 <div class="query-wrapper wrapper content-wrapper">
                     <textarea class="query-input" name="" cols="60" rows="8" v-model="userInput.query_content"></textarea>
                 </div>
             </div>
 
-            <button id="submit" @click.prevent="console.log(userInput)">送信</button>
+            <button id="submit" @click.prevent="goQuery">送信</button>
         </form>
     </div>
 </template>
     
 <script setup>
+    import { ref, inject } from 'vue';
+
+    import { useHeader } from '@/composition/userInfo.js'
+
+    import { useQueryStore } from '@/stores/query.js'
+    const queryStore = useQueryStore()
+
+    const queryType = ref("お問い合わせ")
+
     const userInput = {
         query_type: "any",
         last_name_kana: "",
@@ -104,6 +97,17 @@
         contact_type: "any",
         query_content: "",
     }
+
+    const apiURL = inject('apiURL');
+    const url = apiURL.query
+    const header = useHeader()
+    const goQuery = () => {
+        queryStore.postQuery(url, userInput, header)
+    }
+
+    // queryStore.getQuery(url, header)
+    // queryStore.getQueryAdmin(url, header)
+    // queryStore.getQueryAdmin(url, header, header)
 </script>
     
 <style scoped  lang='less'>

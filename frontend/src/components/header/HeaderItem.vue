@@ -6,6 +6,15 @@
 </template>
 
 <script setup>
+    import { inject } from "vue"
+
+    import { useHouseStore } from '@/stores/house.js'
+    const houseStore = useHouseStore()
+
+    import { useHeader } from '@/composition/userInfo.js'
+	const apiURL = inject("apiURL")
+    const headers = useHeader()
+
     const props = defineProps({
         item: Object,
     })
@@ -13,7 +22,14 @@
 
     const emits = defineEmits(['on-click'])
 
+    const getUserHistory = () => {
+		const url = apiURL.getUser
+		const params = {}
+        houseStore.getHouseList(url, params, headers, 1)
+    }
+
     const showModal = () => {
+        getUserHistory()
         emits('on-click', title)
         func()
     }

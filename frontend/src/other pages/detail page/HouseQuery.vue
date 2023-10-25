@@ -3,23 +3,7 @@
         <form>
             <div class="type block">
                 <div class="title">
-                    相談タイプ
-                </div>
-                <div class="content-wrapper">
-                    <div class="radio-wrapper">
-                        <label>
-                            <input type="radio" name="type" value="house_status" v-model="userInput.query_type">
-                            最新の空室状況を知りたい
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="go2see" v-model="userInput.query_type">
-                            実際に見学したい
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="other" v-model="userInput.query_type">
-                            ただのお問い合わせ
-                        </label>
-                    </div>
+                    {{ props.queryTypeStr }}
                 </div>
             </div>
             
@@ -93,8 +77,10 @@
 </template>
     
 <script setup>
+    const props = defineProps(["queryType", "queryTypeStr"])
+
     const userInput = {
-        query_type: "other",
+        query_type: props.queryType,
         last_name_kana: "",
         first_name_kana: "",
         last_name_kanji: "",

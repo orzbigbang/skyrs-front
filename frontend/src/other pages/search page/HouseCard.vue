@@ -18,7 +18,7 @@
 </template>
     
 <script setup>
-    import { ref, inject } from 'vue'
+    import { computed, inject } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
 
@@ -31,18 +31,25 @@
     const apiURL = inject("apiURL")
 
     // house_id
-    const houseID = props.house.house_id
+    const houseID = computed(() => props.house.house_id)
 
     // go to detail page
     const goDP = () => {
-        router.push(`/detailpage/${houseID}`)
+        router.push(`/detailpage/${houseID.value}`)
     }
 
     // add to favorate
     import { useAdd2fav } from "@/composition/favorate.js"
-    const faved = ref(props.house.faved)
+    const faved = computed({
+        get: () => {
+            return props.house.faved
+        },
+        set: (val) => {
+            props.house.faved = val
+        }
+    })
     const url = apiURL.addFavorate
-    const add2fav = () => {useAdd2fav(faved, url, houseID)}
+    const add2fav = () => {useAdd2fav(faved, url, houseID.value)}
 </script>
     
 <style scoped  lang='less'>

@@ -48,7 +48,7 @@
                 {title:'中古マンション', type:"search", func: buyFunc, route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
                 {title:'新築未入居マンション', type:"search", func: buyFunc, route: "/search", houseIndex: 2, params: {mode: "sell", type: "mansion", new_: "y"}},
                 {title:'中古一戸建て', type:"search", func: buyFunc, route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
-                {title:'新築未入居一戸建て', type:"search", func: buyFunc, route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
+                {title:'新築一戸建て', type:"search", func: buyFunc, route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
                 {title:'土地', type:"search", func: buyFunc, route: "/search", houseIndex: 7, params: {mode: "sell", type: "land", new_: "any"}},
             ]
         },
@@ -61,8 +61,10 @@
         {
             title:'借りたい',
             subItem: [
-                {title:'賃貸マンション', type:"search", func: rentFunc, route: "/search", houseIndex: 5, params: {mode: "rent", type: "mansion", new_: "n"}},
+                {title:'賃貸マンションアパート', type:"search", func: rentFunc, route: "/search", houseIndex: 5, params: {mode: "rent", type: "mansion", new_: "n"}},
                 {title:'賃貸一戸建て', type:"search", func: rentFunc, route: "/search", houseIndex: 6, params: {mode: "rent", type: "one", new_: "n"}},
+                {title:'土地', type:"search", func: rentFunc, route: "/search", houseIndex: 8, params: {mode: "rent", type: "land", new_: "n"}},
+                {title:'駐車場', type:"search", func: rentFunc, route: "/search", houseIndex: 9, params: {mode: "rent", type: "parking", new_: "n"}},
             ]
         },
         {

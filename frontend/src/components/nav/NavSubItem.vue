@@ -11,14 +11,20 @@
     import { useConditionStore } from "@/stores/condition"
     const conditionStore = useConditionStore()
 
+    import { useHouseStore } from "@/stores/house"
+	const houseStore = useHouseStore()
+
     const props = defineProps({
         subItem: Object
     })
     const {subItem: { houseIndex, title, route, func, params: {mode, type, new_}}} = props
 
     const emits = defineEmits(['on-touch'])
-
+    
     const goSearch = ($event, houseIndex) => {
+        if (conditionStore.houseIndex !== houseIndex) {
+            houseStore.houseListLoaded = false
+        }
         if (houseIndex) {
             conditionStore.houseIndex = houseIndex
         }
@@ -34,7 +40,6 @@
         } else {
             func(`${route}/${mode}`)
         }
-        
     }
 
     const deactivate = ($event, houseIndex) => {

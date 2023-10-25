@@ -54,9 +54,11 @@
 			<MyTag>検索結果</MyTag>
 			<span class="result-indicator">以下の<b>{{ houseList.length }}</b>件を探しました</span>
 
-			<div class="exhibit">
+			<div class="exhibit" v-if="houseStore.houseListLoaded">
 				<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 			</div>
+			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
+
 			<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
 		</div>
 	</div>
@@ -69,7 +71,7 @@
 	import MySidebar from './MySidebar.vue'
 	import Pager from '@/components/functional/Pager.vue'
 
-	import { ref, watch, computed, inject, onMounted } from 'vue';
+	import { ref, watch, computed, inject } from 'vue';
     import { useRoute } from 'vue-router';
     const route = useRoute()
 	import { useHouseStore } from "@/stores/house"
@@ -77,11 +79,6 @@
 
 	import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
-
-	// 进入组件时，往下scroll一点来隐藏Header
-	onMounted(() => {
-		window.scrollTo(0,112)
-	})
 
 	// 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
@@ -92,7 +89,7 @@
     })
 
 	// 根据housetype获取各种条件数据
-	import condition from './condition'
+	import condition from '@/assets/js/condition.js'
 	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
 	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
     const moreConditionsCheckBox = ref(condition.moreConditionsCheckBox[houseIndex.value])
@@ -116,16 +113,19 @@
 		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
 	}
     watch(() => route.params, (newVal) => {
-		cityIndex.value = newVal.cityIndex
-		mode.value = newVal.mode
-		house_type.value = newVal.house_type
-		new_.value = newVal.new_
-
+		params["city"] = cityIndex.value = newVal.cityIndex
+		params["mode"] = mode.value = newVal.mode
+		params["house_type"] = house_type.value = newVal.house_type
+		params["new"] = new_.value = newVal.new_
 		// 根据房屋类型渲染
+		fixedConditions.value = condition.fixedConditionsSelect[houseIndex.value]
 		moreConditionsSelect.value = condition.moreConditionsSelect[houseIndex.value]
 		moreConditionsCheckBox.value = condition.moreConditionsCheckBox[houseIndex.value]
 		getNoConditionHouseList()
-    })
+    }, 
+	{
+		immediate: true
+	})
 	
 	// 显示更多条件
 	const showMore = ref(false)
@@ -134,6 +134,7 @@
 	const userInput = ref({})
 	import { useCollectSelect, useCollectCheckbox } from "@/composition/collect.js"
 	const submitForm = () => {
+		houseStore.houseListLoaded = false
 		// 1.收集表单数据
 		// 1.1 收集fixed条件数据
 		fixedConditions.value.forEach((item, index) => {
@@ -145,9 +146,11 @@
 			}
 		})
 		// 1.2 收集select条件数据
-		if (houseIndex.value !== 7) {
+		const lessTypeHouseIndexes = {4:4, 7:7, 8:8, 9:9}
+		if (!(houseIndex.value in lessTypeHouseIndexes)) {
+			console.log(moreConditionsSelect)
 			moreConditionsSelect.value.forEach((item) => {
-			useCollectSelect(userInput, item)
+				useCollectSelect(userInput, item)
 			})
 			// 1.3 收集checkbox条件数据
 			moreConditionsCheckBox.value.forEach((item) => {
@@ -161,8 +164,6 @@
 				delete params[key]
 			}
 		})
-		params.forEach
-		
 		// 3.发送请求
 		console.log(params)
 		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
@@ -192,6 +193,8 @@
 			}
 		})
     }
+
+	// TODO: 点击空白处隐藏侧边栏功能
 
 	// 获取房屋列表的activePageNum
 	const getActivePageNum = (activePageNum) => {
@@ -363,6 +366,11 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: flex-start;
+		}
+
+		.loading {
+			display: block;
+			margin: 0 auto;
 		}
 	}
 

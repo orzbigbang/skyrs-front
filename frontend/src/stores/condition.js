@@ -13,6 +13,7 @@ export const useConditionStore = defineStore("condition", () => {
 	const houseIndex = ref(1)
 	const activeFCIndex = ref(0)
 	const queryType = ref("any")
+	const isFunctionTriggered = ref(false)
 
 	return {
 		city,
@@ -26,5 +27,6 @@ export const useConditionStore = defineStore("condition", () => {
 		houseIndex,
 		activeFCIndex,
 		queryType,
+		isFunctionTriggered,
 	};
 });

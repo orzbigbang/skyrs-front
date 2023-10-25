@@ -23,6 +23,8 @@ const apiURL = {
     estate: `${baseURL}estate`,
     addFavorate: `${baseURL}favorite/`,
     getUser: `${baseURL}user`,
+    query: `${baseURL}contact_info/`,
+    upload: `${baseURL}estate-upload/`,
 }
 app.provide('apiURL', apiURL);
 

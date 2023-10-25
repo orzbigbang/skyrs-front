@@ -31,7 +31,7 @@
                     <div class="divider"></div>
                 </li>
 
-                <div class="contact-method" @click="modalStore.showQuerySelection">
+                <div class="contact-method" @click="() => {modalStore.isQuerySelection = true}">
                     <fa icon="envelope"/>
                     お問い合わせ
                 </div>
@@ -59,7 +59,7 @@
                     <div class="icons-outer">
                         <ul class="icons">
                             <li class="icon-wrapper" v-for="icon in row.items">
-                                <i class="icon" :style="{backgroundPosition: `${icon.offset}px 0`}"></i>
+                                <i class="icon" :style="icon.offset? {backgroundPosition: `${icon.offset}px 0`}: {}"></i>
                                 <div class="icon-title">{{ icon.title }}</div>
                             </li>
                         </ul>
@@ -104,20 +104,20 @@
                 </span>
                 <div class="wrapper">
                     <label>
-                        <input type="radio" name="query-type">
+                        <input type="radio" name="query-type" value="最新の空室状況を知りたい" v-model="queryTypeStr">
                         最新の空室状況を知りたい
                     </label>
                     <label>
-                        <input type="radio" name="query-type">
+                        <input type="radio" name="query-type" value="実際に見学したい " v-model="queryTypeStr">
                         実際に見学したい
 
                     </label>
                     <label>
-                        <input type="radio" name="query-type" checked>
+                        <input type="radio" name="query-type" value="お問い合わせ" v-model="queryTypeStr">
                         その他の問い合わせ
                     </label>
                 </div>
-                <div class="contact-method"  @click="modalStore.showQuerySelection">
+                <div class="contact-method"  @click="() => {modalStore.isQuerySelection = true}">
                     <fa icon="envelope"/>
                     お問い合わせ
                 </div>
@@ -134,19 +134,19 @@
     </div>
 
     <ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
-		<HouseQuery></HouseQuery>
+		<HouseQuery :queryType="queryType" :queryTypeStr="queryTypeStr"></HouseQuery>
     </ModalBox>
 </template>
     
 <script setup>
+    import HouseCard from "../search page/HouseCard.vue";
+    import ModalBox from '@/components/functional/ModalBox.vue';
     import MyTag from '@/components/functional/MyTag.vue';
     import KeyValue from './KeyValue.vue'
     import KeyValue1 from './KeyValue1.vue'
-    import HouseCard from "../search page/HouseCard.vue";
-    import ModalBox from '@/components/functional/ModalBox.vue';
 	import HouseQuery from './HouseQuery.vue';
 
-    import { ref, computed, inject, toRefs, watch } from 'vue';
+    import { ref, computed, inject, toRefs } from 'vue';
     import { useRoute } from 'vue-router'
     const route = useRoute()
 
@@ -194,6 +194,21 @@
     const googleMapUrl = computed(() => {
         return `https://www.google.com/maps?q=${dpStore.address}&output=embed`
     })
+
+    // get query type
+    const queryTypeStr =ref("お問い合わせ")
+    const queryType =ref("any")
+    switch (queryTypeStr.value) {
+        case "最新の空室状況を知りたい":
+            queryType.value = "empty"
+            break
+        case "実際に見学したい":
+            queryType.value = "see"
+            break
+        case "お問い合わせ":
+            queryType.value = "any"
+            break
+    }
     
     // get recommend house list
     import recommendHouseLists from "./recommendHouseList"
@@ -209,6 +224,7 @@
         }
 
         .kv-wrapper {
+            max-width: 983px;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -426,7 +442,7 @@
                         .icon {
                             width: 40px;
                             height: 40px;
-                            background: url('./jingling.png');
+                            background: url('@/assets/imgs/jingling.png');
                             background-position: 40px 0;
                         }
 

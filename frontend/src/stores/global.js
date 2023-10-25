@@ -1,8 +1,13 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useGlobalStore = defineStore('global', () => {
   const isNavFooter = ref(true)
 
-  return { isNavFooter }
+  const fcMask = ref(false)
+
+  return { 
+    isNavFooter,
+    fcMask 
+  }
 })

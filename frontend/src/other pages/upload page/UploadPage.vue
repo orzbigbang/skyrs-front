@@ -1,7 +1,7 @@
 <template>
     <nav>
-        <router-link to="/upload/upload"><button>修改主页</button></router-link>
-        <router-link to="/upload/modify"><button>上传房屋</button></router-link>
+        <router-link to="/upload/modify"><button>修改主页</button></router-link>
+        <router-link to="/upload/upload"><button>上传房屋</button></router-link>
         <button @click="downloadExcel">下载房屋上传模板</button>
     </nav>
     

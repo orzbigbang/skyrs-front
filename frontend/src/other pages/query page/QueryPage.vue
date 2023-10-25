@@ -4,21 +4,7 @@
             <form>
                 <div class="type block">
                     <div class="title">
-                        相談タイプ
-                    </div>
-                    <div class="radio-wrapper">
-                        <label>
-                            <input type="radio" name="type" value="sell" v-model="userInput.query_type">
-                            売買のお問い合わせ
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="rent" v-model="userInput.query_type">
-                            賃貸のお問い合わせ
-                        </label>
-                        <label>
-                            <input type="radio" name="type" value="any" v-model="userInput.query_type">
-                            ただのお問い合わせ
-                        </label>
+                        {{ queryTypeStr }}
                     </div>
                 </div>
                 
@@ -75,27 +61,49 @@
 
                 <div class="query block">
                     <div class="title">
-                        ご相談内容 <span>※必須項目</span>
+                        お問い合わせ内容 <span>※必須項目</span>
                     </div>
                     <div class="query-wrapper wrapper">
                         <textarea class="query-input" cols="60" rows="8" required v-model="userInput.query_content"></textarea>
                     </div>
                 </div>
 
-                <button id="submit" @click.prevent="console.log(userInput)">送信</button>
+                <button id="submit" @click.prevent="goQuery">送信</button>
             </form>
         </div>
     </div>
 </template>
     
 <script setup>
-    import { ref, watch } from 'vue';
+    import { ref, watch, inject } from 'vue';
+    import { useHeader } from '@/composition/userInfo.js'
     import { useRoute } from 'vue-router'
     const route = useRoute()
 
+    import { useQueryStore } from '@/stores/query.js'
+    const queryStore = useQueryStore()
+
+    const queryTypeStr = ref("")
+
     watch(() => route.params, (newVal) => {
+        showQueryType(newVal.mode)
         userInput.value.query_type = newVal.mode
     })
+
+    const showQueryType = (type) => {
+        switch (type) {
+            case "sell":
+                queryTypeStr.value = "売買のお問い合わせ"
+                break
+            case "rent":
+                queryTypeStr.value = "賃貸のお問い合わせ"
+                break
+            case "any":
+                queryTypeStr.value = "お問い合わせ"
+                break
+        }
+    }
+    showQueryType("any")
 
     const userInput = ref({
         query_type: "any",
@@ -108,6 +116,14 @@
         contact_type: "any",
         query_content: "",
     })
+
+    const apiURL = inject('apiURL');
+    const url = apiURL.query
+    const header = useHeader()
+    const body = {}
+    const goQuery = () => {
+        queryStore.postQuery(url, body, header)
+    }
 </script>
     
 <style scoped  lang='less'>

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 // import components
 import MyContent from "@/components/content/MyContent.vue";
@@ -7,7 +7,7 @@ import MyContent from "@/components/content/MyContent.vue";
 import { useGlobalStore } from "@/stores/global";
 
 const router = createRouter({
-	history: createWebHashHistory(import.meta.env.BASE_URL),
+	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: "/",
@@ -25,9 +25,9 @@ const router = createRouter({
 			component: () => import("@/other pages/query page/QueryPage.vue"),
 		},
 		{
-			path: "/info/:infoType",
-			name: "info",
-			component: () => import("@/other pages/info page/InfoPage.vue"),
+			path: "/policy/:policyype",
+			name: "policy",
+			component: () => import("@/other pages/policy page/PolicyPage.vue"),
 		},
 		{
 			path: "/upload",
@@ -69,7 +69,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	window.scrollTo(0, 0);
+	document.body.scrollTo(0, 0);
 	next();
 });
 

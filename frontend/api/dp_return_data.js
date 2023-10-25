@@ -163,7 +163,7 @@ const dp3 = {
     highlights: {
         selling_price: "160,000円",  // 千分位逗号分隔，后面加“円”
         layout: "1LDK",
-        total_building_area: "40.83㎡"  // 后面加“㎡”
+        land_area: "40.83㎡"  // 后面加“㎡”
     },
     bases: {
         other_fee: "xxx 16,000円 xxx 1,000円",
@@ -236,7 +236,7 @@ const dp4 = {
     highlights: {
         selling_price: "160,000円",  // 千分位逗号分隔，后面加“円”
         layout: "1LDK",
-        total_building_area: "40.83㎡"  // 后面加“㎡”
+        land_area: "40.83㎡"  // 后面加“㎡”
     },
     bases: {
         other_fee: "xxx 16,000円 xxx 1,000円",
@@ -388,7 +388,7 @@ const dp6 = {
         renting_price: "160,000円", // 千分位逗号分隔，后面加“円”
         management_fee: "15,000円", // 千分位逗号分隔，后面加“円”
         layout: "1LDK",
-        exclusive_area: "40.83㎡"  // 后面加“㎡”
+        land_area: "40.83㎡"  // 后面加“㎡”
     },
     bases: {
         deposit: "160,000円",  // 千分位逗号分隔，后面加“円”。

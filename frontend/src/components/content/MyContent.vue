@@ -15,7 +15,6 @@
 </script>
 
 <style scoped lang="less">
-
     .item:nth-child(2n) {
         margin-bottom: 50px;
     }
