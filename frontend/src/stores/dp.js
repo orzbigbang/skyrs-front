@@ -5,18 +5,19 @@ import info from '@/assets/js/info'
 import { useConditionStore } from '@/stores/condition'
 const conditionStore = useConditionStore()
 
+import { hostURL } from '@/composition/api.js'
 
 export const useDPStore = defineStore("dp", () => {
     const title = ref("レジディア神田東  602")
     const faved = ref(false)
     const highlights = ref(info.highlights[conditionStore.houseIndex])
     const images = ref([
-        "/imgs/img_thumbnail (1).jfif",
-        "/imgs/img_thumbnail (2).jfif",
-        "/imgs/img_thumbnail (3).jfif",
-        "/imgs/img_thumbnail (4).jfif",
-        "/imgs/img_thumbnail (5).jfif",
-        "/imgs/img_thumbnail (6).jfif",
+        // "/imgs/img_thumbnail (1).jfif",
+        // "/imgs/img_thumbnail (2).jfif",
+        // "/imgs/img_thumbnail (3).jfif",
+        // "/imgs/img_thumbnail (4).jfif",
+        // "/imgs/img_thumbnail (5).jfif",
+        // "/imgs/img_thumbnail (6).jfif",
     ])
     const bases = ref(info.bases[conditionStore.houseIndex])
     const bpTitle = ref("徒歩圏内にスーパーや公園、保育園、小学校などが揃う、子育て世帯にうれしい環境。ショッピングモール「BiVi南千住」も生活圏内です")
@@ -52,7 +53,6 @@ export const useDPStore = defineStore("dp", () => {
         "女性限定"
     ])
     const address = ref("")
-    
     // 获取DP信息
     const getDP = (url, params, headers) => {
         // params: {}
@@ -106,6 +106,14 @@ export const useDPStore = defineStore("dp", () => {
                     otherInfoList.value = response.otherInfoList
                     // 更新地址
                     address.value = response.bases.address
+                    // 更新图片
+                    const imgs = []
+                    Object.values(response.img).forEach((item) => {
+                        if (item) {
+                            imgs.push(hostURL + item)
+                        }
+                    })
+                    images.value = imgs
                 })()
             }
         ).catch(

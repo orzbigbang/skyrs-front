@@ -1,22 +1,29 @@
 <template>
     <header class="bbc">
-        <div class="logo-wrapper">
-            <img class="logo" src="@/assets/icon/logo.png" @click="router.push('/')">
-            <Baloon/>
-            <div class="city-selection" @click="showCity">
-                {{ conditionStore.city }}
-                <fa icon="angle-down"/>
+        <div class="logo-wrapper-outter">
+            <div class="logo-wrapper">
+                <img class="logo" src="@/assets/icon/logo.png" @click="router.push('/')">
+                <Baloon/>
             </div>
+            <HeaderItem id="area-selection" class="area-selection abc" :item="citySelectionFunc" @click="showCity">
+                <span class="fc abc" style="font-weight: bold;">{{ conditionStore.city }}</span>
+                <div class="area-list" v-if="isCitySelection">
+                    <ul class="city-list">
+                        <li class="city fc" v-for="city in cities" @click="setCity($event, city)">
+                            {{ city.title }}
+                        </li>
+                    </ul>
+                </div>
+            </HeaderItem>
         </div>
-
+        
         <div class="function-wrapper">
             <HeaderItem v-for="item in functions" :key="item.title" :item="item"  @on-click="getModalBoxTitle"/>
         </div>
     </header>
 
     <ModalBox :title="modalBoxTitle? modalBoxTitle: '都道府県の選択'" v-show="isModalShow" @on-close="onClose">
-        <city v-if="isCitySelection"></city>
-        <SearchList v-else-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"></SearchList>
+        <SearchList v-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"></SearchList>
         <DPList v-else-if="isSearchHistorySelection" v-for="history in dpHistories" :item="history"></DPList>
         <DPList v-else-if="isFavSelection" v-for="favorate in favorates" :item="favorate"></DPList>
         <Query v-else-if="isQuerySelection"></Query>
@@ -26,13 +33,12 @@
 <script setup>
     import HeaderItem from './HeaderItem.vue'
     import Baloon from './Baloon.vue';
-    import City from "./City.vue";
     import ModalBox from '@/components/functional/ModalBox.vue';
     import DPList from './DPList.vue'
     import SearchList from './SearchList.vue'
 	import Query from './Query.vue';
 
-    import { ref, toRefs } from 'vue'
+    import { ref, toRefs, onMounted, onBeforeUnmount } from 'vue'
 	
     import {useRouter, useRoute} from 'vue-router'
     const router = useRouter()
@@ -49,16 +55,38 @@
     const houseStore = useHouseStore()
     const { dpHistories, favorates } = toRefs(houseStore)
 
+    // city click event
+    const areaSelection = ref()
+    const showCityList = ($event) => {
+        const includedString = "abc"
+        console.log($event.target.className)
+        if ($event.target.className.indexOf(includedString) === -1) {
+            modalStore.isCitySelection = false
+        }
+    }
+
+    onMounted(() => {
+        window.addEventListener("click", showCityList)
+    })
+
+    onBeforeUnmount(() => {
+        window.removeEventListener("click", showCityList)
+    })
+
+    const setCity = ($event, city) => {
+        conditionStore.city = city.title
+        conditionStore.cityIndex = city.index
+        conditionStore.isCitySet = true
+        if (route.path.startsWith("/search")) {
+            modalStore.isGoNext = true
+        }
+        if (modalStore.isGoNext) {
+            router.push(`/search/${city.index}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
+        }
+    }
+    
     const showCity = () => {
-		// 如果在搜索页，则跳转路由。 如果不是，则只改变city的值
-        modalBoxTitle.value = "都道府県の選択"
-        isModalShow.value = true
-        isCitySelection.value = true
-		if (route.path.startsWith("/search")) {
-			modalStore.showCitySelection(true)
-		} else {
-			modalStore.showCitySelection()
-		}
+        isCitySelection.value = !isCitySelection.value
     }
 
     const modalBoxTitle = ref("")
@@ -70,22 +98,7 @@
     const onClose = (title) => {
         modalBoxTitle.value = title
     }
-
-	// get search History
-	// const getSearchHistory = () => {
-    //     searchHistories.value = []
-    // }
-	// const getSearchHistories = () => {
-    //     houseStore.getSearchHistories()
-    // }
-
-    // headers button definition
     const functions = [
-        // {
-        //     title: '検索履歴',
-        //     icon: 'magnifying-glass',
-        //     func: modalStore.showQuickSearchSelection,
-        // },
         {
             title: '閲覧履歴',
             icon: 'clock-rotate-left',
@@ -102,6 +115,36 @@
             func: () => {isQuerySelection.value = true},
         },
     ]
+
+    // city select function
+    const cities = [
+        {
+            title: "東京",
+            index: 1,
+            func: () => {}
+        },
+        {
+            title: "神奈川",
+            index: 2,
+            func: () => {}
+        },
+        {
+            title: "千葉",
+            index: 3,
+            func: () => {}
+        },
+        {
+            title: "埼玉",
+            index: 4,
+            func: () => {}
+        },
+    ]
+
+    const citySelectionFunc = {
+            title: 'エリアの変換',
+            icon: 'location-dot',
+            func: () => {},
+        }
 </script>
 
 <style scoped lang="less">
@@ -114,6 +157,54 @@
         justify-content: space-between;
         align-items: center;
         background-color: #fff;
+
+        .logo-wrapper-outter {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .area-selection {
+                margin-left: 20px;
+                position: relative;
+
+                .area-list {
+                    width: 126px;
+                    height: 150px;
+                    border-radius: 5px;
+                    background-color: #fff;
+                    box-shadow: 0 0 5px #666;
+                    position: absolute;
+                    left: 0;
+                    top: 50px;
+                    z-index: 10000000;
+
+                    .city-list {
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        .city {
+                            width: 100%;
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-weight: bold;
+                            transition: .1s;
+                            text-decoration: none;
+
+                            &:hover {
+                                background-color: rgb(31,78,121);
+                                border-radius: 10px;
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         .logo-wrapper {
             width: 20rem;

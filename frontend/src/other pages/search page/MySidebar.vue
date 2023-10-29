@@ -1,6 +1,14 @@
 <template>
     <Teleport to="#nav">
         <div class="sidebar" :class="{show: isShow}">
+            <div class="block">
+                前回の検索条件
+            </div>
+
+            <div class="last-search">
+                東京都、千代田区、賃貸、1LDK、10万
+            </div>
+
             <div class="trigger"  @click="isShow = !isShow">
                 <fa class="icon fc" :icon="isShow? 'angle-left': 'angle-right'"/>
             </div>
@@ -10,14 +18,6 @@
 
             <div class="fc-wrapper">
                 <FirstCondition v-for="(fc, index) in fcs" :title="fc.title" :fc="fc.values[cityIndex]" :index="index"></FirstCondition>
-            </div>
-            
-            <div class="block">
-                前回の検索条件
-            </div>
-
-            <div class="last-search">
-                東京都、千代田区、賃貸、1LDK、10万
             </div>
         </div>
     </Teleport>
@@ -65,6 +65,8 @@
         },
     ]
 
+    // fc之内的联动
+
     // 侧边栏隐藏事件
     const isShow = ref(false)
     if (!conditionStore.isFunctionTriggered) {
@@ -77,7 +79,7 @@
     
 <style scoped  lang='less'>
     .sidebar {
-        width: 200px;
+        width: 250px;
         height: 100vh;
         padding: 30px 30px;
         background-color: rgba(178, 198, 218, 0.596);
@@ -129,6 +131,7 @@
         .last-search {
             height: 50px;
             padding: 4px 5px;
+            margin-bottom: 15px;
             border: 1px dotted #ccc;
             border-radius: 5px;
             transition: .1s ease;

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper"  @click="goDP">
-        <img class="image" :src="props.item.main_pic_path">
+        <img class="image" :src="hostURL + props.item.main_pic_url">
         <div class="info-wrapper">
             <span class="name">{{ props.item.name }}</span>
             <span>{{ props.item.address }}</span>
@@ -24,6 +24,8 @@
 
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
+
+    import { hostURL } from '@/composition/api.js'
 
     const apiURL = inject('apiURL');
 

@@ -84,7 +84,7 @@
                 line-height: 40px;
                 text-align: center;
                 color: #fff;
-                background-color: rgb(31,78,121);
+                background-color: rgb(69, 119, 167);
                 border-radius: 10px;
                 margin-bottom: 10px;
                 transition: .1s;

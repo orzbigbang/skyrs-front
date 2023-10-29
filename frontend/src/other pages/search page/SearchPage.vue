@@ -3,6 +3,8 @@
 	<div class="search-condition">
 		<div class="container">
 			<MyTag>検索条件</MyTag>
+			<span class="result-indicator"><b>{{ houseType }}</b>の検索条件でございます</span>
+
 			<div class="search-wrapper">
 				<SearchCondition v-for="condition in fixedConditions" :key="condition.title" :condition="condition">
 					<label v-if="condition.type === 'checkbox'" v-for="value in condition.values">
@@ -83,12 +85,36 @@
 	// 使用 inject 访问全局变量
     const apiURL = inject('apiURL');
 
-	// get house type
+	// get house index
 	const houseIndex = computed(() => {
 		return conditionStore.houseIndex
     })
 
-	// 根据housetype获取各种条件数据
+	// get house type
+	const houseType = computed(() => {
+		switch (houseIndex.value) {
+			case 1:
+				return "売買中古マンション"
+			case 2:
+				return "売買新築未入居マンション"
+			case 3:
+				return "売買中古一戸建て"
+			case 4:
+				return "売買新築一戸建て"
+			case 5:
+				return "売買土地"
+			case 6:
+				return "賃貸賃貸マンションアパート"
+			case 7:
+				return "賃貸賃貸一戸建て"
+			case 8:
+				return "賃貸土地"
+			case 9:
+				return "賃貸駐車場"
+		}
+	})
+
+	// 根据houseIndex获取各种条件数据
 	import condition from '@/assets/js/condition.js'
 	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
 	const moreConditionsSelect = ref(condition.moreConditionsSelect[houseIndex.value])
@@ -122,6 +148,7 @@
 		moreConditionsSelect.value = condition.moreConditionsSelect[houseIndex.value]
 		moreConditionsCheckBox.value = condition.moreConditionsCheckBox[houseIndex.value]
 		getNoConditionHouseList()
+		// submitForm()
     }, 
 	{
 		immediate: true
@@ -168,7 +195,7 @@
 		console.log(params)
 		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
 	}
-	submitForm()
+	// submitForm()
 
 	// 表单重置功能
     const reset = () => {
@@ -205,6 +232,12 @@
 <style scoped lang="less">
 	.container {
 		width: 65%;
+	}
+
+	.result-indicator {
+		display: block;
+		margin-bottom: 10px;
+		color: #666;
 	}
 	.search-wrapper {
 		padding-top: 5px;
@@ -353,12 +386,6 @@
 		background-color: #fff;
 		box-shadow: 0 4px 5px #ccc,
                     0 -4px 5px #ccc;
-
-		.result-indicator {
-			display: block;
-			margin-bottom: 10px;
-			color: #666;
-		}
 
 		.exhibit {
 			border-top: 1px solid #ccc;

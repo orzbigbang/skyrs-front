@@ -9,74 +9,42 @@
 <script setup>
     import NavItem from '@/components/nav/NavItem.vue'
 
-    import { useRouter } from "vue-router"
-    const router = useRouter()
-
-    import { useModalStore } from '@/stores/modal';
-    const modalStore = useModalStore()
-
-    import { useConditionStore } from '@/stores/condition';
-    const conditionStore = useConditionStore()
-    
-    // 导航栏点击事件
-    const buyFunc = () => {
-        conditionStore.mode = "sell"
-        modalStore.showCitySelection(true)
-    }
-
-    const rentFunc = () => {
-        conditionStore.mode = "rent"
-        modalStore.showCitySelection(true)
-    }
-    
-    const sellFunc = (path) => {
-        router.push(path)
-    }
-
-    const rentOutFunc = (path) => {
-        router.push(path)
-    }
-
-    const queryFunc = (path) => {
-        router.push(path)
-    }
-
     const items = [
         {
             title:'買いたい',
             subItem: [
-                {title:'中古マンション', type:"search", func: buyFunc, route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
-                {title:'新築未入居マンション', type:"search", func: buyFunc, route: "/search", houseIndex: 2, params: {mode: "sell", type: "mansion", new_: "y"}},
-                {title:'中古一戸建て', type:"search", func: buyFunc, route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
-                {title:'新築一戸建て', type:"search", func: buyFunc, route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
-                {title:'土地', type:"search", func: buyFunc, route: "/search", houseIndex: 7, params: {mode: "sell", type: "land", new_: "any"}},
+                {title:'中古マンション', type:"search", route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
+                {title:'新築未入居マンション', type:"search", route: "/search", houseIndex: 2, params: {mode: "sell", type: "mansion", new_: "y"}},
+                {title:'中古一戸建て', type:"search", route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
+                {title:'新築一戸建て', type:"search", route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
+                {title:'土地', type:"search", route: "/search", houseIndex: 7, params: {mode: "sell", type: "land", new_: "any"}},
             ]
         },
         {
             title:'売りたい',
             subItem: [
-                {title:'無料査定依頼', type:"query", func: sellFunc, queryType: 1, route: "/query", params: {mode: "sell"}},
+                {title:'無料査定依頼', type:"query", queryType: 1, route: "/query", params: {mode: "sell"}},
             ]
         },
         {
             title:'借りたい',
             subItem: [
-                {title:'賃貸マンションアパート', type:"search", func: rentFunc, route: "/search", houseIndex: 5, params: {mode: "rent", type: "mansion", new_: "n"}},
-                {title:'賃貸一戸建て', type:"search", func: rentFunc, route: "/search", houseIndex: 6, params: {mode: "rent", type: "one", new_: "n"}},
-                {title:'土地', type:"search", func: rentFunc, route: "/search", houseIndex: 8, params: {mode: "rent", type: "land", new_: "n"}},
-                {title:'駐車場', type:"search", func: rentFunc, route: "/search", houseIndex: 9, params: {mode: "rent", type: "parking", new_: "n"}},
+                {title:'賃貸マンションアパート', type:"search", route: "/search", houseIndex: 5, params: {mode: "rent", type: "mansion", new_: "n"}},
+                {title:'賃貸一戸建て', type:"search", route: "/search", houseIndex: 6, params: {mode: "rent", type: "one", new_: "n"}},
+                {title:'土地', type:"search", route: "/search", houseIndex: 8, params: {mode: "rent", type: "land", new_: "n"}},
+                {title:'駐車場', type:"search", route: "/search", houseIndex: 9, params: {mode: "rent", type: "parking", new_: "n"}},
             ]
         },
         {
             title:'貸したい',
             subItem: [
-                {title:'貸主様相談', type:"query", func: rentOutFunc, queryType: 2, route: "/query", params: {mode: "rent"}},
+                {title:'貸主様相談', type:"query", queryType: 2, route: "/query", params: {mode: "rent"}},
             ]
         },
         {
-            title:'問い合わせ',
+            title:'お問い合わせ',
             subItem: [
-                {title:'問い合わせ', type:"query", func: queryFunc, queryType: 0, route: "/query", params: {mode: "any"}},
+                {title:'お住いの相談', type:"query", queryType: 0, route: "/query", params: {mode: "any"}},
             ]
         },
     ]

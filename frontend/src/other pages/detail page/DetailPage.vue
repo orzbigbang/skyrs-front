@@ -175,7 +175,14 @@
 
     // add to favorate
     import { useAdd2fav } from "@/composition/favorate.js"
-    const faved = ref(dpStore.faved)
+    const faved = computed({
+        get() {
+            return dpStore.faved
+        },
+        set(newVal) {
+            dpStore.faved = newVal
+        }
+    })
     const url = apiURL.addFavorate
     const add2fav = () => {useAdd2fav(faved, url, houseID)}
 

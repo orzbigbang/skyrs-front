@@ -1,14 +1,13 @@
 <template>
     <div class="outer container">
-        <div class="title">
-            上传房屋
-            <div class="description">把excel和图片打包成zip文件，再上传</div>
-            <form>
-                <input type="file" name="file" @change="handleFileChange($event)">
-                <button class="upload" @click.prevent="uploadZipFile">Upload Zip</button>
-            </form>
-        </div>
-        <div class="result">
+        <h3 class="title block">物件情報のアップロード</h3>
+        <p class="description block">Excelと画像（imgフォルダーにまとめる）をZIPファイルにしてアップロード</p>
+        <button class="block" @click="downloadExcel">Execlフォーマットをダウンロード</button>
+        <form class="block">
+            <input type="file" name="file" @change="handleFileChange($event)">
+            <button class="upload block" @click.prevent="uploadZipFile">Upload Start</button>
+        </form>
+        <div class="result block">
             <span v-if="startUpload">uploading...</span>
             <span>{{ uploadStatus }}</span>
         </div>
@@ -41,5 +40,14 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    button {
+        width: 250px;
+        height: 30px;
+    }
+
+    .block {
+        margin-top: 20px;
     }
 </style>

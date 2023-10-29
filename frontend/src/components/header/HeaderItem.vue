@@ -1,7 +1,10 @@
 <template>
-    <div class="outer" @click="showModal">
-        <fa class="icon fc" :icon="icon"/>
-        <span class="fc">{{ title }}</span>
+    <div class="outer abc" @click="showModal">
+        <slot></slot>
+        <div class="wrapper abc">
+            <fa class="icon fc abc" :icon="icon"/>
+            <span class="fc abc">{{ title }}</span>
+        </div>
     </div>
 </template>
 
@@ -43,7 +46,7 @@
         margin-right: 15px;
         font-size: 14px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         border: 1px solid #ccc;

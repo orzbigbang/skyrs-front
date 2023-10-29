@@ -85,11 +85,6 @@
 
     const queryTypeStr = ref("")
 
-    watch(() => route.params, (newVal) => {
-        showQueryType(newVal.mode)
-        userInput.value.query_type = newVal.mode
-    })
-
     const showQueryType = (type) => {
         switch (type) {
             case "sell":
@@ -99,11 +94,10 @@
                 queryTypeStr.value = "賃貸のお問い合わせ"
                 break
             case "any":
-                queryTypeStr.value = "お問い合わせ"
+                queryTypeStr.value = "お住まいの相談"
                 break
         }
     }
-    showQueryType("any")
 
     const userInput = ref({
         query_type: "any",
@@ -115,6 +109,14 @@
         phone: "",
         contact_type: "any",
         query_content: "",
+    })
+
+    watch(() => route.params, (newVal) => {
+        showQueryType(newVal.mode)
+        userInput.value.query_type = newVal.mode
+    },
+    {
+        immediate: true    
     })
 
     const apiURL = inject('apiURL');

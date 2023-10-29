@@ -1,6 +1,6 @@
 <template>
     <div class="house-wrapper">
-        <img class="img" :src="props.house.main_pic_path" @click="goDP">
+        <img class="img" :src="hostURL + props.house.main_pic_url" @click="goDP">
         <div class="house-info">
             <h5 class="title" @click.self="goDP">
                 {{ props.house.name }}
@@ -21,6 +21,8 @@
     import { computed, inject } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
+
+    import { hostURL } from '@/composition/api.js'
 
     const props = defineProps(
         {
@@ -65,7 +67,9 @@
         position: relative;
 
         .img {
-            width: 18rem;
+            min-width: 18rem;
+            max-width: 18rem;
+            height: 18rem;
             border: 1px solid #ddd;
             cursor: pointer;
         }

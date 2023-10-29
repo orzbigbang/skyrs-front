@@ -22,23 +22,27 @@
     const emits = defineEmits(['on-touch'])
     
     const goSearch = ($event, houseIndex) => {
+        // 触发二级菜单隐藏时间
+        emits("on-touch")
+
+        // 避免同一index重复触发
         if (conditionStore.houseIndex !== houseIndex) {
             houseStore.houseListLoaded = false
         }
+
+        // 设置houseindex
         if (houseIndex) {
             conditionStore.houseIndex = houseIndex
         }
+
+        // 跳转相应页面
         if (props.subItem.type === "search") {
             conditionStore.mode = mode
             conditionStore.type = type
             conditionStore.new_ = new_
-            if (conditionStore.isCitySet) {
-                router.push(`/search/${conditionStore.cityIndex}/${mode}/${type}/${new_}`)
-            } else {
-                func()
-            }
+            router.push(`/search/${conditionStore.cityIndex}/${mode}/${type}/${new_}`)
         } else {
-            func(`${route}/${mode}`)
+            router.push(`${route}/${mode}`)
         }
     }
 
