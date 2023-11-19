@@ -15,6 +15,7 @@
     }
 
     const urls = [
+        {title:'会社概要', func:() => router.push("/company"), type_:'0'},
         {title:'個人情報保護方針（プライバシーポリシー）', func:footerFunc, type_:'1'},
         {title:'特定個人情報保護方針', func:footerFunc, type_:'2'},
     ]

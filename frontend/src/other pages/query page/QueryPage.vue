@@ -75,7 +75,7 @@
 </template>
     
 <script setup>
-    import { ref, watch, inject } from 'vue';
+    import { ref, watch } from 'vue';
     import { useHeader } from '@/composition/userInfo.js'
     import { useRoute } from 'vue-router'
     const route = useRoute()
@@ -119,12 +119,10 @@
         immediate: true    
     })
 
-    const apiURL = inject('apiURL');
-    const url = apiURL.query
     const header = useHeader()
     const body = {}
     const goQuery = () => {
-        queryStore.postQuery(url, body, header)
+        queryStore.postQuery(body, header)
     }
 </script>
     

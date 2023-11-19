@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper"  @click="goDP">
-        <img class="image" :src="hostURL + props.item.main_pic_url">
+        <img class="image" :src="mediaURL + props.item.main_pic_url">
         <div class="info-wrapper">
             <span class="name">{{ props.item.name }}</span>
             <span>{{ props.item.address }}</span>
@@ -18,16 +18,14 @@
 </template>
     
 <script setup>
-    import { ref, inject } from 'vue'
+    import { ref } from 'vue'
     import { useRouter } from 'vue-router'
     const router = useRouter()
 
+    import { mediaURL } from '@/config/config.js'
+
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
-
-    import { hostURL } from '@/composition/api.js'
-
-    const apiURL = inject('apiURL');
 
     const props = defineProps({
         item: Object
@@ -38,16 +36,11 @@
         router.push(`/detailpage/${props.item.house_id}`)
     }
 
-    // const goSearch = () => {
-    //     modalStore.closeModalSelection()
-    //     router.push(`/detailpage/${props.item.house_id}`)
-    // }
 
     // 收藏功能
     import { useAdd2fav } from "@/composition/favorate.js"
     const faved = ref(props.item.faved)
-    const url = apiURL.addFavorate
-    const add2fav = () => {useAdd2fav(faved, url, props.item.house_id)}
+    const add2fav = () => {useAdd2fav(faved, props.item.house_id)}
 </script>
     
 <style scoped lang='less'>
@@ -155,4 +148,4 @@
             }
         }
     }
-</style>
+</style> 

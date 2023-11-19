@@ -73,7 +73,10 @@
 	import MySidebar from './MySidebar.vue'
 	import Pager from '@/components/functional/Pager.vue'
 
-	import { ref, watch, computed, inject } from 'vue';
+	import { apiURL } from '@/config/config.js'
+	const url = apiURL.estate
+
+	import { ref, watch, computed } from 'vue';
     import { useRoute } from 'vue-router';
     const route = useRoute()
 	import { useHouseStore } from "@/stores/house"
@@ -81,9 +84,6 @@
 
 	import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
-
-	// 使用 inject 访问全局变量
-    const apiURL = inject('apiURL');
 
 	// get house index
 	const houseIndex = computed(() => {
@@ -124,7 +124,6 @@
 	const houseList = computed(() => {
 		return houseStore.houseList
 	})
-	const urlGetHouseList = apiURL.estate
 	import { useHeader } from '@/composition/userInfo.js'
     const headers = useHeader()
 	
@@ -136,7 +135,7 @@
 	let params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
 	const getNoConditionHouseList = () => {
 		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
-		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
+		houseStore.getHouseList(url, params, headers, 0)
 	}
     watch(() => route.params, (newVal) => {
 		params["city"] = cityIndex.value = newVal.cityIndex
@@ -175,7 +174,6 @@
 		// 1.2 收集select条件数据
 		const lessTypeHouseIndexes = {4:4, 7:7, 8:8, 9:9}
 		if (!(houseIndex.value in lessTypeHouseIndexes)) {
-			console.log(moreConditionsSelect)
 			moreConditionsSelect.value.forEach((item) => {
 				useCollectSelect(userInput, item)
 			})
@@ -193,7 +191,7 @@
 		})
 		// 3.发送请求
 		console.log(params)
-		houseStore.getHouseList(urlGetHouseList, params, headers, 0)
+		houseStore.getHouseList(url, params, headers, 0)
 	}
 	// submitForm()
 

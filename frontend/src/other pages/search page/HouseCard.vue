@@ -1,6 +1,6 @@
 <template>
     <div class="house-wrapper">
-        <img class="img" :src="hostURL + props.house.main_pic_url" @click="goDP">
+        <img class="img" :src="mediaURL + props.house.main_pic_url" @click="goDP">
         <div class="house-info">
             <h5 class="title" @click.self="goDP">
                 {{ props.house.name }}
@@ -18,19 +18,17 @@
 </template>
     
 <script setup>
-    import { computed, inject } from 'vue'
+    import { computed } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
 
-    import { hostURL } from '@/composition/api.js'
+    import { mediaURL } from '@/config/config.js'
 
     const props = defineProps(
         {
             house: Object
         }
     )
-
-    const apiURL = inject("apiURL")
 
     // house_id
     const houseID = computed(() => props.house.house_id)
@@ -41,7 +39,6 @@
     }
 
     // add to favorate
-    import { useAdd2fav } from "@/composition/favorate.js"
     const faved = computed({
         get: () => {
             return props.house.faved
@@ -50,8 +47,8 @@
             props.house.faved = val
         }
     })
-    const url = apiURL.addFavorate
-    const add2fav = () => {useAdd2fav(faved, url, houseID.value)}
+    import { useAdd2fav } from "@/composition/favorate.js"
+    const add2fav = () => {useAdd2fav(faved, houseID.value)}
 </script>
     
 <style scoped  lang='less'>

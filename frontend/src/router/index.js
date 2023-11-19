@@ -25,9 +25,14 @@ const router = createRouter({
 			component: () => import("@/other pages/query page/QueryPage.vue"),
 		},
 		{
-			path: "/policy/:policyype",
+			path: "/policy/:policytype",
 			name: "policy",
 			component: () => import("@/other pages/policy page/PolicyPage.vue"),
+		},
+		{
+			path: "/company",
+			name: "company",
+			component: () => import("@/other pages/company page/CompanyPage.vue"),
 		},
 		{
 			path: "/upload",

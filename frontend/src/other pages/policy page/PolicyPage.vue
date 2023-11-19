@@ -11,14 +11,14 @@
     import { useRoute } from 'vue-router'
     const route = useRoute()
 
+    // 根据路由参数，获得相应的契约内容
+    import type_ from '@/assets/js/policy.js'
+
     const infoType = ref(1)
 
     watch(() => route.params, (newVal) => {
         infoType.value = newVal.infoType
     })
-
-    // 根据路由参数，获得相应的契约内容
-    import type_ from '@/assets/js/policy.js'
 </script>
     
 <style scoped  lang='less'>

@@ -1,8 +1,8 @@
 <template>
 	<div class="title">
-        <span class="eng">{{ props.eng }}</span>
-        <br>
-        <span class="jpn">{{ props.jpn }}</span>
+        <span class="eng">{{ eng }}</span>
+        <!-- <br> -->
+        <span class="jpn">{{ jpn }}</span>
 	</div>
 
 	<div class="divider">
@@ -16,6 +16,8 @@ const props = defineProps({
     eng: String,
     jpn: String,
 })
+
+const { eng, jpn } = props
 
 </script>
 

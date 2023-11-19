@@ -5,7 +5,8 @@
                 <img class="logo" src="@/assets/icon/logo.png" @click="router.push('/')">
                 <Baloon/>
             </div>
-            <HeaderItem id="area-selection" class="area-selection abc" :item="citySelectionFunc" @click="showCity">
+
+            <HeaderItem id="area-selection" class="area-selection abc" :item="citySelectionFunc" @click="() => {isCitySelection = !isCitySelection}">
                 <span class="fc abc" style="font-weight: bold;">{{ conditionStore.city }}</span>
                 <div class="area-list" v-if="isCitySelection">
                     <ul class="city-list">
@@ -22,7 +23,7 @@
         </div>
     </header>
 
-    <ModalBox :title="modalBoxTitle? modalBoxTitle: '都道府県の選択'" v-show="isModalShow" @on-close="onClose">
+    <ModalBox :title="modalBoxTitle" v-show="isModalShow">
         <SearchList v-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"></SearchList>
         <DPList v-else-if="isSearchHistorySelection" v-for="history in dpHistories" :item="history"></DPList>
         <DPList v-else-if="isFavSelection" v-for="favorate in favorates" :item="favorate"></DPList>
@@ -49,55 +50,76 @@
 
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
-    const { isModalShow, isCitySelection, isQuickSearchSelection, isSearchHistorySelection, isFavSelection, isQuerySelection, } = toRefs(modalStore)
+    const { isModalShow, isCitySelection, isQuickSearchSelection, 
+        isSearchHistorySelection, isFavSelection, isQuerySelection, } = toRefs(modalStore)
 
 	import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
     const { dpHistories, favorates } = toRefs(houseStore)
 
-    // city click event
-    const areaSelection = ref()
+    // 点击选择城市事件和隐藏事件
     const showCityList = ($event) => {
         const includedString = "abc"
-        console.log($event.target.className)
-        if ($event.target.className.indexOf(includedString) === -1) {
-            modalStore.isCitySelection = false
+        // 如果类名不包含abc的话，则关闭城市选择框
+        try {
+            if ($event.target.className.indexOf(includedString) === -1) {
+                isCitySelection.value = false
+            }
+        } catch (error) {
+            
         }
     }
-
     onMounted(() => {
         window.addEventListener("click", showCityList)
     })
-
     onBeforeUnmount(() => {
         window.removeEventListener("click", showCityList)
     })
 
+    // 设置城市
     const setCity = ($event, city) => {
         conditionStore.city = city.title
         conditionStore.cityIndex = city.index
-        conditionStore.isCitySet = true
+        // 如果路径是search开头的话，进入搜索（如果是从别的页面的话，只是设置成是，而不进入搜索）
         if (route.path.startsWith("/search")) {
-            modalStore.isGoNext = true
-        }
-        if (modalStore.isGoNext) {
             router.push(`/search/${city.index}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
         }
     }
-    
-    const showCity = () => {
-        isCitySelection.value = !isCitySelection.value
+
+    // 城市选择信息mapping
+    const cities = [
+        {
+            title: "東京",
+            index: 1,
+        },
+        {
+            title: "神奈川",
+            index: 2,
+        },
+        {
+            title: "千葉",
+            index: 3,
+        },
+        {
+            title: "埼玉",
+            index: 4,
+        },
+    ]
+
+    const citySelectionFunc = {
+        title: 'エリアの変換',
+        icon: 'location-dot',
+        func: () => {},
     }
 
+    // 模态框初始化
     const modalBoxTitle = ref("")
     const getModalBoxTitle = (title) => {
         modalBoxTitle.value = title
         isModalShow.value = true
     }
 
-    const onClose = (title) => {
-        modalBoxTitle.value = title
-    }
+    // 模态框信息mapping
     const functions = [
         {
             title: '閲覧履歴',
@@ -115,36 +137,6 @@
             func: () => {isQuerySelection.value = true},
         },
     ]
-
-    // city select function
-    const cities = [
-        {
-            title: "東京",
-            index: 1,
-            func: () => {}
-        },
-        {
-            title: "神奈川",
-            index: 2,
-            func: () => {}
-        },
-        {
-            title: "千葉",
-            index: 3,
-            func: () => {}
-        },
-        {
-            title: "埼玉",
-            index: 4,
-            func: () => {}
-        },
-    ]
-
-    const citySelectionFunc = {
-            title: 'エリアの変換',
-            icon: 'location-dot',
-            func: () => {},
-        }
 </script>
 
 <style scoped lang="less">
@@ -161,6 +153,7 @@
         .logo-wrapper-outter {
             display: flex;
             flex-direction: row;
+            justify-content: center;
             align-items: center;
             .area-selection {
                 margin-left: 20px;
@@ -263,6 +256,10 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+
+            // .logo-wrapper-outter {
+            //     transform: translateX(80px);
+            // }
 
             .logo-wrapper {
                 margin-left: -150px;

@@ -17,13 +17,10 @@
 <script setup>
     import { uploadZip } from "@/composition/upload.js"
 
-    import { ref, inject } from 'vue'
+    import { ref } from 'vue'
 
     const uploadStatus = ref("")
     const startUpload = ref(false)
-
-    const apiURL = inject('apiURL')
-    const url = apiURL.upload
 
     let zipFile
     const handleFileChange = ($event) => {
@@ -31,7 +28,7 @@
     }
 
     const uploadZipFile = () => {
-        uploadStatus.value = uploadZip(zipFile, url)
+        uploadStatus.value = uploadZip(zipFile)
     }
 </script>
     

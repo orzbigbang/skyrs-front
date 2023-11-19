@@ -23,11 +23,8 @@
         }
     )
 
-    const emits = defineEmits(['on-close'])
-
     const closeModalSelection = () => {
         modalStore.closeModalSelection()
-        emits("on-close", "都道府県の選択")
     }
 
     const closeModalSelectionX = ($event) => {

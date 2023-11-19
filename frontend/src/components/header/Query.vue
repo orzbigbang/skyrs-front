@@ -77,7 +77,7 @@
 </template>
     
 <script setup>
-    import { ref, inject } from 'vue';
+    import { ref } from 'vue';
 
     import { useHeader } from '@/composition/userInfo.js'
 
@@ -98,16 +98,14 @@
         query_content: "",
     }
 
-    const apiURL = inject('apiURL');
-    const url = apiURL.query
     const header = useHeader()
     const goQuery = () => {
         queryStore.postQuery(url, userInput, header)
     }
 
-    // queryStore.getQuery(url, header)
-    // queryStore.getQueryAdmin(url, header)
-    // queryStore.getQueryAdmin(url, header, header)
+    // queryStore.getQuery(header)
+    // queryStore.getQueryAdmin(header)
+    // queryStore.getQueryAdmin(header, header)
 </script>
     
 <style scoped  lang='less'>

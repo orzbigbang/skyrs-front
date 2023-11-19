@@ -125,12 +125,12 @@
             </div>
         </div>
 
-        <MyTag>おすすめ部屋</MyTag>
+        <!-- <MyTag>おすすめ部屋</MyTag>
         <ul class="recommend-wrapper block">
             <li v-for="house in recommendHouseList">
                 <HouseCard :keys="house.title" :house="house"/>
             </li>
-        </ul>
+        </ul> -->
     </div>
 
     <ModalBox :title="'お問い合わせ'" v-show="modalStore.isQuerySelection">
@@ -146,7 +146,7 @@
     import KeyValue1 from './KeyValue1.vue'
 	import HouseQuery from './HouseQuery.vue';
 
-    import { ref, computed, inject, toRefs } from 'vue';
+    import { ref, computed, toRefs } from 'vue';
     import { useRoute } from 'vue-router'
     const route = useRoute()
 
@@ -163,8 +163,8 @@
     const {title, highlights, images, bases, icons, otherInfoTable, bpTitle, bpDesc, bulletPoints, otherInfoList} = toRefs(dpStore)
     
     // get house data
-    const apiURL = inject("apiURL")
     import { useHeader } from '@/composition/userInfo.js'
+    import { apiURL } from '@/config/config.js'
     const headers = useHeader()
     const getHouseData = () => {
         const url = `${apiURL.estate}/${houseID}`
@@ -184,7 +184,7 @@
         }
     })
     const url = apiURL.addFavorate
-    const add2fav = () => {useAdd2fav(faved, url, houseID)}
+    const add2fav = () => {useAdd2fav(faved, houseID)}
 
     // carousel function
     const activeImageIndex = ref(0)

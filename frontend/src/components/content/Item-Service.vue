@@ -30,7 +30,7 @@
     import "swiper/css/navigation";
     import "swiper/css/pagination";
 
-    import "./swiper-style.css";
+    import "@/assets/css/swiper-style.css";
 
     // import required modules
     import {Autoplay, Navigation, Pagination}  from "swiper";

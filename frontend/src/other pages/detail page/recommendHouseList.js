@@ -1,6 +1,6 @@
 const recommendHouseList = [
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "1",
         name: "ＴＫＲ神田多町",
         price: "87,000円",
@@ -13,7 +13,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "2",
         name: "ＴＫＲ神田多町",
         price: "87,000円",
@@ -26,7 +26,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "3",
 
         name: "ＴＫＲ神田多町",
@@ -40,7 +40,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "4",
         name: "ＴＫＲ神田多町",
         price: "87,000円",
@@ -53,7 +53,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "5",
         name: "ＴＫＲ神田多町",
         price: "87,000円",
@@ -66,7 +66,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "6",
         name: "ＴＫＲ神田多町",
         price: "87,000円",
@@ -79,7 +79,7 @@ const recommendHouseList = [
         number_of_floors: "8階",
     },
     {
-        main_pic_path: "/imgs/img_thumbnail (4).jfif",
+        main_pic_url: "/imgs/img_thumbnail (4).jfif",
         house_id: "7",
         name: "ＴＫＲ神田多町",
         price: "87,000円",

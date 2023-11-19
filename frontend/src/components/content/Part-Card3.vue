@@ -1,11 +1,11 @@
 <template>
     <li class="wrapper">
-        <img class="img" :src="props.card.img">
+        <img class="img" :src="img">
         <div class="info-wrapper">
-            <span class="title">{{ props.card.title }}</span>
-            <span class="category">{{ props.card.category }}</span>
+            <span class="title">{{ title }}</span>
+            <span class="category">{{ category }}</span>
             <div class="bar"></div>
-            <p class="detail">{{ props.card.detail }}</p>
+            <p class="detail">{{ detail }}</p>
         </div>
     </li>
 </template>
@@ -14,6 +14,8 @@
     const props = defineProps({
         card: Object
     })
+
+    const { card: {img, title, category, detail} } = props
 </script>
     
 <style scoped  lang='less'>

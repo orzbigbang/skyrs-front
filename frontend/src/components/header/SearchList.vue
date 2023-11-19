@@ -18,7 +18,6 @@
 </template>
     
 <script setup>
-    import { inject } from 'vue'
     import { useRouter } from 'vue-router'
     const router = useRouter()
 

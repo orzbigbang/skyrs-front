@@ -84,7 +84,7 @@
     @media screen and (max-width:700px) {
         .wrapper {
             .nav-item {
-                width: 7rem;
+                width: 7.5rem;
                 font-size: 17px;
             }   
         }

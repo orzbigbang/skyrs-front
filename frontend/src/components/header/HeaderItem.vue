@@ -9,13 +9,10 @@
 </template>
 
 <script setup>
-    import { inject } from "vue"
-
     import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
 
     import { useHeader } from '@/composition/userInfo.js'
-	const apiURL = inject("apiURL")
     const headers = useHeader()
 
     const props = defineProps({
@@ -25,8 +22,9 @@
 
     const emits = defineEmits(['on-click'])
 
+	import { apiURL } from '@/config/config.js'
+    const url = apiURL.getUser
     const getUserHistory = () => {
-		const url = apiURL.getUser
 		const params = {}
         houseStore.getHouseList(url, params, headers, 1)
     }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { apiURL } from '@/config/config.js'
 
 // export const updateHouse = axios.patch(url, data, config={}).then(
 //     value => {
@@ -10,7 +11,8 @@ import axios from 'axios'
 //     }
 // )
 
-export const uploadZip = (zipFile, url) => {
+export const uploadZip = (zipFile) => {
+    const url = apiURL.upload
     if (zipFile) {
         const headers = {
             'Content-Type': 'multipart/form-data'

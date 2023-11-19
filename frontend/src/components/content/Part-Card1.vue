@@ -1,19 +1,21 @@
 <template>
     <div class="wrapper">
-        <img class="img" :src="props.house.img">
-        <span class="tag fc bc">{{ props.house.tag }}</span>
-        <h5 class="title">{{ props.house.title }}</h5>
-        <span class="price fc">{{ props.house.price }}</span>
-        <span class="location attr"><fa class="fa-icon" icon="location-dot"/>{{ props.house.location }}</span>
-        <span class="station attr"><fa class="fa-icon" icon="train"/>{{ props.house.station }}</span>
-        <span class="attribute attr"><fa class="fa-icon" icon="building"/>{{ props.house.attribute }}</span>
+        <img class="img" :src="img">
+        <span class="tag fc bc">{{ tag }}</span>
+        <h5 class="title">{{ title }}</h5>
+        <span class="price fc">{{ price }}</span>
+        <span class="location attr"><fa class="fa-icon" icon="location-dot"/>{{ location }}</span>
+        <span class="station attr"><fa class="fa-icon" icon="train"/>{{ station }}</span>
+        <span class="attribute attr"><fa class="fa-icon" icon="building"/>{{ attribute }}</span>
     </div>
 </template>
     
 <script setup>
-const props = defineProps({
-    house: Object
-})
+    const props = defineProps({
+        house: Object
+    })
+
+    const { house: {img, tag, title, price, location, station, attribute} } = props
     
 </script>
     
@@ -32,9 +34,10 @@ const props = defineProps({
             border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
-            transition: .1s;
+            transition: .2s;
 
             &:hover {
+                border-radius: 10px;
                 box-shadow: 0 0 10px #999 ;
             }
         }

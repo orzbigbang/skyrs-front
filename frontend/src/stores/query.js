@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { apiURL } from '@/config/config.js'
 
 export const useQueryStore = defineStore('query', () => {
-    const postQuery = (url, body, headers) => {
+    const url = apiURL.query
+    const postQuery = (body, headers) => {
         axios.post(url, body, {headers}).then(
             value => {
                 console.log(value.data)
@@ -14,7 +16,7 @@ export const useQueryStore = defineStore('query', () => {
         )
     }
 
-    const getQuery = (url, headers) => {
+    const getQuery = (headers) => {
         axios.get(url, {headers}).then(
             value => {
                 console.log(value.data)
@@ -26,7 +28,7 @@ export const useQueryStore = defineStore('query', () => {
         )
     }
 
-    const getQueryAdmin = (url, params, headers=null) => {
+    const getQueryAdmin = (params, headers=null) => {
         const config = headers? {params, headers}: {params}
         axios.get(url, config).then(
             value => {

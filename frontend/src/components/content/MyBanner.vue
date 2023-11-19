@@ -2,16 +2,20 @@
     <div class="banner-wrapper">
         <div class="container1">
             <div class="info-wrapper">
-                <span class="title">お知らせ</span>                
-                <span class="desc">ご所有不動産の売却査定価格を無料でご提案させていただきます。売却に関するご相談などもお気軽にお問合せ下さい。</span>
-                <span class="info">7cloud house©</span>
+                <span class="title">{{ info_mapping.title }}</span>                
+                <span class="desc">{{ info_mapping.desc }}</span>
+                <span class="info">{{ info_mapping.info }}</span>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-
+    const info_mapping = {
+        title: "お知らせ",
+        desc: "ご所有不動産の売却査定価格を無料でご提案させていただきます。売却に関するご相談などもお気軽にお問合せ下さい。",
+        info: "7cloud house©",
+    }
 </script>
 
 <style scoped lang="less">
@@ -21,7 +25,7 @@
         min-height: 25rem;
         aspect-ratio: 2;
         margin: 20px auto;
-        background: url('@/assets/imgs/heroimage.jpg');
+        background: url('@/assets/imgs/hp2.png');
         background-size: cover;
         box-shadow: 0 4px 5px #666;
         border-radius: 20px;
