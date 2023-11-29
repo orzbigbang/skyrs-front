@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="info-wrapper">
-            <p v-html="type_[infoType]"></p>
+            <p v-html="policy[infoType]"></p>
         </div>
     </div>
 </template>
@@ -12,12 +12,12 @@
     const route = useRoute()
 
     // 根据路由参数，获得相应的契约内容
-    import type_ from '@/assets/js/policy.js'
+    import {policy} from '@/assets/js/policy.js'
 
     const infoType = ref(1)
 
     watch(() => route.params, (newVal) => {
-        infoType.value = newVal.infoType
+        infoType.value = newVal.policytype
     })
 </script>
     

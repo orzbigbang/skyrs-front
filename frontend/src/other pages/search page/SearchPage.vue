@@ -61,6 +61,10 @@
 			</div>
 			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
 
+			<div class="exhibit" v-if="houseStore.houseListLoaded">
+				<HouseCard v-for="house in atbbHouseList" :keys="house.title" :house="house"/>
+			</div>
+
 			<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
 		</div>
 	</div>
@@ -123,6 +127,9 @@
 	// 获取无特定条件的房屋列表
 	const houseList = computed(() => {
 		return houseStore.houseList
+	})
+	const atbbHouseList = computed(() => {
+		return houseStore.atbbHouseList
 	})
 	import { useHeader } from '@/composition/userInfo.js'
     const headers = useHeader()

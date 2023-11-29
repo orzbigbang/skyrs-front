@@ -58,6 +58,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            box-shadow: 0 0 10px #444;
 
             .title {
                 margin-bottom: 10px;
@@ -71,6 +72,7 @@
                 border-top-right-radius: 20px;
                 color: rgb(31, 78, 122);
                 position: relative;
+                box-shadow: 0 2px 5px #ccc;
 
                 .close {
                     width: 30px;

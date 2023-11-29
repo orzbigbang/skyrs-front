@@ -68,13 +68,13 @@
     // fc之内的联动
 
     // 侧边栏隐藏事件
-    const isShow = ref(false)
-    if (!conditionStore.isFunctionTriggered) {
-        setTimeout(() => {
-            isShow.value = true
-        }, 300)
-        conditionStore.isFunctionTriggered = true
-    }
+    const isShow = ref(true)
+    // if (!conditionStore.isFunctionTriggered) {
+    //     setTimeout(() => {
+    //         isShow.value = true
+    //     }, 300)
+    //     conditionStore.isFunctionTriggered = true
+    // }
 </script>
     
 <style scoped  lang='less'>

@@ -1,6 +1,11 @@
 <template>
     <div class="house-wrapper">
-        <img class="img" :src="mediaURL + props.house.main_pic_url" @click="goDP">
+        <div class="img-wrapper">
+            <img class="img" :src="mediaURL + props.house.main_pic_url" @click="goDP">
+            <span class="view">
+                閲覧：{{ viewCount? viewCount: "0" }} 
+            </span>
+        </div>
         <div class="house-info">
             <h5 class="title" @click.self="goDP">
                 {{ props.house.name }}
@@ -10,7 +15,7 @@
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
             <span class="station">{{ props.house.station}}</span>
-            <span class="attribute">{{ props.house.house_struction + " / " + props.house.house_struction + " / " + props.house.number_of_floors}}</span>
+            <span class="attribute">{{ props.house.house_struction + " / " + props.house.number_of_floors}}</span>
         </div>
 
         <span class="price">{{ props.house.price }}</span>
@@ -21,6 +26,9 @@
     import { computed } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
+
+    import { useHouseStore } from '@/stores/house.js'
+    const houseStore = useHouseStore()
 
     import { mediaURL } from '@/config/config.js'
 
@@ -36,7 +44,15 @@
     // go to detail page
     const goDP = () => {
         router.push(`/detailpage/${houseID.value}`)
+
+        // see count +1
+        houseStore.addCount(props.house.house_id)
     }
+
+    // view count
+    const viewCount = computed(() => {
+        return houseStore.viewCount[props.house.house_id]
+    })
 
     // add to favorate
     const faved = computed({
@@ -63,10 +79,23 @@
 		align-items: center;
         position: relative;
 
+        .img-wrapper {
+            position: relative;
+
+            .view {
+                font-size: 12px;
+                color: #fff;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                background-color: rgba(128, 128, 128, 0.27)    ;
+            }
+        }
+
         .img {
             min-width: 18rem;
             max-width: 18rem;
-            height: 18rem;
+            height: 15rem;
             border: 1px solid #ddd;
             cursor: pointer;
         }

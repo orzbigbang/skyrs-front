@@ -41,6 +41,8 @@
             conditionStore.type = type
             conditionStore.new_ = new_
             router.push(`/search/${conditionStore.cityIndex}/${mode}/${type}/${new_}`)
+        } else if (props.subItem.type === "company") {
+            router.push(`${route}`)
         } else {
             router.push(`${route}/${mode}`)
         }

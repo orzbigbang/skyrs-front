@@ -8,7 +8,7 @@
             </h5>
             <div class="brief kv-wrapper">
                 <KeyValue v-for="highlight in highlights" :highlight="highlight"></KeyValue>
-            </div>
+            </div> 
         </div>
         <div class="carousel-wrapper block">
             <div class="carousel">

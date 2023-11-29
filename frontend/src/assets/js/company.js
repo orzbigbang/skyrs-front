@@ -21,7 +21,7 @@ export const company = [
     },
     {
         key: "事業内容",
-        value: "",
+        value: "不動産売買",
         multi: 1,
     },
     {
@@ -40,17 +40,17 @@ export const company = [
         multi: 1,
     },
     {
-        key: "所属加盟団体",
+        key: "",
         value: "共益社団法人 全国宅地建物取引業保証協会会員",
         multi: 1,
     },
     {
-        key: "所属加盟団体",
+        key: "",
         value: "共益社団法人 東日本不動産流通機構会員",
         multi: 1,
     },
     {
-        key: "所属加盟団体",
+        key: "",
         value: "共益社団法人 首都圏不動産公正取引会協議会加盟",
         multi: 1,
     },
@@ -61,8 +61,9 @@ export const company = [
     },
     {
         key: "ホームページ",
-        value: "@",
+        value: "7cloudhouse.com",
         multi: 1,
+        url: "7cloudhouse.com"
     },
     {
         key: "交通",

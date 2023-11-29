@@ -1,10 +1,10 @@
 <template>
     <MyBanner/>
-    <ItemSearch class="item"/>
+    <ItemSearch class="item search"/>
     <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-売買'" :cards="cardsSell" :url="moreSellURL"/>
     <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-賃貸'" :cards="cardsRent" :url="moreRentURL"/>
     <ItemRecommend class="item"/>
-    <ItemService class="item"/>
+    <!-- <ItemService class="item"/> -->
     <ItemStaff class="item"/>
     <MyCompany class="item"/>
 </template>
@@ -116,8 +116,12 @@
 
     .item:nth-child(2n+1) {
         padding-bottom: 50px;
-        background-color: #fff;
+        background-color: #f5f4f4;
         box-shadow: 0 4px 5px #ccc,
                     0 -4px 5px #ccc;
     }
+
+	.item.search {
+		padding-bottom: 10px;
+	}
 </style>

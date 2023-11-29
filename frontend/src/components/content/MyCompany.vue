@@ -40,9 +40,10 @@
     .my-company {
         min-height: 250px;
         padding-top: 50px;
+        font-family: 'Noto Serif JP', sans-serif;
 
         .company-info {
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -105,7 +106,7 @@
 
             .map-wrapper {
                 width: 80%;
-                height: 450px;
+                height: 320px;
                 margin: 20px 0;
                 border: 1px solid #ccc;
             } 

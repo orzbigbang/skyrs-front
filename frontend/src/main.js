@@ -18,16 +18,6 @@ library.add(faUserSecret, faTrain, faLocationDot, faHouse, faCaretDown, faSchool
 
 const app = createApp(App)
 
-import { baseURL } from '@/config/config.js'
-const apiURL = {
-    estate: `${baseURL}estate`,
-    addFavorate: `${baseURL}favorite/`,
-    getUser: `${baseURL}user`,
-    query: `${baseURL}contact_info/`,
-    upload: `${baseURL}estate-upload/`,
-}
-app.provide('apiURL', apiURL);
-
 app.component('fa', FontAwesomeIcon)
 app.use(router)
 app.use(createPinia())

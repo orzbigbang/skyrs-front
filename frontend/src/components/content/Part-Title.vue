@@ -25,6 +25,7 @@ const { eng, jpn } = props
     .title {
         margin: 0 auto 15px;
         padding: 50px 0 0;
+        font-family: 'Noto Serif JP', sans-serif;
     }
 
     .eng {

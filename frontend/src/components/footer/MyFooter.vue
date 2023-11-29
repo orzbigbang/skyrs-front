@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <div class="url" v-for="url in urls" @click="url.func(url.type_)">
+        <div class="url" v-for="url in urls" @click="url.func">
             {{ url.title }}
         </div>
     </div>
@@ -16,8 +16,8 @@
 
     const urls = [
         {title:'会社概要', func:() => router.push("/company"), type_:'0'},
-        {title:'個人情報保護方針（プライバシーポリシー）', func:footerFunc, type_:'1'},
-        {title:'特定個人情報保護方針', func:footerFunc, type_:'2'},
+        {title:'個人情報保護方針（プライバシーポリシー）', func:() => router.push("/policy/1"), type_:'1'},
+        {title:'特定個人情報保護方針', func:() => router.push("/policy/2"), type_:'2'},
     ]
 </script>
 

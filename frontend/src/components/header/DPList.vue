@@ -58,10 +58,11 @@
         cursor: pointer;
         transition: .1s;
         position: relative;
+        box-shadow: 0 0 10px #eee;
 
         &:hover {
             // background-color: #eee;
-            box-shadow: 0 0 10px #ccc;
+            box-shadow: 0 0 10px #bbb;
         }
 
         .image {

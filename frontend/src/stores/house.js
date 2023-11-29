@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import axios from 'axios'
+import { apiURL } from '@/config/config.js'
 
 export const useHouseStore = defineStore("house", () => {
 	// 搜索页面的房屋列表
@@ -104,6 +105,7 @@ export const useHouseStore = defineStore("house", () => {
 		// 	number_of_floors: "8階",
 		// },
     ])
+	const atbbHouseList = ref([])
 
 	// 搜索页面房屋列表更新与否
 	const houseListLoaded = ref(false)
@@ -137,13 +139,53 @@ export const useHouseStore = defineStore("house", () => {
                 console.log(reason)
             }
         )
+		
+		const atbbUrl = apiURL.atbb
+		axios.get(atbbUrl, {headers}).then(
+			value => {
+				console.log(value.data)
+				atbbHouseList.value = value.data
+			}
+		).catch(
+			reason => {
+				console.log(reason)
+			}
+		)
     }
+
+	// 浏览次数加一
+	// const addCount = (house_id) => {
+	// 	const url = apiURL.count
+	// 	const body = {house_id}
+	// 	axios.post(url, body, {headers}).then(
+	// 		value => {
+	// 			console.log(value.data)
+	// 		}
+	// 	).catch(
+	// 		reason => {
+	// 			console.log(reason)
+	// 		}
+	// 	)
+	// }
+
+	const viewCount = ref({})
+
+	const addCount = (house_id) => {
+		if (viewCount.value[house_id] === undefined) {
+			viewCount.value[house_id] = 1
+		} else {
+			viewCount.value[house_id] += 1
+		}
+	}
 
     return {
         houseList,
+		atbbHouseList,
 		houseListLoaded,
 		dpHistories,
 		favorates,
         getHouseList,
+		viewCount,
+		addCount,
     }
 })
