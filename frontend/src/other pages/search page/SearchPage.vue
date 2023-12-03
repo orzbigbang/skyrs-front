@@ -1,6 +1,6 @@
 <template>
-	<MySidebar></MySidebar>
-	<div class="search-condition">
+	<!-- <MySidebar></MySidebar> -->
+	<!-- <div class="search-condition">
 		<div class="container">
 			<MyTag>検索条件</MyTag>
 			<span class="result-indicator"><b>{{ houseType }}</b>の検索条件でございます</span>
@@ -49,23 +49,24 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	
 	<div class="result">
 		<div class="container">
 			<MyTag>検索結果</MyTag>
-			<span class="result-indicator">以下の<b>{{ houseList.length }}</b>件を探しました</span>
-
-			<div class="exhibit" v-if="houseStore.houseListLoaded">
+			<span class="result-indicator" v-if="houseList.length">自社物件：以下の<b>{{ houseList.length }}</b>件を探しました</span>
+			<div class="exhibit" v-if="houseStore.houseListLoaded && houseList.length">
 				<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 			</div>
+
+			<span class="result-indicator">その他の物件：以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
+			<div class="exhibit" v-if="houseStore.houseListLoaded">
+				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
+			</div>
+			
 			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
 
-			<div class="exhibit" v-if="houseStore.houseListLoaded">
-				<HouseCard v-for="house in atbbHouseList" :keys="house.title" :house="house"/>
-			</div>
-
-			<Pager :pagerConfig="{total: 9, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
+			<Pager :pagerConfig="{total: totalPage, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
 		</div>
 	</div>
 </template>
@@ -73,6 +74,7 @@
 <script setup>
 	import MyTag from "@/components/functional/MyTag.vue";
 	import HouseCard from "./HouseCard.vue";
+	import HouseCardAtbb from "./HouseCardAtbb.vue";
 	import SearchCondition from "./SearchCondition.vue";
 	import MySidebar from './MySidebar.vue'
 	import Pager from '@/components/functional/Pager.vue'
@@ -118,6 +120,18 @@
 		}
 	})
 
+	// get atbb type
+	const atbbType = computed(() => {
+		switch (houseIndex.value) {
+			case 1:
+				return "bm"
+			case 3:
+				return "bo"
+			case 4:
+				return "rmo"
+		}
+	})
+
 	// 根据houseIndex获取各种条件数据
 	import condition from '@/assets/js/condition.js'
 	const fixedConditions = ref(condition.fixedConditionsSelect[houseIndex.value])
@@ -143,6 +157,7 @@
 	const getNoConditionHouseList = () => {
 		const params = {city: cityIndex.value, mode: mode.value, house_type: house_type.value, new: new_.value}
 		houseStore.getHouseList(url, params, headers, 0)
+		houseStore.getAtbbHouseList(params, headers, atbbType.value)
 	}
     watch(() => route.params, (newVal) => {
 		params["city"] = cityIndex.value = newVal.cityIndex
@@ -154,7 +169,6 @@
 		moreConditionsSelect.value = condition.moreConditionsSelect[houseIndex.value]
 		moreConditionsCheckBox.value = condition.moreConditionsCheckBox[houseIndex.value]
 		getNoConditionHouseList()
-		// submitForm()
     }, 
 	{
 		immediate: true
@@ -197,10 +211,9 @@
 			}
 		})
 		// 3.发送请求
-		console.log(params)
 		houseStore.getHouseList(url, params, headers, 0)
+		houseStore.getAtbbHouseList(params, headers, atbbType.value)
 	}
-	// submitForm()
 
 	// 表单重置功能
     const reset = () => {
@@ -229,9 +242,17 @@
 	// TODO: 点击空白处隐藏侧边栏功能
 
 	// 获取房屋列表的activePageNum
+	const startIndex = ref(0)
+	const endIndex = ref(20)
 	const getActivePageNum = (activePageNum) => {
-		console.log(activePageNum)
+		startIndex.value = (activePageNum - 1) * 20
+		endIndex.value = startIndex.value + 20
 	}
+
+	const totalPage = computed(() => {
+		return parseInt((houseList.value.length + atbbHouseList.value.length) / 20)
+	})
+	
 </script>
 
 <style scoped lang="less">

@@ -104,6 +104,22 @@
             title: "埼玉",
             index: 4,
         },
+        {
+            title: "栃木",
+            index: 5,
+        },
+        {
+            title: "山梨",
+            index: 6,
+        },
+        {
+            title: "長野",
+            index: 7,
+        },
+        {
+            title: "静岡",
+            index: 8,
+        },
     ]
 
     const citySelectionFunc = {
@@ -161,7 +177,7 @@
 
                 .area-list {
                     width: 126px;
-                    height: 150px;
+                    height: 250px;
                     border-radius: 5px;
                     background-color: #fff;
                     box-shadow: 0 0 5px #666;

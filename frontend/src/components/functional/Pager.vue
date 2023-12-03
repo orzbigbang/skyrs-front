@@ -21,7 +21,7 @@
         pagerConfig: Object
     })
 
-    // 亡父组件传递当前页码
+    // 往父组件传递当前页码
     const emit = defineEmits(["on-click"])
 
     // 根据activeIndex计算出页码显示方案

@@ -1,5 +1,5 @@
 <template>
-    <li class="wrapper">
+    <div class="wrapper" @click="jump2page">
         <img class="img" :src="img">
         <div class="info-wrapper">
             <span class="title">{{ title }}</span>
@@ -7,7 +7,7 @@
             <div class="bar"></div>
             <p class="detail">{{ detail }}</p>
         </div>
-    </li>
+    </div>
 </template>
     
 <script setup>
@@ -15,7 +15,11 @@
         card: Object
     })
 
-    const { card: {img, title, category, detail} } = props
+    const { card: {img, title, category, detail, url} } = props
+
+    const jump2page = () => {
+        window.open(url, "_blank")
+    }
 </script>
     
 <style scoped  lang='less'>

@@ -1,13 +1,13 @@
 <template>
     <div class="house-wrapper">
         <div class="img-wrapper">
-            <img class="img" :src="mediaURL + props.house.main_pic_url" @click="goDP">
+            <img class="img" :src="props.house.img" @click="jump2page">
             <span class="view">
                 閲覧：{{ viewCount? viewCount: "0" }} 
             </span>
         </div>
         <div class="house-info">
-            <h5 class="title" @click.self="goDP">
+            <h5 class="title" @click.self="jump2page">
                 {{ props.house.name }}
                 <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/>
             </h5>
@@ -15,22 +15,17 @@
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
             <span class="station">{{ props.house.station}}</span>
-            <span class="attribute">{{ props.house.house_struction + " / " + props.house.number_of_floors}}</span>
         </div>
 
-        <span class="price">{{ props.house.price.slice(0, -1) + "万円" }}</span>
+        <span class="price">{{ (props.house.price / 10000).toLocaleString() + "万円" }}</span>
     </div>
 </template>
     
 <script setup>
     import { computed } from 'vue'
-    import { useRouter } from "vue-router";
-    const router = useRouter()
 
     import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
-
-    import { mediaURL } from '@/config/config.js'
 
     const props = defineProps(
         {
@@ -41,12 +36,9 @@
     // house_id
     const houseID = computed(() => props.house.house_id)
 
-    // go to detail page
-    const goDP = () => {
-        router.push(`/detailpage/${houseID.value}`)
-
-        // see count +1
-        houseStore.addCount(props.house.house_id)
+    // go to atbb page
+    const jump2page = () => {
+        window.open(props.house.url, '_blank')
     }
 
     // view count
@@ -78,10 +70,6 @@
         justify-content: flex-start;
 		align-items: center;
         position: relative;
-
-        &:nth-last-child(1) {
-            border-bottom: none;
-        }
 
         .img-wrapper {
             position: relative;

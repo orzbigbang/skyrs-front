@@ -10,14 +10,22 @@
     import NavItem from '@/components/nav/NavItem.vue'
 
     const items = [
-    {
+        // {
+        //     title:'自社物件検索',
+        //     subItem: [
+        //         {title:'中古マンション', type:"search", route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
+        //         {title:'新築未入居マンション', type:"search", route: "/search", houseIndex: 2, params: {mode: "sell", type: "mansion", new_: "y"}},
+        //         {title:'中古一戸建て', type:"search", route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
+        //         {title:'新築一戸建て', type:"search", route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
+        //         {title:'土地', type:"search", route: "/search", houseIndex: 7, params: {mode: "sell", type: "land", new_: "any"}},
+        //     ]
+        // },
+        {
             title:'自社物件検索',
             subItem: [
-                {title:'中古マンション', type:"search", route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
-                {title:'新築未入居マンション', type:"search", route: "/search", houseIndex: 2, params: {mode: "sell", type: "mansion", new_: "y"}},
-                {title:'中古一戸建て', type:"search", route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
-                {title:'新築一戸建て', type:"search", route: "/search", houseIndex: 4, params: {mode: "sell", type: "one", new_: "y"}},
-                {title:'土地', type:"search", route: "/search", houseIndex: 7, params: {mode: "sell", type: "land", new_: "any"}},
+                {title:'売買マンション', type:"search", route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}},
+                {title:'売買一戸建て', type:"search", route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}},
+                {title:'賃貸マンション・一戸建て', type:"search", route: "/search", houseIndex: 4, params: {mode: "rent", type: "mansion", new_: "n"}},
             ]
         },
         // {

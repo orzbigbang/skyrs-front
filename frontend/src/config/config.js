@@ -10,5 +10,8 @@ export const apiURL = {
     query: `${baseURL}/contact_info/`,
     upload: `${baseURL}/estate-upload/`,
     count: `${baseURL}/count/`,
-    atbb: `${baseURL}/atbb/`,
+    // atbb: `${baseURL}/atbb/`,
+    atbb_bm: `http://35.72.6.170/atbb/buy_mansion`,
+    atbb_bo: `http://35.72.6.170/atbb/buy_one`,
+    atbb_rmo: `http://35.72.6.170/atbb/rent_mansion_one`,
 }

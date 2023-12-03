@@ -1,8 +1,8 @@
 <template>
     <MyBanner/>
     <ItemSearch class="item search"/>
-    <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-売買'" :cards="cardsSell" :url="moreSellURL"/>
-    <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-賃貸'" :cards="cardsRent" :url="moreRentURL"/>
+    <!-- <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-売買'" :cards="cardsSell" :url="moreSellURL"/>
+    <ItemNewHouse class="item" :eng="'new house'" :jpn="'新着物件-賃貸'" :cards="cardsRent" :url="moreRentURL"/> -->
     <ItemRecommend class="item"/>
     <!-- <ItemService class="item"/> -->
     <ItemStaff class="item"/>

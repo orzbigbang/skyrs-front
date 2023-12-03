@@ -20,21 +20,24 @@
     const cards = [
         {
             img: 'imgs/welcome_card_img_01.jpg',
-            title: '中古マンション',
+            title: '売買居住用',
             category: 'ライブラリー',
-            detail: '全国で分譲させた8.5万棟以上のマンションをご紹介します。',
+            detail: '全国で分譲させた8.5万棟以上のマンション、一戸建て物件をご紹介します。',
+            url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
         },
         {
             img: 'imgs/welcome_card_img_02.jpg',
-            title: 'プレミアムマンション',
+            title: '賃貸居住用',
             category: 'ライブラリー',
-            detail: '中古マンションライブラリーの中から住友セブンクラウドハウスがセレクトした高級マンションをご紹介します。',
+            detail: '中古マンションライブラリーの中からセブンクラウドハウスがセレクトした高級マンションをご紹介します。',
+            url: "https://asp.athome.jp/073049/shubetsu/chintai_kyojuyo/osusume"
         },
         {
             img: 'imgs/welcome_card_img_03.jpg',
-            title: 'セブンクラウドハウス販売',
-            category: 'セレクトサイト',
-            detail: 'セブンクラウドハウスが販売した代表的なマンションの魅力をご紹介します。',
+            title: 'リゾート',
+            category: 'ライブラリー',
+            detail: 'セブンクラウドハウスが販売した代表的なリゾート物件の魅力をご紹介します。',
+            url: "https://asp.athome.jp/073049/shubetsu/resort/osusume"
         },
     ]
 </script>

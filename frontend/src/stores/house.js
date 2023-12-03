@@ -106,6 +106,9 @@ export const useHouseStore = defineStore("house", () => {
 		// },
     ])
 	const atbbHouseList = ref([])
+	const atbbHouseListBM = ref([])
+	const atbbHouseListBO = ref([])
+	const atbbHouseListRMO = ref([])
 
 	// 搜索页面房屋列表更新与否
 	const houseListLoaded = ref(false)
@@ -139,19 +142,89 @@ export const useHouseStore = defineStore("house", () => {
                 console.log(reason)
             }
         )
-		
-		const atbbUrl = apiURL.atbb
-		axios.get(atbbUrl, {headers}).then(
-			value => {
-				console.log(value.data)
-				atbbHouseList.value = value.data
+    }
+
+	const filterCity = (array, cityIndex) => {
+		var cityName = "tokyo"
+		switch (cityIndex) {
+			case "1":
+				cityName = "tokyo"
+				break
+			case "2":
+				cityName = "kanagawa"
+				break
+			case "3":
+				cityName = "chiba"
+				break
+			case "4":
+				cityName = "saitama"
+				break
+			case "5":
+				cityName = "tochigi"
+				break
+			case "6":
+				cityName = "yamanashi"
+				break
+			case "7":
+				cityName = "nagano"
+				break
+			case "8":
+				cityName = "sizuoka"
+				break
+		}
+
+		return array.filter((item) => {
+			return item.city === cityName
+		})	
+	}
+
+	const getAtbbHouseList = (params, headers, atbbType) => {
+		if (atbbType === "bm" && atbbHouseListBM.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+			return
+		} else if (atbbType === "bo" && atbbHouseListBO.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+			return
+		} else if (atbbType === "rmo" && atbbHouseListRMO.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+			return
+		}
+
+		var atbbUrl = ""
+		switch (atbbType) {
+			case "bm":
+				atbbUrl = apiURL.atbb_bm
+				break
+			case "bo":
+				atbbUrl = apiURL.atbb_bo
+				break
+			case "rmo":
+				atbbUrl = apiURL.atbb_rmo
+				break
+		}
+		axios.get(atbbUrl, {params, headers}).then(
+			value => {				
+				switch (atbbType) {
+					case "bm":
+						atbbHouseListBM.value = value.data
+						atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+						break
+					case "bo":
+						atbbHouseListBO.value = value.data
+						atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+						break
+					case "rmo":
+						atbbHouseListRMO.value = value.data
+						atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+						break
+				}
 			}
 		).catch(
 			reason => {
 				console.log(reason)
 			}
 		)
-    }
+	}
 
 	// 浏览次数加一
 	// const addCount = (house_id) => {
@@ -187,5 +260,6 @@ export const useHouseStore = defineStore("house", () => {
         getHouseList,
 		viewCount,
 		addCount,
+		getAtbbHouseList
     }
 })
