@@ -229,21 +229,6 @@
                 z-index: 10;  
                 position: relative;
             }
-
-            .city-selection {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                transform: translate(100%, -60%);
-                color: #6c4ed7;
-                transition: .1s;
-                border-bottom: 1px solid #2e178100;
-
-                &:hover {
-                    color: #2e1781;
-                    border-bottom: 1px solid #2e1781;
-                }
-            }
         }
         
         .function-wrapper {
@@ -259,7 +244,6 @@
             }
             .function-wrapper {
                 margin-right: 0px;
-
             }
         }
         
@@ -273,29 +257,8 @@
             justify-content: flex-start;
             align-items: center;
 
-            // .logo-wrapper-outter {
-            //     transform: translateX(80px);
-            // }
-
             .logo-wrapper {
-                margin-left: -150px;
-            }
-        }
-    }
-
-    @media screen and (max-width:700px) {
-        header {
-            .logo-wrapper {
-                width: 16rem;
-
-                .logo {
-                    width: 16rem;
-                }
-
-                .city-selection {
-                    font-size: 13px;
-                    transform: translate(110%, -30%);
-                }
+                margin-left: -19px;
             }
         }
     }
@@ -303,7 +266,12 @@
     @media screen and (max-width:390px) {
         header {
             .logo-wrapper {
-                margin-left: -120px;
+                width: 15rem;
+                margin-left: 10px;
+
+                .logo {
+                    width: 14rem;
+                }
             }
         }
     }

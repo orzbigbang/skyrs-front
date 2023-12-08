@@ -1,4 +1,4 @@
-import{_ as s,B as o,k as n,D as i,o as a,b as l,d as e,e as p}from"./index-b832f491.js";const c={1:`<h1 style="text-align:center;font-size:28px">プライバシーポリシー（または個人情報保護方針）</h1><br><br>
+import{_ as s,l as o,i as n,s as i,o as l,b as a,d as e,e as p}from"./index-7929db4c.js";const c={1:`<h1 style="text-align:center;font-size:28px">プライバシーポリシー（または個人情報保護方針）</h1><br><br>
     株式会社セブンクラウドハウス（以下「弊社」という）、弊社の個人情報保護方針につきましては、以下をご覧ください。<br>
     当社が取得した個人情報の取扱いに関し、個人情報の保護に関する法律、個人情報保護に関するガイドライン等<br>
     の指針、その他個人情報保護に関する関係法令を遵守します。<br><br>
@@ -172,4 +172,4 @@ import{_ as s,B as o,k as n,D as i,o as a,b as l,d as e,e as p}from"./index-b832
     受付時間／10:00～13:00・14:00～17:00（火・水、祝日、ゴールデンウィーク、夏季休業日、年末年始を除く）<br>
     東京都千代田区神田佐久間町２－１３－３３藤波ビル４F<br>
     （個人情報取扱事業者）<b>株式会社セブンクラウドハウス</b><br><br>
-    2023 年 10 月 1 日 制定`};const _={class:"container"},y={class:"info-wrapper"},f=["innerHTML"],x={__name:"PolicyPage",setup(z){const t=o(),b=n(1);return i(()=>t.params,r=>{b.value=r.policytype}),(r,u)=>(a(),l("div",_,[e("div",y,[e("p",{innerHTML:p(c)[b.value]},null,8,f)])]))}},h=s(x,[["__scopeId","data-v-eb48351e"]]);export{h as default};
+    2023 年 10 月 1 日 制定`};const _={class:"container"},y={class:"info-wrapper"},f=["innerHTML"],x={__name:"PolicyPage",setup(z){const t=o(),b=n(1);return i(()=>t.params,r=>{b.value=r.policytype}),(r,u)=>(l(),a("div",_,[e("div",y,[e("p",{innerHTML:p(c)[b.value]},null,8,f)])]))}},h=s(x,[["__scopeId","data-v-eb48351e"]]);export{h as default};

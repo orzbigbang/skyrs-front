@@ -1,9 +1,9 @@
 <template>
-    <li class="sub-item" @click="goSearch($event, houseIndex)"  @touchstart.prevent="deactivate">
+    <li class="sub-item" :class="{'is-disable': disable}" @click="goSearch($event, houseIndex)" @touchstart.prevent="deactivate">
         {{ title }}
     </li>
 </template>
-    
+
 <script setup>
     import { useRouter } from 'vue-router'
     const router = useRouter()
@@ -14,14 +14,20 @@
     import { useHouseStore } from "@/stores/house"
 	const houseStore = useHouseStore()
 
+    import { useQueryStore } from "@/stores/query"
+	const queryStore = useQueryStore()
+
     const props = defineProps({
         subItem: Object
     })
-    const {subItem: { houseIndex, title, route, func, params: {mode, type, new_}}} = props
+    const {subItem: { houseIndex, title, route, func, params: {mode, type, new_}, config: {disable}}} = props
 
     const emits = defineEmits(['on-touch'])
     
     const goSearch = ($event, houseIndex) => {
+        if (disable) {
+            return
+        }
         // 触发二级菜单隐藏时间
         emits("on-touch")
 
@@ -43,7 +49,8 @@
             router.push(`/search/${conditionStore.cityIndex}/${mode}/${type}/${new_}`)
         } else if (props.subItem.type === "company") {
             router.push(`${route}`)
-        } else {
+        } else if (props.subItem.type === "query") {
+            queryStore.queryType = title
             router.push(`${route}/${mode}`)
         }
     }
@@ -65,6 +72,16 @@
             color: #fff;
             background-color: rgb(31,78,121);
             border-radius: 30px;
+        }
+
+        &.is-disable {
+            color: #aaa;
+            cursor: auto;
+
+            &:hover {
+            color: #aaa;
+                background-color: #fff;
+            }
         }
     }
 </style>

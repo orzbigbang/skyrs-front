@@ -8,8 +8,8 @@
             <span class="cat" v-for="cat in props.item.subitems">{{ cat.cat + "" + cat.desc }}</span>
         </div>
     </div>
-</template>     
-    
+</template>
+
 <script setup>
     const props = defineProps(["item"])
 
@@ -20,7 +20,7 @@
 
 <style scoped lang='less'>
     .item-wrapper {
-        width: 16rem;
+        width: 14rem;
         height: 9rem;
         margin-bottom: 1rem;
         display: flex;

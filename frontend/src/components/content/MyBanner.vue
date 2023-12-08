@@ -44,7 +44,7 @@
             position: absolute;
             top: 15%;
             right: 10%;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
             box-shadow: inset 1px 1px 5px rgba(255, 255, 255, 0.525),
                         0 0 15px rgba(128, 128, 128, 0.333);
 

@@ -71,20 +71,11 @@
             z-index: 100;
         }
     }
-     
-    @media screen and (max-width:991.98px) {
-        .wrapper {
-            .nav-item {
-                width: 9rem;
-                font-size: 20px;
-            }   
-        }
-    }
 
     @media screen and (max-width:700px) {
         .wrapper {
             .nav-item {
-                width: 7.5rem;
+                width: 9rem;
                 font-size: 17px;
             }   
         }

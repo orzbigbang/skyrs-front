@@ -9,14 +9,14 @@
                 <div class="blocks">
                     <div class="block block-left">
                         <p class="info"><fa icon="phone"/> Tel: 03-5829-5615</p>
-                        <p class="info"><fa icon="envelope"/> Fax: 03-5829-5616</p>
+                        <p class="info"> Fax: 03-5829-5616</p>
                         <p class="info"><fa icon="location-dot"/> 営業時間: 10:30 ~ 17:00</p>
                     </div>
                     <div class="placeholder-block"></div>
                     <div class="block block-right">
                         <p class="info"><fa icon="location-dot"/> 所在地: 東京都千代田区神田佐久間町2-13-33藤波ビル4F</p>
                         <p class="info"><fa icon="train"/> 交通: JR山手線「秋葉原駅」昭和口徒歩2分</p>
-                        <p class="info"><fa icon="envelope"/> 定休日: 火・水・祝日 / 年末年始・GW・夏季休暇</p>
+                        <p class="info"> 定休日: 火・水・祝日 / 年末年始・GW・夏季休暇</p>
                     </div>
                 </div>
 

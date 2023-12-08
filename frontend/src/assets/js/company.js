@@ -21,7 +21,7 @@ export const company = [
     },
     {
         key: "事業内容",
-        value: "不動産売買",
+        value: "不動産売買・賃貸・仲介・管理・コンサルティング",
         multi: 1,
     },
     {

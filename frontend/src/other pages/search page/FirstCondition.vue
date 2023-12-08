@@ -108,7 +108,7 @@
             .value-wrapper {
                 width: 100%;
                 min-height: 0rem;
-                max-height: 15rem;
+                max-height: 10rem;
                 border-radius: 10px;
                 transition: .1s;
                 display: flex;

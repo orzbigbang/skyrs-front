@@ -1,6 +1,6 @@
 <template>
-	<!-- <MySidebar></MySidebar> -->
-	<!-- <div class="search-condition">
+	<MySidebar></MySidebar>
+	<div class="search-condition">
 		<div class="container">
 			<MyTag>検索条件</MyTag>
 			<span class="result-indicator"><b>{{ houseType }}</b>の検索条件でございます</span>
@@ -24,7 +24,7 @@
 					</div>
 				</SearchCondition>
 
-				<div v-show="showMore" class="more-condition">
+				<!-- <div v-show="showMore" class="more-condition">
 					<div class="other-selection">
 						<div class="selection-wrapper" v-for="condition in moreConditionsSelect">
 							<div class="title">{{ condition.title }}</div>
@@ -40,16 +40,17 @@
 							<span class="label">{{ value.label }}</span>
 						</label>
 					</SearchCondition>
-				</div>
+				</div> -->
 
 				<div class="submit-wrapper">
-					<span class="show-more fc" @click="showMore=!showMore" @touchstart.prevent="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></span>
+					<span class="placeholder"></span>
+					<!-- <span class="show-more fc" @click="showMore=!showMore" @touchstart.prevent="showMore=!showMore">{{ !showMore? '条件の追加': '閉める' }}<fa class="icon fc" :icon="!showMore? 'angles-down': 'angles-up'"/></span> -->
 					<button class="submit bacc" @click="submitForm"  @touchstart.prevent="submitForm">この条件で探す</button>
 					<span class="reset fc" @click="reset" @touchstart.prevent="reset">リセット<fa class="icon fc" icon="rotate-left"/></span>
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 	
 	<div class="result">
 		<div class="container">
@@ -59,7 +60,7 @@
 				<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 			</div>
 
-			<span class="result-indicator">その他の物件：以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
+			<span class="result-indicator">その他にも以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
 			<div class="exhibit" v-if="houseStore.houseListLoaded">
 				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
 			</div>
@@ -99,24 +100,30 @@
 	// get house type
 	const houseType = computed(() => {
 		switch (houseIndex.value) {
+			// case 1:
+			// 	return "売買中古マンション"
+			// case 2:
+			// 	return "売買新築未入居マンション"
+			// case 3:
+			// 	return "売買中古一戸建て"
+			// case 4:
+			// 	return "売買新築一戸建て"
+			// case 5:
+			// 	return "売買土地"
+			// case 6:
+			// 	return "賃貸賃貸マンションアパート"
+			// case 7:
+			// 	return "賃貸賃貸一戸建て"
+			// case 8:
+			// 	return "賃貸土地"
+			// case 9:
+			// 	return "賃貸駐車場"
 			case 1:
-				return "売買中古マンション"
-			case 2:
-				return "売買新築未入居マンション"
+				return "売買マンション"
 			case 3:
-				return "売買中古一戸建て"
+				return "売買一戸建て"
 			case 4:
-				return "売買新築一戸建て"
-			case 5:
-				return "売買土地"
-			case 6:
-				return "賃貸賃貸マンションアパート"
-			case 7:
-				return "賃貸賃貸一戸建て"
-			case 8:
-				return "賃貸土地"
-			case 9:
-				return "賃貸駐車場"
+				return "賃貸マンション一戸建て"
 		}
 	})
 
@@ -406,7 +413,7 @@
 	}
 
 	.result {
-		min-height: 50vh;
+		min-height: 100vh;
 		padding-top: 1px;
 		padding-bottom: 50px;
 		background-color: #fff;

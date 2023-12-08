@@ -4,7 +4,7 @@
             <form>
                 <div class="type block">
                     <div class="title">
-                        {{ queryTypeStr }}
+                        {{ queryStore.queryType }}
                     </div>
                 </div>
                 
@@ -59,6 +59,16 @@
                     </div>
                 </div>
 
+                <div class="house block">
+                    <div class="title">
+                        物件情報 <span>※必須項目</span>
+                    </div>
+                    <input type="text" placeholder="住所" required v-model="userInput.email">
+                    <input type="text" placeholder="郵便番号" required v-model="userInput.email">
+                    <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
+                    <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
+                </div>
+
                 <div class="query block">
                     <div class="title">
                         お問い合わせ内容 <span>※必須項目</span>
@@ -83,22 +93,6 @@
     import { useQueryStore } from '@/stores/query.js'
     const queryStore = useQueryStore()
 
-    const queryTypeStr = ref("")
-
-    const showQueryType = (type) => {
-        switch (type) {
-            case "sell":
-                queryTypeStr.value = "売買のお問い合わせ"
-                break
-            case "rent":
-                queryTypeStr.value = "賃貸のお問い合わせ"
-                break
-            case "any":
-                queryTypeStr.value = "お住まいの相談"
-                break
-        }
-    }
-
     const userInput = ref({
         query_type: "any",
         last_name_kana: "",
@@ -112,11 +106,10 @@
     })
 
     watch(() => route.params, (newVal) => {
-        showQueryType(newVal.mode)
         userInput.value.query_type = newVal.mode
     },
     {
-        immediate: true    
+        immediate: true
     })
 
     const header = useHeader()

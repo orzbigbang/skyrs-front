@@ -1,19 +1,28 @@
 <template>
     <div id="goTop" class="wrapper" @click="go2top">
-        <span class="top fc">TOPへ</span>
+        <span class="top">TOPへ</span>
         <fa class="go-top" icon="angles-up"/>
     </div>
 </template>
     
 <script setup>
-
+    import { onMounted, onBeforeUnmount } from 'vue';
     const getPosition = ($event) => {
         
     }
 
-    window.addEventListener("scroll", ($event) => {
+    const scrollFunction = ($event) => {
+        console.log($event)
+    }
+
+    onMounted(() => {
+        window.addEventListener("scroll", scrollFunction)
     })
 
+    onBeforeUnmount(() => {
+        window.removeEventListener("scroll", scrollFunction)
+    })
+    
     const go2top = () => {
         document.body.scrollTo(0, 0);
     }
@@ -48,6 +57,8 @@
             position: absolute;
             left: 0;
             top: -50%;
+            color: transparent;
+            transition: .2s linear all;
         }
 
         .go-top {

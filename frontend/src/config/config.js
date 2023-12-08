@@ -1,7 +1,8 @@
-export const baseURL = "http://13.112.28.13:8000/api"
-// export const baseURL = "http://127.0.0.1:8000/api"
+export const baseURL = "//13.112.28.13:8000/api"
 
-export const mediaURL = "http://13.112.28.13:8000"
+export const mediaURL = "//13.112.28.13:8000"
+
+export const atbbURL = "//localhost:8000"
 
 export const apiURL = {
     estate: `${baseURL}/estate`,
@@ -11,7 +12,12 @@ export const apiURL = {
     upload: `${baseURL}/estate-upload/`,
     count: `${baseURL}/count/`,
     // atbb: `${baseURL}/atbb/`,
-    atbb_bm: `http://35.72.6.170/atbb/buy_mansion`,
-    atbb_bo: `http://35.72.6.170/atbb/buy_one`,
-    atbb_rmo: `http://35.72.6.170/atbb/rent_mansion_one`,
+    // atbb_bm: `http://35.72.6.170/atbb/buy_mansion`,
+    // atbb_bo: `http://35.72.6.170/atbb/buy_one`,
+    // atbb_rmo: `http://35.72.6.170/atbb/rent_mansion_one`,
+    atbb_bm: `${atbbURL}/atbb/buy_mansion`,
+    atbb_bo: `${atbbURL}/atbb/buy_one`,
+    atbb_rmo: `${atbbURL}/atbb/rent_mansion_one`,
+    atbb_rb: `${atbbURL}/atbb/recommend_buy`,
+    atbb_rr: `${atbbURL}/atbb/recommend_rent`,
 }

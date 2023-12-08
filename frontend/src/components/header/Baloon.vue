@@ -41,13 +41,13 @@
 
     @keyframes roaming {
         0% {
-            transform: translateY(0);
+            transform: translateY(0) scale(1.1);
         }
         60% {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(0.95);
         }
         100% {
-            transform: translateY(-14px);
+            transform: translateY(-14px) scale(0.9);
         }
     }
 

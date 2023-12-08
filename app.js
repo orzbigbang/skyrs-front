@@ -7,5 +7,5 @@ app.use(require('cors')())
 
 const port = 80
 app.listen(port, () => {
-    console.log(`server runing at http://124.70.219.73:${port}`)
+    console.log(`server runing`)
 })

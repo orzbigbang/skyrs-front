@@ -109,6 +109,8 @@ export const useHouseStore = defineStore("house", () => {
 	const atbbHouseListBM = ref([])
 	const atbbHouseListBO = ref([])
 	const atbbHouseListRMO = ref([])
+	const atbbHouseListRB = ref([])
+	const atbbHouseListRR = ref([])
 
 	// 搜索页面房屋列表更新与否
 	const houseListLoaded = ref(false)
@@ -226,6 +228,30 @@ export const useHouseStore = defineStore("house", () => {
 		)
 	}
 
+	const getAtbbRecommendHouseList = (headers) => {
+		const urlBuy = apiURL.atbb_rb
+		const urlRent = apiURL.atbb_rr
+
+		axios.get(urlBuy, {headers}).then(
+			value => {
+				atbbHouseListRB.value = value.data
+			}
+		).catch(
+			reason => {
+				console.log(reason)
+			}
+		)
+		axios.get(urlRent, {headers}).then(
+			value => {
+				atbbHouseListRR.value = value.data
+			}
+		).catch(
+			reason => {
+				console.log(reason)
+			}
+		)
+	}
+
 	// 浏览次数加一
 	// const addCount = (house_id) => {
 	// 	const url = apiURL.count
@@ -260,6 +286,9 @@ export const useHouseStore = defineStore("house", () => {
         getHouseList,
 		viewCount,
 		addCount,
-		getAtbbHouseList
+		getAtbbHouseList,
+		atbbHouseListRB,
+		atbbHouseListRR,
+		getAtbbRecommendHouseList
     }
 })
