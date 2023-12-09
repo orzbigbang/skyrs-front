@@ -19,8 +19,8 @@
         width: 3rem;
         opacity: .8;
         position: fixed;
-        bottom: 2rem;
-        right: 3%;
+        bottom: 7rem;
+        right: 5%;
     }
 
     :slotted(.elevator .wrapper li) {
