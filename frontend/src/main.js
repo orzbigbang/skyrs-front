@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret, faTrain, faLocationDot, faHouse, faCaretDown, faSchool, faPerson, faPeopleRoof, faBuilding, faScrewdriverWrench, faPaw, faComputer, faAngleRight, faPhone, faMagnifyingGlass, faStar, faClockRotateLeft, faEnvelope, faAngleDown, faAnglesDown, faAnglesUp, faRotateLeft, faXmark, faWaveSquare, faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faUserSecret, faTrain, faLocationDot, faHouse, faCaretDown, faSchool, faPerson, faPeopleRoof, faBuilding, faHouse, faScrewdriverWrench, faPaw, faAngleLeft, faComputer, faLocationDot, faAngleRight, faPhone, faMagnifyingGlass, faStar, faClockRotateLeft, faEnvelope, faAngleDown, faAnglesDown, faAnglesUp, faRotateLeft, faXmark, faWaveSquare)
+library.add(faUserSecret, faTrain, faLocationDot, faHouse, faCaretDown, faSchool, faPerson, faPeopleRoof, faBuilding, faHouse, faScrewdriverWrench, faPaw, faAngleLeft, faComputer, faLocationDot, faAngleRight, faPhone, faMagnifyingGlass, faStar, faClockRotateLeft, faEnvelope, faAngleDown, faAnglesDown, faAnglesUp, faRotateLeft, faXmark, faWaveSquare, faAnglesUp)
 
 const app = createApp(App)
 
