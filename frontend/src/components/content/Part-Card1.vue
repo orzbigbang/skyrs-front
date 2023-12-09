@@ -32,6 +32,7 @@
 
         .img {
             width: 16rem;
+            height: 14rem;
             border: 1px solid #ccc;
             border-radius: 5px;
             cursor: pointer;

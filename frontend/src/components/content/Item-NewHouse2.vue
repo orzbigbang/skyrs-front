@@ -5,7 +5,7 @@
 			<div class="card-wrapper">
 				<PartCard1 v-for="card in props.cards" :key="card.title" :house="card" @click="jump2page(card.url)"></PartCard1>
 			</div>
-			<div class="see-more bacc"  @click="jump2page">もっと見る<fa icon="angle-right" class="fa-icon"/></div>
+			<div class="see-more bacc"  @click="jump2page(props.url)">もっと見る<fa icon="angle-right" class="fa-icon"/></div>
 		</div>
 	</div>
 </template>
@@ -14,18 +14,18 @@
 import PartTitle2 from "./Part-Title2.vue";
 import PartCard1 from "./Part-Card1.vue";
 
-import { useRouter } from "vue-router";
-const router = useRouter()
+// import { useRouter } from "vue-router";
+// const router = useRouter()
 
 const props = defineProps(["cards", "url", "eng", "jpn"])
 
 // go to detail page
-const goDP = ($event, houseID) => {
-	router.push(`/detailpage/${houseID}`)
-}
+// const goDP = ($event, houseID) => {
+// 	router.push(`/detailpage/${houseID}`)
+// }
 
 const jump2page = (url) => {
-	window.location.href = url? url: props.url
+	window.open(url, "_blank")
 }
 </script>
 

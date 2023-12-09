@@ -20,6 +20,14 @@
 
 	import {computed} from 'vue'
 
+    import { useHouseStore } from "@/stores/house"
+	const houseStore = useHouseStore()
+
+    import { useHeader } from '@/composition/userInfo.js'
+    const headers = useHeader()
+
+    houseStore.getAtbbRecommendHouseList(headers)
+
 	// const cardsSell = computed(() => {
 	// 	return []
 	// })

@@ -231,7 +231,7 @@ export const useHouseStore = defineStore("house", () => {
 	const getAtbbRecommendHouseList = (headers) => {
 		const urlBuy = apiURL.atbb_rb
 		const urlRent = apiURL.atbb_rr
-
+		
 		axios.get(urlBuy, {headers}).then(
 			value => {
 				atbbHouseListRB.value = value.data

@@ -25,9 +25,9 @@
     import { useHouseStore } from "@/stores/house"
 	const houseStore = useHouseStore()
 
-    // const cardsBuy = computed(() => {
-	// 	return houseStore.atbbHouseListRB
-	// })
+    const cardsBuy = computed(() => {
+		return houseStore.atbbHouseListRB
+	})
 
     const moreBuyURL = "https://asp.athome.jp/073049/shubetsu/baibai/shumoku"
 
@@ -36,29 +36,44 @@
 	})
     const moreRentURL = "https://asp.athome.jp/073049/shubetsu/chintai/shumoku"
 
-    const cardsBuy = [
-        {
-            img: 'imgs/welcome_card_img_01.jpg',
-            tag: '売買居住用',
-            category: 'ライブラリー',
-            detail: '全国で分譲させた8.5万棟以上のマンション、一戸建て物件をご紹介します。',
-            url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
-        },
-        {
-            img: 'imgs/welcome_card_img_02.jpg',
-            title: '賃貸居住用',
-            category: 'ライブラリー',
-            detail: '中古マンションライブラリーの中からセブンクラウドハウスがセレクトした高級マンションをご紹介します。',
-            url: "https://asp.athome.jp/073049/shubetsu/chintai_kyojuyo/osusume"
-        },
-        {
-            img: 'imgs/welcome_card_img_03.jpg',
-            title: 'リゾート',
-            category: 'ライブラリー',
-            detail: 'セブンクラウドハウスが販売した代表的なリゾート物件の魅力をご紹介します。',
-            url: "https://asp.athome.jp/073049/shubetsu/resort/osusume"
-        },
-    ]
+    // const cardsBuy = [
+    //     {
+    //         img: 'imgs/welcome_card_img_01.jpg',
+    //         tag: '売買居住用',
+    //         price: '40000000',
+    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
+    //         area: '48m²',
+    //         layout: '1LDK',
+    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
+    //     },
+    //     {
+    //         img: 'imgs/welcome_card_img_02.jpg',
+    //         tag: '売買居住用',
+    //         price: '40000000',
+    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
+    //         area: '48m²',
+    //         layout: '1LDK',
+    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
+    //     },
+    //     {
+    //         img: 'imgs/welcome_card_img_03.jpg',
+    //         tag: '売買居住用',
+    //         price: '40000000',
+    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
+    //         area: '48m²',
+    //         layout: '1LDK',
+    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
+    //     },
+    //     {
+    //         img: 'imgs/welcome_card_img_02.jpg',
+    //         tag: '売買居住用',
+    //         price: '40000000',
+    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
+    //         area: '48m²',
+    //         layout: '1LDK',
+    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
+    //     }
+    // ]
 </script>
     
 <style scoped lang="less">
