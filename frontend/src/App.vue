@@ -21,7 +21,7 @@
     import MyHeader from "@/components/header/MyHeader.vue";
     import MyNav from "@/components/nav/MyNav.vue";
     import MyFooter from "@/components/footer/MyFooter.vue";
-    import Go2Top from "@/components/functional/Go2Top.vue"
+    // import Go2Top from "@/components/functional/Go2Top.vue"
     import Elevator from "@/components/functional/Elevator.vue"
 
     import { useRouter } from 'vue-router'
