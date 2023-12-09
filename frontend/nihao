@@ -1,0 +1,38 @@
+<Elevator v-show="!isLoading">
+    <template v-slot>
+        <li v-for="floor in elevatorFloor" :title="floor.title"  @click="floor.func">
+            <fa :icon="floor.icon" style="color: #fff; font-size: 1rem;"></fa>
+        </li>
+    </template>
+</Elevator>
+
+const elevatorFloor = [
+        {
+            title: '回到顶部', 
+            icon: 'fa-solid fa-angle-up',
+            func: () => {
+                window.scrollTo(0,0)
+            }
+        },
+        {
+            title: '重新加载', 
+            icon: 'fa-solid fa-rotate-right',
+            func: () => {
+                router.push({path:'/main/exhibit', query:{platform:props.platform, page:currentPage.value}})
+            }
+        },
+        {
+            title: '上一页', 
+            icon: 'fa-solid fa-backward',
+            func: () => {
+                router.push({path:'/main/exhibit', query:{platform:props.platform, page:currentPage.value === 1? 1: currentPage.value - 1}})
+            }
+        },
+        {
+            title: '下一页', 
+            icon: 'fa-solid fa-forward',
+            func: () => {
+                router.push({path:'/main/exhibit', query:{platform:props.platform, page:currentPage.value === store.state.maxPage? currentPage.value:currentPage.value + 1}})
+            }
+        },
+    ]
