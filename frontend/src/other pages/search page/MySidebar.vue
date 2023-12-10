@@ -1,13 +1,13 @@
 <template>
     <Teleport to="#nav">
         <div class="sidebar" :class="{show: isShow}">
-            <div class="block">
+            <!-- <div class="block">
                 前回の検索条件
             </div>
 
             <div class="last-search">
                 東京都、千代田区、賃貸、1LDK、10万
-            </div>
+            </div> -->
 
             <div class="trigger"  @click="isShow = !isShow">
                 <fa class="icon fc" :icon="isShow? 'angle-left': 'angle-right'"/>
