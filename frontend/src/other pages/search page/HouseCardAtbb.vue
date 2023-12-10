@@ -145,7 +145,8 @@
         .house-wrapper {
             .img {
                 width: 12rem;
-                margin-bottom: -30px;
+                height: 12rem;
+                margin-bottom: -40px;
             }
 
             .price {
