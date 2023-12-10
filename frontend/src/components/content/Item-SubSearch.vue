@@ -48,4 +48,10 @@ const props = defineProps(["title", "subtitle", "backgroundColor", "items"])
             display: flex;
         }
 	}
+
+    @media screen and (max-width: 700px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
 </style>

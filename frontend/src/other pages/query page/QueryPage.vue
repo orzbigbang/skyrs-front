@@ -63,10 +63,24 @@
                     <div class="title">
                         物件情報 <span>※必須項目</span>
                     </div>
-                    <input type="text" placeholder="住所" required v-model="userInput.email">
-                    <input type="text" placeholder="郵便番号" required v-model="userInput.email">
-                    <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
-                    <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
+                    <div class="radio-wrapper">
+                        <label>
+                            <input type="radio" name="house_type" value="mansion"  v-model="userInput.house_type">
+                            マンション・アパート
+                        </label>
+                        <label>
+                            <input type="radio" name="house_type" value="one"  v-model="userInput.house_type">
+                            一戸建て
+                        </label>
+                        <label>
+                            <input type="radio" name="house_type" value="land" v-model="userInput.house_type">
+                            土地
+                        </label>
+                    </div>
+                    <input type="text" class="one-line-input" placeholder="郵便番号" required v-model="userInput.post_code">
+                    <input type="text" class="one-line-input" placeholder="住所" required v-model="userInput.address">
+                    <input type="text" class="one-line-input" placeholder="面積" required v-model="userInput.area">
+                    <input type="text" class="one-line-input" placeholder="間取り" required v-model="userInput.layout">
                 </div>
 
                 <div class="query block">
@@ -103,6 +117,11 @@
         phone: "",
         contact_type: "any",
         query_content: "",
+        house_type: "mansion",
+        address: "",
+        post_code: "",
+        area: "",
+        layout: "",
     })
 
     watch(() => route.params, (newVal) => {
@@ -189,6 +208,9 @@
                 color: #222;
             }
         }
+        input.one-line-input {
+            margin-top: 15px;
+        }
 
         textarea {
             width: 650px;
@@ -248,6 +270,13 @@
             width: 90%;
         }
         .form-wrapper {
+            margin: 10px auto;
+            border: none;
+            box-shadow: none;
+
+            &:hover {
+                box-shadow: none;
+            }
 
             input[type='text'] {
                 &::placeholder {

@@ -80,13 +80,13 @@
     // fc之内的联动
 
     // 侧边栏隐藏事件
-    const isShow = ref(true)
-    // if (!conditionStore.isFunctionTriggered) {
-    //     setTimeout(() => {
-    //         isShow.value = true
-    //     }, 300)
-    //     conditionStore.isFunctionTriggered = true
-    // }
+    const isShow = ref(false)
+    if (!conditionStore.isFunctionTriggered) {
+        setTimeout(() => {
+            isShow.value = true
+        }, 300)
+        conditionStore.isFunctionTriggered = true
+    }
 </script>
     
 <style scoped  lang='less'>
@@ -100,7 +100,7 @@
         display: flex;
         flex-direction: column;
         transform: translateX(-100%);
-        transition: .2s ease;
+        transition: .3s ease;
         box-shadow: inset 1px 1px 5px rgba(255, 255, 255, 0.525),
                         1px 0 15px rgba(202, 200, 200, 0.333);
 

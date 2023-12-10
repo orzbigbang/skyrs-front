@@ -9,7 +9,7 @@
         <div class="house-info">
             <h5 class="title" @click.self="jump2page">
                 {{ props.house.name }}
-                <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/>
+                <!-- <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/> -->
             </h5>
             <span class="location">{{ props.house.address }}</span>
             <span class="madori">{{ props.house.layout }}</span>

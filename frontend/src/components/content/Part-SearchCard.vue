@@ -23,6 +23,7 @@
         width: 14rem;
         height: 9rem;
         margin-bottom: 1rem;
+        padding: 0 10px;
         display: flex;
         flex-direction: column;
         justify-content: center;

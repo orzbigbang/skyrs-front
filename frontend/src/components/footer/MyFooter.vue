@@ -23,7 +23,7 @@
 
 <style scoped lang="less">
     .wrapper {
-        height: 100px;
+        min-height: 100px;
         background-color: rgb(31,78,121);
         color: #fff;
         display: flex;
@@ -42,6 +42,15 @@
             &:hover {
                 border-bottom: 1px solid #fff;
 
+            }
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .wrapper {
+            padding: 10px 0;
+            .url {
+                width: 100px;
             }
         }
     }

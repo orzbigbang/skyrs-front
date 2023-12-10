@@ -263,7 +263,7 @@
         }
     }
 
-    @media screen and (max-width:390px) {
+    @media screen and (max-width:441px) {
         header {
             .logo-wrapper {
                 width: 15rem;

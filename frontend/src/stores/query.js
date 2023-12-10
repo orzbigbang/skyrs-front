@@ -4,7 +4,7 @@ import axios from 'axios'
 import { apiURL } from '@/config/config.js'
 
 export const useQueryStore = defineStore('query', () => {
-    const queryType = ref("")
+    const queryType = ref("お住いの相談")
     const url = apiURL.query
     const postQuery = (body, headers) => {
         axios.post(url, body, {headers}).then(

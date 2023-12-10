@@ -1,5 +1,5 @@
 <template>
-    <div class="elevator">
+    <div class="elevator" :class="{deactive: isMobile}">
         <ul class="wrapper">
             <slot></slot>
         </ul>
@@ -7,12 +7,39 @@
 </template>
 
 <script setup>
+    import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+    const isMobile = ref(false)
+    if (window.innerWidth < 768) {
+        isMobile.value = true
+    }
+    
+    const detectWidth = ($event) => {
+        const newScreenWidth = window.innerWidth
+        if (newScreenWidth < 768) {
+            isMobile.value = true
+        } else {
+            isMobile.value = false
+        }
+    }
+
+    onMounted(() => {
+        window.addEventListener("resize", detectWidth)
+    })
+
+    onBeforeUnmount(() => {
+        window.removeEventListener("resize", detectWidth)
+    })
 </script>
 
 <style scoped>
     .elevator {
         width: 3rem;
         display: inline-block;
+
+        &.deactive {
+            display: none;
+        }
     }
 
     .elevator .wrapper {

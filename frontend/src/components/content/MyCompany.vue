@@ -76,6 +76,7 @@
                 width: 80%;
                 margin-top: 10px;
                 display: flex;
+                flex-wrap: wrap;
                 
                 .block {
                     flex: 1;
@@ -110,6 +111,12 @@
                 margin: 20px 0;
                 border: 1px solid #ccc;
             } 
+        }
+    }
+
+    @media screen and (max-width: 700px) {
+        .container {
+            width: 100%;
         }
     }
 </style>

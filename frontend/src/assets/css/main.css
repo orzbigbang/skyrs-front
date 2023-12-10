@@ -14,7 +14,7 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #ccc;
+  background-color: #eee;
   font-size: 16px;
 }
 @media screen and (max-width: 991.98px) {
@@ -71,6 +71,11 @@ a {
 .container {
   width: 75%;
   margin: 0 auto;
+}
+@media screen and (max-width: 700px) {
+  .container {
+    width: 90%;
+  }
 }
 .bacc {
   background-color: #1f4e79;
