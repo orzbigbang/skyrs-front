@@ -35,17 +35,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -89,17 +89,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -143,17 +143,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -194,17 +194,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -245,17 +245,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -299,17 +299,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 		{
 			title: "間取り",
 			name: "layout",
@@ -350,17 +350,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 	],
 	8: [
 		{
@@ -385,17 +385,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 	],
 	9: [
 		{
@@ -420,17 +420,17 @@ condition.fixedConditionsSelect = {
 			input: {"area_bottom": "指定なし", "area_top": "指定なし"},
 			desc: ["m²～", "m²"]
 		},
-		{
-			title: "駅徒歩",
-			name: ["station_time_bottom", "station_time_top"],
-			type: "selectRange",
-			values: [
-				["指定なし", "5", "10", "15", "20", "25"], 
-				["指定なし", "5", "10", "15", "20", "25"]
-			],
-			input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
-			desc: ["分～", "分"]
-		},
+		// {
+		// 	title: "駅徒歩",
+		// 	name: ["station_time_bottom", "station_time_top"],
+		// 	type: "selectRange",
+		// 	values: [
+		// 		["指定なし", "5", "10", "15", "20", "25"], 
+		// 		["指定なし", "5", "10", "15", "20", "25"]
+		// 	],
+		// 	input: {"station_time_bottom": "指定なし", "station_time_top": "指定なし"},
+		// 	desc: ["分～", "分"]
+		// },
 	],
 }
 

@@ -149,8 +149,9 @@
 	const houseList = computed(() => {
 		return houseStore.houseList
 	})
+
 	const atbbHouseList = computed(() => {
-		return houseStore.atbbHouseList
+		return houseStore.FCFiltered? houseStore.filteredAtbbList: houseStore.atbbHouseList
 	})
 	import { useHeader } from '@/composition/userInfo.js'
     const headers = useHeader()
@@ -199,6 +200,7 @@
 				useCollectCheckbox(userInput, item, "layout")
 			}
 		})
+		console.log(userInput)
 		// 1.2 收集select条件数据
 		const lessTypeHouseIndexes = {4:4, 7:7, 8:8, 9:9}
 		if (!(houseIndex.value in lessTypeHouseIndexes)) {

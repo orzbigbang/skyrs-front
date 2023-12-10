@@ -1,6 +1,6 @@
 <template>
     <div class="form-wrapper">
-        <form>
+        <form @submit.prevent="goQuery">
             <div class="type block">
                 <div class="title">
                     {{ queryType }}
@@ -62,6 +62,30 @@
                 </div>
             </div>
 
+            <div class="house block">
+                <div class="title">
+                    物件情報
+                </div>
+                <div class="radio-wrapper">
+                    <label>
+                        <input type="radio" name="house_type" value="mansion"  v-model="userInput.house_type">
+                        マンション・アパート
+                    </label>
+                    <label>
+                        <input type="radio" name="house_type" value="one"  v-model="userInput.house_type">
+                        一戸建て
+                    </label>
+                    <label>
+                        <input type="radio" name="house_type" value="land" v-model="userInput.house_type">
+                        土地
+                    </label>
+                </div>
+                <input type="text" class="one-line-input" placeholder="郵便番号" v-model="userInput.post_code">
+                <input type="text" class="one-line-input" placeholder="住所" v-model="userInput.address">
+                <input type="text" class="one-line-input" placeholder="面積" v-model="userInput.area">
+                <input type="text" class="one-line-input" placeholder="間取り" v-model="userInput.layout">
+            </div>
+
             <div class="query block">
                 <div class="title">
                     お問い合わせ内容 <span>※必須項目</span>
@@ -71,7 +95,7 @@
                 </div>
             </div>
 
-            <button id="submit" @click.prevent="goQuery">送信</button>
+            <button id="submit">送信</button>
         </form>
     </div>
 </template>
@@ -86,7 +110,7 @@
 
     const queryType = ref("お問い合わせ")
 
-    const userInput = {
+    const userInput = ref({
         query_type: "any",
         last_name_kana: "",
         first_name_kana: "",
@@ -96,11 +120,16 @@
         phone: "",
         contact_type: "any",
         query_content: "",
-    }
+        house_type: "mansion",
+        address: "",
+        post_code: "",
+        area: "",
+        layout: "",
+    })
 
     const header = useHeader()
     const goQuery = () => {
-        queryStore.postQuery(url, userInput, header)
+        queryStore.postQuery(userInput.value, header)
     }
 
     // queryStore.getQuery(header)
@@ -159,6 +188,11 @@
             transform: translateY(-10%);
             cursor: pointer;
         }
+
+        input.one-line-input {
+            margin-top: 15px;
+        }
+
         label {
             font-size: 16px;
             color: #666;

@@ -111,6 +111,7 @@ export const useHouseStore = defineStore("house", () => {
 	const atbbHouseListRMO = ref([])
 	const atbbHouseListRB = ref([])
 	const atbbHouseListRR = ref([])
+	const filteredAtbbList = ref([])
 
 	// 搜索页面房屋列表更新与否
 	const houseListLoaded = ref(false)
@@ -228,6 +229,35 @@ export const useHouseStore = defineStore("house", () => {
 		)
 	}
 
+	const FCFiltered = ref(false)
+
+	const filterAtbbByFC = (conditionFC, fcFiltered) => {
+		FCFiltered.value = fcFiltered
+		// 获取FC搜索框的长度，判断是否要筛选
+		const checkFCList = Object.keys(conditionFC).filter((key) => {
+			return conditionFC[key] === true
+		})
+		if (Object.keys(conditionFC).length === 1 || (Object.keys(conditionFC).length > 1 && checkFCList.length === 0)) {
+			return filteredAtbbList.value = atbbHouseList.value
+		}
+
+		// 根据FC筛选
+		const tempList = Object.keys(conditionFC).filter((key) => {
+			return conditionFC[key] === true
+		})
+		filteredAtbbList.value = atbbHouseList.value.filter((item) => {
+			let _type = ""
+			if (conditionFC._type === "station") {
+				_type = "station1"
+			} else if (conditionFC._type === "train_route") {
+				_type = "train_route1"
+			} else if (conditionFC._type === "district") {
+				_type = "district"
+			}
+			return tempList.indexOf(item[_type]) !== -1
+		})
+	}
+
 	const getAtbbRecommendHouseList = (headers) => {
 		const urlBuy = apiURL.atbb_rb
 		const urlRent = apiURL.atbb_rr
@@ -289,6 +319,9 @@ export const useHouseStore = defineStore("house", () => {
 		getAtbbHouseList,
 		atbbHouseListRB,
 		atbbHouseListRR,
-		getAtbbRecommendHouseList
+		getAtbbRecommendHouseList,
+		filteredAtbbList,
+		filterAtbbByFC,
+		FCFiltered
     }
 })

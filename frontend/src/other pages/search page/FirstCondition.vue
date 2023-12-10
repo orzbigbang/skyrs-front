@@ -10,12 +10,11 @@
             <fa class="reset icon fc" icon="rotate-left" v-if="conditionStore.activeFCIndex===props.index" @click="reset"/>
             <div class="value" v-for="value in filterd_values" :key="value">
                 <label>
-                    <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]">
+                    <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]" @change="getFCFilteredList">
                     {{ conditionStore.activeFCIndex===props.index? value: "" }}
                 </label>
             </div>
         </div>
-        <button @click="showInput">123</button>
     </div>
 </template>
     
@@ -24,9 +23,13 @@
     import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
 
+    import { useHouseStore } from '@/stores/house'
+    const houseStore = useHouseStore()
+
     const props = defineProps(
         {
             title: String,
+            engTitle: String,
             fc: Array,
             index: Number,
         }
@@ -58,7 +61,7 @@
     }
 
     // 勾选框v-model
-    const FCInput = {}
+    const FCInput = {_type: props.engTitle}
 
     // 重置FC搜索条件
     const cb = ref()
@@ -66,11 +69,16 @@
         cb.value.forEach((item) => {
             item.checked = false
         })
+        Object.keys(FCInput).forEach((key) => {
+            if (key !== "_type") {
+                FCInput[key] = false
+            }
+        })
+        houseStore.filterAtbbByFC(FCInput, false)
     }
 
-    // 
-    const showInput = () => {
-        console.log(FCInput)
+    const getFCFilteredList = () => {
+        houseStore.filterAtbbByFC(FCInput, true)
     }
 </script>
     

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="form-wrapper">
-            <form>
+            <form @submit.prevent="goQuery">
                 <div class="type block">
                     <div class="title">
                         {{ queryStore.queryType }}
@@ -61,7 +61,7 @@
 
                 <div class="house block">
                     <div class="title">
-                        物件情報 <span>※必須項目</span>
+                        物件情報
                     </div>
                     <div class="radio-wrapper">
                         <label>
@@ -77,10 +77,10 @@
                             土地
                         </label>
                     </div>
-                    <input type="text" class="one-line-input" placeholder="郵便番号" required v-model="userInput.post_code">
-                    <input type="text" class="one-line-input" placeholder="住所" required v-model="userInput.address">
-                    <input type="text" class="one-line-input" placeholder="面積" required v-model="userInput.area">
-                    <input type="text" class="one-line-input" placeholder="間取り" required v-model="userInput.layout">
+                    <input type="text" class="one-line-input" placeholder="郵便番号" v-model="userInput.post_code">
+                    <input type="text" class="one-line-input" placeholder="住所" v-model="userInput.address">
+                    <input type="text" class="one-line-input" placeholder="面積" v-model="userInput.area">
+                    <input type="text" class="one-line-input" placeholder="間取り" v-model="userInput.layout">
                 </div>
 
                 <div class="query block">
@@ -92,12 +92,12 @@
                     </div>
                 </div>
 
-                <button id="submit" @click.prevent="goQuery">送信</button>
+                <button id="submit">送信</button>
             </form>
         </div>
     </div>
 </template>
-    
+
 <script setup>
     import { ref, watch } from 'vue';
     import { useHeader } from '@/composition/userInfo.js'
@@ -132,9 +132,8 @@
     })
 
     const header = useHeader()
-    const body = {}
     const goQuery = () => {
-        queryStore.postQuery(body, header)
+        queryStore.postQuery(userInput.value, header)
     }
 </script>
     
@@ -199,6 +198,11 @@
             transform: translateY(-10%);
             cursor: pointer;
         }
+        
+        input.one-line-input {
+            margin-top: 15px;
+        }
+        
         label {
             font-size: 16px;
             color: #666;
@@ -207,9 +211,6 @@
             &:hover {
                 color: #222;
             }
-        }
-        input.one-line-input {
-            margin-top: 15px;
         }
 
         textarea {
