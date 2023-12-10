@@ -64,7 +64,7 @@
 			<div class="exhibit" v-if="houseStore.houseListLoaded">
 				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
 			</div>
-			
+
 			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
 
 			<Pager :pagerConfig="{total: totalPage, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
@@ -193,8 +193,9 @@
 		// 1.收集表单数据
 		// 1.1 收集fixed条件数据
 		fixedConditions.value.forEach((item, index) => {
+			console.log(index)
 			// index3的项目需要收集列表，所以分开处理
-			if (index !== 3) {
+			if (index !== 2) {
 				useCollectSelect(userInput, item)
 			} else {
 				useCollectCheckbox(userInput, item, "layout")
