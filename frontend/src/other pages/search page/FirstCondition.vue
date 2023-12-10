@@ -15,6 +15,7 @@
                 </label>
             </div>
         </div>
+        <button @click="showInput">123</button>
     </div>
 </template>
     
@@ -65,6 +66,11 @@
         cb.value.forEach((item) => {
             item.checked = false
         })
+    }
+
+    // 
+    const showInput = () => {
+        console.log(FCInput)
     }
 </script>
     
