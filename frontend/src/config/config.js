@@ -1,4 +1,4 @@
-export const baseURL = "//13.112.28.13:8000/api"
+export const baseURL = "//localhost:8000/api"
 
 export const mediaURL = "//13.112.28.13:8000"
 
