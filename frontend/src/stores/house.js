@@ -180,19 +180,19 @@ export const useHouseStore = defineStore("house", () => {
 			return item.city === cityName
 		})	
 	}
-
+	
 	const getAtbbHouseList = (params, headers, atbbType) => {
-		// if (atbbType === "bm" && atbbHouseListBM.value.length) {
-		// 	atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
-		// 	return
-		// } else if (atbbType === "bo" && atbbHouseListBO.value.length) {
-		// 	atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
-		// 	return
-		// } else if (atbbType === "rmo" && atbbHouseListRMO.value.length) {
-		// 	atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
-		// 	return
-		// }
-		console.log(params)
+		if (atbbType === "bm" && atbbHouseListBM.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+			return
+		} else if (atbbType === "bo" && atbbHouseListBO.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+			return
+		} else if (atbbType === "rmo" && atbbHouseListRMO.value.length) {
+			atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+			return
+		}
+
 		var atbbUrl = ""
 		switch (atbbType) {
 			case "bm":

@@ -65,6 +65,11 @@
 				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
 			</div>
 
+			<!-- <span class="result-indicator">以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
+			<div class="exhibit">
+				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
+			</div> -->
+
 			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
 
 			<Pager :pagerConfig="{total: totalPage, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
@@ -193,7 +198,6 @@
 		// 1.收集表单数据
 		// 1.1 收集fixed条件数据
 		fixedConditions.value.forEach((item, index) => {
-			console.log(index)
 			// index3的项目需要收集列表，所以分开处理
 			if (index !== 2) {
 				useCollectSelect(userInput, item)
@@ -201,7 +205,6 @@
 				useCollectCheckbox(userInput, item, "layout")
 			}
 		})
-		console.log(userInput)
 		// 1.2 收集select条件数据
 		const lessTypeHouseIndexes = {4:4, 7:7, 8:8, 9:9}
 		if (!(houseIndex.value in lessTypeHouseIndexes)) {
@@ -257,7 +260,7 @@
 	const getActivePageNum = (activePageNum) => {
 		startIndex.value = (activePageNum - 1) * 20
 		endIndex.value = startIndex.value + 20
-		document.body.scrollTo(0, 600)
+		window.scrollTo(0, 600)
 	}
 
 	const totalPage = computed(() => {

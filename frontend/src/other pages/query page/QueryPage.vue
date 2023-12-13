@@ -268,10 +268,10 @@
 
     @media screen and (max-width:700px) {
         .container {
-            width: 90%;
+            width: 100%;
         }
         .form-wrapper {
-            margin: 10px auto;
+            margin: 0 auto;
             border: none;
             box-shadow: none;
 

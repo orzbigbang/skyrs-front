@@ -4,10 +4,13 @@
             {{ props.title }}
         </div>
 
-        <input class="search" type="text" placeholder="サーチ" v-if="conditionStore.activeFCIndex===props.index" v-model="searchBarInput" @input="searchFC">
+        <div class="input-wrapper">
+            <input class="search" type="text" placeholder="サーチ" v-if="conditionStore.activeFCIndex===props.index" v-model="searchBarInput" @input="searchFC">
+            <fa class="reset icon fc" icon="rotate-left" v-if="conditionStore.activeFCIndex===props.index" @click="reset"/>
+        </div>
+        
 
         <div class="value-wrapper" :class="{active: conditionStore.activeFCIndex===props.index? true: false}">
-            <fa class="reset icon fc" icon="rotate-left" v-if="conditionStore.activeFCIndex===props.index" @click="reset"/>
             <div class="value" v-for="value in filterd_values" :key="value">
                 <label>
                     <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]" @change="getFCFilteredList">
@@ -82,7 +85,7 @@
     }
 </script>
     
-<style scoped  lang='less'>
+<style scoped lang='less'>
     .fc-wrapper {
         
         .fc {
@@ -92,6 +95,24 @@
             &:nth-last-child(1) {
                 margin-bottom: 50px;
             } 
+
+            .input-wrapper{
+                position: relative;
+                .reset {
+                    width: 20px;
+                    cursor: pointer;
+                    border-bottom: 1px solid rgba(7, 50, 91, 0);
+                    transition: .2s;
+                    position: absolute;
+                    top: 2px;
+                    right: 10px;
+                    font-size: 20px;
+
+                    &:hover {
+                        transform: rotateZ(-360deg);
+                    }
+                }
+            }
 
             .title {
                 height: 40px;
@@ -130,24 +151,6 @@
                 justify-content: flex-start;
                 align-items: flex-start;
                 position: relative;
-
-                .reset {
-                    width: 20px;
-                    cursor: pointer;
-                    border-bottom: 1px solid rgba(7, 50, 91, 0);
-                    transition: .2s;
-                    position: absolute;
-                    top: 5px;
-                    right: 10px;
-
-                    &:hover {
-                        transform: rotateZ(-360deg);
-                    }
-                }
-
-                .icon {
-                    font-size: 20px;
-                }
             }
 
             .value-wrapper.active {

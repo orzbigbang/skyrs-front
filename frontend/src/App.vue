@@ -1,5 +1,4 @@
 <template>
-    <!-- <Go2Top></Go2Top> -->
     <Elevator>
         <template v-slot>
             <li v-for="floor in elevatorFloor"  @click="floor.func">
@@ -21,7 +20,6 @@
     import MyHeader from "@/components/header/MyHeader.vue";
     import MyNav from "@/components/nav/MyNav.vue";
     import MyFooter from "@/components/footer/MyFooter.vue";
-    // import Go2Top from "@/components/functional/Go2Top.vue"
     import Elevator from "@/components/functional/Elevator.vue"
 
     import { useRouter } from 'vue-router'
@@ -56,7 +54,7 @@
         title: '回到顶部', 
         icon: 'angles-up',
         func: () => {
-            document.body.scrollTo(0, 0)
+            window.scrollTo(0, 0)
         }
     }
 ]

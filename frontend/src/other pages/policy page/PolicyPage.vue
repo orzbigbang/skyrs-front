@@ -23,6 +23,7 @@
     
 <style scoped  lang='less'>
     .container {
+        background-color: #fff;
         min-height: 100vh;
 
         .info-wrapper {
@@ -31,8 +32,23 @@
             padding: 20px;
             font-size: 16px;
             letter-spacing: 1px;
-            background-color: #fff;
             box-shadow: 0 0 10px #999;
+        }
+    }
+
+    @media screen and (max-width:700px) {
+        .container {
+            width: 100%;
+
+            .info-wrapper {
+                margin: 0 auto;
+                border: none;
+                box-shadow: none;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
         }
     }
 </style>

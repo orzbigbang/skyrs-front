@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 // import components
 import MyContent from "@/components/content/MyContent.vue";
@@ -7,7 +7,7 @@ import MyContent from "@/components/content/MyContent.vue";
 import { useGlobalStore } from "@/stores/global";
 
 const router = createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
+	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: "/",
@@ -74,7 +74,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	document.body.scrollTo(0, 0);
+	window.scrollTo(0, 0);
 	next();
 });
 

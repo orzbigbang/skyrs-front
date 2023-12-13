@@ -1,19 +1,18 @@
-export const baseURL = "//localhost:8000/api"
+const test = true
+const baseURL = test? "http://localhost": "https://7cloudhouse.com"
 
-export const mediaURL = "//localhost:8000/media/estate/"
+export const mediaURL = `${baseURL}/media/estate/`
 
-export const atbbURL = "//localhost:8000"
-// 35.72.6.170
 export const apiURL = {
-    estate: `${baseURL}/estate`,
-    addFavorate: `${baseURL}/favorite/`,
-    getUser: `${baseURL}/user`,
-    query: `${baseURL}/contact_info/`,
-    upload: `${baseURL}/estate-upload/`,
-    count: `${baseURL}/count/`,
-    atbb_bm: `${atbbURL}/atbb/buy_mansion`,
-    atbb_bo: `${atbbURL}/atbb/buy_one`,
-    atbb_rmo: `${atbbURL}/atbb/rent_mansion_one`,
-    atbb_rb: `${atbbURL}/atbb/recommend_buy`,
-    atbb_rr: `${atbbURL}/atbb/recommend_rent`,
+    estate: `${baseURL}/api/estate`,
+    addFavorate: `${baseURL}/api/favorite/`,
+    getUser: `${baseURL}/api/user`,
+    query: `${baseURL}/api/contact_info/`,
+    upload: `${baseURL}/api/estate-upload/`,
+    count: `${baseURL}/api/count/`,
+    atbb_bm: `${baseURL}/atbb/buy_mansion`,
+    atbb_bo: `${baseURL}/atbb/buy_one`,
+    atbb_rmo: `${baseURL}/atbb/rent_mansion_one`,
+    atbb_rb: `${baseURL}/atbb/recommend_buy`,
+    atbb_rr: `${baseURL}/atbb/recommend_rent`,
 }

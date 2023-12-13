@@ -4,20 +4,19 @@
             <PartTitle :eng="'Recommended'" :jpn="''"/>
             <div class="wrapper">
                 <h3 class="title">「(株)セブンクラウドハウス」のおすすめ物件</h3>
-                <!-- <p class="detail">全国8.5万棟以上のマンション情報（物件概要、外観写真、売出情報、購入希望者情報、周辺相場推移など）をご覧いただけます。ご所有のマンションの売買・賃料相場を知りたい方、ご興味ある地域にどんなマンションがあるかを知りたい方は是非ご利用ください。</p>
-                <ul class="card-wrapper">
-                    <PartCard3 class="card" v-for="card in cards" :key="card.title" :card="card"></PartCard3>
-                </ul> -->
             </div>
         </div>
-        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'売買☆おすすめ物件特集☆《マンション》《一戸建て》《事業用》'" :cards="cardsBuy" :url="moreBuyURL"/>
-        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'賃貸☆おすすめ物件特集☆《マンション・アパート》《一戸建て》《事業用》'" :cards="cardsRent" :url="moreRentURL"/>
+        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'売買☆おすすめ物件特集☆《マンション》《一戸建て》《事業用》'" :cards="cardsBuy" :url="moreBuyURL">
+		    <div class="athome search-engine-rental responsive-koma-bukkens id_073049_20231201111102 count_10 size_middle"></div>
+        </ItemNewHouse2>
+        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'賃貸☆おすすめ物件特集☆《マンション・アパート》《一戸建て》《事業用》'" :cards="cardsRent" :url="moreRentURL">
+            <div class="athome search-engine-rental responsive-koma-bukkens id_073049_20231201110654 count_10 size_middle"></div>
+        </ItemNewHouse2>
     </div>
 </template>
     
 <script setup>
     import PartTitle from './Part-Title.vue';
-    import PartCard3 from './Part-Card3.vue';
     import ItemNewHouse2 from './Item-NewHouse2.vue'
 
 	import {computed} from 'vue'
@@ -36,44 +35,12 @@
 	})
     const moreRentURL = "https://asp.athome.jp/073049/shubetsu/chintai/shumoku"
 
-    // const cardsBuy = [
-    //     {
-    //         img: 'imgs/welcome_card_img_01.jpg',
-    //         tag: '売買居住用',
-    //         price: '40000000',
-    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
-    //         area: '48m²',
-    //         layout: '1LDK',
-    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
-    //     },
-    //     {
-    //         img: 'imgs/welcome_card_img_02.jpg',
-    //         tag: '売買居住用',
-    //         price: '40000000',
-    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
-    //         area: '48m²',
-    //         layout: '1LDK',
-    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
-    //     },
-    //     {
-    //         img: 'imgs/welcome_card_img_03.jpg',
-    //         tag: '売買居住用',
-    //         price: '40000000',
-    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
-    //         area: '48m²',
-    //         layout: '1LDK',
-    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
-    //     },
-    //     {
-    //         img: 'imgs/welcome_card_img_02.jpg',
-    //         tag: '売買居住用',
-    //         price: '40000000',
-    //         station: '東京メトロ副都心線 北参道駅 徒歩 5 分',
-    //         area: '48m²',
-    //         layout: '1LDK',
-    //         url: "https://asp.athome.jp/073049/shubetsu/baibai_kyojuyo/osusume"
-    //     }
-    // ]
+    const script1 = document.createElement('script');
+    script1.src = 'https://asp.athome.jp/responsive_koma_bukkens/ER_ID/073049/KOMA_ID/20231201110654/count/10/size/middle/list.js';
+    document.head.appendChild(script1);
+    const script2 = document.createElement('script');
+    script2.src = 'https://asp.athome.jp/responsive_koma_bukkens/ER_ID/073049/KOMA_ID/20231201111102/count/10/size/middle/list.js';
+    document.head.appendChild(script2);
 </script>
     
 <style scoped lang="less">

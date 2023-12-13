@@ -2,9 +2,7 @@
     <div class="wrapper">
         <img class="img" :src="img">
         <span class="tag fc bc">{{ tag }}</span>
-        <!-- <h5 class="title">{{ title }}</h5> -->
         <span class="price fc">{{ price }}</span>
-        <!-- <span class="location attr"><fa class="fa-icon" icon="location-dot"/>{{ location }}</span> -->
         <span class="layout attr"><fa class="fa-icon" icon="building"/>{{ layout }}</span>
         <span class="area attr"><fa class="fa-icon" icon="location-dot"/>{{ area }}</span>
         <span class="station attr"><fa class="fa-icon" icon="train"/>{{ station }}</span>
@@ -17,7 +15,6 @@
     })
 
     const { house: {img, price, station, layout, area, tag} } = props
-    
 </script>
     
 <style scoped  lang='less'>
