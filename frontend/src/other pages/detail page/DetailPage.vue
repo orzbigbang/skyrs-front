@@ -114,7 +114,7 @@
                     </label>
                     <label>
                         <input type="radio" name="query-type" value="お問い合わせ" v-model="queryTypeStr">
-                        その他の問い合わせ
+                        お問い合わせ
                     </label>
                 </div>
                 <div class="contact-method"  @click="() => {modalStore.isQuerySelection = true}">

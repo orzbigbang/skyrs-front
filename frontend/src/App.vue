@@ -7,13 +7,13 @@
         </template>
     </Elevator>
 
-	<MyHeader v-if="globalStore.isNavFooter"></MyHeader>
-	<MyNav v-if="globalStore.isNavFooter"></MyNav>
+    <MyHeader v-if="globalStore.isNavFooter"></MyHeader>
+    <MyNav v-if="globalStore.isNavFooter"></MyNav>
 
     <router-view>
     </router-view>
 
-	<MyFooter v-if="globalStore.isNavFooter"></MyFooter>
+    <MyFooter v-if="globalStore.isNavFooter"></MyFooter>
 </template>
 
 <script setup>
@@ -54,7 +54,7 @@
         title: '回到顶部', 
         icon: 'angles-up',
         func: () => {
-            window.scrollTo(0, 0)
+            document.body.scrollTo(0, 0)
         }
     }
 ]

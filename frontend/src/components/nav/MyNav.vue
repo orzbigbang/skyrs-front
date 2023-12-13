@@ -44,6 +44,7 @@ const items = [
         height: 50px;
         box-shadow: 0 3px 10px #ccc;
         background-color: #fff;
+        position: -webkit-sticky;
         position: sticky;
         top: 0;
         z-index: 100000;

@@ -76,7 +76,6 @@
                 width: 80%;
                 margin-top: 10px;
                 display: flex;
-                flex-wrap: wrap;
                 
                 .block {
                     flex: 1;
@@ -94,6 +93,7 @@
 
                 .placeholder-block {
                     width: 20px;
+                    height: 20px;
                 }
             }
 
@@ -117,6 +117,16 @@
     @media screen and (max-width: 700px) {
         .container {
             width: 100%;
+        }
+
+        .my-company {
+
+            .company-info {
+
+                .blocks {
+                    flex-direction: column;
+                }
+            }
         }
     }
 </style>

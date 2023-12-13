@@ -260,7 +260,7 @@
 	const getActivePageNum = (activePageNum) => {
 		startIndex.value = (activePageNum - 1) * 20
 		endIndex.value = startIndex.value + 20
-		window.scrollTo(0, 600)
+		document.body.scrollTo(0, 550)
 	}
 
 	const totalPage = computed(() => {
