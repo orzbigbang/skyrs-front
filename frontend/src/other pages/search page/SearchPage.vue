@@ -152,11 +152,11 @@
 
 	// 获取无特定条件的房屋列表
 	const houseList = computed(() => {
-		return houseStore.houseList
+		return houseStore.filteredList
 	})
 
 	const atbbHouseList = computed(() => {
-		return houseStore.FCFiltered? houseStore.filteredAtbbList: houseStore.atbbHouseList
+		return houseStore.filteredAtbbList
 	})
 	import { useHeader } from '@/composition/userInfo.js'
     const headers = useHeader()
@@ -226,6 +226,7 @@
 		// 3.发送请求
 		houseStore.getHouseList(url, params, headers, 0)
 		houseStore.getAtbbHouseList(params, headers, atbbType.value)
+		houseStore.filterAtbbHouseList(userInput.value, "other")
 	}
 
 	// 表单重置功能

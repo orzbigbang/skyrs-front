@@ -5,112 +5,14 @@ import { apiURL } from '@/config/config.js'
 
 export const useHouseStore = defineStore("house", () => {
 	// 搜索页面的房屋列表
-    const houseList = ref([
-	    // {
-		// 	main_pic_path: "/imgs/img_thumbnail (1).jfif",
-		// 	house_id: "1",
-		// 	faved: true,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (2).jfif",
-		// 	house_id: "2",
-		// 	faved: false,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (3).jfif",
-		// 	house_id: "3",
-		// 	faved: true,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (4).jfif",
-		// 	house_id: "4",
-		// 	faved: false,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (5).jfif",
-		// 	house_id: "5",
-		// 	faved: false,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (6).jfif",
-		// 	house_id: "6",
-		// 	faved: true,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-        // {
-		// 	main_pic_path: "/imgs/img_thumbnail (7).jfif",
-		// 	house_id: "7",
-		// 	faved: true,
-		// 	name: "ＴＫＲ神田多町",
-		// 	price: "87,000円",
-		// 	address: "東京都千代田区 神田多町２丁目",
-		// 	area: "88",
-		// 	layout: "3LDK",
-		// 	station1: "ＪＲ川越線/西大宮駅 歩11分",
-		// 	completion_date: "2002年11月築",
-		// 	house_struction: "鉄骨",
-		// 	number_of_floors: "8階",
-		// },
-    ])
+    const houseList = ref([])
 	const atbbHouseList = ref([])
 	const atbbHouseListBM = ref([])
 	const atbbHouseListBO = ref([])
 	const atbbHouseListRMO = ref([])
 	const atbbHouseListRB = ref([])
 	const atbbHouseListRR = ref([])
+	const filteredList = ref([])
 	const filteredAtbbList = ref([])
 
 	// 搜索页面房屋列表更新与否
@@ -132,7 +34,13 @@ export const useHouseStore = defineStore("house", () => {
 				houseListLoaded.value = true
 				switch (type) {
 					case 0:
-						houseList.value = value.data
+						filteredList.value = houseList.value = value.data
+						const tempList = Object.keys(filterConditionFC.value).filter((key) => {
+							return filterConditionFC.value[key] === true
+						})
+						if (tempList.length) {
+							filterHouseList()
+						}
 						break
 					case 1:
 						dpHistories.value = value.data[0].view_history
@@ -146,6 +54,29 @@ export const useHouseStore = defineStore("house", () => {
             }
         )
     }
+
+	const filterHouseList = (condition) => {
+		// 根据FC筛选
+		const tempList = Object.keys(filterConditionFC.value).filter((key) => {
+			return filterConditionFC.value[key] === true
+		})
+
+		if (tempList.length) {
+			filteredList.value = houseList.value.filter((item) => {
+				let _type = ""
+				if (filterConditionFC.value._type === "station") {
+					_type = "station1"
+				} else if (filterConditionFC.value._type === "train_route") {
+					_type = "train_route1"
+				} else if (filterConditionFC.value._type === "district") {
+					_type = "district"
+				}
+				return tempList.indexOf(item[_type]) !== -1
+			})
+		} else {
+			filteredList.value = houseList.value
+		}
+	}
 
 	const filterCity = (array, cityIndex) => {
 		var cityName = "tokyo"
@@ -183,13 +114,13 @@ export const useHouseStore = defineStore("house", () => {
 	
 	const getAtbbHouseList = (params, headers, atbbType) => {
 		if (atbbType === "bm" && atbbHouseListBM.value.length) {
-			atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
 			return
 		} else if (atbbType === "bo" && atbbHouseListBO.value.length) {
-			atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
 			return
 		} else if (atbbType === "rmo" && atbbHouseListRMO.value.length) {
-			atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
 			return
 		}
 
@@ -210,15 +141,15 @@ export const useHouseStore = defineStore("house", () => {
 				switch (atbbType) {
 					case "bm":
 						atbbHouseListBM.value = value.data
-						atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+						filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
 						break
 					case "bo":
 						atbbHouseListBO.value = value.data
-						atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+						filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
 						break
 					case "rmo":
 						atbbHouseListRMO.value = value.data
-						atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+						filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
 						break
 				}
 			}
@@ -229,33 +160,74 @@ export const useHouseStore = defineStore("house", () => {
 		)
 	}
 
-	const FCFiltered = ref(false)
-
-	const filterAtbbByFC = (conditionFC, fcFiltered) => {
-		FCFiltered.value = fcFiltered
-		// 获取FC搜索框的长度，判断是否要筛选
-		const checkFCList = Object.keys(conditionFC).filter((key) => {
-			return conditionFC[key] === true
+	const filterConditionFC = ref({})
+	const filterConditionOther = ref({})
+	const filterAtbbHouseList = (condition, conditionType) => {
+		// 判断搜索条件
+		if (conditionType === "fc") {
+			filterConditionFC.value = condition
+		} else if (conditionType === "other") {
+			filterConditionOther.value = condition
+		}
+		// 根据FC筛选
+		const tempList = Object.keys(filterConditionFC.value).filter((key) => {
+			return filterConditionFC.value[key] === true
 		})
-		if (Object.keys(conditionFC).length === 1 || (Object.keys(conditionFC).length > 1 && checkFCList.length === 0)) {
-			return filteredAtbbList.value = atbbHouseList.value
+
+		if (tempList.length) {
+			filteredAtbbList.value = atbbHouseList.value.filter((item) => {
+				let _type = ""
+				if (filterConditionFC.value._type === "station") {
+					_type = "station1"
+				} else if (filterConditionFC.value._type === "train_route") {
+					_type = "train_route1"
+				} else if (filterConditionFC.value._type === "district") {
+					_type = "district"
+				}
+				return tempList.indexOf(item[_type]) !== -1
+			})
+		} else {
+			filteredAtbbList.value = atbbHouseList.value
 		}
 
-		// 根据FC筛选
-		const tempList = Object.keys(conditionFC).filter((key) => {
-			return conditionFC[key] === true
-		})
-		filteredAtbbList.value = atbbHouseList.value.filter((item) => {
-			let _type = ""
-			if (conditionFC._type === "station") {
-				_type = "station1"
-			} else if (conditionFC._type === "train_route") {
-				_type = "train_route1"
-			} else if (conditionFC._type === "district") {
-				_type = "district"
+		// 根据Other筛选
+		if (Object.keys(filterConditionOther.value).length) {
+			if (filterConditionOther.value.price_bottom !== "指定なし") {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					return item.price / 10000 >= filterConditionOther.value.price_bottom
+				})
 			}
-			return tempList.indexOf(item[_type]) !== -1
-		})
+			if (filterConditionOther.value.price_top !== "指定なし") {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					return item.price / 10000 <= filterConditionOther.value.price_top
+				})
+			}
+			if (filterConditionOther.value.area_bottom !== "指定なし") {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					return item.area >= filterConditionOther.value.area_bottom
+				})
+			}
+			if (filterConditionOther.value.area_top !== "指定なし") {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					return item.area <= filterConditionOther.value.area_top
+				})
+			}
+			if (filterConditionOther.value.area_top !== "指定なし") {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					return item.area <= filterConditionOther.value.area_top
+				})
+			}
+			if (filterConditionOther.value.layout.length) {
+				filteredAtbbList.value = filteredAtbbList.value.filter((item) => {
+					if (Object.values(filterConditionOther.value.layout).indexOf("4K") === -1) {
+						return Object.values(filterConditionOther.value.layout).indexOf(item.layout) !== -1
+					} else {
+						return Object.values(filterConditionOther.value.layout).indexOf(item.layout) !== -1 || parseInt(item.layout.charAt(0)) >= 4
+					}
+				})
+			}
+		}
+		
 	}
 
 	const getAtbbRecommendHouseList = (headers) => {
@@ -320,8 +292,9 @@ export const useHouseStore = defineStore("house", () => {
 		atbbHouseListRB,
 		atbbHouseListRR,
 		getAtbbRecommendHouseList,
+		filterAtbbHouseList,
 		filteredAtbbList,
-		filterAtbbByFC,
-		FCFiltered
+		filterHouseList,
+		filteredList
     }
 })

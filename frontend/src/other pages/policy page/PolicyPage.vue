@@ -29,10 +29,10 @@
         .info-wrapper {
             width: 100%;
             min-height: 100vh;
-            padding: 20px;
+            padding: 50px;
             font-size: 16px;
             letter-spacing: 1px;
-            box-shadow: 0 0 10px #999;
+            box-shadow: 0 0 10px #ccc;
         }
     }
 

@@ -10,7 +10,7 @@
                 
                 <div class="name block">
                     <div class="title">
-                        名前 <span>※必須項目</span>
+                        名前 <span class="warn">※必須項目</span>
                     </div>
                     <div class="eng name-wrapper wrapper">
                         <div class="first-name n">
@@ -32,11 +32,11 @@
 
                 <div class="contact block">
                     <div class="title">
-                        連絡方法 <span>※必須項目</span>
+                        連絡方法 <span class="warn">※必須項目</span>
                     </div>
                     <div class="contact-wrapper wrapper">
                         <div class="first-name n">
-                            <input type="text" placeholder="メールアドレス" required v-model="userInput.email">
+                            <input type="email" placeholder="メールアドレス" required v-model="userInput.email">
                         </div>
                         <div class="last-name n">
                             <input type="text" placeholder="電話番号" v-model="userInput.phone">
@@ -63,6 +63,7 @@
                     <div class="title">
                         物件情報
                     </div>
+                    <span class="warn">※必須項目</span>
                     <div class="radio-wrapper">
                         <label>
                             <input type="radio" name="house_type" value="mansion"  v-model="userInput.house_type">
@@ -85,7 +86,7 @@
 
                 <div class="query block">
                     <div class="title">
-                        お問い合わせ内容 <span>※必須項目</span>
+                        お問い合わせ内容 <span class="warn">※必須項目</span>
                     </div>
                     <div class="query-wrapper wrapper">
                         <textarea class="query-input" cols="60" rows="8" required v-model="userInput.query_content"></textarea>
@@ -93,6 +94,7 @@
                 </div>
 
                 <button id="submit">送信</button>
+                <div id="popup" v-show="sentEmail">送信完了しました</div>
             </form>
         </div>
     </div>
@@ -131,9 +133,14 @@
         immediate: true
     })
 
+    const sentEmail = ref(false)
     const header = useHeader()
     const goQuery = () => {
         queryStore.postQuery(userInput.value, header)
+        sentEmail.value = true
+        setTimeout(() => {
+            sentEmail.value = false
+        }, 3000)
     }
 </script>
     
@@ -159,15 +166,15 @@
                 font-size: 18px;
                 border-bottom: 1px solid #ccc;
                 margin-bottom: 20px;
-
-                span {
-                    font-size: 12px;
-                    color: red;
-                }
             }
         }
 
-        input[type='text'] {
+        span.warn {
+            font-size: 12px;
+            color: red;
+        }
+
+        input[type='text'], input[type='email'] {
             width: 100%;
             height: 30px;
             padding: 5px 10px;
@@ -266,6 +273,21 @@
         }
     }
 
+    #popup {
+        width: 10rem;
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        background-color: #5454c613;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(128, 128, 128, 0.333);
+        border-radius: 20px;
+        transition: .3s;
+    }
+
     @media screen and (max-width:700px) {
         .container {
             width: 100%;
@@ -279,7 +301,7 @@
                 box-shadow: none;
             }
 
-            input[type='text'] {
+            input[type='text'], input[type='email'] {
                 &::placeholder {
                     font-size: 12px;
                 }

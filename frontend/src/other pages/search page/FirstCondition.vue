@@ -13,7 +13,7 @@
         <div class="value-wrapper" :class="{active: conditionStore.activeFCIndex===props.index? true: false}">
             <div class="value" v-for="value in filterd_values" :key="value">
                 <label>
-                    <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]" @change="getFCFilteredList">
+                    <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]" @change="getFCFilteredList($event)">
                     {{ conditionStore.activeFCIndex===props.index? value: "" }}
                 </label>
             </div>
@@ -77,11 +77,17 @@
                 FCInput[key] = false
             }
         })
-        houseStore.filterAtbbByFC(FCInput, false)
+        houseStore.filterAtbbHouseList(FCInput, "fc")
+        houseStore.filterHouseList(FCInput)
+        searchBarInput.value = ""
     }
 
-    const getFCFilteredList = () => {
-        houseStore.filterAtbbByFC(FCInput, true)
+    const getFCFilteredList = ($event) => {
+        if (!$event.target.checked) {
+            delete FCInput[$event.target._value]
+        }
+        houseStore.filterAtbbHouseList(FCInput, "fc")
+        houseStore.filterHouseList(FCInput)
     }
 </script>
     

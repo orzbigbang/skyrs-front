@@ -168,8 +168,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {
@@ -227,8 +227,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {
@@ -286,8 +286,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {
@@ -350,8 +350,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {
@@ -414,8 +414,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {
@@ -480,8 +480,8 @@ info.bases = {
         {
             _key: "階建",
             _value: {
-                total_number_of_floors: "３階",
                 number_of_floors: "３階",
+                total_number_of_floors: "３階",
             }
         },
         {

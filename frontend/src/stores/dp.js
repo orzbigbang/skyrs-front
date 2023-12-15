@@ -11,14 +11,7 @@ export const useDPStore = defineStore("dp", () => {
     const title = ref("レジディア神田東  602")
     const faved = ref(false)
     const highlights = ref(info.highlights[conditionStore.houseIndex])
-    const images = ref([
-        // "/imgs/img_thumbnail (1).jfif",
-        // "/imgs/img_thumbnail (2).jfif",
-        // "/imgs/img_thumbnail (3).jfif",
-        // "/imgs/img_thumbnail (4).jfif",
-        // "/imgs/img_thumbnail (5).jfif",
-        // "/imgs/img_thumbnail (6).jfif",
-    ])
+    const images = ref([])
     const bases = ref(info.bases[conditionStore.houseIndex])
     const bpTitle = ref("徒歩圏内にスーパーや公園、保育園、小学校などが揃う、子育て世帯にうれしい環境。ショッピングモール「BiVi南千住」も生活圏内です")
     const bpDesc = ref("東京メトロ日比谷線「三ノ輪」駅まで徒歩7分（～560ｍ）、JR山手線「鶯谷」駅まで徒歩15分（～1200ｍ）、都電荒川線「三ノ輪橋」駅まで徒歩11分（～880ｍ）で、3沿線3駅が徒歩圏内。通勤や通学、お買い物などにも便利な立地です。また徒歩圏内にはスーパーや公園が揃うほか、キッズガーデン保育園まで徒歩7分（～495ｍ）、台東区立金曽木小学校まで徒歩3分（～196ｍ）で、子育て世帯にも嬉しいロケーションとなっています。")

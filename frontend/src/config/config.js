@@ -7,7 +7,7 @@ export const apiURL = {
     estate: `${baseURL}/api/estate`,
     addFavorate: `${baseURL}/api/favorite/`,
     getUser: `${baseURL}/api/user`,
-    query: `${baseURL}/api/contact_info/`,
+    query: `${baseURL}/api/send_email/`,
     upload: `${baseURL}/api/estate-upload/`,
     count: `${baseURL}/api/count/`,
     atbb_bm: `${baseURL}/atbb/buy_mansion`,
