@@ -17,6 +17,7 @@ export const useHouseStore = defineStore("house", () => {
 
 	// 搜索页面房屋列表更新与否
 	const houseListLoaded = ref(false)
+	const houseListAtbbLoaded = ref(false)
 
 	// 房屋浏览历史页面的房屋列表
 	const dpHistories = ref([])
@@ -26,14 +27,15 @@ export const useHouseStore = defineStore("house", () => {
 
 	// 获取各种房屋列表
     const getHouseList = (url, params, headers, type) => {
-        // params: {}
-        // headers: {}
-		// type: 0:无条件放屋列表， 1:浏览历史, 2:收藏的房屋
+		// type: 0: 获取放屋列表， 1: 获取浏览历史, 收藏的房屋列表
+		if (!type) {
+			houseListLoaded.value = false
+		}
         axios.get(url, {params, headers}).then(
             value => {
-				houseListLoaded.value = true
 				switch (type) {
 					case 0:
+						houseListLoaded.value = true
 						filteredList.value = houseList.value = value.data
 						const tempList = Object.keys(filterConditionFC.value).filter((key) => {
 							return filterConditionFC.value[key] === true
@@ -113,14 +115,18 @@ export const useHouseStore = defineStore("house", () => {
 	}
 	
 	const getAtbbHouseList = (params, headers, atbbType) => {
+		houseListAtbbLoaded.value = false
 		if (atbbType === "bm" && atbbHouseListBM.value.length) {
 			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBM.value, params.city)
+			houseListAtbbLoaded.value = true
 			return
 		} else if (atbbType === "bo" && atbbHouseListBO.value.length) {
 			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListBO.value, params.city)
+			houseListAtbbLoaded.value = true
 			return
 		} else if (atbbType === "rmo" && atbbHouseListRMO.value.length) {
 			filteredAtbbList.value = atbbHouseList.value = filterCity(atbbHouseListRMO.value, params.city)
+			houseListAtbbLoaded.value = true
 			return
 		}
 
@@ -137,7 +143,8 @@ export const useHouseStore = defineStore("house", () => {
 				break
 		}
 		axios.get(atbbUrl, {params, headers}).then(
-			value => {				
+			value => {
+				houseListAtbbLoaded.value = true
 				switch (atbbType) {
 					case "bm":
 						atbbHouseListBM.value = value.data
@@ -283,6 +290,7 @@ export const useHouseStore = defineStore("house", () => {
         houseList,
 		atbbHouseList,
 		houseListLoaded,
+		houseListAtbbLoaded,
 		dpHistories,
 		favorates,
         getHouseList,

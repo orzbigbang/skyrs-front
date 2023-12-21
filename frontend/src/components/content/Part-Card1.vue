@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <img class="img" :src="img">
+        <img class="img" :src="apiURL.mediaAtbbURL + img">
         <span class="tag fc bc">{{ tag }}</span>
         <span class="price fc">{{ price }}</span>
         <span class="layout attr"><fa class="fa-icon" icon="building"/>{{ layout }}</span>
@@ -15,6 +15,8 @@
     })
 
     const { house: {img, price, station, layout, area, tag} } = props
+
+    import { apiURL } from '@/config/config.js'
 </script>
     
 <style scoped  lang='less'>

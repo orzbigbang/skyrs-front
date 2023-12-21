@@ -1,18 +1,18 @@
 <template>
     <div class="wrapper"  @click="goDP">
-        <img class="image" :src="mediaURL + props.item.main_pic_url">
+        <img class="image" :src="apiURL.mediaURL + main_pic_url">
         <div class="info-wrapper">
-            <span class="name">{{ props.item.name }}</span>
-            <span>{{ props.item.address }}</span>
+            <span class="name">{{ name }}</span>
+            <span>{{ address }}</span>
 
             <div class="info-row">
-                <span class="price">{{ props.item.price }} / </span>
-                <span>{{ props.item.area }}m² / </span>
-                <span>{{ props.item.layout }} / </span>
-                <span>{{ props.item.number_of_floors }}</span>
+                <span class="price">{{ price }} / </span>
+                <span>{{ area }}m² / </span>
+                <span>{{ layout }} / </span>
+                <span>{{ number_of_floors + "階" }}</span>
             </div>
-            <span>{{ props.item.station1 }}</span>
-            <fa icon="star" class="fav" :class="{active: faved}" @click.stop="add2fav"/>
+            <span>{{ station1 }}</span>
+            <fa icon="star" class="fav" :class="{active: favedEvent}" @click.stop="add2fav"/>
         </div>
     </div>
 </template>
@@ -22,7 +22,7 @@
     import { useRouter } from 'vue-router'
     const router = useRouter()
 
-    import { mediaURL } from '@/config/config.js'
+    import { apiURL } from '@/config/config.js'
 
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
@@ -31,16 +31,18 @@
         item: Object
     })
 
+    const {item: {house_id, faved, main_pic_url, name, address, price, area, layout, number_of_floors, station1}} = props
+
+    // 点击跳转到DP
     const goDP = () => {
         modalStore.closeModalSelection()
-        router.push(`/detailpage/${props.item.house_id}`)
+        router.push(`/detailpage/${house_id}`)
     }
 
-
-    // 收藏功能
+    // 点击更新用户收藏
     import { useAdd2fav } from "@/composition/favorate.js"
-    const faved = ref(props.item.faved)
-    const add2fav = () => {useAdd2fav(faved, props.item.house_id)}
+    const favedEvent = ref(faved)
+    const add2fav = () => {useAdd2fav(favedEvent, house_id)}
 </script>
     
 <style scoped lang='less'>

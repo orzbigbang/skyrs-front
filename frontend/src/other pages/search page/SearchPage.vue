@@ -55,24 +55,19 @@
 	<div class="result">
 		<div class="container">
 			<MyTag>検索結果</MyTag>
-			<span class="result-indicator" v-if="houseList.length">自社物件：以下の<b>{{ houseList.length }}</b>件を探しました</span>
+			<span class="result-indicator" v-if="houseStore.houseListLoaded && houseList.length">自社物件：以下の<b>{{ houseList.length }}</b>件を探しました</span>
 			<div class="exhibit" v-if="houseStore.houseListLoaded && houseList.length">
 				<HouseCard v-for="house in houseList" :keys="house.title" :house="house"/>
 			</div>
 
-			<span class="result-indicator">その他にも以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
-			<div class="exhibit" v-if="houseStore.houseListLoaded">
+			<span class="result-indicator" v-if="houseStore.houseListLoaded && houseStore.houseListAtbbLoaded">その他にも以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
+			<div class="exhibit" v-if="houseStore.houseListLoaded && houseStore.houseListAtbbLoaded">
 				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
 			</div>
 
-			<!-- <span class="result-indicator">以下の<b>{{ atbbHouseList.length }}</b>件を探しました</span>
-			<div class="exhibit">
-				<HouseCardAtbb v-for="house in atbbHouseList.slice(startIndex, endIndex)" :keys="house.title" :house="house"/>
-			</div> -->
-
 			<img class="loading" src="@/assets/imgs/loader.gif" v-else>
 
-			<Pager :pagerConfig="{total: totalPage, middlePage: 5,}" @on-click="getActivePageNum"></Pager>
+			<Pager :pagerConfig="{total: totalPage, middlePage: 5,}" v-if="houseStore.houseListLoaded && houseStore.houseListAtbbLoaded" @on-click="getActivePageNum"></Pager>
 		</div>
 	</div>
 </template>

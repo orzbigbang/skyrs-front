@@ -129,14 +129,21 @@
         layout: "",
     })
 
+    // 点击submit按钮时候发送邮件，并popup提示
     const sentEmail = ref(false)
     const header = useHeader()
     const goQuery = () => {
+        // 添加节流功能
+        if (sentEmail.value) {
+            return
+        }
         queryStore.postQuery(userInput.value, header)
         sentEmail.value = true
+
+        // 2.5秒之后popup自动消失。        
         setTimeout(() => {
             sentEmail.value = false
-        }, 3000)
+        }, 2500)
     }
 
     // queryStore.getQuery(header)

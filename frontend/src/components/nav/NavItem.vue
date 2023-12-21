@@ -1,35 +1,32 @@
 <template>
     <li class="wrapper">
-        <div class="nav-item" @mouseenter="activate" @mouseleave="deactivate" @touchstart="active=!active">
-            {{ title }}
-            <div class="bar" v-show="active"></div>
+        <div class="nav-item">
+            {{ item.title }}
         </div>
-        <ul class="sub-item-wrapper" v-show="active" @mouseenter="activate" @mouseleave="deactivate">
-            <NavSubItem v-for="item in subItem" :subItem="item"  @on-touch="deactivate"/>
-        </ul>
+        <Transition>
+            <ul class="sub-item-wrapper" v-show="index === activeIndex">
+                <NavSubItem 
+                    v-for="item in item.subItem" 
+                    :subItem="item" 
+                    @on-touch="emits('on-touch')">
+                </NavSubItem>
+            </ul>
+        </Transition>
     </li>
 </template>
     
 <script setup>
-    import { ref } from 'vue'
-
     import NavSubItem from '@/components/nav/NavSubItem.vue'
 
     const props = defineProps(
         {
-            item: Object
+            item: Object,
+            index: Number,
+            activeIndex: Number
         }
     )
-    const { item: {title, subItem} } = props
 
-    // 导航栏显示事件
-    const active = ref(false)
-    const activate = () => {
-        active.value = true
-    }
-    const deactivate = () => {
-        active.value = false
-    }
+    const emits = defineEmits(["on-touch"])
 </script>
     
 <style lang="less">
@@ -49,9 +46,8 @@
             transition: all .1s linear;
 
             &:hover {
-                color: #fff;
-                background-color: rgb(31,78,121);
-                border-radius: 30px;
+                font-weight: bold;
+                color: rgb(16, 3, 57);
             }
         }   
 
@@ -59,13 +55,13 @@
             width: 17rem;
             background-color: #fff;
             border: 1px solid #999;
-            box-shadow: 0 1px 5px #333;
+            box-shadow: 0 1px 5px #999;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             align-items: flex-start;
             position: absolute;
-            top: 100%;
+            top: 90%;
             font-size: 16px;
             border-radius: 10px;
             z-index: 100;
@@ -79,5 +75,15 @@
                 font-size: 17px;
             }   
         }
+    }
+
+    .v-enter-active,
+    .v-leave-active {
+        transition: opacity .2s ease;
+    }
+
+    .v-enter-from,
+    .v-leave-to {
+        opacity: 0;
     }
 </style>

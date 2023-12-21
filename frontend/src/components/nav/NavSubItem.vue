@@ -1,5 +1,9 @@
 <template>
-    <li class="sub-item" :class="{'is-disable': disable}" @click="goSearch($event, houseIndex)" @touchstart.prevent="deactivate">
+    <li class="sub-item" 
+        :class="{'is-disable': disable}" 
+        @click="goSearch(houseIndex)" 
+        @touchstart.prevent="goSearch(houseIndex, true)"
+    >
         {{ title }}
     </li>
 </template>
@@ -24,14 +28,19 @@
 
     const emits = defineEmits(['on-touch'])
     
-    const goSearch = ($event, houseIndex) => {
+    // 点击跳转到搜索页面
+    const goSearch = (houseIndex, touch=false) => {
+        // 如果设置了disable的话不采取任何行动
         if (disable) {
             return
         }
-        // 触发二级菜单隐藏时间
-        emits("on-touch")
 
-        // 避免同一index重复触发
+        // 触屏时候触发二级菜单隐藏事件
+        if (touch) {
+            emits("on-touch")
+        }
+
+        // 避免同一index重复触发加载动画
         if (conditionStore.houseIndex !== houseIndex) {
             houseStore.houseListLoaded = false
         }
@@ -41,7 +50,7 @@
             conditionStore.houseIndex = houseIndex
         }
 
-        // 跳转相应页面
+        //设置store变量，并跳转相应页面
         if (props.subItem.type === "search") {
             conditionStore.mode = mode
             conditionStore.type = type
@@ -54,11 +63,6 @@
             router.push(`${route}/${mode}`)
         }
     }
-
-    const deactivate = ($event, houseIndex) => {
-        emits("on-touch")
-        goSearch($event, houseIndex)
-    }
 </script>
     
 <style scoped  lang='less'>
@@ -69,9 +73,8 @@
         transition: all .1s linear;
 
         &:hover {
-            color: #fff;
-            background-color: rgb(31,78,121);
-            border-radius: 30px;
+            border-radius: 10px;
+            background-color: rgb(243, 243, 243);
         }
 
         &.is-disable {
@@ -79,7 +82,6 @@
             cursor: auto;
 
             &:hover {
-            color: #aaa;
                 background-color: #fff;
             }
         }

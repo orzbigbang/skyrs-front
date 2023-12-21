@@ -1,7 +1,7 @@
 <template>
     <div class="house-wrapper">
         <div class="img-wrapper">
-            <img class="img" :src="props.house.img" @click="jump2page">
+            <img class="img" :src="apiURL.mediaAtbbURL + props.house.img" @click="jump2page">
             <span class="view">
                 閲覧：{{ viewCount? viewCount: "0" }} 
             </span>
@@ -32,6 +32,8 @@
             house: Object
         }
     )
+
+    import { apiURL } from '@/config/config.js'
 
     // house_id
     const houseID = computed(() => props.house.house_id)

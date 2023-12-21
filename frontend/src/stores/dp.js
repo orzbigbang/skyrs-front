@@ -5,7 +5,7 @@ import info from '@/assets/js/info'
 import { useConditionStore } from '@/stores/condition'
 const conditionStore = useConditionStore()
 
-import { mediaURL } from '@/config/config.js'
+import { apiURL } from '@/config/config.js'
 
 export const useDPStore = defineStore("dp", () => {
     const title = ref("レジディア神田東  602")
@@ -103,7 +103,7 @@ export const useDPStore = defineStore("dp", () => {
                     const imgs = []
                     Object.values(response.img).forEach((item) => {
                         if (item) {
-                            imgs.push(mediaURL + item)
+                            imgs.push(apiURL.mediaURL + item)
                         }
                     })
                     images.value = imgs

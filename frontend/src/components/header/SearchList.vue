@@ -24,15 +24,16 @@
     import { useModalStore } from '@/stores/modal.js'
     const modalStore = useModalStore()
 
-    const { item } = defineProps(["item"])
-    const { city, mode, type, new_, fc, price, area, station_time, layout, other } = item
+    const props = defineProps({
+        item: Object
+    })
+    const {item: { city, mode, type, new_, fc, price, area, station_time, layout, other }} = props
 
     // 点击事件 -> 跳转到相应的搜索页面
     const goSearch = () => {
         modalStore.closeModalSelection()
         router.push(`/search/${city}/${mode}/${type}/${new_}`)
     }
-
 </script>
     
 <style scoped lang='less'>
