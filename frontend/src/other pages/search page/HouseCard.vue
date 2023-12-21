@@ -1,7 +1,7 @@
 <template>
     <div class="house-wrapper">
         <div class="img-wrapper">
-            <img class="img" :src="mediaURL + props.house.main_pic_url" @click="goDP">
+            <img class="img" :src="apiURL.mediaURL + props.house.main_pic_url" @click="goDP">
             <span class="view">
                 閲覧：{{ viewCount? viewCount: "0" }} 
             </span>
@@ -15,22 +15,23 @@
             <span class="madori">{{ props.house.layout }}</span>
             <span class="area">{{ props.house.area }}m²</span>
             <span class="station">{{ props.house.station}}</span>
-            <span class="attribute">{{ props.house.house_struction + " / " + props.house.number_of_floors}}</span>
+            <span class="attribute">{{ props.house.house_struction + " / " + props.house.number_of_floors + "階" }}</span>
         </div>
 
         <span class="price">{{ props.house.price.slice(0, -1) + "万円" }}</span>
+        <div id="popup" v-show="favedEvent">{{ faved? "追加されました": "外されました" }}</div>
     </div>
 </template>
     
 <script setup>
-    import { computed } from 'vue'
+    import { ref, computed } from 'vue'
     import { useRouter } from "vue-router";
     const router = useRouter()
 
     import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
 
-    import { mediaURL } from '@/config/config.js'
+    import { apiURL } from '@/config/config.js'
 
     const props = defineProps(
         {
@@ -64,7 +65,17 @@
         }
     })
     import { useAdd2fav } from "@/composition/favorate.js"
-    const add2fav = () => {useAdd2fav(faved, houseID.value)}
+    const favedEvent = ref(false)
+    const add2fav = () => {
+        if (!favedEvent.value) {
+            favedEvent.value = true
+            setTimeout(() => {
+                favedEvent.value = false
+            }, 3000)
+            useAdd2fav(faved, houseID.value)
+        }
+    }
+
 </script>
     
 <style scoped  lang='less'>
@@ -151,6 +162,22 @@
                 }
             }
         }
+    }
+
+    #popup {
+        width: 15rem;
+        height: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #5454c613;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(128, 128, 128, 0.333);
+        border-radius: 20px;
+        transition: .3s;
     }
 
     @media screen and (max-width:700px) {

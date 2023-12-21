@@ -12,27 +12,35 @@
     import { useHouseStore } from '@/stores/house.js'
     const houseStore = useHouseStore()
 
-    import { useHeader } from '@/composition/userInfo.js'
-    const headers = useHeader()
-
     const props = defineProps({
         item: Object,
     })
     const {item: {func, icon, title}} = props
-
-    const emits = defineEmits(['on-click'])
-
+    
+    // 打开模态框且获取用户收藏和访问历史的房屋列表
 	import { apiURL } from '@/config/config.js'
+    import { useHeader } from '@/composition/userInfo.js'
+    const emits = defineEmits(['on-click'])
     const url = apiURL.getUser
-    const getUserHistory = () => {
-		const params = {}
-        houseStore.getHouseList(url, params, headers, 1)
-    }
-
+    const params = {}
+    const headers = useHeader()
     const showModal = () => {
-        getUserHistory()
+        // 如果是'エリアの変換'，则不用执行以下
+        if (title === 'エリアの変換') {
+            return
+        }
+
+        // 打开模态框，并设置title
         emits('on-click', title)
         func()
+    
+        // 如果是'お問い合わせ'，则不用发送请求
+        if (title === 'お問い合わせ') {
+            return
+        }
+
+        // 获取用户房屋列表
+        houseStore.getHouseList(url, params, headers, 1)
     }
 </script>
 

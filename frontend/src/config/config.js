@@ -1,7 +1,5 @@
-const test = true
+const test = false
 const baseURL = test? "http://localhost": "https://7cloudhouse.com"
-
-export const mediaURL = `${baseURL}/media/estate/`
 
 export const apiURL = {
     estate: `${baseURL}/api/estate`,
@@ -15,4 +13,6 @@ export const apiURL = {
     atbb_rmo: `${baseURL}/atbb/rent_mansion_one`,
     atbb_rb: `${baseURL}/atbb/recommend_buy`,
     atbb_rr: `${baseURL}/atbb/recommend_rent`,
+    mediaURL: `${baseURL}/media/estate/`,
+    mediaAtbbURL: `${baseURL}/media/atbb/`
 }

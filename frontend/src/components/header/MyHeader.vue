@@ -6,11 +6,11 @@
                 <Baloon/>
             </div>
 
-            <HeaderItem id="area-selection" class="area-selection abc" :item="citySelectionFunc" @click="() => {isCitySelection = !isCitySelection}">
+            <HeaderItem id="area-selection" class="area-selection abc" :item="citySelectionItem" @click="() => {isCitySelection = !isCitySelection}">
                 <span class="fc abc" style="font-weight: bold;">{{ conditionStore.city }}</span>
                 <div class="area-list" v-if="isCitySelection">
                     <ul class="city-list">
-                        <li class="city fc" v-for="city in cities" @click="setCity($event, city)">
+                        <li class="city fc" v-for="city in cities" @click="setCity(city)">
                             {{ city.title }}
                         </li>
                     </ul>
@@ -19,14 +19,14 @@
         </div>
         
         <div class="function-wrapper">
-            <HeaderItem v-for="item in functions" :key="item.title" :item="item"  @on-click="getModalBoxTitle"/>
+            <HeaderItem v-for="item in headerItems" :item="item"  @on-click="getModalBoxTitle"/>
         </div>
     </header>
 
     <ModalBox :title="modalBoxTitle" v-show="isModalShow">
-        <SearchList v-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"></SearchList>
-        <DPList v-else-if="isSearchHistorySelection" v-for="history in dpHistories" :item="history"></DPList>
-        <DPList v-else-if="isFavSelection" v-for="favorate in favorates" :item="favorate"></DPList>
+        <SearchList v-if="isQuickSearchSelection" v-for="history in searchHistories" :item="history"/>
+        <DPList v-else-if="isSearchHistorySelection" v-for="history in dpHistories" :item="history"/>
+        <DPList v-else-if="isFavSelection" v-for="favorate in favorates" :item="favorate"/>
         <Query v-else-if="isQuerySelection"></Query>
     </ModalBox>
 </template>
@@ -57,6 +57,49 @@
     const houseStore = useHouseStore()
     const { dpHistories, favorates } = toRefs(houseStore)
 
+    import { cities } from '@/config/cities.js'
+
+    // 模态框初始化
+    const modalBoxTitle = ref("")
+    const getModalBoxTitle = (title) => {
+        modalBoxTitle.value = title
+        isModalShow.value = true
+    }
+
+    // headerItems的信息mapping
+    const headerItems = [
+        {
+            title: '閲覧履歴',
+            icon: 'clock-rotate-left',
+            func: () => {isSearchHistorySelection.value = true},
+        },
+        {
+            title: 'お気に入り',
+            icon: 'star',
+            func: () => {isFavSelection.value = true},
+        },
+        {
+            title: 'お問い合わせ',
+            icon: 'envelope',
+            func: () => {isQuerySelection.value = true},
+        },
+    ]
+    const citySelectionItem = {
+        title: 'エリアの変換',
+        icon: 'location-dot',
+        func: () => {},
+    }
+
+    // 设置城市
+    const setCity = (city) => {
+        conditionStore.city = city.title
+        conditionStore.cityIndex = city.index
+        // 如果路径是search开头的话，进入搜索（如果是从别的页面的话，只是设置城市信息，而不进入搜索）
+        if (route.path.startsWith("/search")) {
+            router.push(`/search/${city.index}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
+        }
+    }
+
     // 点击选择城市事件和隐藏事件
     const showCityList = ($event) => {
         const includedString = "abc"
@@ -75,84 +118,6 @@
     onBeforeUnmount(() => {
         window.removeEventListener("click", showCityList)
     })
-
-    // 设置城市
-    const setCity = ($event, city) => {
-        conditionStore.city = city.title
-        conditionStore.cityIndex = city.index
-        // 如果路径是search开头的话，进入搜索（如果是从别的页面的话，只是设置成是，而不进入搜索）
-        if (route.path.startsWith("/search")) {
-            router.push(`/search/${city.index}/${conditionStore.mode}/${conditionStore.type}/${conditionStore.new_}`)
-        }
-    }
-
-    // 城市选择信息mapping
-    const cities = [
-        {
-            title: "東京",
-            index: 1,
-        },
-        {
-            title: "神奈川",
-            index: 2,
-        },
-        {
-            title: "千葉",
-            index: 3,
-        },
-        {
-            title: "埼玉",
-            index: 4,
-        },
-        {
-            title: "栃木",
-            index: 5,
-        },
-        {
-            title: "山梨",
-            index: 6,
-        },
-        {
-            title: "長野",
-            index: 7,
-        },
-        {
-            title: "静岡",
-            index: 8,
-        },
-    ]
-
-    const citySelectionFunc = {
-        title: 'エリアの変換',
-        icon: 'location-dot',
-        func: () => {},
-    }
-
-    // 模态框初始化
-    const modalBoxTitle = ref("")
-    const getModalBoxTitle = (title) => {
-        modalBoxTitle.value = title
-        isModalShow.value = true
-    }
-
-    // 模态框信息mapping
-    const functions = [
-        {
-            title: '閲覧履歴',
-            icon: 'clock-rotate-left',
-            func: () => {isSearchHistorySelection.value = true},
-        },
-        {
-            title: 'お気に入り',
-            icon: 'star',
-            func: () => {isFavSelection.value = true},
-        },
-        {
-            title: 'お問い合わせ',
-            icon: 'envelope',
-            func: () => {isQuerySelection.value = true},
-        },
-    ]
 </script>
 
 <style scoped lang="less">

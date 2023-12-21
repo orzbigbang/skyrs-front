@@ -1,47 +1,58 @@
 <template>
     <nav class="nav fc" id="nav">
         <ul class="nav-wrapper">
-            <NavItem v-for="item in items" :key="item.title" :item="item"/>
+            <NavItem 
+                v-for="item, index in items" 
+                :item="item" 
+                :index="index" 
+                :activeIndex="activeIndex" 
+                @click="activate(index)" 
+                @on-touch="deactivate">
+            </NavItem>
         </ul>
     </nav>
 </template>
 
 <script setup>
-import NavItem from '@/components/nav/NavItem.vue'
-const items = [
-    {
-        title:'自社売買物件',
-        subItem: [
-            {title:'売買マンション', type:"search", route: "/search", houseIndex: 1, params: {mode: "sell", type: "mansion", new_: "n"}, config: {disable: false}},
-            {title:'売買一戸建て', type:"search", route: "/search", houseIndex: 3, params: {mode: "sell", type: "one", new_: "n"}, config: {disable: false}},
-        ]
-    },
-    {
-        title:'自社賃貸物件',
-        subItem: [
-            {title:'賃貸マンション・一戸建て', type:"search", route: "/search", houseIndex: 4, params: {mode: "rent", type: "mansion", new_: "n"}, config: {disable: false}},
-        ]
-    },
-    {
-        title:'お問い合わせ',
-        subItem: [
-            {title:'無料査定依頼', type:"query", queryType: 1, route: "/query", params: {mode: "sell"}, config: {disable: false}},
-            {title:'貸主様相談', type:"query", queryType: 2, route: "/query", params: {mode: "rent"}, config: {disable: false}},
-            {title:'お住いの相談', type:"query", queryType: 0, route: "/query", params: {mode: "any"}, config: {disable: false}},
-        ]
-    },
-    {
-        title:'会社概要',
-        subItem: [
-            {title:'会社概要', type:"company", queryType: 0, route: "/company", params: {mode: "any"}, config: {disable: false}},
-        ]
-    },
-]
+    import NavItem from '@/components/nav/NavItem.vue'
+    import { ref, onMounted, onBeforeMount } from 'vue'
+    
+    import {items} from '@/config/nav.js'
+
+    // 点击激活index对应的二级菜单
+    const activeIndex = ref(-1)
+    const activate = (index) => {
+        // 如果点击同一个按钮，则关闭二级菜单
+        if (activeIndex.value === index) {
+            deactivate()
+        } else {
+            activeIndex.value = index
+        }
+    }
+
+    // 关闭所有二级菜单
+    const deactivate = () => {
+        activeIndex.value = -1
+    }
+
+    // 绑定点击屏幕时关闭所有二级菜单的事件
+    const deactivateClick = ($event) => {
+        const className = $event.target.className
+        if (!(className === "sub-item" || className === "nav-item")) {
+            deactivate()
+        }
+    }
+    onMounted(() => {
+        window.addEventListener("click", deactivateClick)
+    })
+    onBeforeMount(() => {
+        window.addEventListener("click", deactivateClick)
+    })
 </script>
 
 <style scoped lang="less">
     .nav {
-        height: 50px;
+        height: 70px;
         box-shadow: 0 3px 10px #ccc;
         background-color: #fff;
         position: -webkit-sticky;

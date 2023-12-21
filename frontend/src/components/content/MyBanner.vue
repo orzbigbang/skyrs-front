@@ -11,11 +11,7 @@
 </template>
 
 <script setup>
-    const info_mapping = {
-        title: "お知らせ",
-        desc: "ご所有不動産の売却査定価格を無料でご提案させていただきます。売却に関するご相談などもお気軽にお問合せ下さい。",
-        info: "7cloud house©",
-    }
+    import {info_mapping} from '@/config/banner.js'
 </script>
 
 <style scoped lang="less">
@@ -67,18 +63,19 @@
     @media screen and (max-width: 900px) {
         .banner-wrapper {
             .info-wrapper {
-                height: 100%;
-                top: 0;
-                right: 0;
+                display: none;
+                // height: 100%;
+                // top: 0;
+                // right: 0;
             }
         }
     } 
 
-    @media screen and (max-width: 500px) {
-        .banner-wrapper {
-            .info-wrapper {
-                width: 100%;
-            }
-        }
-    }
+    // @media screen and (max-width: 500px) {
+    //     .banner-wrapper {
+    //         .info-wrapper {
+    //             width: 100%;
+    //         }
+    //     }
+    // }
 </style>

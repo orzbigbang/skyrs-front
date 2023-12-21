@@ -2,21 +2,21 @@
     <div class="my-company">
 		<div class="container">
             <div class="company-info fc">
-                <h3 class="title">7cloud house
+                <h3 class="title">{{ companyBrief.name }}
                     <span class="deco-line left"></span>
                     <span class="deco-line right"></span>
                 </h3>
                 <div class="blocks">
                     <div class="block block-left">
-                        <p class="info"><fa icon="phone"/> Tel: 03-5829-5615</p>
-                        <p class="info"> Fax: 03-5829-5616</p>
-                        <p class="info"><fa icon="location-dot"/> 営業時間: 10:30 ~ 17:00</p>
+                        <p class="info"><fa icon="phone"/>{{ companyBrief.tel }}</p>
+                        <p class="info">{{ companyBrief.fax }}</p>
+                        <p class="info"><fa icon="location-dot"/>{{ companyBrief.time }}</p>
                     </div>
                     <div class="placeholder-block"></div>
                     <div class="block block-right">
-                        <p class="info"><fa icon="location-dot"/> 所在地: 東京都千代田区神田佐久間町2-13-33藤波ビル4F</p>
-                        <p class="info"><fa icon="train"/> 交通: JR山手線「秋葉原駅」昭和口徒歩2分</p>
-                        <p class="info"> 定休日: 火・水・祝日 / 年末年始・GW・夏季休暇</p>
+                        <p class="info"><fa icon="location-dot"/>{{ companyBrief.location }}</p>
+                        <p class="info"><fa icon="train"/>{{ companyBrief.access }}</p>
+                        <p class="info">{{ companyBrief.vacation }}</p>
                     </div>
                 </div>
 
@@ -33,7 +33,8 @@
 </template>
     
 <script setup>
-    const googleMapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.134635691164!2d139.77376557625897!3d35.698304329035174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ea8939b6a1d%3A0x9d3db507b80fd0f3!2z44CSMTAxLTAwMjUg5p2x5Lqs6YO95Y2D5Luj55Sw5Yy656We55Sw5L2Q5LmF6ZaT55S677yS5LiB55uuIOiXpOazouODk-ODqw!5e0!3m2!1sja!2sjp!4v1700268427717!5m2!1sja!2sjp"
+    import {googleMapUrl} from '@/config/map.js'
+    import {companyBrief} from '@/config/company.js'
 </script>
     
 <style scoped  lang='less'>

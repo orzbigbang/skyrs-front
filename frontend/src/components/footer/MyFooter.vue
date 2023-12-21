@@ -9,15 +9,20 @@
 <script setup>
     import {useRouter} from 'vue-router'
     const router = useRouter()
-    
-    const footerFunc = (type) => {
-        router.push(`/policy/${type}`)
-    }
 
     const urls = [
-        {title:'会社概要', func:() => router.push("/company"), type_:'0'},
-        {title:'個人情報保護方針（プライバシーポリシー）', func:() => router.push("/policy/1"), type_:'1'},
-        {title:'特定個人情報保護方針', func:() => router.push("/policy/2"), type_:'2'},
+        {
+            title:'会社概要', 
+            func:() => router.push("/company"), 
+        },
+        {
+            title:'個人情報保護方針（プライバシーポリシー）', 
+            func:() => router.push("/policy/1"), 
+        },
+        {
+            title:'特定個人情報保護方針', 
+            func:() => router.push("/policy/2"), 
+        },
     ]
 </script>
 

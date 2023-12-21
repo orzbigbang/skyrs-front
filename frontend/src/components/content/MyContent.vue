@@ -14,9 +14,9 @@
     import { useHouseStore } from "@/stores/house"
 	const houseStore = useHouseStore()
 
+    // 获取atbb的推荐房屋列表
     import { useHeader } from '@/composition/userInfo.js'
     const headers = useHeader()
-
     houseStore.getAtbbRecommendHouseList(headers)
 </script>
 
