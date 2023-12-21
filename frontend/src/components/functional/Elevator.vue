@@ -8,12 +8,12 @@
 
 <script setup>
     import { ref, onMounted, onBeforeUnmount } from 'vue';
-
+    
+    // 注册屏幕宽度变化事件，并判断是否为移动端
     const isMobile = ref(false)
     if (window.innerWidth < 768) {
         isMobile.value = true
     }
-    
     const detectWidth = ($event) => {
         const newScreenWidth = window.innerWidth
         if (newScreenWidth < 768) {
@@ -22,11 +22,9 @@
             isMobile.value = false
         }
     }
-
     onMounted(() => {
         window.addEventListener("resize", detectWidth)
     })
-
     onBeforeUnmount(() => {
         window.removeEventListener("resize", detectWidth)
     })

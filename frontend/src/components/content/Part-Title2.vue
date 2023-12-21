@@ -11,13 +11,10 @@
 </template>
 
 <script setup>
-const props = defineProps({
-    eng: String,
-    jpn: String,
-})
-
-const { eng, jpn } = props
-
+    const props = defineProps({
+        eng: String,
+        jpn: String,
+    })
 </script>
 
 <style scoped lang="css">

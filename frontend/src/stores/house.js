@@ -25,6 +25,41 @@ export const useHouseStore = defineStore("house", () => {
 	// 收藏夹的的房屋列表
 	const favorates = ref([])
 
+	// 筛选城市
+	const filterCity = (array, cityIndex) => {
+		var cityName = "tokyo"
+		switch (cityIndex) {
+			case "1":
+				cityName = "tokyo"
+				break
+			case "2":
+				cityName = "kanagawa"
+				break
+			case "3":
+				cityName = "chiba"
+				break
+			case "4":
+				cityName = "saitama"
+				break
+			case "5":
+				cityName = "tochigi"
+				break
+			case "6":
+				cityName = "yamanashi"
+				break
+			case "7":
+				cityName = "nagano"
+				break
+			case "8":
+				cityName = "sizuoka"
+				break
+		}
+
+		return array.filter((item) => {
+			return item.city === cityName
+		})	
+	}
+
 	// 获取各种房屋列表
     const getHouseList = (url, params, headers, type) => {
 		// type: 0: 获取放屋列表， 1: 获取浏览历史, 收藏的房屋列表
@@ -78,40 +113,6 @@ export const useHouseStore = defineStore("house", () => {
 		} else {
 			filteredList.value = houseList.value
 		}
-	}
-
-	const filterCity = (array, cityIndex) => {
-		var cityName = "tokyo"
-		switch (cityIndex) {
-			case "1":
-				cityName = "tokyo"
-				break
-			case "2":
-				cityName = "kanagawa"
-				break
-			case "3":
-				cityName = "chiba"
-				break
-			case "4":
-				cityName = "saitama"
-				break
-			case "5":
-				cityName = "tochigi"
-				break
-			case "6":
-				cityName = "yamanashi"
-				break
-			case "7":
-				cityName = "nagano"
-				break
-			case "8":
-				cityName = "sizuoka"
-				break
-		}
-
-		return array.filter((item) => {
-			return item.city === cityName
-		})	
 	}
 	
 	const getAtbbHouseList = (params, headers, atbbType) => {
@@ -262,6 +263,7 @@ export const useHouseStore = defineStore("house", () => {
 	}
 
 	// 浏览次数加一
+	const viewCount = ref({})
 	// const addCount = (house_id) => {
 	// 	const url = apiURL.count
 	// 	const body = {house_id}
@@ -275,8 +277,6 @@ export const useHouseStore = defineStore("house", () => {
 	// 		}
 	// 	)
 	// }
-
-	const viewCount = ref({})
 
 	const addCount = (house_id) => {
 		if (viewCount.value[house_id] === undefined) {

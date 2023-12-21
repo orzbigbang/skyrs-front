@@ -139,7 +139,7 @@
 </template>
     
 <script setup>
-    import HouseCard from "../search page/HouseCard.vue";
+    // import HouseCard from "../search page/HouseCard.vue";
     import ModalBox from '@/components/functional/ModalBox.vue';
     import MyTag from '@/components/functional/MyTag.vue';
     import KeyValue from './KeyValue.vue'
@@ -183,7 +183,6 @@
             dpStore.faved = newVal
         }
     })
-    const url = apiURL.addFavorate
     const add2fav = () => {useAdd2fav(faved, houseID)}
 
     // carousel function
@@ -216,10 +215,6 @@
             queryType.value = "any"
             break
     }
-    
-    // get recommend house list
-    import recommendHouseLists from "./recommendHouseList"
-    const recommendHouseList = ref(recommendHouseLists);
 </script>
     
 <style scoped lang="less">

@@ -1,17 +1,19 @@
 <template>
-    <div class="item-wrapper" :style="{backgroundColor: `${props.item.color}`}" @click="jump2page">
+    <div class="item-wrapper" :style="{backgroundColor: `${item.color}`}" @click="jump2page">
         <div>
-            <fa class="icon" :icon="props.item.icon"/>
+            <fa class="icon" :icon="item.icon"/>
         </div>
-        <span class="title">{{ props.item.title }}</span>
+        <span class="title">{{ item.title }}</span>
         <div class="cat-warpper">
-            <span class="cat" v-for="cat in props.item.subitems">{{ cat.cat + "" + cat.desc }}</span>
+            <span class="cat" v-for="cat in item.subitems">{{ cat.cat + "" + cat.desc }}</span>
         </div>
     </div>
 </template>
 
 <script setup>
-    const props = defineProps(["item"])
+    const props = defineProps({
+        item: Object
+    })
 
     const jump2page = () => {
         window.open(props.item.url, '_blank')

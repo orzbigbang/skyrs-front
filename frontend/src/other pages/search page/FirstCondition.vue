@@ -1,20 +1,29 @@
 <template>
     <div class="fc">
-        <div class="title" @click="showCondition($event, props.index)">
-            {{ props.title }}
+        <div class="title" @click="showCondition(index)">
+            {{ title }}
         </div>
 
         <div class="input-wrapper">
-            <input class="search" type="text" placeholder="サーチ" v-if="conditionStore.activeFCIndex===props.index" v-model="searchBarInput" @input="searchFC">
-            <fa class="reset icon fc" icon="rotate-left" v-if="conditionStore.activeFCIndex===props.index" @click="reset"/>
+            <input class="search" type="text" placeholder="サーチ" 
+                v-if="activeFCIndex===index" 
+                v-model="searchBarInput" 
+                @input="searchFC">
+            <fa class="reset icon fc" icon="rotate-left" 
+                v-if="activeFCIndex===index" 
+                @click="reset"/>
         </div>
         
 
-        <div class="value-wrapper" :class="{active: conditionStore.activeFCIndex===props.index? true: false}">
+        <div class="value-wrapper" :class="{active: activeFCIndex===index? true: false}">
             <div class="value" v-for="value in filterd_values" :key="value">
                 <label>
-                    <input ref="cb" type="checkbox" v-if="conditionStore.activeFCIndex===props.index" :value="value" v-model="FCInput[value]" @change="getFCFilteredList($event)">
-                    {{ conditionStore.activeFCIndex===props.index? value: "" }}
+                    <input ref="cb" type="checkbox" 
+                        v-if="activeFCIndex===index" 
+                        :value="value" 
+                        v-model="FCInput[value]" 
+                        @change="getFCFilteredList($event)">
+                    {{ activeFCIndex===index? value: "" }}
                 </label>
             </div>
         </div>
@@ -22,9 +31,11 @@
 </template>
     
 <script setup>
-    import { ref, reactive, computed } from 'vue'
+    import { ref, toRefs, reactive, computed } from 'vue'
     import { useConditionStore } from '@/stores/condition'
     const conditionStore = useConditionStore()
+
+    const { activeFCIndex } = toRefs(conditionStore)
 
     import { useHouseStore } from '@/stores/house'
     const houseStore = useHouseStore()
@@ -39,16 +50,17 @@
     )
 
     // 激活block
-    const showCondition = ($event, index) => {
-        if (index === conditionStore.activeFCIndex) {
-            conditionStore.activeFCIndex = -1
+    const showCondition = (index) => {
+        if (index === activeFCIndex) {
+            activeFCIndex.value = -1
         } else {
-            conditionStore.activeFCIndex = index
+            activeFCIndex.value = index
         }
     }
 
-    // 搜索栏实时筛选
+    // 搜索框输入实时筛选
     const searchBarInput = ref("")
+    const values = reactive([])
     const filterd_values = computed(() => {
         if (!searchBarInput.value) {
             return props.fc
@@ -56,7 +68,6 @@
             return values.value
         }
     })
-    const values = reactive([])
     const searchFC = () => {
         values.value = props.fc.filter((e) => {
             return e.indexOf(searchBarInput.value) !== -1
@@ -82,7 +93,9 @@
         searchBarInput.value = ""
     }
 
+    // 实时获取筛选过的房屋数据
     const getFCFilteredList = ($event) => {
+        // 删掉没用的key
         if (!$event.target.checked) {
             delete FCInput[$event.target._value]
         }

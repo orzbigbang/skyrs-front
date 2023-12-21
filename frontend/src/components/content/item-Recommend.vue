@@ -6,10 +6,10 @@
                 <h3 class="title">「(株)セブンクラウドハウス」のおすすめ物件</h3>
             </div>
         </div>
-        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'売買☆おすすめ物件特集☆《マンション》《一戸建て》《事業用》'" :cards="cardsBuy" :url="moreBuyURL">
+        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="atbbRecommendInfo.buyTitle" :cards="houseStore.atbbHouseListRB" :url="atbbRecommendInfo.moreBuyURL">
 		    <div class="athome search-engine-rental responsive-koma-bukkens id_073049_20231201111102 count_10 size_middle"></div>
         </ItemNewHouse2>
-        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="'賃貸☆おすすめ物件特集☆《マンション・アパート》《一戸建て》《事業用》'" :cards="cardsRent" :url="moreRentURL">
+        <ItemNewHouse2 class="item" :eng="'new house'" :jpn="atbbRecommendInfo.rentTitle" :cards="houseStore.atbbHouseListRR" :url="atbbRecommendInfo.moreRentURL">
             <div class="athome search-engine-rental responsive-koma-bukkens id_073049_20231201110654 count_10 size_middle"></div>
         </ItemNewHouse2>
     </div>
@@ -19,22 +19,12 @@
     import PartTitle from './Part-Title.vue';
     import ItemNewHouse2 from './Item-NewHouse2.vue'
 
-	import {computed} from 'vue'
-
     import { useHouseStore } from "@/stores/house"
 	const houseStore = useHouseStore()
 
-    const cardsBuy = computed(() => {
-		return houseStore.atbbHouseListRB
-	})
+    import {atbbRecommendInfo} from '@/config/atbb.js'
 
-    const moreBuyURL = "https://asp.athome.jp/073049/shubetsu/baibai/shumoku"
-
-    const cardsRent = computed(() => {
-		return houseStore.atbbHouseListRR
-	})
-    const moreRentURL = "https://asp.athome.jp/073049/shubetsu/chintai/shumoku"
-
+    // atbb 推荐房屋长条状元素
     const script1 = document.createElement('script');
     script1.src = 'https://asp.athome.jp/responsive_koma_bukkens/ER_ID/073049/KOMA_ID/20231201110654/count/10/size/middle/list.js';
     document.head.appendChild(script1);

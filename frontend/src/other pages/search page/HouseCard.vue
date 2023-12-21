@@ -1,24 +1,24 @@
 <template>
     <div class="house-wrapper">
         <div class="img-wrapper">
-            <img class="img" :src="apiURL.mediaURL + props.house.main_pic_url" @click="goDP">
+            <img class="img" :src="apiURL.mediaURL + house.main_pic_url" @click="goDP">
             <span class="view">
                 閲覧：{{ viewCount? viewCount: "0" }} 
             </span>
         </div>
         <div class="house-info">
             <h5 class="title" @click.self="goDP">
-                {{ props.house.name }}
+                {{ house.name }}
                 <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/>
             </h5>
-            <span class="location">{{ props.house.address }}</span>
-            <span class="madori">{{ props.house.layout }}</span>
-            <span class="area">{{ props.house.area }}m²</span>
-            <span class="station">{{ props.house.station}}</span>
-            <span class="attribute">{{ props.house.house_struction + " / " + props.house.number_of_floors + "階" }}</span>
+            <span class="location">{{ house.address }}</span>
+            <span class="madori">{{ house.layout }}</span>
+            <span class="area">{{ house.area }}m²</span>
+            <span class="station">{{ house.station}}</span>
+            <span class="attribute">{{ house.house_struction + " / " + house.number_of_floors + "階" }}</span>
         </div>
 
-        <span class="price">{{ props.house.price.slice(0, -1) + "万円" }}</span>
+        <span class="price">{{ house.price.slice(0, -1) + "万円" }}</span>
         <div id="popup" v-show="favedEvent">{{ faved? "追加されました": "外されました" }}</div>
     </div>
 </template>
@@ -38,30 +38,31 @@
             house: Object
         }
     )
+    const {house} = props
 
     // house_id
-    const houseID = computed(() => props.house.house_id)
+    const houseID = computed(() => house.house_id)
 
     // go to detail page
     const goDP = () => {
         router.push(`/detailpage/${houseID.value}`)
 
         // see count +1
-        houseStore.addCount(props.house.house_id)
+        houseStore.addCount(house.house_id)
     }
 
     // view count
     const viewCount = computed(() => {
-        return houseStore.viewCount[props.house.house_id]
+        return houseStore.viewCount[house.house_id]
     })
 
     // add to favorate
     const faved = computed({
         get: () => {
-            return props.house.faved
+            return house.faved
         },
         set: (val) => {
-            props.house.faved = val
+            house.faved = val
         }
     })
     import { useAdd2fav } from "@/composition/favorate.js"

@@ -1,6 +1,6 @@
 <template>
     <div class="kv">
-        <div class="key">{{ props.highlight._key }}</div>
+        <div class="key">{{ highlight._key }}</div>
         <div class="value">
             <!-- <div class="normal">{{ props.normal }}</div> -->
             <span class="highlight1 fc">{{ highlight1 }}</span>
@@ -22,7 +22,6 @@
     const highlight2 = computed(() => {
         return Object.values(props.highlight._value)[1]
     })
-    
 </script>
     
 <style scoped lang='less'>

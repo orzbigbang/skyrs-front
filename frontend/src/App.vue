@@ -54,7 +54,7 @@
         title: '回到顶部', 
         icon: 'angles-up',
         func: () => {
-            document.body.scrollTo(0, 0)
+            window.scrollTo(0, 0)
         }
     }
 ]

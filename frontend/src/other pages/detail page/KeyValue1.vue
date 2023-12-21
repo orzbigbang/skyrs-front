@@ -1,6 +1,6 @@
 <template>
     <div class="kv-wrapper">
-        <div class="key">{{ props.base._key }}</div>
+        <div class="key">{{ base._key }}</div>
         <div class="value">{{ _value }}</div>
     </div>
 </template>

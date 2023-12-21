@@ -6,11 +6,6 @@
 </template>
     
 <script setup>
-    const props = defineProps(
-        {
-            tag: Object
-        }
-    )
 </script>
     
 <style scoped  lang='less'>

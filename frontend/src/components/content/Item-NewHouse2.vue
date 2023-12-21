@@ -1,23 +1,23 @@
 <template>
 	<div class="container">
-		<PartTitle2 :eng="props.eng" :jpn="props.jpn"/>
+		<PartTitle2 :eng="eng" :jpn="jpn"/>
 		<div class="card-wrapper">
-			<PartCard1 v-for="card in props.cards" :key="card.title" :house="card" @click="jump2page(card.url)"></PartCard1>
+			<PartCard1 v-for="card in cards" :key="card.title" :house="card" @click="jump2page(card.url)"></PartCard1>
 		</div>
 		<slot></slot>
-		<div class="see-more bacc"  @click="jump2page(props.url)">もっと見る<fa icon="angle-right" class="fa-icon"/></div>
+		<div class="see-more bacc"  @click="jump2page(url)">もっと見る<fa icon="angle-right" class="fa-icon"/></div>
 	</div>
 </template>
 
 <script setup>
-import PartTitle2 from "./Part-Title2.vue";
-import PartCard1 from "./Part-Card1.vue";
+	import PartTitle2 from "./Part-Title2.vue";
+	import PartCard1 from "./Part-Card1.vue";
 
-const props = defineProps(["cards", "url", "eng", "jpn"])
+	const props = defineProps(["cards", "url", "eng", "jpn"])
 
-const jump2page = (url) => {
-	window.open(url, "_blank")
-}
+	const jump2page = (url) => {
+		window.open(url, "_blank")
+	}
 </script>
 
 <style scoped lang="less">

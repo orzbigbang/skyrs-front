@@ -2,7 +2,7 @@
     <div class="mask" @click="closeModalSelectionX($event)">
         <div class="wrapper">
             <p class="title">
-                {{ props.title }}
+                {{ title }}
                 <fa class="close" icon="xmark" @click="closeModalSelection"/>
             </p>
 
@@ -23,10 +23,12 @@
         }
     )
 
+    // 点击关闭按钮关闭模态框
     const closeModalSelection = () => {
         modalStore.closeModalSelection()
     }
 
+    // 点击屏幕关闭模态框
     const closeModalSelectionX = ($event) => {
         if ($event.target.className === "mask") {
             closeModalSelection()

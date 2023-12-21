@@ -74,7 +74,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-	document.body.scrollTo(0, 0);
+	window.scrollTo(0, 0);
 	next();
 });
 

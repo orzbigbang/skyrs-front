@@ -9,7 +9,7 @@ export const useQueryStore = defineStore('query', () => {
     const postQuery = (body, headers) => {
         axios.post(url, body, {headers}).then(
             value => {
-                console.log(value.data)
+                // console.log(value.data)
             }
         ).catch(
             reason => {
@@ -21,7 +21,7 @@ export const useQueryStore = defineStore('query', () => {
     const getQuery = (headers) => {
         axios.get(url, {headers}).then(
             value => {
-                console.log(value.data)
+                // console.log(value.data)
             }
         ).catch(
             reason => {
@@ -34,7 +34,7 @@ export const useQueryStore = defineStore('query', () => {
         const config = headers? {params, headers}: {params}
         axios.get(url, config).then(
             value => {
-                console.log(value.data)
+                // console.log(value.data)
             }
         ).catch(
             reason => {

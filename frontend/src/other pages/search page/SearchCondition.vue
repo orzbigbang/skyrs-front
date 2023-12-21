@@ -1,6 +1,6 @@
 <template>
     <div class="condition-wrapper">
-        <span class="title">{{ props.condition.title }}:</span>
+        <span class="title">{{ condition.title }}:</span>
         <div class="values">
             <slot></slot>
         </div>

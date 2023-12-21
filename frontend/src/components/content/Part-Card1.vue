@@ -1,22 +1,20 @@
 <template>
     <div class="wrapper">
-        <img class="img" :src="apiURL.mediaAtbbURL + img">
-        <span class="tag fc bc">{{ tag }}</span>
-        <span class="price fc">{{ price }}</span>
-        <span class="layout attr"><fa class="fa-icon" icon="building"/>{{ layout }}</span>
-        <span class="area attr"><fa class="fa-icon" icon="location-dot"/>{{ area }}</span>
-        <span class="station attr"><fa class="fa-icon" icon="train"/>{{ station }}</span>
+        <img class="img" :src="apiURL.mediaAtbbURL + house.img">
+        <span class="tag fc bc">{{ house.tag }}</span>
+        <span class="price fc">{{ house.price }}</span>
+        <span class="layout attr"><fa class="fa-icon" icon="building"/>{{ house.layout }}</span>
+        <span class="area attr"><fa class="fa-icon" icon="location-dot"/>{{ house.area }}</span>
+        <span class="station attr"><fa class="fa-icon" icon="train"/>{{ house.station }}</span>
     </div>
 </template>
     
 <script setup>
+    import { apiURL } from '@/config/config.js'
+
     const props = defineProps({
         house: Object,
     })
-
-    const { house: {img, price, station, layout, area, tag} } = props
-
-    import { apiURL } from '@/config/config.js'
 </script>
     
 <style scoped  lang='less'>

@@ -109,6 +109,7 @@
     import { useQueryStore } from '@/stores/query.js'
     const queryStore = useQueryStore()
 
+    // v-model 绑定的表单元素的数据
     const userInput = ref({
         query_type: "any",
         last_name_kana: "",
@@ -126,6 +127,7 @@
         layout: "",
     })
 
+    // 根据路径判断query_type，并直接赋值
     watch(() => route.params, (newVal) => {
         userInput.value.query_type = newVal.mode
     },
@@ -133,6 +135,8 @@
         immediate: true
     })
 
+    // 点击提交的事件。
+    // 显示发送邮件的弹窗提醒，并在3秒之后关闭
     const sentEmail = ref(false)
     const header = useHeader()
     const goQuery = () => {

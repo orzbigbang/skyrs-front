@@ -8,16 +8,15 @@
         </div>
         <div class="house-info">
             <h5 class="title" @click.self="jump2page">
-                {{ props.house.name }}
-                <!-- <fa class="icon" :class="{active: faved}" icon="star" @click="add2fav"/> -->
+                {{ house.name }}
             </h5>
-            <span class="location">{{ props.house.address }}</span>
-            <span class="madori">{{ props.house.layout }}</span>
-            <span class="area">{{ props.house.area }}m²</span>
-            <span class="station">{{ props.house.station}}</span>
+            <span class="location">{{ house.address }}</span>
+            <span class="madori">{{ house.layout }}</span>
+            <span class="area">{{ house.area }}m²</span>
+            <span class="station">{{ house.station}}</span>
         </div>
 
-        <span class="price">{{ (props.house.price / 10000).toLocaleString() + "万円" }}</span>
+        <span class="price">{{ (house.price / 10000).toLocaleString() + "万円" }}</span>
     </div>
 </template>
     
@@ -32,33 +31,22 @@
             house: Object
         }
     )
+    const {house} = props
 
     import { apiURL } from '@/config/config.js'
 
     // house_id
-    const houseID = computed(() => props.house.house_id)
+    const houseID = computed(() => house.house_id)
 
     // go to atbb page
     const jump2page = () => {
-        window.open(props.house.url, '_blank')
+        window.open(house.url, '_blank')
     }
 
     // view count
     const viewCount = computed(() => {
-        return houseStore.viewCount[props.house.house_id]
+        return houseStore.viewCount[house.house_id]
     })
-
-    // add to favorate
-    const faved = computed({
-        get: () => {
-            return props.house.faved
-        },
-        set: (val) => {
-            props.house.faved = val
-        }
-    })
-    import { useAdd2fav } from "@/composition/favorate.js"
-    const add2fav = () => {useAdd2fav(faved, houseID.value)}
 </script>
     
 <style scoped  lang='less'>

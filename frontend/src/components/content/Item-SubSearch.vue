@@ -1,10 +1,10 @@
 <template>
     <div class="wrapper">
         <div class="title-wrapper">
-            <span class="title">{{ props.title }}</span>
-            <span class="subtitle">{{ props.subtitle }}</span>
+            <span class="title">{{ title }}</span>
+            <span class="subtitle">{{ subtitle }}</span>
         </div>
-        <div class="card-wrapper" v-for="item in props.items">
+        <div class="card-wrapper" v-for="item in items">
             <PartSearchCard
                 v-for="card in item"
                 :key="card.title"
@@ -15,10 +15,9 @@
 </template>
     
 <script setup>
-import PartSearchCard from "./Part-SearchCard.vue";
+    import PartSearchCard from "./Part-SearchCard.vue";
 
-const props = defineProps(["title", "subtitle", "backgroundColor", "items"])
-    
+    const props = defineProps(["title", "subtitle", "items"])
 </script>
     
 <style scoped lang='less'>
