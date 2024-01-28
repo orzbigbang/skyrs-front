@@ -35,23 +35,32 @@ const router = createRouter({
 			component: () => import("@/other pages/company page/CompanyPage.vue"),
 		},
 		{
-			path: "/upload",
-			name: "upload",
-			component: () => import("@/other pages/upload page/UploadPage.vue"),
+			path: "/manage",
+			name: "manage",
+			component: () => import("@/other pages/manage page/ManagePage.vue"),
 			children: [
 				{
+					path: "houselist",
+					component: () => import("@/other pages/manage page/HouseList.vue"),
+				},
+				{
 					path: "upload",
-					component: () => import("@/other pages/upload page/UploadHouse.vue"),
+					component: () => import("@/other pages/manage page/UploadHouse.vue"),
 				},
 				{
 					path: "modify",
-					component: () => import("@/other pages/upload page/ModifyHomePage.vue"),
+					component: () => import("@/other pages/manage page/ModifyHomePage.vue"),
 				},
 			],
 			beforeEnter: () => {
 				const globalStore = useGlobalStore()
 				globalStore.isNavFooter = false
 			},
+		},
+		{
+			path: "/nihao/:houseID",
+			name: "nihao",
+			component: () => import("@/other pages/manage page/HouseEdit.vue"),
 		},
 		{
 			path: "/detailpage/:houseID",

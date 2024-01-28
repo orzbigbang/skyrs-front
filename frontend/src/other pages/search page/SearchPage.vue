@@ -262,7 +262,6 @@
 	const totalPage = computed(() => {
 		return parseInt((houseList.value.length + atbbHouseList.value.length) / 20)
 	})
-	
 </script>
 
 <style scoped lang="less">

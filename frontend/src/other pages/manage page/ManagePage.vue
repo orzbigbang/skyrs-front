@@ -1,7 +1,8 @@
 <template>
     <nav>
-        <router-link to="/upload/modify"><button>ホームページの修正</button></router-link>
-        <router-link to="/upload/upload"><button>物件をアップロード</button></router-link>
+        <router-link to="/manage/houselist"><button>物件情報管理</button></router-link>
+        <router-link to="/manage/modify"><button>ホームページの修正</button></router-link>
+        <router-link to="/manage/upload"><button>物件をアップロード</button></router-link>
     </nav>
     
     <router-view></router-view>
