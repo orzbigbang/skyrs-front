@@ -1,4 +1,4 @@
-const test = true
+const test = false
 const baseURL = test? "http://localhost": "https://7cloudhouse.com"
 
 export const apiURL = {

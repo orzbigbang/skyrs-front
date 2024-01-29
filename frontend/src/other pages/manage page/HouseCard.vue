@@ -27,7 +27,7 @@
     const router = useRouter()
 
     const goEdit = () => {
-        router.push(`/nihao/${house.house_id}`)
+        router.push(`/housemanage/${house.house_id}`)
     }
 </script>
 
